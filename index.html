@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Droplet – Bulk Selection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #C8C6C0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    /* ── Phone shell ── */
+    .phone {
+      width: 393px;
+      height: 852px;
+      background: #F2F0EC;
+      border-radius: 52px;
+      overflow: hidden;
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.12),
+        0 32px 96px rgba(0,0,0,0.4),
+        0 8px 24px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Status bar ── */
+    .status-bar {
+      flex-shrink: 0;
+      height: 54px;
+      padding: 14px 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .status-time {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      letter-spacing: -0.3px;
+    }
+    .status-icons { display: flex; align-items: center; gap: 6px; }
+
+    /* ── Header ── */
+    .header {
+      flex-shrink: 0;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .btn-circle {
+      width: 42px;
+      height: 42px;
+      background: white;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      flex-shrink: 0;
+    }
+    .btn-manage {
+      height: 42px;
+      padding: 0 22px;
+      background: white;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2A2F35;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: background 0.22s ease, color 0.22s ease;
+      white-space: nowrap;
+    }
+    .btn-manage.is-done {
+      background: #222A35;
+      color: white;
+    }
+
+    /* ── Page title ── */
+    .page-title {
+      flex-shrink: 0;
+      padding: 2px 16px 10px;
+      font-size: 23px;
+      font-weight: 600;
+      color: #000;
+      letter-spacing: -0.5px;
+      line-height: 30px;
+    }
+
+    /* ── Pill tabs ── */
+    .tabs-row, .filter-row {
+      flex-shrink: 0;
+      display: flex;
+      gap: 8px;
+      padding: 0 16px 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs-row::-webkit-scrollbar,
+    .filter-row::-webkit-scrollbar { display: none; }
+
+    .pill {
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      color: #2A2F35;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .pill.active { background: #E3E1DC; box-shadow: none; }
+    .pill-count { color: #7B8494; }
+    .pill.active .pill-count { color: #2A2F35; }
+
+    /* ── Product list ── */
+    .product-list {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: visible;
+      padding: 4px 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scrollbar-width: none;
+    }
+    .product-list::-webkit-scrollbar { display: none; }
+    .product-list::after {
+      content: '';
+      display: block;
+      height: 104px;
+      flex-shrink: 0;
+    }
+
+    /* ── Product tile ── */
+    .tile {
+      position: relative;
+      cursor: default;
+    }
+
+    /* ── 2. SLIDE-IN ANIMATION ──
+       tile-inner slides right; checkbox slides in from left */
+    .tile-inner {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      will-change: transform;
+      transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition-delay: var(--stagger, 0ms);
+    }
+    .selection-mode .tile-inner {
+      transform: translateX(32px);
+    }
+    /* restore (no stagger on exit for snappy feel) */
+    .selection-mode-exit .tile-inner {
+      transition-delay: 0ms !important;
+    }
+
+    /* ── Checkbox – slides in from left ── */
+    .tile-checkbox-wrap {
+      position: absolute;
+      left: 4px;
+      top: 58px;  /* vertically centred-ish inside 140px image */
+      opacity: 0;
+      transform: translateX(-12px);
+      transition:
+        opacity 0.22s ease,
+        transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition-delay: var(--stagger, 0ms);
+      z-index: 4;
+      cursor: pointer;
+    }
+    .selection-mode .tile-checkbox-wrap {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .selection-mode-exit .tile-checkbox-wrap {
+      transition-delay: 0ms !important;
+    }
+
+    .tile-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 1px 5px rgba(0,0,0,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease, border-color 0.15s ease;
+      overflow: hidden;
+    }
+    .tile.selected .tile-checkbox {
+      background: #FF4252;
+      border-color: #FF4252;
+    }
+    /* Figma check icon inside checkbox */
+    .tile-checkbox .ico {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.15s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tile.selected .tile-checkbox .ico {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* image wrap */
+    .tile-image-wrap {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: opacity 0.2s ease;
+    }
+    .tile-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* selection ring */
+    .tile-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      border: 2.5px solid transparent;
+      pointer-events: none;
+      transition: border-color 0.18s ease;
+      z-index: 2;
+    }
+    .tile.selected .tile-ring { border-color: #FF4252; }
+
+    /* alert badge */
+    .alert-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      height: 26px;
+      padding: 0 8px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .alert-badge span {
+      font-size: 10px;
+      font-weight: 700;
+      color: #222A35;
+    }
+
+    /* dim unselected in selection mode */
+    .selection-mode .tile:not(.selected) .tile-image-wrap { opacity: 0.6; }
+    .selection-mode .tile.selected .tile-image-wrap { opacity: 1; }
+
+    /* info side */
+    .tile-info {
+      flex: 1;
+      height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .tile-top { display: flex; flex-direction: column; gap: 6px; }
+    .tile-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #222A35;
+      line-height: 1.35;
+    }
+    .tile-meta {
+      font-size: 12px;
+      font-weight: 600;
+      color: #7B8494;
+      line-height: 1.55;
+    }
+    .tile-price-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .tile-price-base {
+      font-size: 12px;
+      font-weight: 600;
+      color: #7B8494;
+    }
+    .price-badge {
+      height: 24px;
+      padding: 0 9px;
+      background: #DDDBD7;
+      border-radius: 37px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .price-badge span {
+      font-size: 11px;
+      font-weight: 600;
+      color: #222A35;
+    }
+
+    /* per-tile action button */
+    .tile-btn {
+      width: 100%;
+      height: 36px;
+      background: white;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #2A2F35;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+    .tile-btn:active { transform: scale(0.97); }
+    .selection-mode .tile-btn { opacity: 0; pointer-events: none; }
+
+    /* ── Bottom bar ── */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 16px 32px;
+      background: linear-gradient(to top, #F2F0EC 65%, rgba(242,240,236,0) 100%);
+      pointer-events: none;
+    }
+
+    /* normal CTA */
+    .btn-cta {
+      width: 100%;
+      height: 52px;
+      background: #FF4252;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      pointer-events: all;
+      transition: opacity 0.22s ease, transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    .btn-cta.hidden {
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+    }
+
+    /* ── 3. BULK ACTION BAR ── both buttons full-width, equal ── */
+    .bulk-bar {
+      position: absolute;
+      inset: 10px 16px 32px;
+      display: flex;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.26s ease, transform 0.26s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+    }
+    .bulk-bar.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .btn-bulk {
+      flex: 1;               /* equal widths */
+      height: 52px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.12s ease, opacity 0.12s ease;
+    }
+    .btn-bulk:active { transform: scale(0.96); }
+
+    /* Delete: white bg, red label */
+    .btn-delete {
+      background: white;
+      color: #FF4252;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    /* Add to Show: red bg, white label */
+    .btn-show {
+      background: #FF4252;
+      color: white;
+    }
+
+    /* Figma icon img helper */
+    .ico-img {
+      display: block;
+      flex-shrink: 0;
+    }
+    /* colorize: dark Figma PNG → red */
+    .ico-red {
+      filter: brightness(0) invert(36%) sepia(97%) saturate(1500%) hue-rotate(327deg) brightness(108%);
+    }
+    /* colorize: dark Figma PNG → white */
+    .ico-white {
+      filter: brightness(0) invert(1);
+    }
+
+    /* ── Single-select hint chip ── */
+    .count-chip {
+      position: absolute;
+      bottom: 108px;
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: #222A35;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .count-chip.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<div class="phone" id="phone">
+
+  <!-- Status bar -->
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none">
+        <rect x="0"    y="8"   width="3.2" height="5"   rx="1" fill="black"/>
+        <rect x="4.7"  y="5.5" width="3.2" height="7.5" rx="1" fill="black"/>
+        <rect x="9.4"  y="3"   width="3.2" height="10"  rx="1" fill="black"/>
+        <rect x="14.1" y="0"   width="3.2" height="13"  rx="1" fill="black"/>
+      </svg>
+      <svg width="17" height="13" viewBox="0 0 17 13" fill="none">
+        <path d="M8.5 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="black"/>
+        <path d="M1 4.5C3.2 2.3 5.7 1 8.5 1s5.3 1.3 7.5 3.5" stroke="black" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path d="M3.5 7C5 5.5 6.7 4.8 8.5 4.8s3.5.7 5 2.2" stroke="black" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path d="M6 9.2C6.7 8.5 7.6 8.1 8.5 8.1s1.8.4 2.5 1.1" stroke="black" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      </svg>
+      <svg width="27" height="13" viewBox="0 0 27 13" fill="none">
+        <rect x="0.5" y="0.5" width="22" height="12" rx="3.5" stroke="black" stroke-opacity="0.35"/>
+        <rect x="2"   y="2"   width="18" height="9"  rx="2"   fill="black"/>
+        <path d="M24.5 4.5v4a2 2 0 000-4z" fill="black" fill-opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <button class="btn-circle" aria-label="Back">
+      <!-- Droplet-style back chevron: thin stroke, rounded caps -->
+      <svg width="9" height="16" viewBox="0 0 9 16" fill="none">
+        <path d="M8 1.5L1.5 8L8 14.5"
+              stroke="#2A2F35"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="btn-manage" id="manageBtn">Manage</button>
+  </div>
+
+  <!-- Title -->
+  <div class="page-title">Products</div>
+
+  <!-- Category tabs -->
+  <div class="tabs-row">
+    <button class="pill active">Active <span class="pill-count">92</span></button>
+    <button class="pill">Inactive <span class="pill-count">1</span></button>
+    <button class="pill">Drafts <span class="pill-count">10</span></button>
+    <button class="pill">Sold out</button>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="filter-row">
+    <button class="pill active">All</button>
+    <button class="pill">Auction <span class="pill-count">1</span></button>
+    <button class="pill">Buy now <span class="pill-count">1</span></button>
+  </div>
+
+  <!-- Product list -->
+  <div class="product-list" id="productList"></div>
+
+  <!-- Single-selection hint chip -->
+  <div class="count-chip" id="countChip"></div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <button class="btn-cta" id="ctaBtn">Add Product</button>
+
+    <!-- ── 3. BULK BAR: both buttons equal, full-width ── -->
+    <div class="bulk-bar" id="bulkBar">
+
+      <!-- Delete – white bg, red, Figma Trash icon -->
+      <button class="btn-bulk btn-delete" id="deleteBtn">
+        <img class="ico-img ico-red"
+             src="https://www.figma.com/api/mcp/asset/aba17103-9a8c-4569-95b2-a4c17fa1414c"
+             width="18" height="18" alt="">
+        <span id="deleteLbl">Delete</span>
+      </button>
+
+      <!-- Add to Show – red bg, white, Figma Check icon -->
+      <button class="btn-bulk btn-show" id="showBtn">
+        <img class="ico-img ico-white"
+             src="https://www.figma.com/api/mcp/asset/dc9682c7-c41b-4e3a-bff1-1a84f4211c83"
+             width="15" height="15" alt="">
+        <span id="showLbl">Add to Show</span>
+      </button>
+
+    </div>
+  </div>
+
+</div><!-- /phone -->
+
+<script>
+/* ─── Icons from Figma ─── */
+const FIGMA_TRASH = 'https://www.figma.com/api/mcp/asset/aba17103-9a8c-4569-95b2-a4c17fa1414c';
+const FIGMA_CHECK = 'https://www.figma.com/api/mcp/asset/dc9682c7-c41b-4e3a-bff1-1a84f4211c83';
+// Alert badge icon from the original product tiles view
+const FIGMA_ALERT = 'https://www.figma.com/api/mcp/asset/bd6f01a5-12f1-481b-9954-086a265ea947';
+
+/* ─── Data ─── */
+const products = [
+  {
+    id: 1,
+    name: 'Airmax Classic 95 white blue red',
+    size: 'Size 42', qty: 92,
+    priceBase: '$90', badge: '$102.34, with ⓘ',
+    image: 'https://www.figma.com/api/mcp/asset/a9b9cb26-4b8c-4c53-99d7-55ee2bd8219a',
+    alerts: 34,
+  },
+  {
+    id: 2,
+    name: 'Airmax Classic 95 white blue red',
+    size: 'Size 42', qty: 92,
+    priceBase: null, badge: 'From $1',
+    image: 'https://www.figma.com/api/mcp/asset/b1deaf57-53b7-4065-a2cc-4cd02cdc735a',
+    alerts: 34,
+  },
+  {
+    id: 3,
+    name: 'Jordan 1 Retro High OG Chicago',
+    size: 'Size 44', qty: 12,
+    priceBase: '$340', badge: '$410.00, with ⓘ',
+    image: 'https://www.figma.com/api/mcp/asset/a9b9cb26-4b8c-4c53-99d7-55ee2bd8219a',
+    alerts: 7,
+  },
+  {
+    id: 4,
+    name: 'New Balance 550 White Green',
+    size: 'Size 41', qty: 5,
+    priceBase: null, badge: 'From $80',
+    image: 'https://www.figma.com/api/mcp/asset/b1deaf57-53b7-4065-a2cc-4cd02cdc735a',
+    alerts: 2,
+  },
+];
+
+/* ─── State ─── */
+let selectionMode = false;
+let selected = new Set();
+
+/* ─── Refs ─── */
+const phone       = document.getElementById('phone');
+const manageBtn   = document.getElementById('manageBtn');
+const productList = document.getElementById('productList');
+const ctaBtn      = document.getElementById('ctaBtn');
+const bulkBar     = document.getElementById('bulkBar');
+const deleteBtn   = document.getElementById('deleteBtn');
+const deleteLbl   = document.getElementById('deleteLbl');
+const showBtn     = document.getElementById('showBtn');
+const showLbl     = document.getElementById('showLbl');
+const countChip   = document.getElementById('countChip');
+
+/* ─── Render tiles ─── */
+function render() {
+  productList.innerHTML = '';
+  products.forEach((p, idx) => {
+    const tile = document.createElement('div');
+    tile.className = 'tile' + (selected.has(p.id) ? ' selected' : '');
+    tile.dataset.id = p.id;
+    // ── staggered CSS variable for slide-in ──
+    tile.style.setProperty('--stagger', `${idx * 48}ms`);
+
+    tile.innerHTML = `
+      <!-- ── 1. Figma alert icon in badge; checkbox with Figma check icon ── -->
+      <div class="tile-checkbox-wrap" data-id="${p.id}">
+        <div class="tile-checkbox">
+          <div class="ico">
+            <img class="ico-img ico-white"
+                 src="${FIGMA_CHECK}"
+                 width="12" height="12" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="tile-inner">
+        <div class="tile-image-wrap">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
+          <div class="tile-ring"></div>
+
+          <!-- Figma alert/star badge icon -->
+          <div class="alert-badge">
+            <img src="${FIGMA_ALERT}"
+                 width="11" height="11"
+                 alt=""
+                 style="display:block;flex-shrink:0;">
+            <span>${p.alerts}</span>
+          </div>
+        </div>
+
+        <div class="tile-info">
+          <div class="tile-top">
+            <div>
+              <div class="tile-name">${p.name}</div>
+              <div class="tile-meta">${p.size}<br>Qty: ${p.qty}</div>
+            </div>
+            <div class="tile-price-row">
+              ${p.priceBase ? `<span class="tile-price-base">${p.priceBase}</span>` : ''}
+              <div class="price-badge"><span>${p.badge}</span></div>
+            </div>
+          </div>
+          <button class="tile-btn">Add to Show</button>
+        </div>
+      </div>
+    `;
+
+    tile.addEventListener('click', () => onTileClick(p.id));
+    // checkbox wrap tap also toggles
+    tile.querySelector('.tile-checkbox-wrap').addEventListener('click', e => {
+      e.stopPropagation();
+      onTileClick(p.id);
+    });
+
+    productList.appendChild(tile);
+  });
+}
+
+/* ─── Tile click ─── */
+function onTileClick(id) {
+  if (!selectionMode) return;
+  selected.has(id) ? selected.delete(id) : selected.add(id);
+  updateUI();
+}
+
+/* ─── Update UI ─── */
+function updateUI() {
+  const n = selected.size;
+
+  /* update tile selected state */
+  document.querySelectorAll('.tile').forEach(tile => {
+    const id = +tile.dataset.id;
+    tile.classList.toggle('selected', selected.has(id));
+  });
+
+  /* ── 3. show bulk bar only at 2+ selections ── */
+  if (selectionMode && n >= 2) {
+    ctaBtn.classList.add('hidden');
+    bulkBar.classList.add('visible');
+    deleteLbl.textContent = `Delete (${n})`;
+    showLbl.textContent   = `Add to Show (${n})`;
+    countChip.classList.remove('visible');
+  } else {
+    ctaBtn.classList.remove('hidden');
+    bulkBar.classList.remove('visible');
+    if (selectionMode && n === 1) {
+      countChip.textContent = '1 selected — pick more for bulk actions';
+      countChip.classList.add('visible');
+    } else {
+      countChip.classList.remove('visible');
+    }
+  }
+}
+
+/* ─── Manage / Done toggle ─── */
+manageBtn.addEventListener('click', () => {
+  selectionMode = !selectionMode;
+  selected.clear();
+
+  if (selectionMode) {
+    manageBtn.textContent = 'Done';
+    manageBtn.classList.add('is-done');
+    phone.classList.add('selection-mode');
+  } else {
+    /* snap-back: remove stagger on exit */
+    document.querySelectorAll('.tile').forEach(t => {
+      t.classList.add('selection-mode-exit');
+    });
+    phone.classList.remove('selection-mode');
+    manageBtn.textContent = 'Manage';
+    manageBtn.classList.remove('is-done');
+    // clean up exit class after transition
+    setTimeout(() => {
+      document.querySelectorAll('.tile').forEach(t =>
+        t.classList.remove('selection-mode-exit')
+      );
+    }, 420);
+  }
+  updateUI();
+});
+
+/* ─── Bulk actions ─── */
+deleteBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  if (selected.size < 2) return;
+  showToast(`Deleted ${selected.size} products`);
+  selected.clear();
+  updateUI();
+});
+
+showBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  if (selected.size < 2) return;
+  showToast(`Added ${selected.size} products to Show`);
+  selected.clear();
+  updateUI();
+});
+
+/* ─── Toast ─── */
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = `
+    position:absolute; bottom:112px; left:50%; transform:translateX(-50%);
+    background:#222A35; color:white; font-size:13px; font-weight:600;
+    padding:10px 18px; border-radius:100px; white-space:nowrap; z-index:200;
+    animation:fadeUp 2.6s cubic-bezier(0.4,0,0.2,1) forwards;
+  `;
+  phone.appendChild(t);
+  setTimeout(() => t.remove(), 2600);
+}
+
+const s = document.createElement('style');
+s.textContent = `
+  @keyframes fadeUp {
+    0%   { opacity:0; transform:translateX(-50%) translateY(10px); }
+    12%  { opacity:1; transform:translateX(-50%) translateY(0); }
+    78%  { opacity:1; transform:translateX(-50%) translateY(0); }
+    100% { opacity:0; transform:translateX(-50%) translateY(-6px); }
+  }
+`;
+document.head.appendChild(s);
+
+/* ─── Init ─── */
+render();
+</script>
+</body>
+</html>
