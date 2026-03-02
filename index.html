@@ -514,18 +514,19 @@
   <div class="page-title">Products</div>
 
   <!-- Category tabs -->
-  <div class="tabs-row">
-    <button class="pill active">Active <span class="pill-count">92</span></button>
-    <button class="pill">Inactive <span class="pill-count">1</span></button>
-    <button class="pill">Drafts <span class="pill-count">10</span></button>
-    <button class="pill">Sold out</button>
+  <div class="tabs-row" id="tabsRow">
+    <button class="pill active" data-cat="active">Active <span class="pill-count" id="cnt-active">4</span></button>
+    <button class="pill" data-cat="inactive">Inactive <span class="pill-count" id="cnt-inactive">1</span></button>
+    <button class="pill" data-cat="drafts">Drafts <span class="pill-count" id="cnt-drafts">2</span></button>
+    <button class="pill" data-cat="soldout">Sold out <span class="pill-count" id="cnt-soldout">2</span></button>
+    <button class="pill" data-cat="upcoming">Upcoming <span class="pill-count" id="cnt-upcoming">2</span></button>
   </div>
 
   <!-- Filter tabs -->
-  <div class="filter-row">
-    <button class="pill active">All</button>
-    <button class="pill">Auction <span class="pill-count">1</span></button>
-    <button class="pill">Buy now <span class="pill-count">1</span></button>
+  <div class="filter-row" id="filterRow">
+    <button class="pill active" data-filter="all">All</button>
+    <button class="pill" data-filter="auction">Auction <span class="pill-count" id="cnt-filter-auction">2</span></button>
+    <button class="pill" data-filter="buynow">Buy now <span class="pill-count" id="cnt-filter-buynow">2</span></button>
   </div>
 
   <!-- Product list -->
@@ -570,44 +571,45 @@ const FIGMA_ALERT      = 'https://www.figma.com/api/mcp/asset/bff75211-0ce3-452e
 const FIGMA_PROTECTION = 'https://www.figma.com/api/mcp/asset/575c4a51-356a-4181-bbda-651ea66f887d'; // Icon Protection 12px
 
 /* ─── Data ─── */
-const products = [
-  {
-    id: 1,
-    name: 'Airmax Classic 95 white blue red',
-    size: 'Size 42', qty: 92,
-    priceBase: '$90', badge: '$102.34', protected: true,
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop&q=65',
-    alerts: 34,
-  },
-  {
-    id: 2,
-    name: 'Airmax Classic 95 white blue red',
-    size: 'Size 42', qty: 92,
-    priceBase: null, badge: 'From $1', protected: false,
-    image: 'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=300&h=300&fit=crop&q=65',
-    alerts: 34,
-  },
-  {
-    id: 3,
-    name: 'Jordan 1 Retro High OG Chicago',
-    size: 'Size 44', qty: 12,
-    priceBase: '$340', badge: '$410.00', protected: true,
-    image: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=300&h=300&fit=crop&q=65',
-    alerts: 7,
-  },
-  {
-    id: 4,
-    name: 'New Balance 550 White Green',
-    size: 'Size 41', qty: 5,
-    priceBase: null, badge: 'From $80', protected: false,
-    image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=300&h=300&fit=crop&q=65',
-    alerts: 2,
-  },
+const IMG = [
+  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop&q=65',
+  'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=300&h=300&fit=crop&q=65',
+  'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=300&h=300&fit=crop&q=65',
+  'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=300&h=300&fit=crop&q=65',
 ];
 
+const allProducts = [
+  // ── Active ──
+  { id:1,  cat:'active',   type:'buynow',  name:'Airmax Classic 95 white blue red',  size:'Size 42', qty:92,  priceBase:'$90',   badge:'$102.34', prot:true,  image:IMG[0], alerts:34 },
+  { id:2,  cat:'active',   type:'auction', name:'Airmax Classic 95 white blue red',  size:'Size 42', qty:92,  priceBase:null,    badge:'From $1', prot:false, image:IMG[1], alerts:34 },
+  { id:3,  cat:'active',   type:'auction', name:'Jordan 1 Retro High OG Chicago',    size:'Size 44', qty:12,  priceBase:'$340',  badge:'$410.00', prot:true,  image:IMG[2], alerts:7  },
+  { id:4,  cat:'active',   type:'buynow',  name:'New Balance 550 White Green',       size:'Size 41', qty:5,   priceBase:null,    badge:'From $80',prot:false, image:IMG[3], alerts:2  },
+  // ── Inactive ──
+  { id:5,  cat:'inactive', type:'buynow',  name:'Converse Chuck Taylor All Star',    size:'Size 43', qty:3,   priceBase:'$65',   badge:'$78.00',  prot:false, image:IMG[3], alerts:0  },
+  // ── Drafts ──
+  { id:6,  cat:'drafts',   type:'buynow',  name:'Adidas Gazelle Indoor beige brown', size:'Size 40', qty:1,   priceBase:null,    badge:'No price',prot:false, image:IMG[2], alerts:0  },
+  { id:7,  cat:'drafts',   type:'auction', name:'Puma Suede Classic sneaker',        size:'Size 42', qty:2,   priceBase:null,    badge:'Draft',   prot:false, image:IMG[0], alerts:0  },
+  // ── Sold out ──
+  { id:8,  cat:'soldout',  type:'buynow',  name:'Nike Dunk Low Retro white black',   size:'Size 43', qty:0,   priceBase:'$120',  badge:'$145.00', prot:true,  image:IMG[1], alerts:12 },
+  { id:9,  cat:'soldout',  type:'auction', name:'Vans Old Skool Pro skate shoe',     size:'Size 41', qty:0,   priceBase:null,    badge:'Sold',    prot:false, image:IMG[2], alerts:5  },
+  // ── Upcoming ──
+  { id:10, cat:'upcoming', type:'auction', name:'Yeezy Boost 350 V2 zebra',          size:'Size 42', qty:1,   priceBase:null,    badge:'Mar 10',  prot:false, image:IMG[0], alerts:0  },
+  { id:11, cat:'upcoming', type:'buynow',  name:'Jordan 4 Retro Thunder 2023',       size:'Size 44', qty:3,   priceBase:'$320',  badge:'$380.00', prot:true,  image:IMG[3], alerts:0  },
+];
+
+const TILE_BTN = {
+  active:   'Add to Show',
+  inactive: 'Activate',
+  drafts:   'Complete listing',
+  soldout:  'Restock',
+  upcoming: 'Edit',
+};
+
 /* ─── State ─── */
-let selectionMode = false;
-let selected = new Set();
+let selectionMode  = false;
+let selected       = new Set();
+let activeCategory = 'active';
+let activeFilter   = 'all';
 
 /* ─── Refs ─── */
 const phone       = document.getElementById('phone');
@@ -621,9 +623,29 @@ const showBtn     = document.getElementById('showBtn');
 const showLbl     = document.getElementById('showLbl');
 const countChip   = document.getElementById('countChip');
 
+/* ─── Filter products ─── */
+function getVisible() {
+  return allProducts.filter(p =>
+    p.cat === activeCategory &&
+    (activeFilter === 'all' || p.type === activeFilter)
+  );
+}
+
+/* ─── Update filter counts ─── */
+function updateFilterCounts() {
+  const inCat = allProducts.filter(p => p.cat === activeCategory);
+  document.getElementById('cnt-filter-auction').textContent = inCat.filter(p => p.type === 'auction').length;
+  document.getElementById('cnt-filter-buynow').textContent  = inCat.filter(p => p.type === 'buynow').length;
+}
+
 /* ─── Render tiles ─── */
 function render() {
+  const products = getVisible();
   productList.innerHTML = '';
+  if (!products.length) {
+    productList.innerHTML = '<div style="padding:32px 0;text-align:center;color:#7B8494;font-size:14px;font-weight:600;">No products here yet</div>';
+    return;
+  }
   products.forEach((p, idx) => {
     const tile = document.createElement('div');
     tile.className = 'tile' + (selected.has(p.id) ? ' selected' : '');
@@ -671,7 +693,7 @@ function render() {
               </div>
             </div>
           </div>
-          <button class="tile-btn">Add to Show</button>
+          <button class="tile-btn">${TILE_BTN[p.cat] || 'Add to Show'}</button>
         </div>
       </div>
     `;
@@ -792,7 +814,41 @@ s.textContent = `
 `;
 document.head.appendChild(s);
 
+/* ─── Tab & filter clicks ─── */
+document.querySelectorAll('#tabsRow .pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    activeCategory = pill.dataset.cat;
+    activeFilter   = 'all';
+    document.querySelectorAll('#tabsRow .pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    document.querySelectorAll('#filterRow .pill').forEach(p => p.classList.remove('active'));
+    document.querySelector('#filterRow .pill[data-filter="all"]').classList.add('active');
+    selected.clear();
+    if (selectionMode) {
+      selectionMode = false;
+      manageBtn.textContent = 'Manage';
+      manageBtn.classList.remove('is-done');
+      phone.classList.remove('selection-mode');
+    }
+    updateFilterCounts();
+    render();
+    updateUI();
+  });
+});
+
+document.querySelectorAll('#filterRow .pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    activeFilter = pill.dataset.filter;
+    document.querySelectorAll('#filterRow .pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    selected.clear();
+    render();
+    updateUI();
+  });
+});
+
 /* ─── Init ─── */
+updateFilterCounts();
 render();
 </script>
 </body>
