@@ -332,6 +332,7 @@
       border-radius: 37px;
       display: inline-flex;
       align-items: center;
+      gap: 4px;
     }
     .price-badge span {
       font-size: 11px;
@@ -564,7 +565,8 @@
 /* ─── Icons from Figma ─── */
 const FIGMA_TRASH = 'https://www.figma.com/api/mcp/asset/0cdc5d4c-06f9-4baa-8dec-2263f95064f3'; // Icon Trash 18px
 const FIGMA_CHECK = 'https://www.figma.com/api/mcp/asset/c446f6f5-9349-4b53-a137-659bd0c85e0d'; // Icon Check 18px
-const FIGMA_ALERT = 'https://www.figma.com/api/mcp/asset/f6921e6f-7f8a-49a1-bb6e-3d31038ad69f'; // Icon Alert 12px
+const FIGMA_ALERT      = 'https://www.figma.com/api/mcp/asset/f6921e6f-7f8a-49a1-bb6e-3d31038ad69f'; // Icon Alert 12px
+const FIGMA_PROTECTION = 'https://www.figma.com/api/mcp/asset/575c4a51-356a-4181-bbda-651ea66f887d'; // Icon Protection 12px
 
 /* ─── Data ─── */
 const products = [
@@ -572,7 +574,7 @@ const products = [
     id: 1,
     name: 'Airmax Classic 95 white blue red',
     size: 'Size 42', qty: 92,
-    priceBase: '$90', badge: '$102.34, with ⓘ',
+    priceBase: '$90', badge: '$102.34', protected: true,
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop&q=65',
     alerts: 34,
   },
@@ -580,7 +582,7 @@ const products = [
     id: 2,
     name: 'Airmax Classic 95 white blue red',
     size: 'Size 42', qty: 92,
-    priceBase: null, badge: 'From $1',
+    priceBase: null, badge: 'From $1', protected: false,
     image: 'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=300&h=300&fit=crop&q=65',
     alerts: 34,
   },
@@ -588,7 +590,7 @@ const products = [
     id: 3,
     name: 'Jordan 1 Retro High OG Chicago',
     size: 'Size 44', qty: 12,
-    priceBase: '$340', badge: '$410.00, with ⓘ',
+    priceBase: '$340', badge: '$410.00', protected: true,
     image: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=300&h=300&fit=crop&q=65',
     alerts: 7,
   },
@@ -596,7 +598,7 @@ const products = [
     id: 4,
     name: 'New Balance 550 White Green',
     size: 'Size 41', qty: 5,
-    priceBase: null, badge: 'From $80',
+    priceBase: null, badge: 'From $80', protected: false,
     image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=300&h=300&fit=crop&q=65',
     alerts: 2,
   },
@@ -645,12 +647,12 @@ function render() {
           <img src="${p.image}" alt="${p.name}" loading="lazy">
           <div class="tile-ring"></div>
 
-          <!-- Figma alert/star badge icon -->
+          <!-- Figma alert badge icon -->
           <div class="alert-badge">
             <img src="${FIGMA_ALERT}"
-                 width="11" height="11"
+                 width="11" height="12"
                  alt=""
-                 style="display:block;flex-shrink:0;">
+                 style="display:block;flex-shrink:0;object-fit:contain;">
             <span>${p.alerts}</span>
           </div>
         </div>
@@ -663,7 +665,10 @@ function render() {
             </div>
             <div class="tile-price-row">
               ${p.priceBase ? `<span class="tile-price-base">${p.priceBase}</span>` : ''}
-              <div class="price-badge"><span>${p.badge}</span></div>
+              <div class="price-badge">
+                ${p.protected ? `<img src="${FIGMA_PROTECTION}" width="9" height="11" alt="" style="display:block;flex-shrink:0;object-fit:contain;">` : ''}
+                <span>${p.badge}</span>
+              </div>
             </div>
           </div>
           <button class="tile-btn">Add to Show</button>
