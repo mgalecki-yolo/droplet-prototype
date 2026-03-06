@@ -1020,7 +1020,6 @@
     <div class="seg-control">
       <button class="seg-btn active" data-seg="media">Media Library</button>
       <button class="seg-btn" data-seg="drafts">Drafts<span class="seg-badge" id="segDraftBadge" style="display:none"></span></button>
-      <button class="seg-btn" data-seg="active">Active</button>
     </div>
 
     <!-- Media Library panel -->
@@ -1046,10 +1045,6 @@
       <div id="draftsList" style="padding-top:8px;overflow-y:auto;flex:1;scrollbar-width:none;"></div>
     </div>
 
-    <!-- Active panel -->
-    <div class="add-panel" id="addPanelActive" style="display:none">
-      <div id="activeList" style="padding-top:8px;overflow-y:auto;flex:1;scrollbar-width:none;"></div>
-    </div>
 
     <!-- Bottom bar (with photos selected) -->
     <div class="add-bottom-bar" id="addBottomBar">
@@ -1538,10 +1533,9 @@ function renderAddPanelLists() {
 function showAddPanel(seg) {
   document.getElementById('addPanelMedia').style.display  = seg === 'media'  ? '' : 'none';
   document.getElementById('addPanelDrafts').style.display = seg === 'drafts' ? '' : 'none';
-  document.getElementById('addPanelActive').style.display = seg === 'active' ? '' : 'none';
   if (seg !== 'media') addBottomBar.classList.remove('visible');
   else updateAddBottomBar();
-  if (seg === 'drafts' || seg === 'active') renderAddPanelLists();
+  if (seg === 'drafts') renderAddPanelLists();
 }
 
 document.querySelectorAll('.seg-btn').forEach(btn => {
