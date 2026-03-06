@@ -515,13 +515,20 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.12);
     }
     .seg-badge {
-      position: absolute;
-      top: 4px;
-      right: 6px;
-      width: 7px;
-      height: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: #FF4252;
-      border-radius: 50%;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 20px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      margin-left: 5px;
+      vertical-align: middle;
+      /* override: */
     }
 
     /* Add panel */
@@ -588,52 +595,101 @@
     }
     .media-grid-wrap::-webkit-scrollbar { display: none; }
     .media-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
     .media-thumb {
-      aspect-ratio: 1;
-      border-radius: 8px;
+      width: 112px;
+      height: 112px;
+      border-radius: 12px;
       overflow: hidden;
       position: relative;
       cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
     .media-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-    .media-thumb-num {
+    .media-thumb-overlay {
       position: absolute;
-      top: 6px;
-      right: 6px;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .media-thumb.selected .media-thumb-overlay { opacity: 1; }
+    .media-thumb-radio {
+      position: absolute;
+      top: 8px;
+      right: 8px;
       width: 22px;
       height: 22px;
-      background: #FF4252;
       border-radius: 50%;
-      color: white;
+      border: 2px solid rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    }
+    .media-thumb.selected .media-thumb-radio { display: none; }
+    .media-thumb-num {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: white;
+      color: #101828;
       font-size: 11px;
       font-weight: 700;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .media-thumb.selected .media-thumb-num { display: flex; }
+    .media-thumb-play {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .media-add-tile {
-      aspect-ratio: 1;
-      border: 1.5px dashed #CCCAC6;
-      border-radius: 8px;
+      width: 112px;
+      height: 112px;
+      border: 1px dashed #bcbcbc;
+      border-radius: 10px;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 10px;
       cursor: pointer;
+      background: transparent;
+      transition: opacity 0.15s ease;
+    }
+    .media-add-tile:active { opacity: 0.6; }
+    .media-add-icon {
+      width: 36px;
+      height: 36px;
+      background: white;
+      border-radius: 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .media-add-tile span {
       font-size: 12px;
       font-weight: 600;
-      color: #7B8494;
-    }
-    .media-add-tile-plus {
-      font-size: 28px;
-      font-weight: 300;
-      line-height: 1;
-      color: #7B8494;
+      color: #2A2F35;
     }
 
     /* Drafts list in Add Products */
@@ -1461,18 +1517,19 @@ function renderMediaGrid() {
   mediaGrid.innerHTML = '';
   MEDIA_PHOTOS.forEach((src, i) => {
     const div = document.createElement('div');
-    div.className = 'media-thumb';
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = '';
-    div.appendChild(img);
     const selIdx = selectedPhotos.indexOf(i);
-    if (selIdx !== -1) {
-      const num = document.createElement('div');
-      num.className = 'media-thumb-num';
-      num.textContent = selIdx + 1;
-      div.appendChild(num);
-    }
+    div.className = 'media-thumb' + (selIdx !== -1 ? ' selected' : '');
+    div.innerHTML = `
+      <img src="${src}" alt="">
+      <div class="media-thumb-overlay"></div>
+      <div class="media-thumb-radio"></div>
+      <div class="media-thumb-num">${selIdx !== -1 ? selIdx + 1 : ''}</div>
+      <div class="media-thumb-play">
+        <svg width="9" height="10" viewBox="0 0 9 10" fill="none">
+          <path d="M1.5 1.5l6 3.5-6 3.5V1.5Z" fill="rgba(255,255,255,0.85)"/>
+        </svg>
+      </div>
+    `;
     div.addEventListener('click', () => {
       const idx = selectedPhotos.indexOf(i);
       if (idx !== -1) selectedPhotos.splice(idx, 1);
@@ -1484,19 +1541,34 @@ function renderMediaGrid() {
   });
   const addTile = document.createElement('div');
   addTile.className = 'media-add-tile';
-  addTile.innerHTML = '<span class="media-add-tile-plus">+</span><span>Add Media</span>';
+  addTile.innerHTML = `
+    <div class="media-add-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M8 1v14M1 8h14" stroke="#2A2F35" stroke-width="1.75" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span>Add Media</span>
+  `;
   addTile.addEventListener('click', () => addMediaSheet.classList.add('visible'));
   mediaGrid.appendChild(addTile);
 }
 
 function updateAddBottomBar() {
-  addBottomBar.classList.toggle('visible', selectedPhotos.length > 0);
+  const n = selectedPhotos.length;
+  addBottomBar.classList.toggle('visible', n > 0);
+  const createBtn = document.getElementById('btnCreateProduct');
+  if (createBtn) createBtn.textContent = `Create ${n} Product${n !== 1 ? 's' : ''}`;
 }
 
 function updateSegDraftBadge() {
   const badge = document.getElementById('segDraftBadge');
-  const hasDrafts = allProducts.some(p => p.cat === 'drafts');
-  badge.style.display = hasDrafts ? '' : 'none';
+  const count = allProducts.filter(p => p.cat === 'drafts').length;
+  if (count > 0) {
+    badge.textContent = count;
+    badge.style.display = '';
+  } else {
+    badge.style.display = 'none';
+  }
 }
 
 /* ── Render drafts / active lists in Add Products ── */
