@@ -4334,7 +4334,7 @@ renderSellShows();
 
   // Main sheet
   document.getElementById('wallet-main-close').addEventListener('click', closeAll);
-  document.getElementById('wallet-open-delivery').addEventListener('click', () => openSheet(sheets.delivery));
+  document.getElementById('wallet-open-delivery').addEventListener('click', () => openSheet(sheets.addresses));
   document.getElementById('wallet-open-payment').addEventListener('click', () => openSheet(sheets.payment));
 
   let currentDeliveryType = 'courier'; // 'paczkomat' | 'courier'
@@ -4424,7 +4424,7 @@ renderSellShows();
     if (addressesInEditMode) {
       exitAddressEditMode();
     } else {
-      openSheet(sheets.delivery);
+      openSheet(sheets.main);
     }
   });
 
