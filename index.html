@@ -2620,6 +2620,9 @@ body{
           <span class="wallet-form-value" id="wa-email">customer@example.com</span>
         </div>
       </div>
+      <button class="wallet-cta-btn" id="wallet-delete-address-btn" style="background:white;color:var(--rd10);border:1.5px solid var(--rd10);display:none">
+        Delete address
+      </button>
     </div>
   </div>
 
@@ -4311,33 +4314,54 @@ renderSellShows();
     openSheet(sheets.main);
   });
 
-  // Edit Address — open from Edit button (pre-fill with selected address)
+  let editingAddressRow = null;
+  const deleteBtn = document.getElementById('wallet-delete-address-btn');
+
+  function openEditAddress(row) {
+    editingAddressRow = row;
+    document.getElementById('wallet-edit-address-title').textContent = 'Edit Address';
+    document.getElementById('wa-name').textContent = row.querySelector('.wallet-action-label').textContent;
+    const sub = row.querySelector('.wallet-action-sub');
+    const lines = sub ? sub.innerText.split('\n') : ['', ''];
+    document.getElementById('wa-address').textContent = lines[0] || '';
+    const cityParts = (lines[1] || '').split(' ');
+    document.getElementById('wa-postal').textContent = cityParts[0] || '';
+    document.getElementById('wa-city').textContent = cityParts.slice(1).join(' ') || '';
+    deleteBtn.style.display = 'block';
+    openSheet(sheets.editAddress);
+  }
+
+  // Edit button — pre-fill with selected address
   document.getElementById('wallet-edit-address-btn').addEventListener('click', () => {
     const selected = document.querySelector('#wallet-addresses-sheet .wallet-radio.selected');
     const row = selected ? selected.closest('[class*="wallet-action-row"]') : null;
-    document.getElementById('wallet-edit-address-title').textContent = 'Edit Address';
-    if (row) {
-      document.getElementById('wa-name').textContent = row.querySelector('.wallet-action-label').textContent;
-      const sub = row.querySelector('.wallet-action-sub');
-      const lines = sub ? sub.innerText.split('\n') : ['', ''];
-      document.getElementById('wa-address').textContent = lines[0] || '';
-      const cityParts = (lines[1] || '').split(' ');
-      document.getElementById('wa-postal').textContent = cityParts[0] || '';
-      document.getElementById('wa-city').textContent = cityParts.slice(1).join(' ') || '';
-    }
+    if (row) openEditAddress(row);
+  });
+
+  // Add Address — empty form
+  document.getElementById('wallet-add-address-btn').addEventListener('click', () => {
+    editingAddressRow = null;
+    document.getElementById('wallet-edit-address-title').textContent = 'Add Address';
+    ['wa-name','wa-address','wa-postal','wa-city','wa-phone','wa-email'].forEach(id => {
+      document.getElementById(id).textContent = '';
+    });
+    deleteBtn.style.display = 'none';
     openSheet(sheets.editAddress);
   });
 
-  // Add Address — open with empty fields
-  document.getElementById('wallet-add-address-btn').addEventListener('click', () => {
-    document.getElementById('wallet-edit-address-title').textContent = 'Add Address';
-    document.getElementById('wa-name').textContent = '';
-    document.getElementById('wa-address').textContent = '';
-    document.getElementById('wa-postal').textContent = '';
-    document.getElementById('wa-city').textContent = '';
-    document.getElementById('wa-phone').textContent = '';
-    document.getElementById('wa-email').textContent = '';
-    openSheet(sheets.editAddress);
+  // Delete address
+  deleteBtn.addEventListener('click', () => {
+    if (!editingAddressRow) return;
+    // Remove the row and its preceding separator (if any)
+    const group = editingAddressRow.closest('.wallet-action-group');
+    const prev = editingAddressRow.previousElementSibling;
+    if (prev && prev.classList.contains('wallet-separator')) prev.remove();
+    editingAddressRow.remove();
+    // If deleted row was selected, select the first remaining row
+    const firstRow = group.querySelector('[class*="wallet-action-row"]');
+    if (firstRow) walletSelectAddress(firstRow);
+    editingAddressRow = null;
+    openSheet(sheets.addresses);
   });
 
   // Edit Address sheet nav
