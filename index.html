@@ -575,6 +575,137 @@ body{
 }
 .ls-tool-footer img{width:12px;height:12px;filter:brightness(0) invert(1);opacity:0.75}
 
+/* ── Product Page ── */
+.pp-app-top{
+  position:absolute;top:0;left:0;right:0;height:109px;z-index:40;
+  display:flex;flex-direction:column;transition:background 0.2s;
+}
+.pp-app-top.scrolled{
+  background:linear-gradient(180deg,var(--ov40) 50%,rgba(242,240,236,0.85) 80%,rgba(242,240,236,0));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.pp-app-top-status{height:59px;flex-shrink:0}
+.pp-app-top-action{
+  height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;
+}
+.pp-app-top-left{display:flex;align-items:center;gap:12px}
+.pp-app-top-title{
+  position:absolute;left:60px;right:60px;text-align:center;
+  font-size:16px;font-weight:700;color:var(--bw10);
+  pointer-events:none;opacity:0;transition:opacity 0.2s;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.pp-app-top.scrolled .pp-app-top-title{opacity:1}
+.pp-app-top-right{display:flex;align-items:center;gap:8px}
+
+/* Product image */
+.pp-image{
+  width:393px;height:393px;background-size:cover;background-position:center;
+  flex-shrink:0;position:relative;
+}
+.pp-image-gallery{
+  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+  display:flex;gap:6px;
+}
+.pp-image-dot{
+  width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.5);
+}
+.pp-image-dot.active{background:white}
+
+/* Product info section */
+.pp-content{padding:0 16px}
+.pp-name{
+  font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px;
+  margin-top:16px;
+}
+.pp-price-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.pp-price{font-size:16px;font-weight:700;color:var(--bw10)}
+.pp-price-badge{
+  height:24px;border-radius:37px;padding:0 8px;display:inline-flex;align-items:center;gap:4px;
+  font-size:12px;font-weight:600;
+}
+.pp-price-badge.buy-now{background:var(--gw20);color:var(--bw30)}
+.pp-price-badge.green{background:var(--gr10);color:white}
+.pp-attrs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pp-attr{
+  height:24px;border-radius:37px;padding:0 8px;border:1px solid var(--gw20);
+  display:inline-flex;align-items:center;
+  font-size:12px;font-weight:600;color:var(--bw40);
+}
+
+/* Seller section */
+.pp-seller{
+  display:flex;align-items:center;gap:12px;padding:15px 0;
+  border-bottom:1px solid var(--ov30);margin:0 16px;
+}
+.pp-seller-info{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.pp-seller-name{font-size:12px;font-weight:700;color:var(--bw30)}
+.pp-seller-sub{font-size:11px;font-weight:400;color:var(--bw40);line-height:14px}
+.pp-seller-follow{
+  height:36px;padding:0 14px;border-radius:70px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);border:none;cursor:pointer;
+  font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
+}
+.pp-seller-follow img{width:16px;height:16px}
+
+/* Details rows */
+.pp-detail{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:15px 0;border-bottom:1px solid var(--ov30);margin:0 16px;
+}
+.pp-detail-label{font-size:12px;font-weight:600;color:var(--bw40)}
+.pp-detail-value{font-size:13px;font-weight:600;color:var(--bw30);display:flex;align-items:center;gap:4px}
+.pp-detail-value img{width:18px;height:18px}
+
+/* Description */
+.pp-description{
+  padding:15px 0;border-bottom:1px solid var(--ov30);margin:0 16px;
+}
+.pp-desc-label{font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:4px}
+.pp-desc-text{font-size:13px;font-weight:600;color:var(--bw30);line-height:18px}
+
+/* Action buttons */
+.pp-actions{
+  display:flex;gap:12px;padding:15px 0;margin:0 16px;
+}
+.pp-action-btn{
+  flex:1;height:36px;border-radius:70px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);border:none;cursor:pointer;
+  font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.pp-action-btn img{width:16px;height:16px}
+
+/* Bottom CTA bar */
+.pp-bottom-bar{
+  position:absolute;bottom:0;left:0;right:0;z-index:50;
+  pointer-events:none;
+}
+.pp-bottom-bar::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:90px;
+  background:linear-gradient(to bottom,rgba(242,240,236,0) 0%,rgba(242,240,236,0.6) 35%,rgba(242,240,236,0.95) 70%,var(--ov40) 100%);
+  backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,black 100%);
+  pointer-events:none;
+}
+.pp-bottom-cta{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 16px 46px;pointer-events:auto;position:relative;z-index:1;
+}
+.pp-msg-btn{
+  width:52px;height:52px;border-radius:70px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.pp-msg-btn img{width:24px;height:24px}
+.pp-buy-btn{
+  flex:1;height:52px;border-radius:70px;background:var(--rd10);
+  box-shadow:var(--shadow-interactive);border:none;cursor:pointer;
+  font-size:16px;font-weight:600;color:white;font-family:inherit;
+}
+
 /* ── Screen transition (instant) ── */
 
 /* ── Schedule Show ── */
@@ -2736,6 +2867,140 @@ body{
   </div>
 </div>
 
+<!-- ════════════════════════════════════ -->
+<!-- SCREEN: PRODUCT PAGE                -->
+<!-- ════════════════════════════════════ -->
+<div class="screen" id="screen-product-page">
+
+  <!-- App Top (overlay on image, becomes opaque on scroll) -->
+  <div class="pp-app-top" id="pp-app-top">
+    <div class="pp-app-top-status"></div>
+    <div class="pp-app-top-action">
+      <div class="pp-app-top-left">
+        <button class="sp-navi-btn" id="pp-back-btn">
+          <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back">
+        </button>
+      </div>
+      <span class="pp-app-top-title" id="pp-top-title">XX DENIM JACKET with drawstrings</span>
+      <div class="pp-app-top-right">
+        <button class="sp-navi-btn sp-navi-double">
+          <img src="design-system/UI Icons/Icon Share.svg" alt="Share" style="width:18px;height:18px">
+          <img src="design-system/UI Icons/Icon Bookmark.svg" alt="Save" style="width:18px;height:18px">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scrollable content -->
+  <div class="screen-scroll" id="pp-scroll" style="padding-bottom:140px">
+
+    <!-- Product image -->
+    <div class="pp-image" id="pp-image" style="background-image:url('images/Product Photos/image 1.png')">
+      <div class="pp-image-gallery">
+        <div class="pp-image-dot active"></div>
+        <div class="pp-image-dot"></div>
+        <div class="pp-image-dot"></div>
+        <div class="pp-image-dot"></div>
+      </div>
+    </div>
+
+    <!-- Product info -->
+    <div class="pp-content">
+      <h1 class="pp-name" id="pp-name">XX DENIM JACKET with drawstrings</h1>
+      <div class="pp-price-row">
+        <span class="pp-price">$149.99</span>
+        <span class="pp-price-badge buy-now">
+          <img src="design-system/UI Icons/Icon Protection.svg" width="12" height="12" alt="Protection">
+          Buy Now
+        </span>
+      </div>
+      <div class="pp-attrs">
+        <span class="pp-attr">Size: L</span>
+        <span class="pp-attr">Condition: New</span>
+        <span class="pp-attr">Fashion</span>
+      </div>
+    </div>
+
+    <!-- Seller section -->
+    <div class="pp-seller">
+      <div class="avatar avatar-32" style="background:var(--bl10);font-size:10px">M</div>
+      <div class="pp-seller-info">
+        <span class="pp-seller-name">MotherOfClothes</span>
+        <span class="pp-seller-sub">
+          <span style="display:inline-flex;align-items:center;gap:2px">
+            <img src="design-system/UI Icons/Icon Star Full.svg" width="12" height="12" alt="Star" style="vertical-align:middle">
+            4.8
+          </span>
+          · 2.1k Followers
+        </span>
+      </div>
+      <button class="pp-seller-follow">
+        <img src="design-system/UI Icons/Icon Follow User.svg" alt="Follow">
+        Follow
+      </button>
+    </div>
+
+    <!-- Details rows -->
+    <div class="pp-detail">
+      <span class="pp-detail-label">Category</span>
+      <span class="pp-detail-value">Fashion · Clothes
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </span>
+    </div>
+    <div class="pp-detail">
+      <span class="pp-detail-label">Condition</span>
+      <span class="pp-detail-value">New with tags</span>
+    </div>
+    <div class="pp-detail">
+      <span class="pp-detail-label">Shipping</span>
+      <span class="pp-detail-value">
+        <img src="design-system/UI Icons/Icon Shipping.svg" alt="Shipping">
+        Standard · $4.99
+      </span>
+    </div>
+    <div class="pp-detail">
+      <span class="pp-detail-label">Buyer Protection</span>
+      <span class="pp-detail-value">
+        <img src="design-system/UI Icons/Icon Protection.svg" alt="Protection">
+        Included
+        <img src="design-system/UI Icons/Icon Info.svg" alt="Info" style="width:16px;height:16px;opacity:0.5">
+      </span>
+    </div>
+
+    <!-- Description -->
+    <div class="pp-description">
+      <div class="pp-desc-label">Description</div>
+      <div class="pp-desc-text">
+        Classic XX denim jacket with adjustable drawstrings at the waist. Premium heavyweight denim, relaxed fit. Perfect for layering in any season. Brand new with original tags.
+      </div>
+    </div>
+
+    <!-- Action buttons (Message seller, Track) -->
+    <div class="pp-actions">
+      <button class="pp-action-btn">
+        <img src="design-system/UI Icons/Icon Message.svg" alt="Message">
+        Message Seller
+      </button>
+      <button class="pp-action-btn">
+        <img src="design-system/UI Icons/Icon Eye.svg" alt="Track">
+        Track
+      </button>
+    </div>
+
+  </div><!-- end screen-scroll -->
+
+  <!-- Bottom CTA bar -->
+  <div class="pp-bottom-bar">
+    <div class="pp-bottom-cta">
+      <button class="pp-msg-btn">
+        <img src="design-system/UI Icons/Icon Message.svg" alt="Message">
+      </button>
+      <button class="pp-buy-btn">Buy Now</button>
+    </div>
+  </div>
+
+</div>
+
 <!-- ── Tab Bar ── -->
 <div class="tabbar">
   <div class="tabbar-pill">
@@ -3530,6 +3795,77 @@ function renderSellShows() {
     container.insertBefore(tile, container.firstChild);
   });
 }
+
+// ════════════════════════════════════
+// PRODUCT PAGE
+// ════════════════════════════════════
+
+// Scroll behavior: transparent → opaque header
+const ppScroll = document.getElementById('pp-scroll');
+const ppAppTop = document.getElementById('pp-app-top');
+if (ppScroll && ppAppTop) {
+  ppScroll.addEventListener('scroll', () => {
+    ppAppTop.classList.toggle('scrolled', ppScroll.scrollTop > 40);
+  });
+}
+
+// Back button
+document.getElementById('pp-back-btn').addEventListener('click', () => {
+  mainTabbar.style.display = '';
+  showScreen(previousScreen);
+  const tabMap = {'screen-home':'home','screen-browse':'browse','screen-sell':'sell','screen-activity':'activity','screen-account':'account','screen-subcategory':'home'};
+  const tabName = tabMap[previousScreen] || 'home';
+  tabs.forEach(t => t.classList.remove('active'));
+  const target = tabbar.querySelector(`[data-tab="${tabName}"]`);
+  if (target) target.classList.add('active');
+});
+
+// Open Product Page from product tiles (Subcategory + Home)
+function openProductPage(data) {
+  const activeScreen = document.querySelector('.screen.active');
+  if (activeScreen) previousScreen = activeScreen.id;
+  mainTabbar.style.display = 'none';
+
+  // Update product page content
+  const ppImage = document.getElementById('pp-image');
+  const ppName = document.getElementById('pp-name');
+  const ppTopTitle = document.getElementById('pp-top-title');
+  if (data && data.image) ppImage.style.backgroundImage = `url('${data.image}')`;
+  if (data && data.name) {
+    ppName.textContent = data.name;
+    ppTopTitle.textContent = data.name;
+  }
+
+  // Reset scroll
+  if (ppScroll) ppScroll.scrollTop = 0;
+  if (ppAppTop) ppAppTop.classList.remove('scrolled');
+
+  showScreen('screen-product-page');
+}
+
+// Make product tiles clickable in Subcategory
+document.querySelectorAll('#screen-subcategory .ptv').forEach(tile => {
+  tile.addEventListener('click', () => {
+    const img = tile.querySelector('.ptv-img');
+    const name = tile.querySelector('.ptv-name');
+    openProductPage({
+      image: img ? img.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g, '') : '',
+      name: name ? name.textContent : 'Product'
+    });
+  });
+});
+
+// Make product tiles clickable in Home (horizontal tiles)
+document.querySelectorAll('#screen-home .ptv').forEach(tile => {
+  tile.addEventListener('click', () => {
+    const img = tile.querySelector('.ptv-img');
+    const name = tile.querySelector('.ptv-name');
+    openProductPage({
+      image: img ? img.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g, '') : '',
+      name: name ? name.textContent : 'Product'
+    });
+  });
+});
 
 // ── On page load: restore saved data ──
 renderSellProducts();
