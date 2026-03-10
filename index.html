@@ -605,7 +605,9 @@ body{
 .wallet-radio{width:24px;height:24px;border-radius:50%;border:2px solid #E9E6DD;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .wallet-radio.selected{border-color:#101828}
 .wallet-radio-inner{width:10px;height:10px;border-radius:50%;background:#101828}
-.wallet-form-stack{position:relative;width:100%;display:flex;flex-direction:column;gap:16px;padding:0 16px 32px}
+.wallet-form-stack{position:relative;width:100%;display:flex;flex-direction:column;gap:12px;padding:0 16px 32px}
+.wallet-right-link{font-size:13px;font-weight:400;color:#0091FF;white-space:nowrap;flex-shrink:0}
+.wa-field-hide{display:none!important}
 .wallet-apple-btn{width:100%;height:52px;background:#1C1C1E;border-radius:52px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;font-family:inherit}
 .wallet-apple-btn-icon{font-size:20px;color:white;line-height:1;margin-top:-2px}
 .wallet-apple-btn-label{font-size:18px;font-weight:500;color:white;letter-spacing:-0.3px}
@@ -2471,7 +2473,7 @@ body{
     <div class="wallet-body">
       <div class="wallet-action-group">
         <a class="wallet-action-row" id="wallet-open-delivery">
-          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
+          <div class="wallet-action-icon"><img id="wallet-shipping-icon" src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
           <div class="wallet-action-body">
             <div class="wallet-action-label" id="wallet-shipping-label">Shipping address</div>
             <div class="wallet-action-sub" id="wallet-shipping-sub">Tap to set</div>
@@ -2539,7 +2541,7 @@ body{
     </div>
     <div class="wallet-body">
       <div class="wallet-action-group">
-        <a class="wallet-action-row-tall" id="wallet-addr-1" onclick="walletSelectAddress(this)">
+        <a class="wallet-action-row-tall" id="wallet-addr-1" data-delivery="paczkomat" onclick="walletSelectAddress(this)">
           <div class="wallet-action-icon" style="padding-top:2px"><img src="design-system/UI Icons/Icon Paczkomat.svg" alt=""></div>
           <div class="wallet-action-body" style="margin-right:12px">
             <div class="wallet-action-label">POB04M</div>
@@ -2548,7 +2550,7 @@ body{
           <div class="wallet-radio"></div>
         </a>
         <div class="wallet-separator" style="margin:0 16px 0 60px"></div>
-        <a class="wallet-action-row-tall" id="wallet-addr-2" onclick="walletSelectAddress(this)">
+        <a class="wallet-action-row-tall" id="wallet-addr-2" data-delivery="courier" onclick="walletSelectAddress(this)">
           <div class="wallet-action-icon" style="padding-top:2px"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
           <div class="wallet-action-body" style="margin-right:12px">
             <div class="wallet-action-label">Marcin Gałęcki</div>
@@ -2557,7 +2559,7 @@ body{
           <div class="wallet-radio selected"><div class="wallet-radio-inner"></div></div>
         </a>
         <div class="wallet-separator" style="margin:0 16px 0 60px"></div>
-        <a class="wallet-action-row-tall" id="wallet-addr-3" onclick="walletSelectAddress(this)">
+        <a class="wallet-action-row-tall" id="wallet-addr-3" data-delivery="courier" onclick="walletSelectAddress(this)">
           <div class="wallet-action-icon" style="padding-top:2px"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
           <div class="wallet-action-body" style="margin-right:12px">
             <div class="wallet-action-label">Marcin Gałęcki</div>
@@ -2588,42 +2590,52 @@ body{
       </button>
     </div>
     <div class="wallet-form-stack">
-      <div class="wallet-form-input">
+      <!-- Paczkomat only: id + Select link -->
+      <div class="wallet-form-input" id="wa-row-paczkomat-id" onclick="walletFillField('wa-paczkomat-id','POB04M')">
+        <div class="wallet-field" id="wa-field-paczkomat-id">
+          <span class="wallet-field-label">Paczkomat id</span>
+          <span class="wallet-field-value" id="wa-paczkomat-id"></span>
+        </div>
+        <span class="wallet-right-link">Select</span>
+      </div>
+      <!-- Courier only: name, address, postal+city -->
+      <div class="wallet-form-input" id="wa-row-name" onclick="walletFillField('wa-name','Marcin Gałęcki')">
         <div class="wallet-field" id="wa-field-name">
           <span class="wallet-field-label">Name and Surname</span>
-          <span class="wallet-field-value" id="wa-name">Joanna Rostowska</span>
+          <span class="wallet-field-value" id="wa-name"></span>
         </div>
       </div>
-      <div class="wallet-form-input">
+      <div class="wallet-form-input" id="wa-row-address" onclick="walletFillField('wa-address','Lednogóra 62f')">
         <div class="wallet-field" id="wa-field-address">
           <span class="wallet-field-label">Address</span>
-          <span class="wallet-field-value" id="wa-address">ul. Fabryczna 3B/4</span>
+          <span class="wallet-field-value" id="wa-address"></span>
         </div>
       </div>
-      <div class="wallet-form-row">
-        <div class="wallet-form-input">
+      <div class="wallet-form-row" id="wa-row-postal-city">
+        <div class="wallet-form-input" onclick="walletFillField('wa-postal','62-261')">
           <div class="wallet-field" id="wa-field-postal">
             <span class="wallet-field-label">Postal Code</span>
-            <span class="wallet-field-value" id="wa-postal">62-261</span>
+            <span class="wallet-field-value" id="wa-postal"></span>
           </div>
         </div>
-        <div class="wallet-form-input">
+        <div class="wallet-form-input" onclick="walletFillField('wa-city','Lednogóra')">
           <div class="wallet-field" id="wa-field-city">
             <span class="wallet-field-label">City</span>
-            <span class="wallet-field-value" id="wa-city">Pobiedziska</span>
+            <span class="wallet-field-value" id="wa-city"></span>
           </div>
         </div>
       </div>
-      <div class="wallet-form-input">
+      <!-- Both: phone, email -->
+      <div class="wallet-form-input" onclick="walletFillField('wa-phone','+48 507416939')">
         <div class="wallet-field" id="wa-field-phone">
           <span class="wallet-field-label">Phone</span>
-          <span class="wallet-field-value" id="wa-phone">+48 507416939</span>
+          <span class="wallet-field-value" id="wa-phone"></span>
         </div>
       </div>
-      <div class="wallet-form-input">
+      <div class="wallet-form-input" onclick="walletFillField('wa-email','marcin@example.com')">
         <div class="wallet-field" id="wa-field-email">
           <span class="wallet-field-label">E-mail Address</span>
-          <span class="wallet-field-value" id="wa-email">customer@example.com</span>
+          <span class="wallet-field-value" id="wa-email"></span>
         </div>
       </div>
       <button class="wallet-cta-btn" id="wallet-delete-address-btn" style="background:white;color:var(--rd10);border:1.5px solid var(--rd10);display:none">
@@ -4300,52 +4312,11 @@ renderSellShows();
   document.getElementById('wallet-open-delivery').addEventListener('click', () => openSheet(sheets.delivery));
   document.getElementById('wallet-open-payment').addEventListener('click', () => openSheet(sheets.payment));
 
-  // Delivery sheet
-  document.getElementById('wallet-delivery-back').addEventListener('click', () => openSheet(sheets.main));
-  document.getElementById('wallet-open-paczkomat').addEventListener('click', () => openSheet(sheets.addresses));
-  document.getElementById('wallet-open-courier').addEventListener('click', () => openSheet(sheets.addresses));
-
-  // Addresses sheet
-  document.getElementById('wallet-addresses-back').addEventListener('click', () => openSheet(sheets.delivery));
-  document.getElementById('wallet-addresses-confirm').addEventListener('click', () => {
-    const selected = document.querySelector('#wallet-addresses-sheet .wallet-radio.selected');
-    if (selected) {
-      const row = selected.closest('[class*="wallet-action-row"]');
-      const label = row.querySelector('.wallet-action-label').textContent;
-      const subEl = row.querySelector('.wallet-action-sub');
-      const sub = subEl ? subEl.innerText.replace('\n', ', ') : '';
-      document.getElementById('wallet-shipping-label').textContent = label;
-      document.getElementById('wallet-shipping-sub').textContent = sub;
-    }
-    openSheet(sheets.main);
-  });
-
+  let currentDeliveryType = 'courier'; // 'paczkomat' | 'courier'
   let editingAddressRow = null;
   const deleteBtn = document.getElementById('wallet-delete-address-btn');
 
-  function openEditAddress(row) {
-    editingAddressRow = row;
-    document.getElementById('wallet-edit-address-title').textContent = 'Edit Address';
-    const sub = row.querySelector('.wallet-action-sub');
-    const lines = sub ? sub.innerText.split('\n') : ['', ''];
-    const cityParts = (lines[1] || '').split(' ');
-    setField('wa-name', row.querySelector('.wallet-action-label').textContent);
-    setField('wa-address', lines[0] || '');
-    setField('wa-postal', cityParts[0] || '');
-    setField('wa-city', cityParts.slice(1).join(' ') || '');
-    setField('wa-phone', '');
-    setField('wa-email', '');
-    deleteBtn.style.display = 'block';
-    openSheet(sheets.editAddress);
-  }
-
-  // Edit button — pre-fill with selected address
-  document.getElementById('wallet-edit-address-btn').addEventListener('click', () => {
-    const selected = document.querySelector('#wallet-addresses-sheet .wallet-radio.selected');
-    const row = selected ? selected.closest('[class*="wallet-action-row"]') : null;
-    if (row) openEditAddress(row);
-  });
-
+  // Helper: set field value + toggle empty state
   function setField(id, value) {
     const val = document.getElementById(id);
     const field = val ? val.closest('.wallet-field') : null;
@@ -4354,11 +4325,93 @@ renderSellShows();
     field.classList.toggle('empty', !value);
   }
 
-  // Add Address — empty form
+  // Show correct fields based on delivery type
+  function applyFormType(type) {
+    const isPaczkomat = type === 'paczkomat';
+    ['wa-row-paczkomat-id'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('wa-field-hide', !isPaczkomat);
+    });
+    ['wa-row-name','wa-row-address','wa-row-postal-city'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('wa-field-hide', isPaczkomat);
+    });
+    document.getElementById('wallet-edit-address-title').textContent =
+      isPaczkomat ? 'Paczkomat Inpost' : 'Address for Courier';
+  }
+
+  // Update icon + sub in main wallet sheet
+  function updateShippingRow(row) {
+    const delivery = row.dataset.delivery || 'courier';
+    const label = row.querySelector('.wallet-action-label').textContent;
+    const subEl = row.querySelector('.wallet-action-sub');
+    const sub = subEl ? subEl.innerText.replace('\n', ', ') : '';
+    document.getElementById('wallet-shipping-label').textContent = label;
+    document.getElementById('wallet-shipping-sub').textContent = sub;
+    const iconEl = document.getElementById('wallet-shipping-icon');
+    if (iconEl) {
+      iconEl.src = delivery === 'paczkomat'
+        ? 'design-system/UI Icons/Icon Paczkomat.svg'
+        : 'design-system/UI Icons/Icon Shipping.svg';
+    }
+  }
+
+  // Delivery sheet
+  document.getElementById('wallet-delivery-back').addEventListener('click', () => openSheet(sheets.main));
+  document.getElementById('wallet-open-paczkomat').addEventListener('click', () => {
+    currentDeliveryType = 'paczkomat';
+    openSheet(sheets.addresses);
+  });
+  document.getElementById('wallet-open-courier').addEventListener('click', () => {
+    currentDeliveryType = 'courier';
+    openSheet(sheets.addresses);
+  });
+
+  // Addresses sheet
+  document.getElementById('wallet-addresses-back').addEventListener('click', () => openSheet(sheets.delivery));
+  document.getElementById('wallet-addresses-confirm').addEventListener('click', () => {
+    const selected = document.querySelector('#wallet-addresses-sheet .wallet-radio.selected');
+    if (selected) {
+      const row = selected.closest('[class*="wallet-action-row"]');
+      updateShippingRow(row);
+    }
+    openSheet(sheets.main);
+  });
+
+  function openEditAddress(row) {
+    editingAddressRow = row;
+    const type = row.dataset.delivery || 'courier';
+    applyFormType(type);
+    const sub = row.querySelector('.wallet-action-sub');
+    const lines = sub ? sub.innerText.split('\n') : ['', ''];
+    if (type === 'paczkomat') {
+      setField('wa-paczkomat-id', row.querySelector('.wallet-action-label').textContent);
+    } else {
+      const cityParts = (lines[1] || '').split(' ');
+      setField('wa-name', row.querySelector('.wallet-action-label').textContent);
+      setField('wa-address', lines[0] || '');
+      setField('wa-postal', cityParts[0] || '');
+      setField('wa-city', cityParts.slice(1).join(' ') || '');
+    }
+    setField('wa-phone', '');
+    setField('wa-email', '');
+    deleteBtn.style.display = 'block';
+    openSheet(sheets.editAddress);
+  }
+
+  // Edit button — open form for selected address
+  document.getElementById('wallet-edit-address-btn').addEventListener('click', () => {
+    const selected = document.querySelector('#wallet-addresses-sheet .wallet-radio.selected');
+    const row = selected ? selected.closest('[class*="wallet-action-row"]') : null;
+    if (row) openEditAddress(row);
+  });
+
+  // Add Address — empty form, type from currentDeliveryType
   document.getElementById('wallet-add-address-btn').addEventListener('click', () => {
     editingAddressRow = null;
-    document.getElementById('wallet-edit-address-title').textContent = 'Add Address';
-    ['wa-name','wa-address','wa-postal','wa-city','wa-phone','wa-email'].forEach(id => setField(id, ''));
+    applyFormType(currentDeliveryType);
+    ['wa-paczkomat-id','wa-name','wa-address','wa-postal','wa-city','wa-phone','wa-email']
+      .forEach(id => setField(id, ''));
     deleteBtn.style.display = 'none';
     openSheet(sheets.editAddress);
   });
@@ -4366,13 +4419,11 @@ renderSellShows();
   // Delete address
   deleteBtn.addEventListener('click', () => {
     if (!editingAddressRow) return;
-    // Remove the row and its preceding separator (if any)
     const group = editingAddressRow.closest('.wallet-action-group');
     const prev = editingAddressRow.previousElementSibling;
     if (prev && prev.classList.contains('wallet-separator')) prev.remove();
     editingAddressRow.remove();
-    // If deleted row was selected, select the first remaining row
-    const firstRow = group.querySelector('[class*="wallet-action-row"]');
+    const firstRow = group.querySelector('[class*="wallet-action-row"]:not(#wallet-add-address-btn)');
     if (firstRow) walletSelectAddress(firstRow);
     editingAddressRow = null;
     openSheet(sheets.addresses);
@@ -4395,15 +4446,28 @@ renderSellShows();
   });
 })();
 
-// Address radio selection (global function, called from onclick)
+// Address radio selection (global, called from onclick)
 function walletSelectAddress(row) {
   document.querySelectorAll('#wallet-addresses-sheet .wallet-radio').forEach(r => {
     r.classList.remove('selected');
     r.innerHTML = '';
   });
   const radio = row.querySelector('.wallet-radio');
-  radio.classList.add('selected');
-  radio.innerHTML = '<div class="wallet-radio-inner"></div>';
+  if (radio) {
+    radio.classList.add('selected');
+    radio.innerHTML = '<div class="wallet-radio-inner"></div>';
+  }
+}
+
+// Tap-to-fill sample data in form inputs (global, called from onclick)
+function walletFillField(id, sample) {
+  const val = document.getElementById(id);
+  const field = val ? val.closest('.wallet-field') : null;
+  if (!val || !field) return;
+  if (!val.textContent.trim()) {
+    val.textContent = sample;
+    field.classList.remove('empty');
+  }
 }
 </script>
 
