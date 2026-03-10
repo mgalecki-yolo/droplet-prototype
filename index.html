@@ -2568,9 +2568,16 @@ body{
           <div class="wallet-radio"></div>
         </a>
         <div class="wallet-separator" style="margin-left:16px"></div>
-        <a class="wallet-action-row" id="wallet-add-address-btn" style="color:var(--rd10)">
-          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Plus.svg" alt="" style="opacity:0.85;filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%)"></div>
-          <div class="wallet-action-body"><div class="wallet-action-label" style="color:var(--rd10)">Add new address</div></div>
+        <a class="wallet-action-row" id="wallet-add-paczkomat-btn">
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Plus.svg" alt="" style="filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%)"></div>
+          <div class="wallet-action-body"><div class="wallet-action-label" style="color:var(--rd10)">Add Paczkomat</div></div>
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="opacity:0.4"></div>
+        </a>
+        <div class="wallet-separator" style="margin-left:16px"></div>
+        <a class="wallet-action-row" id="wallet-add-courier-btn">
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Plus.svg" alt="" style="filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%)"></div>
+          <div class="wallet-action-body"><div class="wallet-action-label" style="color:var(--rd10)">Add Courier address</div></div>
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Shipping.svg" alt="" style="opacity:0.4"></div>
         </a>
       </div>
     </div>
@@ -2638,9 +2645,10 @@ body{
           <span class="wallet-field-value" id="wa-email"></span>
         </div>
       </div>
-      <button class="wallet-cta-btn" id="wallet-delete-address-btn" style="background:white;color:var(--rd10);border:1.5px solid var(--rd10);display:none">
-        Delete address
-      </button>
+      <a id="wallet-delete-address-btn" style="display:none;align-items:center;gap:8px;padding:4px 4px;cursor:pointer;text-decoration:none">
+        <img src="design-system/UI Icons/Icon Trash.svg" alt="" style="width:16px;height:16px;filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%);opacity:0.7">
+        <span style="font-size:14px;font-weight:400;color:var(--rd10);opacity:0.8">Delete address</span>
+      </a>
     </div>
   </div>
 
@@ -4406,15 +4414,18 @@ renderSellShows();
     if (row) openEditAddress(row);
   });
 
-  // Add Address — empty form, type from currentDeliveryType
-  document.getElementById('wallet-add-address-btn').addEventListener('click', () => {
+  // Add Address buttons
+  function openAddAddress(type) {
     editingAddressRow = null;
-    applyFormType(currentDeliveryType);
+    currentDeliveryType = type;
+    applyFormType(type);
     ['wa-paczkomat-id','wa-name','wa-address','wa-postal','wa-city','wa-phone','wa-email']
       .forEach(id => setField(id, ''));
     deleteBtn.style.display = 'none';
     openSheet(sheets.editAddress);
-  });
+  }
+  document.getElementById('wallet-add-paczkomat-btn').addEventListener('click', () => openAddAddress('paczkomat'));
+  document.getElementById('wallet-add-courier-btn').addEventListener('click', () => openAddAddress('courier'));
 
   // Delete address
   deleteBtn.addEventListener('click', () => {
