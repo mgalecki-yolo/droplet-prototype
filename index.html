@@ -2568,16 +2568,9 @@ body{
           <div class="wallet-radio"></div>
         </a>
         <div class="wallet-separator" style="margin-left:16px"></div>
-        <a class="wallet-action-row" id="wallet-add-paczkomat-btn">
+        <a class="wallet-action-row" id="wallet-add-address-btn">
           <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Plus.svg" alt="" style="filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%)"></div>
-          <div class="wallet-action-body"><div class="wallet-action-label" style="color:var(--rd10)">Add Paczkomat</div></div>
-          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="opacity:0.4"></div>
-        </a>
-        <div class="wallet-separator" style="margin-left:16px"></div>
-        <a class="wallet-action-row" id="wallet-add-courier-btn">
-          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Plus.svg" alt="" style="filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%)"></div>
-          <div class="wallet-action-body"><div class="wallet-action-label" style="color:var(--rd10)">Add Courier address</div></div>
-          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Shipping.svg" alt="" style="opacity:0.4"></div>
+          <div class="wallet-action-body"><div class="wallet-action-label" style="color:var(--rd10)">Add address</div></div>
         </a>
       </div>
     </div>
@@ -2595,6 +2588,16 @@ body{
       <button class="wallet-navi-btn confirm" id="wallet-edit-address-confirm">
         <img src="design-system/UI Icons/Icon Check.svg" alt="">
       </button>
+    </div>
+    <div id="wa-type-selector" style="display:none;padding:0 0 4px">
+      <div class="ap-tabs" style="margin:0 0 4px">
+        <button class="ap-tab active" id="wa-seg-paczkomat" onclick="waSetType('paczkomat')">
+          <img src="design-system/UI Icons/Icon Paczkomat.svg" style="width:14px;height:14px;opacity:0.6"> Paczkomat
+        </button>
+        <button class="ap-tab" id="wa-seg-courier" onclick="waSetType('courier')">
+          <img src="design-system/UI Icons/Icon Shipping.svg" style="width:14px;height:14px;opacity:0.6"> Courier
+        </button>
+      </div>
     </div>
     <div class="wallet-form-stack">
       <!-- Paczkomat only: id + Select link -->
@@ -2645,9 +2648,9 @@ body{
           <span class="wallet-field-value" id="wa-email"></span>
         </div>
       </div>
-      <a id="wallet-delete-address-btn" style="display:none;align-items:center;gap:8px;padding:4px 4px;cursor:pointer;text-decoration:none">
-        <img src="design-system/UI Icons/Icon Trash.svg" alt="" style="width:16px;height:16px;filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%);opacity:0.7">
-        <span style="font-size:14px;font-weight:400;color:var(--rd10);opacity:0.8">Delete address</span>
+      <a id="wallet-delete-address-btn" style="display:none;align-items:center;gap:6px;padding:12px 4px 4px;cursor:pointer;text-decoration:none;justify-content:center">
+        <img src="design-system/UI Icons/Icon Trash.svg" alt="" style="width:14px;height:14px;filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%);opacity:0.6">
+        <span style="font-size:13px;font-weight:400;color:var(--rd10);opacity:0.75">Delete address</span>
       </a>
     </div>
   </div>
@@ -4389,6 +4392,8 @@ renderSellShows();
   function openEditAddress(row) {
     editingAddressRow = row;
     const type = row.dataset.delivery || 'courier';
+    document.getElementById('wa-type-selector').style.display = 'none';
+    document.getElementById('wallet-edit-address-title').textContent = 'Edit Address';
     applyFormType(type);
     const sub = row.querySelector('.wallet-action-sub');
     const lines = sub ? sub.innerText.split('\n') : ['', ''];
@@ -4403,7 +4408,7 @@ renderSellShows();
     }
     setField('wa-phone', '');
     setField('wa-email', '');
-    deleteBtn.style.display = 'block';
+    deleteBtn.style.display = 'flex';
     openSheet(sheets.editAddress);
   }
 
@@ -4414,18 +4419,27 @@ renderSellShows();
     if (row) openEditAddress(row);
   });
 
-  // Add Address buttons
-  function openAddAddress(type) {
-    editingAddressRow = null;
+  // Type selector in Add mode
+  function waSetType(type) {
     currentDeliveryType = type;
     applyFormType(type);
+    document.getElementById('wa-seg-paczkomat').classList.toggle('active', type === 'paczkomat');
+    document.getElementById('wa-seg-courier').classList.toggle('active', type === 'courier');
+  }
+
+  // Add Address button
+  function openAddAddress(type) {
+    editingAddressRow = null;
+    currentDeliveryType = type || 'paczkomat';
     ['wa-paczkomat-id','wa-name','wa-address','wa-postal','wa-city','wa-phone','wa-email']
       .forEach(id => setField(id, ''));
+    document.getElementById('wa-type-selector').style.display = 'block';
+    document.getElementById('wallet-edit-address-title').textContent = 'Add Address';
+    waSetType(currentDeliveryType);
     deleteBtn.style.display = 'none';
     openSheet(sheets.editAddress);
   }
-  document.getElementById('wallet-add-paczkomat-btn').addEventListener('click', () => openAddAddress('paczkomat'));
-  document.getElementById('wallet-add-courier-btn').addEventListener('click', () => openAddAddress('courier'));
+  document.getElementById('wallet-add-address-btn').addEventListener('click', () => openAddAddress('paczkomat'));
 
   // Delete address
   deleteBtn.addEventListener('click', () => {
