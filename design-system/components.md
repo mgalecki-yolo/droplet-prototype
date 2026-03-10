@@ -35,6 +35,26 @@ App Top (109px)
 
 **Tytul w App Top:** H40 — 16px Bold (700), kolor bw10 `#101828`
 
+**Scroll behavior (Top navi pattern, node 3673:47053):**
+
+Dwa stany nawigacji gornej — przelaczane na scroll:
+
+| Stan | Opis |
+|------|------|
+| **Top page** | App Top (109px) bez tla/blur. Duzy tytul H15 (23px SemiBold) wyswietlany PONIZEJ App Top w contencie strony, z gap `10px` od dolnej krawedzi App Top. Tytul w headerze ukryty (`opacity:0`). |
+| **Scroll** | App Top z tlem gradient ov40 + backdrop-blur 10px. Maly tytul H40 (16px Bold) pojawia sie wycentrowany w headerze (`opacity:1`). Duzy tytul scrolluje sie pod header. Przelaczenie na `scrollTop > 40px`. |
+
+**Wymiary Top page (z Figmy, 393x149px):**
+```
+Top page frame (149px)
+├── Status bar iPhone (0→59px)
+├── Top Action (59→109px, h=50px)
+│   ├── Back button: x=16, y=59, 42x42px
+│   └── Title (hidden): centered, H40 16px Bold
+├── Gap: 10px (109→119px)
+└── Big Title: x=16, y=119, 361x30px, H15 23px SemiBold
+```
+
 **Warianty:**
 | Wariant | Opis |
 |---------|------|
@@ -828,12 +848,31 @@ Toast (350x72px, rounded 12px)
 
 Kafelek zdjecia w bibliotece mediow — sluzy do wyboru zdjec produktu.
 
-**Wymiary:** `112 x 112px`, rounded `12px`
+**Wymiary:** `112 x 112px`, rounded `12px`, padding `9.584px`
 **Shadow:** Show Shadow `0px 2px 8px rgba(0,0,0,0.25)`
 
-| Wariant | Opis |
-|---------|------|
-| Unselected | Zdjecie bez overlaya + Radio button 24px (niezaznaczony) + Product Badge/Icon (Icon Play 12px, pill 24px, border `rgba(255,255,255,0.25)`) |
-| Selected | Overlay `rgba(0,0,0,0.5)` + zaznaczony indicator (24px circle z numerem, F22 14px SemiBold bw10 `#101828`) |
-| Loading | Overlay `rgba(0,0,0,0.5)` + loading bar (88x4px, bg gw20 `#D9D9D9`, fill rd10 `#FF4252`, rounded 26px) |
-| Disabled | Overlay `rgba(217,217,217,0.5)` + disabled icon 24px |
+### Layout wewnetrzny
+
+Kolumna (flex-col, justify-between, full height):
+- **Gora-prawo:** Radio button / selection indicator (24px)
+- **Dol:** wiersz (justify-between):
+  - **Lewo-dol:** Play badge (jesli video)
+  - **Prawo-dol:** Radio button / selection indicator (w wariancie Unselected)
+
+### Warianty
+
+| Wariant | Overlay | Element prawy-dol | Element lewy-dol | Dodatkowe |
+|---------|---------|-------------------|-------------------|-----------|
+| **Unselected** | Brak | Radio button 24px (bialy outline circle, niezaznaczony) | Product Badge/Icon (Play 12px, pill 24px, rounded 40px, border `rgba(255,255,255,0.25)`) | — |
+| **Selected** | `rgba(0,0,0,0.5)` | Blue circle 24px z numerem (F22 14px SemiBold `#101828`) | — | Numer na srodku kolka |
+| **Loading** | `rgba(0,0,0,0.5)` | — | — | Progress bar: track 88x4px `#D9D9D9`, fill 54x4px `#FF4252`, rounded 26px, at top:96px left:12px |
+| **Disabled** | `rgba(217,217,217,0.5)` | Disabled icon 24px | — | — |
+
+### Radio button (selection circle)
+- **Niezaznaczony:** 24px circle, border bialy, tlo przezroczyste
+- **Zaznaczony:** 24px circle, tlo jasne (biale/niebieskie), numer 14px SemiBold `#101828` na srodku
+
+### Play badge (video indicator)
+- Product Badge/Icon: `h-24px`, rounded `40px`, border `1px solid rgba(255,255,255,0.25)`, padding `0 6px`
+- Ikona: Icon Play `12px`
+- Pozycja: lewy-dol kafelka

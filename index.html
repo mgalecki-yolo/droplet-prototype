@@ -576,6 +576,657 @@ body{
 .ls-tool-footer img{width:12px;height:12px;filter:brightness(0) invert(1);opacity:0.75}
 
 /* ── Screen transition (instant) ── */
+
+/* ── Schedule Show ── */
+.ss-app-top{
+  position:sticky;top:0;z-index:40;height:109px;
+  display:flex;flex-direction:column;
+}
+.ss-app-top.scrolled{
+  background:linear-gradient(180deg,var(--ov40) 50%,rgba(242,240,236,0.85) 80%,rgba(242,240,236,0));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.ss-app-top-status{height:59px;flex-shrink:0}
+.ss-app-top-action{
+  height:50px;display:flex;align-items:center;padding:0 16px;position:relative;
+}
+.ss-back{
+  width:42px;height:42px;border-radius:296px;border:none;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.65);
+  box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;position:relative;z-index:1;
+}
+.ss-back img{width:18px;height:18px}
+.ss-app-top-title{
+  position:absolute;left:0;right:0;text-align:center;
+  font-size:16px;font-weight:700;color:var(--bw10);
+  pointer-events:none;opacity:0;
+}
+.ss-app-top.scrolled .ss-app-top-title{opacity:1}
+.ss-scroll{
+  flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+  padding:0 0 140px;scrollbar-width:none;
+}
+.ss-scroll::-webkit-scrollbar{display:none}
+.ss-title{font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px;padding:0 16px;margin-top:10px}
+
+/* Form Input */
+.fi{
+  width:100%;height:60px;background:var(--wh10);border:1px solid var(--ov20);border-radius:26px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 16px;cursor:pointer;
+}
+.fi-content{display:flex;flex-direction:column;gap:0;flex:1;min-width:0}
+.fi-placeholder{font-size:16px;font-weight:400;color:var(--bw40);letter-spacing:-0.5px}
+.fi-label{font-size:13px;font-weight:400;color:var(--bw40);display:none}
+.fi-value{font-size:16px;font-weight:500;color:var(--bw10);letter-spacing:-0.5px;display:none;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fi.filled .fi-placeholder{display:none}
+.fi.filled .fi-label{display:block}
+.fi.filled .fi-value{display:block}
+.fi-icon{width:18px;height:18px;flex-shrink:0;margin-left:8px}
+.fi-icon img{width:18px;height:18px}
+
+/* Section title (schedule show) */
+.ss-section-title{font-size:20px;font-weight:700;color:var(--bw10)}
+.ss-section-desc{font-size:13px;font-weight:400;color:var(--bw40);line-height:1.35}
+
+/* Video upload */
+.ss-upload-area{display:flex;gap:27px;align-items:flex-start;justify-content:center}
+.ss-upload-box{
+  width:154px;height:264px;border:1px dashed var(--gw10);border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0;
+}
+.ss-upload-plus{
+  width:36px;height:36px;border-radius:70px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;
+}
+.ss-upload-plus img{width:18px;height:18px}
+.ss-upload-link{font-size:12px;font-weight:500;color:var(--bl10);margin-top:4px}
+.ss-upload-opt{font-size:12px;font-weight:400;color:var(--bw40)}
+
+/* Video thumbnail (filled) */
+.ss-video-thumb{
+  width:154px;height:264px;border-radius:10px;box-shadow:var(--shadow-show);
+  background-size:cover;background-position:center;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:12px;flex-shrink:0;
+}
+.ss-video-thumb::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,0.75) 100%);pointer-events:none;
+}
+.ss-video-date{
+  font-size:10px;font-weight:600;color:white;z-index:1;
+  background:rgba(0,0,0,0.75);border:1px solid rgba(255,255,255,0.25);
+  padding:0 10px;height:24px;display:inline-flex;align-items:center;border-radius:40px;
+  align-self:flex-start;
+}
+.ss-video-title{font-size:14px;font-weight:600;color:white;z-index:1;margin-top:8px;line-height:1.2;
+  text-shadow:0px 1px 1px rgba(0,0,0,0.6)}
+.ss-video-actions{display:flex;gap:8px;margin-top:8px}
+.ss-video-edit{
+  height:36px;padding:0 12px;border-radius:70px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);display:flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:600;color:var(--bw20);border:none;cursor:pointer;font-family:inherit;
+}
+.ss-video-edit img{width:16px;height:16px}
+.ss-video-trash{
+  width:36px;height:36px;border-radius:70px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;
+  border:none;cursor:pointer;
+}
+.ss-video-trash img{width:16px;height:16px}
+
+/* Practical tips */
+.ss-tips{display:flex;flex-direction:column;gap:8px;flex:1;justify-content:flex-start}
+.ss-tips-title{font-size:13px;font-weight:400;color:var(--bw40)}
+.ss-tip{display:flex;align-items:center;gap:8px}
+.ss-tip img{width:18px;height:18px;opacity:0.5}
+.ss-tip span{font-size:13px;font-weight:400;color:var(--bw40)}
+
+/* Category pills */
+.ss-cat-pills{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.ss-cat-pills::-webkit-scrollbar{display:none}
+.ss-cat-pill{
+  height:36px;border-radius:50px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);display:flex;align-items:center;
+  gap:6px;padding:5px 14px 5px 8px;cursor:pointer;flex-shrink:0;
+}
+.ss-cat-pill img{width:20px;height:20px;object-fit:contain}
+.ss-cat-pill span{font-size:12px;font-weight:600;color:var(--bw20);white-space:nowrap}
+
+/* Switch */
+.ss-switch{
+  width:53px;height:28px;border-radius:18px;background:var(--gw10);
+  position:relative;cursor:pointer;flex-shrink:0;
+}
+.ss-switch-thumb{
+  width:24px;height:24px;border-radius:50%;background:white;
+  position:absolute;top:2px;left:2px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.15);
+}
+
+/* Radio */
+.ss-radio{width:24px;height:24px;flex-shrink:0}
+.ss-radio img{width:24px;height:24px}
+
+/* Fixed bottom CTA */
+.ss-bottom{
+  position:absolute;bottom:0;left:0;right:0;z-index:50;
+  padding:16px 16px 46px;pointer-events:none;
+}
+.ss-bottom::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(to bottom,rgba(242,240,236,0) 0%,rgba(242,240,236,0.6) 25%,rgba(242,240,236,0.95) 55%,var(--ov40) 100%);
+  pointer-events:none;
+}
+.ss-cta{
+  width:100%;height:52px;border-radius:70px;background:var(--rd10);border:none;
+  font-size:16px;font-weight:600;color:white;cursor:pointer;font-family:inherit;
+  box-shadow:var(--shadow-interactive);pointer-events:auto;position:relative;z-index:1;
+}
+
+/* ── Show Scheduled (dark) ── */
+.sched-screen{
+  background:linear-gradient(180deg, rgb(0,0,0) 0%, rgb(42,42,42) 60%, rgb(10,10,10) 100%);
+}
+/* App Top — gradient top bar */
+.sched-app-top{
+  position:sticky;top:0;z-index:40;
+  background:linear-gradient(180deg, rgba(57,57,57,0.5) 0%, rgba(57,57,57,0) 100%);
+  display:flex;flex-direction:column;align-items:center;
+}
+.sched-top-action{
+  display:flex;align-items:center;justify-content:space-between;
+  width:361px;height:50px;
+}
+.sched-top-left{display:flex;align-items:center;gap:8px}
+.sched-avatar{
+  width:32px;height:32px;border-radius:70px;background-size:cover;background-position:center;flex-shrink:0;
+}
+.sched-name{font-size:14px;font-weight:700;color:white}
+.sched-top-right{display:flex;align-items:center;gap:8px}
+.sched-badge{
+  height:26px;padding:0 8px;border-radius:28px;
+  background:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0px 3.758px 15.032px 0px rgba(255,255,255,0.3), 0px 1.879px 3.758px 0px rgba(0,0,0,0.1);
+  font-size:10px;font-weight:700;color:#364153;
+  display:flex;align-items:center;
+}
+.sched-chevron{
+  width:42px;height:42px;border-radius:296px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  position:relative;
+}
+.sched-chevron img{width:18px;height:18px;filter:brightness(0) invert(1)}
+
+/* Central card — dark transparent */
+.sched-card{
+  position:absolute;top:154px;left:50%;transform:translateX(-50%);
+  width:361px;
+  background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.2);border-radius:13px;
+  padding:16px;display:flex;flex-direction:column;gap:12px;
+}
+.sched-card-header{display:flex;flex-direction:column;gap:4px}
+.sched-card-label{font-size:14px;font-weight:500;color:white;text-align:center;width:100%}
+.sched-card-time{font-size:23px;font-weight:600;color:white;letter-spacing:-0.5px;line-height:30px;text-align:center;width:100%}
+.sched-card-1cta{
+  width:100%;height:52px;border-radius:70px;background:var(--rd10);border:none;
+  font-size:16px;font-weight:600;color:white;cursor:pointer;font-family:inherit;
+  box-shadow:var(--shadow-interactive);
+}
+.sched-card-2cta{
+  width:100%;height:52px;border-radius:70px;background:var(--wh10);border:none;
+  font-size:16px;font-weight:600;color:var(--bw20);cursor:pointer;font-family:inherit;
+  box-shadow:var(--shadow-interactive);
+}
+
+/* Bottom section: chat left + icons right in one row */
+.sched-bottom-row{
+  position:absolute;top:442px;left:16px;width:366px;
+  display:flex;align-items:flex-end;justify-content:space-between;
+}
+
+/* Show Chat (left side) */
+.sched-chat{
+  display:flex;flex-direction:column;gap:4px;width:296px;padding-bottom:4px;
+}
+.sched-chat-row{display:flex;align-items:center;gap:12px}
+.sched-chat-shortcut{
+  width:38px;height:38px;border-radius:296px;flex-shrink:0;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  display:flex;align-items:center;justify-content:center;
+}
+.sched-chat-shortcut img{width:18px;height:18px;filter:brightness(0) invert(1)}
+.sched-chat-input{
+  flex:1;height:40px;border-radius:50px;
+  background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.4);
+  padding:0 18px;display:flex;align-items:center;
+}
+.sched-chat-input span{font-size:13px;font-weight:400;color:var(--gw10)}
+
+/* Right side icons */
+.sched-right{
+  display:flex;flex-direction:column;gap:16px;align-items:center;
+  padding-bottom:22px;
+}
+.sched-right-btn{display:flex;flex-direction:column;align-items:center;gap:2px}
+.sched-right-icon{
+  width:40px;height:40px;border-radius:296px;
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.sched-right-icon img{width:18px;height:18px;filter:brightness(0) invert(1)}
+.sched-right-label{font-size:11px;font-weight:500;color:white;text-align:center;line-height:14px}
+.sched-right-dot{
+  position:absolute;top:-2px;right:-4px;width:12px;height:12px;border-radius:50%;background:var(--rd10);
+  z-index:2;
+}
+.sched-right-shop{
+  width:48px;height:48px;border-radius:296px;
+  background:rgba(0,0,0,0.15);border:2px solid var(--rd10);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.sched-right-shop img{width:24px;height:24px;filter:brightness(0) invert(1)}
+.sched-right-shop-badge{
+  position:absolute;top:-3px;right:-2px;min-width:16px;height:16px;border-radius:8px;
+  background:var(--rd10);font-size:10px;font-weight:700;color:white;
+  display:flex;align-items:center;justify-content:center;padding:0 5px;
+}
+/* ── Add Products — shared ── */
+.ap-screen{background:var(--ov40)}
+.ap-top{
+  position:sticky;top:0;z-index:40;height:109px;
+  display:flex;flex-direction:column;background:var(--ov40);
+}
+.ap-top-status{height:59px;flex-shrink:0}
+.ap-top-action{
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:0 16px;height:50px;
+}
+.ap-close{
+  width:42px;height:42px;border-radius:296px;border:none;
+  background:rgba(255,255,255,0.65);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:var(--shadow-interactive);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.ap-close img{width:18px;height:18px}
+.ap-title{
+  font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;
+  padding:0 16px;margin-top:10px;
+}
+/* Segmented tabs */
+.ap-tabs{
+  display:flex;align-items:center;margin:16px 16px 0;height:44px;
+  background:var(--ov15);border-radius:50px;padding:4px;
+}
+.ap-tab{
+  flex:1;height:36px;border-radius:46px;border:none;background:none;
+  font-size:12px;font-weight:500;color:var(--bw20);cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;justify-content:center;gap:4px;
+}
+.ap-tab.active{
+  background:var(--wh10);font-weight:600;
+  box-shadow:var(--shadow-interactive);
+}
+.ap-tab-badge{
+  min-width:18px;height:18px;border-radius:9px;background:var(--rd10);
+  font-size:10px;font-weight:700;color:white;
+  display:flex;align-items:center;justify-content:center;padding:0 5px;
+}
+
+/* Empty state */
+.ap-empty{
+  margin:0 16px;border-radius:10px;
+  height:367px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;
+  position:relative;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23BCBCBC' stroke-width='1' stroke-dasharray='8%2c 8' stroke-dashoffset='0'/%3E%3C/svg%3E");
+}
+.ap-empty-icon{width:101px;height:101px;opacity:0.25}
+.ap-empty-sparkles{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-80%);
+  width:289px;height:145px;pointer-events:none;
+}
+.ap-empty-btn{
+  display:flex;align-items:center;gap:4px;height:36px;
+  font-size:12px;font-weight:600;color:var(--bw20);cursor:pointer;
+  padding:0 12px;border-radius:70px;border:none;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);font-family:inherit;
+}
+.ap-empty-btn img{width:18px;height:18px}
+.ap-empty-hint{font-size:12px;font-weight:400;color:var(--bw40);text-align:center;line-height:1.4}
+
+/* Media grid */
+.ap-media-hint{font-size:12px;font-weight:400;color:#000;text-align:center;margin-bottom:16px}
+.ap-media-grid{
+  display:flex;flex-wrap:wrap;gap:12px;padding:0 16px;
+}
+.ap-media-item{
+  position:relative;border-radius:12px;overflow:hidden;cursor:pointer;
+  width:112px;height:112px;
+  background-size:cover;background-position:center;
+  box-shadow:0px 2px 8px rgba(0,0,0,0.25);
+}
+.ap-media-item.selected::after{
+  content:'';position:absolute;inset:0;background:rgba(0,0,0,0.35);border-radius:12px;pointer-events:none;
+}
+/* Radio circle — top right */
+.ap-media-radio{
+  position:absolute;top:10px;right:10px;z-index:2;
+  width:24px;height:24px;border-radius:50%;
+  border:2px solid rgba(255,255,255,0.8);
+  display:flex;align-items:center;justify-content:center;
+}
+.ap-media-item.selected .ap-media-radio{
+  background:white;border-color:white;
+}
+.ap-media-radio span{
+  font-size:14px;font-weight:600;color:var(--bw10);display:none;
+}
+.ap-media-item.selected .ap-media-radio span{display:block}
+/* Play badge — bottom right */
+.ap-media-play{
+  position:absolute;bottom:10px;right:10px;z-index:2;
+  width:24px;height:24px;border-radius:40px;
+  border:1px solid rgba(255,255,255,0.25);
+  display:flex;align-items:center;justify-content:center;
+}
+.ap-media-play img{width:12px;height:12px;filter:brightness(0) invert(1)}
+/* Add Media tile */
+.ap-add-media{
+  width:112px;height:112px;border:1px dashed var(--gw10);border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer;
+}
+.ap-add-media-btn{
+  width:36px;height:36px;border-radius:40px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);border:none;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.ap-add-media-btn img{width:18px;height:18px}
+.ap-add-media span{font-size:12px;font-weight:600;color:var(--bw20)}
+
+/* Bottom bar */
+.ap-bottom{
+  position:absolute;bottom:0;left:0;right:0;z-index:10;
+  display:flex;
+  background:linear-gradient(180deg,rgba(242,240,236,0) 0%,var(--ov40) 30%);
+}
+.ap-bottom[data-state="all"]{padding:16px 32px 24px}
+.ap-bottom[data-state="selected"]{padding:12px 16px 24px;gap:12px;align-items:center}
+.ap-btn-create{
+  flex:1;border-radius:56px;background:var(--rd10);border:none;
+  padding:8px 16px;cursor:pointer;font-family:inherit;
+  box-shadow:var(--shadow-interactive);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.ap-btn-create-title{font-size:16px;font-weight:600;color:white;line-height:19.5px}
+.ap-btn-create-sub{font-size:12px;font-weight:400;color:var(--ov15)}
+.ap-btn-delete{
+  height:52px;padding:0 24px;border-radius:70px;background:var(--wh10);border:none;
+  font-size:16px;font-weight:600;color:var(--bw30);cursor:pointer;font-family:inherit;
+  box-shadow:var(--shadow-interactive);
+}
+.ap-btn-cta{
+  flex:1;height:52px;border-radius:70px;background:var(--rd10);border:none;
+  font-size:16px;font-weight:600;color:white;cursor:pointer;font-family:inherit;
+  box-shadow:var(--shadow-interactive);
+}
+.ap-btn-2cta{
+  flex:1;height:52px;border-radius:70px;background:var(--wh10);border:none;
+  font-size:16px;font-weight:600;color:var(--bw30);cursor:pointer;font-family:inherit;
+  box-shadow:var(--shadow-interactive);
+}
+
+/* Drafts list */
+.ap-draft{
+  display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid var(--ov20);
+}
+.ap-draft-img{
+  width:130px;height:130px;border-radius:12px;flex-shrink:0;
+  background-size:cover;background-position:center;
+  box-shadow:var(--shadow-show);position:relative;
+}
+.ap-draft-info{flex:1;display:flex;flex-direction:column;gap:8px}
+.ap-draft-name{font-size:14px;font-weight:600;color:var(--bw30);line-height:1.3}
+.ap-draft-badge{
+  display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:40px;
+  background:var(--ov30);font-size:10px;font-weight:600;color:var(--bw40);
+  align-self:flex-start;
+}
+.ap-draft-actions{display:flex;align-items:center;gap:12px;margin-top:auto}
+.ap-draft-trash{
+  width:40px;height:40px;border-radius:50%;border:none;background:none;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.ap-draft-trash img{width:20px;height:20px;opacity:0.4}
+.ap-draft-review{
+  flex:1;height:40px;border-radius:70px;background:var(--rd10);border:none;
+  font-size:14px;font-weight:600;color:white;cursor:pointer;font-family:inherit;
+}
+
+/* ── Review Product ── */
+.rp-screen{background:var(--ov40)}
+/* App Top — scroll state */
+.rp-top{
+  position:sticky;top:0;z-index:40;height:109px;
+  display:flex;flex-direction:column;
+}
+.rp-top.scrolled{
+  background:linear-gradient(180deg,var(--ov40) 50%,rgba(242,240,236,0.85) 80%,rgba(242,240,236,0));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.rp-top-status{height:59px;flex-shrink:0}
+.rp-top-action{
+  height:50px;display:flex;align-items:center;padding:0 16px;position:relative;
+}
+.rp-back{
+  width:42px;height:42px;border-radius:296px;border:none;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.65);
+  box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;position:relative;z-index:1;
+}
+.rp-back img{width:18px;height:18px}
+.rp-top-title{
+  position:absolute;left:0;right:0;text-align:center;
+  font-size:16px;font-weight:700;color:var(--bw10);
+  pointer-events:none;opacity:0;transition:opacity 0.15s;
+}
+.rp-top.scrolled .rp-top-title{opacity:1}
+.rp-title{font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;padding:0 16px;margin-top:10px}
+
+/* Cover + add media */
+.rp-media{display:flex;flex-wrap:wrap;gap:12px;padding:16px 16px 0}
+.rp-cover{
+  width:112px;height:112px;border-radius:12px;background-size:cover;background-position:center;
+  position:relative;box-shadow:0px 2px 8px rgba(0,0,0,0.25);
+  display:flex;align-items:flex-end;padding:10px;
+}
+.rp-cover-label{
+  background:rgba(0,0,0,0.75);border:1px solid rgba(255,255,255,0.25);
+  border-radius:40px;height:24px;padding:0 10px;
+  font-size:10px;font-weight:600;color:white;line-height:24px;
+}
+.rp-add-media{
+  width:112px;height:112px;border:1px dashed var(--gw10);border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer;
+}
+.rp-add-media-btn{
+  width:36px;height:36px;border-radius:40px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);border:none;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.rp-add-media-btn img{width:18px;height:18px}
+.rp-add-media span{font-size:12px;font-weight:600;color:var(--bw20)}
+
+/* Product name textarea */
+.rp-name-box{
+  margin:16px 16px 0;background:var(--wh10);border:1px solid var(--ov20);border-radius:26px;
+  padding:16px;min-height:100px;cursor:pointer;
+}
+.rp-name-text{font-size:16px;font-weight:500;color:var(--bw10);line-height:1.4}
+.rp-name-placeholder{font-size:16px;font-weight:400;color:var(--bw40);letter-spacing:-0.5px}
+.rp-char-count{font-size:12px;font-weight:400;color:var(--bw40);text-align:right;padding:2px 23px 0}
+
+/* Form field group (stacked inputs) */
+.rp-field-group{margin:2px 0 0;padding:0 16px}
+.rp-field{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;height:60px;
+  background:var(--wh10);border:1px solid var(--ov20);cursor:pointer;
+}
+.rp-field:first-child{border-radius:26px 26px 0 0}
+.rp-field:last-child{border-radius:0 0 26px 26px}
+.rp-field:first-child:last-child{border-radius:26px}
+.rp-field + .rp-field{border-top:none}
+.rp-field-content{display:flex;flex-direction:column;gap:4px}
+.rp-field-label{font-size:13px;font-weight:400;color:var(--bw40)}
+.rp-field-value{font-size:16px;font-weight:500;color:var(--bw10)}
+.rp-field-placeholder{font-size:16px;font-weight:400;color:var(--bw40);letter-spacing:-0.5px}
+.rp-field img{width:18px;height:18px;opacity:0.4}
+
+/* Buy now / Auction toggle */
+.rp-toggle{
+  display:flex;margin:0;height:44px;
+  background:var(--ov15);border-radius:50px;padding:4px;
+}
+.rp-toggle-btn{
+  flex:1;height:36px;border-radius:46px;border:none;background:none;
+  font-size:12px;font-weight:500;color:var(--bw20);cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;justify-content:center;
+}
+.rp-toggle-btn.active{background:var(--wh10);font-weight:600;box-shadow:var(--shadow-interactive)}
+
+/* Price + Quantity side by side */
+.rp-price-row{display:flex;gap:16px}
+.rp-price-box{
+  background:var(--wh10);border:1px solid var(--ov20);border-radius:26px;
+  padding:10px 16px;height:60px;display:flex;flex-direction:column;justify-content:center;cursor:pointer;
+}
+.rp-price-box:first-child{width:164px;flex-shrink:0}
+.rp-price-box:last-child{width:128px;flex-shrink:0}
+.rp-price-label{font-size:13px;font-weight:400;color:var(--bw40)}
+.rp-price-value{font-size:16px;font-weight:500;color:var(--bw10);margin-top:2px}
+
+/* Add Variant */
+.rp-add-variant{
+  height:36px;border-radius:70px;border:none;
+  background:var(--wh10);box-shadow:var(--shadow-interactive);
+  display:flex;align-items:center;justify-content:center;gap:4px;
+  font-size:12px;font-weight:600;color:var(--bw20);cursor:pointer;font-family:inherit;
+  width:100%;
+}
+.rp-add-variant img{width:16px;height:16px}
+
+/* Reserved for Live */
+.rp-reserved{
+  display:flex;flex-direction:column;gap:8px;
+}
+.rp-reserved-title{font-size:13px;font-weight:500;color:var(--bw20)}
+.rp-reserved-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.rp-reserved-desc{font-size:13px;font-weight:400;color:var(--bw40);line-height:1.35;flex:1}
+
+/* Shipping size (standalone field) */
+.rp-shipping{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;height:60px;
+  background:var(--wh10);border:1px solid var(--ov20);border-radius:26px;
+  cursor:pointer;
+}
+.rp-shipping-label{font-size:16px;font-weight:400;color:var(--bw40);letter-spacing:-0.5px}
+.rp-shipping img{width:18px;height:18px;opacity:0.4}
+
+/* Review Product bottom */
+.rp-bottom{
+  position:absolute;bottom:0;left:0;right:0;z-index:10;
+  padding:16px 16px 46px;display:flex;gap:16px;
+  background:linear-gradient(180deg,rgba(242,240,236,0) 0%,var(--ov40) 30%);
+}
+
+/* ── Products List ── */
+.pl-screen{background:var(--ov40)}
+.pl-top{
+  position:sticky;top:0;z-index:40;height:109px;
+  display:flex;flex-direction:column;background:var(--ov40);
+}
+.pl-top-status{height:59px;flex-shrink:0}
+.pl-top-action{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;height:50px;
+}
+.pl-back{
+  width:42px;height:42px;border-radius:50%;border:none;background:var(--ov30);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.pl-back img{width:18px;height:18px;opacity:0.7}
+.pl-manage{
+  height:36px;padding:0 16px;border-radius:70px;border:1px solid var(--ov20);background:var(--wh10);
+  font-size:13px;font-weight:600;color:var(--bw10);cursor:pointer;font-family:inherit;
+}
+.pl-title{font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;padding:0 16px}
+
+/* Status pills */
+.pl-status-pills{
+  display:flex;gap:8px;padding:16px 16px 0;overflow-x:auto;
+}
+.pl-status-pill{
+  height:32px;padding:0 12px;border-radius:70px;border:1px solid var(--ov20);
+  background:var(--wh10);font-size:12px;font-weight:600;color:var(--bw40);
+  display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;font-family:inherit;
+  flex-shrink:0;
+}
+.pl-status-pill.active{background:var(--bw10);color:white;border-color:var(--bw10)}
+.pl-status-count{font-size:11px;font-weight:400;opacity:0.7}
+
+/* Filter pills */
+.pl-filter-pills{
+  display:flex;gap:8px;padding:12px 16px 0;
+}
+.pl-filter{
+  font-size:12px;font-weight:500;color:var(--bw40);cursor:pointer;
+  padding:0 4px;border:none;background:none;font-family:inherit;
+}
+.pl-filter.active{color:var(--bw10);font-weight:600}
+
+/* Product list items */
+.pl-item{
+  display:flex;gap:12px;padding:16px;
+}
+.pl-item-img{
+  width:150px;height:150px;border-radius:12px;flex-shrink:0;
+  background-size:cover;background-position:center;
+  box-shadow:var(--shadow-show);
+}
+.pl-item-info{flex:1;display:flex;flex-direction:column;gap:4px}
+.pl-item-name{font-size:14px;font-weight:600;color:var(--bw30);line-height:1.3}
+.pl-item-attr{font-size:12px;font-weight:400;color:var(--bw40)}
+.pl-item-price{
+  display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:37px;
+  background:var(--gw20);font-size:12px;font-weight:600;color:var(--bw40);
+  align-self:flex-start;margin-top:4px;
+}
+.pl-item-auction{
+  display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border-radius:37px;
+  background:var(--gw20);font-size:12px;font-weight:600;color:var(--bw40);
+  align-self:flex-start;margin-top:4px;
+}
+.pl-item-auction img{width:12px;height:12px}
+.pl-item-menu{
+  width:32px;height:32px;border-radius:50%;border:none;background:var(--ov30);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:4px;
+}
+.pl-item-menu img{width:18px;height:18px;opacity:0.5}
+
+/* Products list bottom */
+.pl-bottom{
+  position:absolute;bottom:0;left:0;right:0;z-index:10;
+  padding:12px 16px 24px;
+  background:linear-gradient(180deg,rgba(242,240,236,0) 0%,var(--ov40) 30%);
+}
 </style>
 </head>
 <body>
@@ -625,22 +1276,22 @@ body{
     <h2 class="section-title">Hot Right Now</h2>
     <div class="show-carousel" style="margin-top:12px">
       <div class="show-tile">
-        <div class="show-tile-img" style="background:linear-gradient(135deg,#8B7355,#A0926B);background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">834</div>
           <div class="show-tile-bottom"><div class="show-tile-title">BRAND NEW TOYS ALL $1</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/catmompop.jpg');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/CatMomPop.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">CatMomPop</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background:linear-gradient(135deg,#5B7B8A,#8BAAB8);background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">834</div>
           <div class="show-tile-bottom"><div class="show-tile-title">3 SECONDS SUDDEN DEATH - SPORTSWEAR</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/illusionclothing.jpg');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/IllusionClothing.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">IllusionClothing</span>
         </div>
       </div>
@@ -650,8 +1301,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Fi's Bargain Basement</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/catmompop.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">TeamBarc</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/TeamRare.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">TeamRare</span>
         </div>
       </div>
     </div>
@@ -670,8 +1321,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Summer Collection Drop</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">StyleQueen</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">LuxeBotique</span>
         </div>
       </div>
       <div class="show-tile">
@@ -680,8 +1331,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Mystery Boxes Opening</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/illusionclothing.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">MysteryMike</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/ButikKoti.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">ButikKoti</span>
         </div>
       </div>
       <div class="show-tile">
@@ -693,8 +1344,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Vintage Finds Weekly</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/vamosclearance.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">VintageVault</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/VamosClearance.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">VamosClearance</span>
         </div>
       </div>
     </div>
@@ -710,8 +1361,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Designer Bags Auction</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">LuxBags</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/ByAn.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">ByAn</span>
         </div>
       </div>
       <div class="show-tile">
@@ -720,8 +1371,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Sneaker Drop $1 Start</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/catmompop.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">KicksKing</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/WoooPlusSize.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">WoooPlusSize</span>
         </div>
       </div>
       <div class="show-tile">
@@ -733,8 +1384,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Jewelry Flash Sale</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/illusionclothing.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">GoldRush</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/PupsikCosmetics.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">PupsikCosmetics</span>
         </div>
       </div>
     </div>
@@ -842,7 +1493,7 @@ body{
       <h2 class="section-title-md">Upcoming Shows</h2>
       <button class="btn-cta-sm" data-action="schedule-show">Schedule Show</button>
     </div>
-    <div style="padding:16px">
+    <div id="sell-upcoming-shows" style="padding:16px;display:flex;gap:12px;overflow-x:auto">
       <div class="show-tile">
         <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-alert">
@@ -868,7 +1519,7 @@ body{
 
       <!-- Product 1 -->
       <div class="prod-h">
-        <div class="prod-h-img" style="background:linear-gradient(135deg,#D4E5F7,#A8C5E2)">
+        <div class="prod-h-img" style="background-image:url('images/product photos/image 1.png');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-alert" style="position:absolute;top:6px;right:6px;height:22px;font-size:9px;padding:0 8px">
             <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1.5v5M6 8.5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             34
@@ -892,7 +1543,7 @@ body{
 
       <!-- Product 2 -->
       <div class="prod-h">
-        <div class="prod-h-img" style="background:linear-gradient(135deg,#E8D5C4,#C4A98B)"></div>
+        <div class="prod-h-img" style="background-image:url('images/product photos/image 2.png');background-size:cover;background-position:center"></div>
         <div class="prod-h-info">
           <div class="prod-h-name">Vintage Leather Jacket Brown</div>
           <div class="prod-h-attr">Size M</div>
@@ -911,7 +1562,7 @@ body{
 
       <!-- Product 3 -->
       <div class="prod-h">
-        <div class="prod-h-img" style="background:linear-gradient(135deg,#F0E6D3,#D4C5A9)"></div>
+        <div class="prod-h-img" style="background-image:url('images/product photos/image 3.png');background-size:cover;background-position:center"></div>
         <div class="prod-h-info">
           <div class="prod-h-name">Handmade Ceramic Vase Set</div>
           <div class="prod-h-attr">Variants: 3</div>
@@ -991,12 +1642,12 @@ body{
     <h2 class="section-title">Live Now</h2>
     <div class="show-carousel" style="margin-top:12px">
       <div class="show-tile">
-        <div class="show-tile-img" style="background:linear-gradient(135deg,#5B7B8A,#8BAAB8);background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">834</div>
           <div class="show-tile-bottom"><div class="show-tile-title">3 SECONDS SUDDEN DEATH - SPORTSWEAR</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/illusionclothing.jpg');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/IllusionClothing.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">IllusionClothing</span>
         </div>
       </div>
@@ -1006,8 +1657,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Designer Bags Auction</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">LuxeBoutique</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">LuxeBotique</span>
         </div>
       </div>
       <div class="show-tile">
@@ -1016,8 +1667,8 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Sneaker Drop $1 Start</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/catmompop.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">KicksKing</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/MButik.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">M-Butik</span>
         </div>
       </div>
     </div>
@@ -1042,8 +1693,8 @@ body{
           </div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">StyleQueen</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/Shaun.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">Shaun</span>
         </div>
       </div>
       <div class="show-tile">
@@ -1058,8 +1709,8 @@ body{
           </div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/illusionclothing.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">GoldRush</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/TaskerBullion.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">TaskerBullion</span>
         </div>
       </div>
       <div class="show-tile">
@@ -1074,8 +1725,8 @@ body{
           </div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/vamosclearance.jpg');background-size:cover;background-position:center"></div>
-          <span class="show-tile-hostname">VamosClearance</span>
+          <div class="avatar avatar-32" style="background-image:url('images/avatars/Vestishop_pl.png');background-size:cover;background-position:center"></div>
+          <span class="show-tile-hostname">Vestishop.pl</span>
         </div>
       </div>
     </div>
@@ -1096,7 +1747,7 @@ body{
         <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back">
       </button>
       <div class="sp-app-top-info">
-        <span class="sp-app-top-info-name">LuxeBoutique</span>
+        <span class="sp-app-top-info-name">LuxeBotique</span>
         <span class="sp-app-top-info-sub">Tom & Anna</span>
       </div>
     </div>
@@ -1123,12 +1774,12 @@ body{
     <div class="sp-content">
 
       <!-- Avatar -->
-      <div class="sp-avatar" style="background-image:url('images/avatars/luxeboutique.jpg')"></div>
+      <div class="sp-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div>
 
       <!-- Name + Follow -->
       <div class="sp-name-row">
         <div>
-          <div class="sp-name">LuxeBoutique</div>
+          <div class="sp-name">LuxeBotique</div>
           <div class="sp-subtitle">Tom & Anna</div>
         </div>
         <button class="sp-follow-btn">
@@ -1138,7 +1789,7 @@ body{
       </div>
 
       <!-- Bio -->
-      <div class="sp-bio">Welcome to LuxeBoutique! Please be welcome to join me and my partner on our shows, bring your happi...</div>
+      <div class="sp-bio">Welcome to LuxeBotique! Please be welcome to join me and my partner on our shows, bring your happi...</div>
       <a class="sp-show-more">Show more</a>
 
       <!-- Stats -->
@@ -1189,7 +1840,7 @@ body{
           <div class="review-tile">
             <div>
               <div class="rt-header">
-                <div class="rt-avatar" style="background-image:url('images/avatars/catmompop.jpg')"></div>
+                <div class="rt-avatar" style="background-image:url('images/avatars/Ailema.png')"></div>
                 <div class="rt-info">
                   <span class="rt-name">Miranda0291</span>
                   <span class="rt-date">8.11.2025</span>
@@ -1232,8 +1883,8 @@ body{
               </div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-              <span class="show-tile-hostname">LuxeBoutique</span>
+              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
           <div class="show-tile">
@@ -1245,8 +1896,8 @@ body{
               </div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-              <span class="show-tile-hostname">LuxeBoutique</span>
+              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
           <div class="show-tile">
@@ -1258,8 +1909,8 @@ body{
               </div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-              <span class="show-tile-hostname">LuxeBoutique</span>
+              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
         </div>
@@ -1274,8 +1925,8 @@ body{
               <div class="show-tile-bottom"><div class="show-tile-title">Daily from $1, Clothes, Home st...</div></div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-              <span class="show-tile-hostname">LuxeBoutique</span>
+              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
           <div class="show-tile">
@@ -1283,8 +1934,8 @@ body{
               <div class="show-tile-bottom"><div class="show-tile-title">Daily from $1, Clothes, Home st...</div></div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-              <span class="show-tile-hostname">LuxeBoutique</span>
+              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
           <div class="show-tile">
@@ -1292,8 +1943,8 @@ body{
               <div class="show-tile-bottom"><div class="show-tile-title">Vintage Finds Weekly</div></div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/luxeboutique.jpg');background-size:cover;background-position:center"></div>
-              <span class="show-tile-hostname">LuxeBoutique</span>
+              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
         </div>
@@ -1306,54 +1957,54 @@ body{
           <!-- Left column -->
           <div class="products-col">
             <div class="ptv">
-              <div class="ptv-img" style="height:147px;background-image:url('images/shows/show1.jpg')">
+              <div class="ptv-img" style="height:147px;background-image:url('images/product photos/image 5.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic 95 white blue</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/luxeboutique.jpg')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">$102.34, with 3</div>
             </div>
             <div class="ptv">
-              <div class="ptv-img" style="height:215px;background-image:url('images/shows/show2.jpg')">
+              <div class="ptv-img" style="height:215px;background-image:url('images/product photos/image 10.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic 95 white blu...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/illusionclothing.jpg')"></div><span class="ptv-seller-name">Flashdog_pl</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">From $1</div>
             </div>
             <div class="ptv">
-              <div class="ptv-img" style="height:147px;background-image:url('images/shows/show1.jpg')">
+              <div class="ptv-img" style="height:147px;background-image:url('images/product photos/image 15.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic 95 white blu...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/catmompop.jpg')"></div><span class="ptv-seller-name">CatmomDeals</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">$102.34, with 3</div>
             </div>
           </div>
           <!-- Right column -->
           <div class="products-col">
             <div class="ptv">
-              <div class="ptv-img" style="height:215px;background-image:url('images/shows/show2.jpg')">
+              <div class="ptv-img" style="height:215px;background-image:url('images/product photos/image 20.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic BH Vachett...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/vamosclearance.jpg')"></div><span class="ptv-seller-name">CatchyDeals</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">$102.34, with 3</div>
             </div>
             <div class="ptv">
-              <div class="ptv-img" style="height:147px;background-image:url('images/shows/show1.jpg')">
+              <div class="ptv-img" style="height:147px;background-image:url('images/product photos/image 25.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Air Force One Flash novel...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/illusionclothing.jpg')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">From $1</div>
             </div>
             <div class="ptv">
-              <div class="ptv-img" style="height:215px;background-image:url('images/shows/show2.jpg')">
+              <div class="ptv-img" style="height:215px;background-image:url('images/product photos/image 30.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic 95 white blu...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/luxeboutique.jpg')"></div><span class="ptv-seller-name">Flashdog_pl</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">$102.34, with 3</div>
             </div>
           </div>
@@ -1367,7 +2018,7 @@ body{
   <div class="sp-bottom-bar">
     <div class="sp-search">
       <img src="design-system/UI Icons/Icon Search.svg" alt="Search">
-      <span>Search LuxeBoutique...</span>
+      <span>Search LuxeBotique...</span>
     </div>
   </div>
 
@@ -1398,7 +2049,7 @@ body{
           <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back">
         </button>
         <div class="ls-host-info">
-          <div class="ls-host-avatar" style="background-image:url('images/avatars/catmompop.jpg')"></div>
+          <div class="ls-host-avatar" style="background-image:url('images/avatars/CatMomPop.png')"></div>
           <div class="ls-host-meta">
             <span class="ls-host-name">CatMomPop</span>
             <div class="ls-host-stats">
@@ -1426,7 +2077,7 @@ body{
     <div class="ls-chat">
       <!-- Message: tipped -->
       <div class="ls-chat-msg">
-        <div class="ls-chat-avatar" style="background-image:url('images/avatars/illusionclothing.jpg')"></div>
+        <div class="ls-chat-avatar" style="background-image:url('images/avatars/ButikMadame.png')"></div>
         <div class="ls-chat-body">
           <div class="ls-chat-user"><span class="ls-chat-username">inky_82</span></div>
           <div class="ls-chat-tipped">Tipped $1</div>
@@ -1445,7 +2096,7 @@ body{
       </div>
       <!-- Message: mention -->
       <div class="ls-chat-msg">
-        <div class="ls-chat-avatar" style="background-image:url('images/avatars/catmompop.jpg')"></div>
+        <div class="ls-chat-avatar" style="background-image:url('images/avatars/Shaun.png')"></div>
         <div class="ls-chat-body">
           <div class="ls-chat-user"><span class="ls-chat-username">kriztifa</span></div>
           <div class="ls-chat-text"><span class="mention">@martinaux</span> What tha fook ya talking on?</div>
@@ -1453,7 +2104,7 @@ body{
       </div>
       <!-- Message: long -->
       <div class="ls-chat-msg">
-        <div class="ls-chat-avatar" style="background-image:url('images/avatars/luxeboutique.jpg')"></div>
+        <div class="ls-chat-avatar" style="background-image:url('images/avatars/Ailema.png')"></div>
         <div class="ls-chat-body">
           <div class="ls-chat-user"><span class="ls-chat-username">FashionLover</span></div>
           <div class="ls-chat-text">Have you any 12UK NewBalance? 576 or 311? Or Seezers or Reebok perhaps? 👟👟</div>
@@ -1476,7 +2127,7 @@ body{
       </div>
       <!-- Won notice -->
       <div class="ls-chat-won" style="margin-top:8px">
-        <div class="won-avatar" style="background-image:url('images/avatars/illusionclothing.jpg')"></div>
+        <div class="won-avatar" style="background-image:url('images/avatars/ButikMadame.png')"></div>
         <span>inky_82 is <span class="won-text">won!</span></span>
       </div>
     </div>
@@ -1508,7 +2159,7 @@ body{
   <div class="ls-tool">
     <div class="ls-tool-product">
       <div class="ls-tool-prod-left">
-        <div class="ls-tool-prod-img" style="background-image:url('images/shows/show2.jpg')"></div>
+        <div class="ls-tool-prod-img" style="background-image:url('images/product photos/image 8.png')"></div>
         <div class="ls-tool-prod-info" style="width:167px">
           <div class="ls-tool-prod-name">Rituals Private Collection Home Perfume - Clear</div>
           <div class="ls-tool-prod-attr">Atrribute - Attribute</div>
@@ -1540,6 +2191,527 @@ body{
     </div>
   </div>
 
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- SCREEN: SCHEDULE SHOW               -->
+<!-- ════════════════════════════════════ -->
+<div class="screen" id="screen-schedule-show">
+
+  <!-- App Top (fixed) -->
+  <div class="ss-app-top">
+    <div class="ss-app-top-status"></div>
+    <div class="ss-app-top-action">
+      <button class="ss-back" id="ss-back-btn">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back">
+      </button>
+      <span class="ss-app-top-title">Schedule a Live Show</span>
+    </div>
+  </div>
+
+<div class="ss-scroll" id="ss-scroll">
+
+  <!-- Title -->
+  <h1 class="ss-title">Schedule a Live Show</h1>
+
+  <!-- Form Inputs -->
+  <div style="padding:8px 16px 0;display:flex;flex-direction:column;gap:12px" id="ss-form">
+
+    <!-- Name -->
+    <div class="fi" data-ss-input>
+      <div class="fi-content">
+        <span class="fi-placeholder">Name your show</span>
+        <span class="fi-label">Name your show</span>
+        <span class="fi-value">Daily from $1, Clothes, Home stuff</span>
+      </div>
+    </div>
+
+    <!-- Date & Time -->
+    <div class="fi filled">
+      <div class="fi-content">
+        <span class="fi-placeholder">Date &amp; Time</span>
+        <span class="fi-label">Date &amp; Time</span>
+        <span class="fi-value">Jan 22, 2025 at 6:00 PM</span>
+      </div>
+      <div class="fi-icon"><img src="design-system/UI Icons/Icon Datepicker.svg" alt="Date"></div>
+    </div>
+
+    <!-- Moderators -->
+    <div class="fi" data-ss-input>
+      <div class="fi-content">
+        <span class="fi-placeholder">Add Moderators (optional)</span>
+        <span class="fi-label">Add Moderators (optional)</span>
+        <span class="fi-value">Cardmaster_TCG, TeamRare, +2</span>
+      </div>
+      <div class="fi-icon"><img src="design-system/UI Icons/Icon Down Chevron.svg" alt="Expand"></div>
+    </div>
+
+    <!-- Repeats -->
+    <div class="fi filled">
+      <div class="fi-content">
+        <span class="fi-placeholder">Repeats</span>
+        <span class="fi-label">Repeats</span>
+        <span class="fi-value">Does not repeat</span>
+      </div>
+      <div class="fi-icon"><img src="design-system/UI Icons/Icon Down Chevron.svg" alt="Expand"></div>
+    </div>
+
+  </div>
+
+  <!-- Introduce your show -->
+  <div style="padding:32px 16px 0">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="ss-section-title">Introduce your show</p>
+      <p class="ss-section-desc">Video helps tell your story and allows you to introduce yourself.</p>
+    </div>
+    <div style="margin-top:16px">
+      <!-- Empty state -->
+      <div class="ss-upload-area" id="ss-video-empty">
+        <div class="ss-upload-box">
+          <div class="ss-upload-plus"><img src="design-system/UI Icons/Icon Plus.svg" alt="+"></div>
+          <span class="ss-upload-link">Add or record video</span>
+          <span class="ss-upload-opt">(Optional)</span>
+        </div>
+        <div class="ss-tips">
+          <p class="ss-tips-title">Practical tips:</p>
+          <div class="ss-tip"><img src="design-system/UI Icons/Icon Corners.svg" alt=""><span>Vertical video 9:16</span></div>
+          <div class="ss-tip"><img src="design-system/UI Icons/Icon Clock.svg" alt=""><span>Up to 25 seconds</span></div>
+          <div class="ss-tip"><img src="design-system/UI Icons/Icon Star.svg" alt=""><span>Show yourself</span></div>
+          <div class="ss-tip"><img src="design-system/UI Icons/Icon Package.svg" alt=""><span>Explain what you'll sell</span></div>
+        </div>
+      </div>
+      <!-- Filled state -->
+      <div style="display:none;flex-direction:row;gap:27px;align-items:flex-start;justify-content:center" id="ss-video-filled">
+        <div class="ss-video-thumb" style="background-image:url('images/shows/show2.jpg')">
+          <span class="ss-video-date">22 Jan, 6:00 PM</span>
+          <span class="ss-video-title">Daily from $1, Clothes, Home st...</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1;justify-content:space-between;min-height:264px">
+          <div class="ss-tips">
+            <p class="ss-tips-title">Practical tips:</p>
+            <div class="ss-tip"><img src="design-system/UI Icons/Icon Corners.svg" alt=""><span>Vertical video 9:16</span></div>
+            <div class="ss-tip"><img src="design-system/UI Icons/Icon Clock.svg" alt=""><span>Up to 25 seconds</span></div>
+            <div class="ss-tip"><img src="design-system/UI Icons/Icon Star.svg" alt=""><span>Show yourself</span></div>
+            <div class="ss-tip"><img src="design-system/UI Icons/Icon Package.svg" alt=""><span>Explain what you'll sell</span></div>
+          </div>
+          <div class="ss-video-actions">
+            <button class="ss-video-edit"><img src="design-system/UI Icons/Icon Edit.svg" alt="Edit">Edit Video</button>
+            <button class="ss-video-trash"><img src="design-system/UI Icons/Icon Trash.svg" alt="Delete"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category -->
+  <div style="padding:32px 16px 0">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="ss-section-title">Category</p>
+      <p class="ss-section-desc">Accurately categorizing your show will help to increase its discoverability</p>
+    </div>
+    <div style="margin-top:12px">
+      <p style="font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:8px">Recently used</p>
+      <div class="ss-cat-pills">
+        <div class="ss-cat-pill"><img src="design-system/Category Icons/Coins&Money.png" alt="Coins"><span>Coins &amp; Money</span></div>
+        <div class="ss-cat-pill"><img src="design-system/Category Icons/Figures & Statues.png" alt="Figures"><span>Figures &amp; Statues</span></div>
+        <div class="ss-cat-pill"><img src="design-system/Category Icons/Outdoor & Sports.png" alt="Outdoor"><span>Outdoor and Sports</span></div>
+      </div>
+    </div>
+    <div style="margin-top:16px">
+      <div class="fi" data-ss-input id="ss-cat-input">
+        <div class="fi-content">
+          <span class="fi-placeholder">Category</span>
+          <span class="fi-label">Category</span>
+          <span class="fi-value">Coin &amp; Money</span>
+        </div>
+        <div class="fi-icon"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt="Select" id="ss-cat-chevron"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Settings -->
+  <div style="padding:32px 16px 0">
+    <p class="ss-section-title">Content Settings</p>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-top:12px">
+      <div style="flex:1">
+        <p style="font-size:13px;font-weight:700;color:var(--bw10)">Explicit content</p>
+        <p style="font-size:13px;font-weight:400;color:var(--bw40);margin-top:4px;line-height:1.35">Turn this on if your stream contains explicit content.</p>
+        <div style="display:flex;align-items:center;gap:4px;margin-top:4px">
+          <span style="font-size:13px;font-weight:400;color:var(--bl10)">Learn more</span>
+          <img src="design-system/UI Icons/Icon Info.svg" alt="Info" style="width:16px;height:16px;filter:brightness(0) saturate(100%) invert(42%) sepia(98%) saturate(1956%) hue-rotate(190deg) brightness(101%) contrast(104%)">
+        </div>
+      </div>
+      <div class="ss-switch" style="margin-left:16px">
+        <div class="ss-switch-thumb"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show Discoverability -->
+  <div style="padding:32px 16px 0">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="ss-section-title">Show Discoverability</p>
+      <p class="ss-section-desc">Choose how you want your show to be discovered.</p>
+    </div>
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:16px">
+      <!-- Public -->
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--bw20)">Public</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
+          <p style="font-size:13px;font-weight:400;color:var(--bw40)">Discoverable by everyone</p>
+          <div class="ss-radio"><img src="design-system/UI Icons/Radio Off.svg" alt="Off"></div>
+        </div>
+      </div>
+      <!-- Private -->
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--bw20)">Private</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
+          <p style="font-size:13px;font-weight:400;color:var(--bw40)">Only discoverable through sharing.</p>
+          <div class="ss-radio"><img src="design-system/UI Icons/Radio On.svg" alt="On"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:40px"></div>
+
+</div>
+
+<!-- Fixed bottom CTA -->
+<div class="ss-bottom">
+  <button class="ss-cta" id="ss-schedule-btn">Schedule Show</button>
+</div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- SCREEN: SHOW SCHEDULED (dark)       -->
+<!-- ════════════════════════════════════ -->
+<div class="screen sched-screen" id="screen-show-scheduled">
+
+  <!-- App Top -->
+  <div class="sched-app-top">
+    <div style="height:59px;flex-shrink:0"></div>
+    <div class="sched-top-action">
+      <div class="sched-top-left">
+        <div class="sched-avatar" style="background-image:url('images/avatars/TCGPokerealm.png')"></div>
+        <span class="sched-name">PokeRealmTCG</span>
+      </div>
+      <div class="sched-top-right">
+        <div class="sched-badge">Scheduled</div>
+        <div class="sched-chevron" id="sched-back-btn">
+          <img src="design-system/UI Icons/Icon Down Chevron.svg" alt="Close">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Central card — dark transparent -->
+  <div class="sched-card">
+    <div class="sched-card-header">
+      <span class="sched-card-label">Show Starts</span>
+      <span class="sched-card-time">Tomorrow, 9:36 PM</span>
+    </div>
+    <button class="sched-card-1cta">Start Show</button>
+    <button class="sched-card-2cta">Add Products to This Show</button>
+  </div>
+
+  <!-- Bottom row: Chat (left) + Right icons -->
+  <div class="sched-bottom-row">
+    <!-- Show Chat -->
+    <div class="sched-chat">
+      <div class="sched-chat-row">
+        <div class="sched-chat-shortcut">
+          <img src="design-system/UI Icons/Icon Shortcut.svg" alt="">
+        </div>
+        <div class="sched-chat-input">
+          <span>Say something...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Show Right Section Icons -->
+    <div class="sched-right">
+      <div class="sched-right-btn">
+        <div class="sched-right-icon"><img src="design-system/UI Icons/Icon Promote.svg" alt="Calendar"></div>
+        <span class="sched-right-label">Add to<br>Calendar</span>
+      </div>
+      <div class="sched-right-btn">
+        <div class="sched-right-icon"><img src="design-system/UI Icons/Icon Clip.svg" alt="Share"></div>
+        <span class="sched-right-label">Share</span>
+      </div>
+      <div class="sched-right-btn">
+        <div style="position:relative">
+          <div class="sched-right-icon"><img src="design-system/UI Icons/Icon Add Video.svg" alt="Add Video"></div>
+          <div class="sched-right-dot"></div>
+        </div>
+        <span class="sched-right-label">Add<br>Video</span>
+      </div>
+      <div class="sched-right-btn">
+        <div class="sched-right-icon"><img src="design-system/UI Icons/Icon Camera Switch.svg" alt="Edit"></div>
+        <span class="sched-right-label">Edit</span>
+      </div>
+      <div class="sched-right-btn">
+        <div class="sched-right-shop">
+          <img src="design-system/UI Icons/Icon Shop.svg" alt="Products">
+          <div class="sched-right-shop-badge">10</div>
+        </div>
+        <span class="sched-right-label">Products</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- SCREEN: ADD PRODUCTS (empty)         -->
+<!-- ════════════════════════════════════ -->
+<div class="screen ap-screen" id="screen-add-products">
+  <div class="ap-top">
+    <div class="ap-top-status"></div>
+    <div class="ap-top-action">
+      <button class="ap-close" id="ap-close-btn"><img src="design-system/UI Icons/Icon Close.svg" alt="Close"></button>
+    </div>
+  </div>
+  <div class="screen-scroll" id="ap-scroll" style="padding-top:0">
+    <h1 class="ap-title">Add Products</h1>
+
+    <!-- Tabs -->
+    <div class="ap-tabs">
+      <button class="ap-tab active" id="ap-tab-media">Media Library</button>
+      <button class="ap-tab" id="ap-tab-drafts">Drafts</button>
+    </div>
+
+    <!-- TAB: Media Library — empty state -->
+    <div id="ap-media-empty" style="margin-top:16px">
+      <div class="ap-empty">
+        <div class="ap-empty-sparkles">
+          <img src="design-system/sparkles-empty.svg" alt="" width="289" height="145">
+        </div>
+        <img class="ap-empty-icon" src="design-system/UI Icons/Icon Photo.svg" alt="">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:24px">
+          <button class="ap-empty-btn" id="ap-add-photos-btn">
+            <img src="design-system/UI Icons/Icon Plus.svg" alt="+">
+            Add Photos and Videos
+          </button>
+          <p class="ap-empty-hint">Add your photos and videos first,<br>then create multiple products.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: Media Library — with photos selected -->
+    <div id="ap-media-filled" style="display:none;margin-top:16px">
+      <p class="ap-media-hint">Select media to create Product</p>
+      <div class="ap-media-grid" id="ap-media-grid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <!-- TAB: Drafts list -->
+    <div id="ap-drafts-tab" style="display:none;margin-top:16px">
+      <div id="ap-drafts-list">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <div style="height:100px"></div>
+  </div>
+
+  <!-- Bottom bar (appears in media-filled state) -->
+  <div class="ap-bottom" id="ap-media-bottom" style="display:none" data-state="all">
+    <!-- State: no selection — create from all photos -->
+    <button class="ap-btn-create" id="ap-create-all-btn">
+      <span class="ap-btn-create-title">Create 3 Products</span>
+      <span class="ap-btn-create-sub">One product per each photo or video</span>
+    </button>
+    <!-- State: has selection — delete + create from selected -->
+    <button class="ap-btn-delete" id="ap-delete-btn" style="display:none">Delete</button>
+    <button class="ap-btn-cta" id="ap-create-selected-btn" style="display:none">Create 1 Product</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- SCREEN: REVIEW PRODUCT               -->
+<!-- ════════════════════════════════════ -->
+<div class="screen rp-screen" id="screen-review-product">
+  <!-- App Top with scroll state -->
+  <div class="rp-top" id="rp-top">
+    <div class="rp-top-status"></div>
+    <div class="rp-top-action">
+      <button class="rp-back" id="rp-back-btn"><img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back"></button>
+      <span class="rp-top-title">Review Product</span>
+    </div>
+  </div>
+  <div class="screen-scroll" id="rp-scroll" style="padding-top:0">
+    <h1 class="rp-title">Review Product</h1>
+
+    <!-- Cover + Add Media -->
+    <div class="rp-media">
+      <div class="rp-cover" id="rp-cover-img" style="background-image:url('images/product photos/image 3.png')">
+        <span class="rp-cover-label">Cover</span>
+      </div>
+      <div class="rp-add-media">
+        <button class="rp-add-media-btn"><img src="design-system/UI Icons/Icon Plus.svg" alt="+"></button>
+        <span>Add Media</span>
+      </div>
+    </div>
+
+    <!-- Product name -->
+    <div class="rp-name-box" id="rp-name-box" data-rp-input>
+      <p class="rp-name-placeholder" id="rp-name-ph">Product name</p>
+      <p class="rp-name-text" id="rp-name-val" style="display:none">Airmax Classic 95 white blue black</p>
+    </div>
+    <p class="rp-char-count"><span id="rp-char">0</span>/150</p>
+
+    <!-- Grouped fields: Category / For Who / Condition -->
+    <div class="rp-field-group" id="rp-fields">
+      <div class="rp-field" data-rp-input>
+        <div class="rp-field-content">
+          <span class="rp-field-placeholder">Category</span>
+          <span class="rp-field-label" style="display:none">Category</span>
+          <span class="rp-field-value" style="display:none">Clothes</span>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+      <div class="rp-field" data-rp-input>
+        <div class="rp-field-content">
+          <span class="rp-field-placeholder">For Who</span>
+          <span class="rp-field-label" style="display:none">For Who</span>
+          <span class="rp-field-value" style="display:none">Women</span>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+      <div class="rp-field" data-rp-input>
+        <div class="rp-field-content">
+          <span class="rp-field-placeholder">Condition</span>
+          <span class="rp-field-label" style="display:none">Condition</span>
+          <span class="rp-field-value" style="display:none">Lightly Used</span>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+    </div>
+
+    <!-- Sections below fields — all in padded container -->
+    <div style="padding:0 16px;display:flex;flex-direction:column;gap:16px">
+      <!-- Buy now / Auction toggle -->
+      <div class="rp-toggle">
+        <button class="rp-toggle-btn active">Buy now</button>
+        <button class="rp-toggle-btn">Auction</button>
+      </div>
+
+      <!-- Price + Quantity -->
+      <div class="rp-price-row" id="rp-price-row">
+        <div class="rp-price-box" data-rp-input>
+          <span class="rp-price-label">Price</span>
+          <p class="rp-price-value" id="rp-price-val" style="visibility:hidden">$40</p>
+        </div>
+        <div class="rp-price-box" data-rp-input>
+          <span class="rp-price-label">Quantity</span>
+          <p class="rp-price-value" id="rp-qty-val" style="visibility:hidden">1</p>
+        </div>
+      </div>
+
+      <!-- Add Variant -->
+      <button class="rp-add-variant">
+        <img src="design-system/UI Icons/Icon Star.svg" alt="">
+        <span>Add Variant</span>
+      </button>
+
+      <!-- Reserved for Live -->
+      <div class="rp-reserved">
+        <p class="rp-reserved-title">Reserved for Live</p>
+        <div class="rp-reserved-row">
+          <p class="rp-reserved-desc">The product can only be purchased within a show.</p>
+          <div class="ss-switch" style="margin:0">
+            <div class="ss-switch-thumb"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping size -->
+      <div class="rp-shipping" data-rp-input>
+        <span class="rp-shipping-label">Shipping size</span>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+    </div>
+
+    <div style="height:126px"></div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="rp-bottom">
+    <button class="ap-btn-2cta" id="rp-save-draft">Save Draft</button>
+    <button class="ap-btn-cta" id="rp-publish-btn">Publish</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- SCREEN: PRODUCTS LIST                -->
+<!-- ════════════════════════════════════ -->
+<div class="screen pl-screen" id="screen-products-list">
+  <div class="pl-top">
+    <div class="pl-top-status"></div>
+    <div class="pl-top-action">
+      <button class="pl-back" id="pl-back-btn"><img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back"></button>
+      <button class="pl-manage">Manage</button>
+    </div>
+  </div>
+  <div class="screen-scroll" id="pl-scroll" style="padding-top:0">
+    <h1 class="pl-title">Products</h1>
+
+    <!-- Status pills -->
+    <div class="pl-status-pills">
+      <button class="pl-status-pill active">Active <span class="pl-status-count">2</span></button>
+      <button class="pl-status-pill">Drafts <span class="pl-status-count">10</span></button>
+      <button class="pl-status-pill">Inactive <span class="pl-status-count">1</span></button>
+      <button class="pl-status-pill">Sold out</button>
+    </div>
+
+    <!-- Filter pills -->
+    <div class="pl-filter-pills">
+      <button class="pl-filter active">All</button>
+      <button class="pl-filter">Auction 1</button>
+      <button class="pl-filter">Buy now 1</button>
+    </div>
+
+    <!-- Product list -->
+    <div id="pl-product-list">
+      <div class="pl-item">
+        <div class="pl-item-img" style="background-image:url('images/product photos/image 3.png')"></div>
+        <div class="pl-item-info">
+          <p class="pl-item-name">Airmax Classic 95 white blue red</p>
+          <p class="pl-item-attr">Variants: 3</p>
+          <p class="pl-item-attr">Quantity: 92</p>
+          <span class="pl-item-price">$90</span>
+          <button class="pl-item-menu"><img src="design-system/UI Icons/Icon more.svg" alt="..."></button>
+        </div>
+      </div>
+      <div class="pl-item">
+        <div class="pl-item-img" style="background-image:url('images/product photos/image 5.png')"></div>
+        <div class="pl-item-info">
+          <p class="pl-item-name">Airmax Classic 95 white blue red</p>
+          <p class="pl-item-attr">Variants: 3</p>
+          <p class="pl-item-attr">Quantity: 92</p>
+          <span class="pl-item-price">$90</span>
+          <button class="pl-item-menu"><img src="design-system/UI Icons/Icon more.svg" alt="..."></button>
+        </div>
+      </div>
+      <div class="pl-item">
+        <div class="pl-item-img" style="background-image:url('images/product photos/image 8.png')"></div>
+        <div class="pl-item-info">
+          <p class="pl-item-name">Airmax Classic 95 white blue red</p>
+          <p class="pl-item-attr">Quantity: 5</p>
+          <span class="pl-item-auction"><img src="design-system/UI Icons/Icon Hammer 2.svg" alt="">From $1</span>
+          <button class="pl-item-menu"><img src="design-system/UI Icons/Icon more.svg" alt="..."></button>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:100px"></div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="pl-bottom">
+    <button class="ap-btn-cta" id="pl-add-product-btn">Add Product</button>
+  </div>
 </div>
 
 <!-- ════════════════════════════════════ -->
@@ -1755,6 +2927,118 @@ if (lsHostAvatar) {
   });
 }
 
+// ── Schedule Show — navigate from Seller Hub ──
+const ssScheduleAction = document.querySelector('[data-action="schedule-show"]');
+if (ssScheduleAction) {
+  ssScheduleAction.addEventListener('click', () => {
+    previousScreen = 'screen-sell';
+    mainTabbar.style.display = 'none';
+    // Reset form to empty state
+    ssFormFilled = false;
+    document.querySelectorAll('#ss-form .fi[data-ss-input]').forEach(fi => fi.classList.remove('filled'));
+    document.getElementById('ss-video-empty').style.display = 'flex';
+    document.getElementById('ss-video-filled').style.display = 'none';
+    const catInput = document.getElementById('ss-cat-input');
+    if (catInput) {
+      catInput.classList.remove('filled');
+      const chevron = document.getElementById('ss-cat-chevron');
+      if (chevron) chevron.src = 'design-system/UI Icons/Icon Right Chevron.svg';
+    }
+    document.getElementById('ss-scroll').scrollTop = 0;
+    document.querySelector('.ss-app-top').classList.remove('scrolled');
+    showScreen('screen-schedule-show');
+  });
+}
+
+// ── Schedule Show — scroll → toggle App Top state ──
+const ssScroll = document.getElementById('ss-scroll');
+const ssAppTop = document.querySelector('.ss-app-top');
+if (ssScroll && ssAppTop) {
+  ssScroll.addEventListener('scroll', () => {
+    ssAppTop.classList.toggle('scrolled', ssScroll.scrollTop > 40);
+  });
+}
+
+// ── Schedule Show — fill form on any input click ──
+let ssFormFilled = false;
+function ssFillForm() {
+  if (ssFormFilled) return;
+  ssFormFilled = true;
+  document.querySelectorAll('#ss-form .fi[data-ss-input]').forEach(f => f.classList.add('filled'));
+  document.getElementById('ss-video-empty').style.display = 'none';
+  document.getElementById('ss-video-filled').style.display = 'flex';
+  const catInput = document.getElementById('ss-cat-input');
+  if (catInput) {
+    catInput.classList.add('filled');
+    const chevron = document.getElementById('ss-cat-chevron');
+    if (chevron) chevron.src = 'design-system/UI Icons/Icon Down Chevron.svg';
+  }
+}
+
+const ssForm = document.getElementById('ss-form');
+if (ssForm) {
+  ssForm.addEventListener('click', e => {
+    if (e.target.closest('.fi')) ssFillForm();
+  });
+}
+
+// ── Schedule Show — also fill from category input click ──
+const ssCatInput = document.getElementById('ss-cat-input');
+if (ssCatInput) {
+  ssCatInput.addEventListener('click', ssFillForm);
+}
+
+// ── Schedule Show — back button ──
+const ssBack = document.getElementById('ss-back-btn');
+if (ssBack) {
+  ssBack.addEventListener('click', () => {
+    mainTabbar.style.display = '';
+    showScreen(previousScreen);
+    const tabMap = {'screen-home':'home','screen-browse':'browse','screen-sell':'sell','screen-activity':'activity','screen-account':'account'};
+    const tabName = tabMap[previousScreen] || 'sell';
+    tabs.forEach(t => t.classList.remove('active'));
+    const activeTab = tabbar.querySelector(`[data-tab="${tabName}"]`);
+    if (activeTab) activeTab.classList.add('active');
+  });
+}
+
+// ── Schedule Show — CTA → Show Scheduled ──
+const ssScheduleBtn = document.getElementById('ss-schedule-btn');
+if (ssScheduleBtn) {
+  ssScheduleBtn.addEventListener('click', () => {
+    showScreen('screen-show-scheduled');
+  });
+}
+
+// ── Show Scheduled — back to Seller Hub + add new show tile ──
+let scheduledShowCount = 0;
+const schedBack = document.getElementById('sched-back-btn');
+if (schedBack) {
+  schedBack.addEventListener('click', () => {
+    mainTabbar.style.display = '';
+    showScreen('screen-sell');
+    tabs.forEach(t => t.classList.remove('active'));
+    const sellTab = tabbar.querySelector('[data-tab="sell"]');
+    if (sellTab) sellTab.classList.add('active');
+
+    // Save show to localStorage + render on Seller Hub
+    if (ssFormFilled) {
+      scheduledShowCount++;
+      const showImages = ['images/shows/show1.jpg','images/shows/show2.jpg'];
+      const img = showImages[scheduledShowCount % showImages.length];
+      const show = {
+        id: Date.now(),
+        title: 'Daily from $1, Clothes, Home st...',
+        date: '22 Jan, 6:00 PM',
+        photo: img,
+        createdAt: new Date().toISOString()
+      };
+      saveShow(show);
+      renderSellShows();
+    }
+  });
+}
+
 // ── Hash-based deep linking ──
 function handleHash() {
   const hash = location.hash.replace('#', '');
@@ -1764,6 +3048,492 @@ function handleHash() {
 }
 window.addEventListener('hashchange', handleHash);
 handleHash();
+
+// ════════════════════════════════════
+// ADD PRODUCTS FLOW
+// ════════════════════════════════════
+
+// ── Product photos pool ──
+const productPhotos = Array.from({length:20}, (_,i) => `images/product photos/image ${i+1}.png`);
+
+// ── Navigate: Seller Hub → Add Products ──
+const apAddAction = document.querySelector('[data-action="add-product"]');
+if (apAddAction) {
+  apAddAction.addEventListener('click', () => {
+    mainTabbar.style.display = 'none';
+    apResetToEmpty();
+    showScreen('screen-add-products');
+  });
+}
+
+// ── Add Products: Close → Seller Hub ──
+const apCloseBtn = document.getElementById('ap-close-btn');
+if (apCloseBtn) {
+  apCloseBtn.addEventListener('click', () => {
+    mainTabbar.style.display = '';
+    showScreen('screen-sell');
+    tabs.forEach(t => t.classList.remove('active'));
+    const sellTab = tabbar.querySelector('[data-tab="sell"]');
+    if (sellTab) sellTab.classList.add('active');
+  });
+}
+
+// ── Add Products: Tab switching ──
+const apTabMedia = document.getElementById('ap-tab-media');
+const apTabDrafts = document.getElementById('ap-tab-drafts');
+
+function apShowMediaEmpty() {
+  document.getElementById('ap-media-empty').style.display = '';
+  document.getElementById('ap-media-filled').style.display = 'none';
+  document.getElementById('ap-drafts-tab').style.display = 'none';
+  document.getElementById('ap-media-bottom').style.display = 'none';
+  apTabMedia.classList.add('active');
+  apTabDrafts.classList.remove('active');
+}
+
+function apShowMediaFilled() {
+  document.getElementById('ap-media-empty').style.display = 'none';
+  document.getElementById('ap-media-filled').style.display = '';
+  document.getElementById('ap-drafts-tab').style.display = 'none';
+  document.getElementById('ap-media-bottom').style.display = 'flex';
+  apTabMedia.classList.add('active');
+  apTabDrafts.classList.remove('active');
+  apBuildMediaGrid();
+}
+
+function apShowDrafts() {
+  document.getElementById('ap-media-empty').style.display = 'none';
+  document.getElementById('ap-media-filled').style.display = 'none';
+  document.getElementById('ap-drafts-tab').style.display = '';
+  document.getElementById('ap-media-bottom').style.display = 'none';
+  apTabMedia.classList.remove('active');
+  apTabDrafts.classList.add('active');
+  apTabDrafts.innerHTML = apDrafts.length > 0
+    ? `Drafts <span class="ap-tab-badge">${apDrafts.length}</span>`
+    : 'Drafts';
+  apBuildDraftsList();
+}
+
+function apResetToEmpty() {
+  apShowMediaEmpty();
+  apTabDrafts.innerHTML = 'Drafts';
+  document.getElementById('ap-scroll').scrollTop = 0;
+}
+
+apTabMedia.addEventListener('click', () => {
+  if (apMediaState === 'filled') apShowMediaFilled();
+  else apShowMediaEmpty();
+});
+apTabDrafts.addEventListener('click', apShowDrafts);
+
+let apMediaState = 'empty'; // 'empty' | 'filled'
+
+// ── Add Products: "Add Photos and Videos" → show media grid ──
+document.getElementById('ap-add-photos-btn').addEventListener('click', () => {
+  apMediaState = 'filled';
+  apShowMediaFilled();
+});
+
+// ── Build media grid ──
+let apSelectedItems = []; // ordered array of selected tile elements
+function apBuildMediaGrid() {
+  const grid = document.getElementById('ap-media-grid');
+  if (grid.children.length > 0) return; // already built
+  apSelectedItems = [];
+  const photos = productPhotos.slice(0, 3);
+
+  photos.forEach((src, i) => {
+    const item = document.createElement('div');
+    item.className = 'ap-media-item';
+    item.style.backgroundImage = `url('${src}')`;
+
+    // Radio circle — top right (white outline; fills white + number when selected)
+    const radio = document.createElement('div');
+    radio.className = 'ap-media-radio';
+    radio.innerHTML = '<span></span>';
+    item.appendChild(radio);
+
+    // Play badge — bottom right
+    const play = document.createElement('div');
+    play.className = 'ap-media-play';
+    play.innerHTML = `<img src="design-system/UI Icons/Icon Play.svg" alt="">`;
+    item.appendChild(play);
+
+    // Click to toggle selection
+    item.addEventListener('click', () => {
+      if (item.classList.contains('selected')) {
+        item.classList.remove('selected');
+        apSelectedItems = apSelectedItems.filter(el => el !== item);
+      } else {
+        item.classList.add('selected');
+        apSelectedItems.push(item);
+      }
+      apRenumberSelection();
+      apUpdateCTA();
+    });
+
+    grid.appendChild(item);
+  });
+
+  // Add Media tile
+  const addMedia = document.createElement('div');
+  addMedia.className = 'ap-add-media';
+  addMedia.innerHTML = `
+    <button class="ap-add-media-btn"><img src="design-system/UI Icons/Icon Plus.svg" alt="+"></button>
+    <span>Add Media</span>
+  `;
+  grid.appendChild(addMedia);
+
+  apUpdateCTA();
+}
+
+function apRenumberSelection() {
+  // Clear all numbers
+  document.querySelectorAll('.ap-media-radio span').forEach(s => s.textContent = '');
+  // Number selected items in selection order
+  apSelectedItems.forEach((item, i) => {
+    const span = item.querySelector('.ap-media-radio span');
+    if (span) span.textContent = i + 1;
+  });
+}
+
+function apUpdateCTA() {
+  const count = apSelectedItems.length;
+  const totalPhotos = document.querySelectorAll('.ap-media-item').length;
+  const bottom = document.getElementById('ap-media-bottom');
+  const createAllBtn = document.getElementById('ap-create-all-btn');
+  const deleteBtn = document.getElementById('ap-delete-btn');
+  const createSelBtn = document.getElementById('ap-create-selected-btn');
+
+  if (count === 0) {
+    // No selection — show full-width "Create N Products"
+    bottom.dataset.state = 'all';
+    createAllBtn.style.display = '';
+    deleteBtn.style.display = 'none';
+    createSelBtn.style.display = 'none';
+    const title = createAllBtn.querySelector('.ap-btn-create-title');
+    title.textContent = `Create ${totalPhotos} Product${totalPhotos > 1 ? 's' : ''}`;
+    apTabDrafts.innerHTML = apDrafts.length > 0
+      ? `Drafts <span class="ap-tab-badge">${apDrafts.length}</span>`
+      : 'Drafts';
+  } else {
+    // Has selection — show Delete + Create N
+    bottom.dataset.state = 'selected';
+    createAllBtn.style.display = 'none';
+    deleteBtn.style.display = '';
+    createSelBtn.style.display = '';
+    createSelBtn.textContent = `Create 1 Product`;
+    apTabDrafts.innerHTML = apDrafts.length > 0
+      ? `Drafts <span class="ap-tab-badge">${apDrafts.length}</span>`
+      : 'Drafts';
+  }
+}
+
+// ── Drafts storage ──
+let apDrafts = [];
+
+function apGetPhotoUrl(item) {
+  return item.style.backgroundImage.replace(/url\(['"]?/, '').replace(/['"]?\)/, '');
+}
+
+// ── "Create All" → one draft per photo ──
+document.getElementById('ap-create-all-btn').addEventListener('click', () => {
+  document.querySelectorAll('.ap-media-item').forEach(item => {
+    apDrafts.push({ id: Date.now() + Math.random(), photos: [apGetPhotoUrl(item)], name: '' });
+  });
+  apShowDrafts();
+});
+
+// ── "Create Selected" → one draft with all selected photos ──
+document.getElementById('ap-create-selected-btn').addEventListener('click', () => {
+  const photos = apSelectedItems.map(item => apGetPhotoUrl(item));
+  apDrafts.push({ id: Date.now(), photos, name: '' });
+  // Clear selection (photos stay in media library)
+  apSelectedItems.forEach(item => item.classList.remove('selected'));
+  apSelectedItems = [];
+  apRenumberSelection();
+  apUpdateCTA();
+  apShowDrafts();
+});
+
+// ── Delete selected photos from media library ──
+document.getElementById('ap-delete-btn').addEventListener('click', () => {
+  apSelectedItems.forEach(item => item.remove());
+  apSelectedItems = [];
+  apUpdateCTA();
+});
+
+// ── Build drafts list ──
+function apBuildDraftsList() {
+  const list = document.getElementById('ap-drafts-list');
+  list.innerHTML = '';
+  if (apDrafts.length === 0) {
+    list.innerHTML = '<p style="text-align:center;color:var(--bw40);font-size:13px;padding:32px 16px">No drafts yet</p>';
+    return;
+  }
+  apDrafts.forEach((draft) => {
+    const el = document.createElement('div');
+    el.className = 'ap-draft';
+    const coverUrl = draft.photos[0];
+    const name = draft.name || 'Untitled Product';
+    const photoBadge = draft.photos.length > 1
+      ? `<span class="ap-draft-badge">${draft.photos.length} photos</span>` : '';
+    el.innerHTML = `
+      <div class="ap-draft-img" style="background-image:url('${coverUrl}')"></div>
+      <div class="ap-draft-info">
+        <p class="ap-draft-name">${name}</p>
+        <span class="ap-draft-badge">Recently Added</span>
+        ${photoBadge}
+        <div class="ap-draft-actions">
+          <button class="ap-draft-trash"><img src="design-system/UI Icons/Icon Trash.svg" alt="Delete"></button>
+          <button class="ap-draft-review">Review Product</button>
+        </div>
+      </div>
+    `;
+    el.querySelector('.ap-draft-trash').addEventListener('click', () => {
+      apDrafts = apDrafts.filter(d => d !== draft);
+      apBuildDraftsList();
+      apTabDrafts.innerHTML = apDrafts.length > 0
+        ? `Drafts <span class="ap-tab-badge">${apDrafts.length}</span>`
+        : 'Drafts';
+    });
+    el.querySelector('.ap-draft-review').addEventListener('click', () => {
+      rpCoverPhoto = coverUrl;
+      rpResetForm();
+      showScreen('screen-review-product');
+    });
+    list.appendChild(el);
+  });
+}
+
+// ════════════════════════════════════
+// REVIEW PRODUCT
+// ════════════════════════════════════
+
+let rpCoverPhoto = productPhotos[1];
+let rpFormFilled = false;
+
+function rpResetForm() {
+  rpFormFilled = false;
+  document.getElementById('rp-cover-img').style.backgroundImage = `url('${rpCoverPhoto}')`;
+  document.getElementById('rp-name-ph').style.display = '';
+  document.getElementById('rp-name-val').style.display = 'none';
+  document.getElementById('rp-char').textContent = '0';
+  document.querySelectorAll('#rp-fields [data-rp-input], .rp-field[data-rp-input], .rp-shipping[data-rp-input]').forEach(f => {
+    const ph = f.querySelector('.rp-field-placeholder, .rp-shipping-label');
+    const lb = f.querySelector('.rp-field-label');
+    const vl = f.querySelector('.rp-field-value');
+    if (ph) ph.style.display = '';
+    if (lb) lb.style.display = 'none';
+    if (vl) vl.style.display = 'none';
+  });
+  document.getElementById('rp-price-val').style.visibility = 'hidden';
+  document.getElementById('rp-qty-val').style.visibility = 'hidden';
+  document.getElementById('rp-scroll').scrollTop = 0;
+  document.getElementById('rp-top').classList.remove('scrolled');
+}
+
+// ── Review Product — scroll → toggle App Top state ──
+const rpScroll = document.getElementById('rp-scroll');
+const rpTop = document.getElementById('rp-top');
+if (rpScroll && rpTop) {
+  rpScroll.addEventListener('scroll', () => {
+    rpTop.classList.toggle('scrolled', rpScroll.scrollTop > 40);
+  });
+}
+
+function rpFillForm() {
+  if (rpFormFilled) return;
+  rpFormFilled = true;
+  document.getElementById('rp-name-ph').style.display = 'none';
+  document.getElementById('rp-name-val').style.display = '';
+  document.getElementById('rp-char').textContent = '35';
+  document.querySelectorAll('#rp-fields [data-rp-input], .rp-field[data-rp-input]').forEach(f => {
+    const ph = f.querySelector('.rp-field-placeholder');
+    const lb = f.querySelector('.rp-field-label');
+    const vl = f.querySelector('.rp-field-value');
+    if (ph) ph.style.display = 'none';
+    if (lb) lb.style.display = '';
+    if (vl) vl.style.display = '';
+  });
+  document.getElementById('rp-price-val').style.visibility = '';
+  document.getElementById('rp-qty-val').style.visibility = '';
+}
+
+// Click any input → fill all
+document.getElementById('screen-review-product').addEventListener('click', e => {
+  if (e.target.closest('[data-rp-input]') || e.target.closest('.rp-name-box') || e.target.closest('.rp-price-box') || e.target.closest('.rp-shipping')) {
+    rpFillForm();
+  }
+});
+
+// Back → Add Products (drafts)
+document.getElementById('rp-back-btn').addEventListener('click', () => {
+  showScreen('screen-add-products');
+  apShowDrafts();
+});
+
+// Publish → Products list + save to localStorage
+document.getElementById('rp-publish-btn').addEventListener('click', () => {
+  // Save product
+  const product = {
+    id: Date.now(),
+    name: 'Airmax Classic 95 white blue black',
+    photo: rpCoverPhoto,
+    price: '$40',
+    quantity: 1,
+    variants: 1,
+    type: 'buy_now',
+    createdAt: new Date().toISOString()
+  };
+  saveProduct(product);
+  showScreen('screen-products-list');
+  plRenderProducts();
+});
+
+// Save Draft → back to Seller Hub
+document.getElementById('rp-save-draft').addEventListener('click', () => {
+  mainTabbar.style.display = '';
+  showScreen('screen-sell');
+  tabs.forEach(t => t.classList.remove('active'));
+  const sellTab = tabbar.querySelector('[data-tab="sell"]');
+  if (sellTab) sellTab.classList.add('active');
+});
+
+// ════════════════════════════════════
+// PRODUCTS LIST
+// ════════════════════════════════════
+
+// Back → Seller Hub (+ update products on hub)
+document.getElementById('pl-back-btn').addEventListener('click', () => {
+  mainTabbar.style.display = '';
+  showScreen('screen-sell');
+  tabs.forEach(t => t.classList.remove('active'));
+  const sellTab = tabbar.querySelector('[data-tab="sell"]');
+  if (sellTab) sellTab.classList.add('active');
+  renderSellProducts();
+});
+
+// Add Product → restart flow
+document.getElementById('pl-add-product-btn').addEventListener('click', () => {
+  apResetToEmpty();
+  showScreen('screen-add-products');
+});
+
+// Render products on Products list screen
+function plRenderProducts() {
+  const list = document.getElementById('pl-product-list');
+  const saved = getProducts();
+  // Keep static items + add saved ones at top
+  const existingStatic = list.querySelectorAll('.pl-item[data-static]');
+  // Mark existing items as static if not yet
+  list.querySelectorAll('.pl-item:not([data-dynamic])').forEach(el => el.setAttribute('data-static',''));
+  // Remove old dynamic items
+  list.querySelectorAll('.pl-item[data-dynamic]').forEach(el => el.remove());
+  // Add saved products at top
+  saved.reverse().forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'pl-item';
+    item.setAttribute('data-dynamic','');
+    item.innerHTML = `
+      <div class="pl-item-img" style="background-image:url('${p.photo}')"></div>
+      <div class="pl-item-info">
+        <p class="pl-item-name">${p.name}</p>
+        <p class="pl-item-attr">Variants: ${p.variants}</p>
+        <p class="pl-item-attr">Quantity: ${p.quantity}</p>
+        <span class="pl-item-price">${p.price}</span>
+        <button class="pl-item-menu"><img src="design-system/UI Icons/Icon more.svg" alt="..."></button>
+      </div>
+    `;
+    list.insertBefore(item, list.firstChild);
+  });
+}
+
+// ════════════════════════════════════
+// LOCAL STORAGE — persistence
+// ════════════════════════════════════
+
+function getProducts() {
+  try { return JSON.parse(localStorage.getItem('droplet_products') || '[]'); }
+  catch { return []; }
+}
+function saveProduct(product) {
+  const products = getProducts();
+  products.push(product);
+  localStorage.setItem('droplet_products', JSON.stringify(products));
+}
+function getShows() {
+  try { return JSON.parse(localStorage.getItem('droplet_shows') || '[]'); }
+  catch { return []; }
+}
+function saveShow(show) {
+  const shows = getShows();
+  shows.push(show);
+  localStorage.setItem('droplet_shows', JSON.stringify(shows));
+}
+
+// ── Render saved products on Seller Hub ──
+function renderSellProducts() {
+  const container = document.querySelector('#screen-sell .screen-scroll');
+  if (!container) return;
+  // Remove old dynamic product tiles
+  container.querySelectorAll('.prod-h[data-dynamic]').forEach(el => el.remove());
+  const saved = getProducts();
+  const prodSection = container.querySelector('[data-action="add-product"]')?.closest('.section-header')?.parentElement;
+  if (!prodSection) return;
+  const prodList = prodSection.querySelector('div[style*="flex-direction:column"]');
+  if (!prodList) return;
+  saved.forEach(p => {
+    const tile = document.createElement('div');
+    tile.className = 'prod-h';
+    tile.setAttribute('data-dynamic','');
+    tile.innerHTML = `
+      <div class="prod-h-img" style="background-image:url('${p.photo}');background-size:cover;background-position:center"></div>
+      <div class="prod-h-info">
+        <div class="prod-h-name">${p.name}</div>
+        <div class="prod-h-attr">Qty: ${p.quantity}</div>
+        <div class="prod-h-price">${p.price}</div>
+        <div class="prod-h-actions">
+          <button title="Delete"><img src="design-system/UI Icons/Icon Trash.svg" width="16" height="16" alt="Delete"></button>
+          <button title="Edit"><img src="design-system/UI Icons/Icon Edit.svg" width="16" height="16" alt="Edit"></button>
+        </div>
+      </div>
+    `;
+    prodList.appendChild(tile);
+  });
+}
+
+// ── Render saved shows on Seller Hub ──
+function renderSellShows() {
+  const container = document.getElementById('sell-upcoming-shows');
+  if (!container) return;
+  container.querySelectorAll('.show-tile[data-dynamic]').forEach(el => el.remove());
+  const saved = getShows();
+  saved.reverse().forEach(s => {
+    const tile = document.createElement('div');
+    tile.className = 'show-tile';
+    tile.setAttribute('data-dynamic','');
+    tile.innerHTML = `
+      <div class="show-tile-img" style="background-image:url('${s.photo}');background-size:cover;background-position:center">
+        <div class="show-tile-badge badge-alert" style="background:rgba(255,255,255,0.85);color:var(--bw30)">
+          <span style="font-size:10px;font-weight:700">Scheduled</span>
+        </div>
+        <div class="show-tile-bottom">
+          <div class="show-tile-date">${s.date}</div>
+          <div class="show-tile-title">${s.title}</div>
+        </div>
+      </div>`;
+    tile.addEventListener('click', () => {
+      mainTabbar.style.display = 'none';
+      showScreen('screen-live-show');
+    });
+    container.insertBefore(tile, container.firstChild);
+  });
+}
+
+// ── On page load: restore saved data ──
+renderSellProducts();
+renderSellShows();
 </script>
 
 </body>

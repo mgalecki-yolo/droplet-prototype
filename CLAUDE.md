@@ -65,9 +65,24 @@ Szczegoly design systemu sa w osobnych plikach:
 
 ---
 
-## Zasady ogolne
+## Zasady pracy
 
-- Zawsze uzywaj tokenow z `design-system/colors.md` — nie wymyslaj kolorow spoza palety
-- Typografia zawsze z fontu **Inter** z Google Fonts
-- Przed implementacja nowego komponentu — sprawdz `design-system/components.md`
-- Prototyp to **single HTML file** — zadnych bundlerow, frameworkow, zewnetrznych zaleznosci poza Inter
+- Pliki `design-system/*.md` sa zrodlem prawdy dla kolorow, typografii, wymiarow i komponentow — ZAWSZE sprawdzaj przed odpytaniem Figmy
+- Tokeny kolorow tylko z `design-system/colors.md`, typografia tylko Inter (Google Fonts)
+- Przed implementacja komponentu — sprawdz `design-system/components.md`
+- Figma: odpytuj konkretne node ID (lista w `design-system/flows.md`), nigdy cale strony
+- Figma: `get_screenshot` do podgladu layoutu, `get_design_context` do szczegolowej implementacji
+- FigJam board key: `smdQpxfQiBbesEFpLBlhq6` — do notatek i planowania
+- Single HTML file, brak bundlerow/frameworkow
+
+## Zasady budowy ekranow
+
+- Buduj JEDEN ekran na raz — nigdy nie rob wielu ekranow naraz
+- Dla kazdego ekranu:
+  1. Sprawdz lokalne specs (`components.md`, `typography.md`, `icons.md`)
+  2. Odpytaj `get_design_context` z Figmy (konkretny node ID)
+  3. Zweryfikuj KAZDA ikone, font, wymiar i kolor przed implementacja
+  4. Zbuduj ekran
+  5. Poczekaj na review uzytkownika → poprawki → dopiero wtedy nastepny ekran
+- NIE zgaduj layoutu, pozycji ani komponentow — zawsze czytaj z Figmy lub lokalnych specs
+- Screenshot (`get_screenshot`) daje ogolny obraz — do detali implementacji zawsze uzywaj `get_design_context`
