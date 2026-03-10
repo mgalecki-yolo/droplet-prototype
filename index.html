@@ -590,36 +590,40 @@ body{
 .wallet-navi-btn img{width:16px;height:16px;opacity:0.7}
 .wallet-navi-btn.confirm{background:var(--rd10)}
 .wallet-navi-btn.confirm img{filter:brightness(0) invert(1);opacity:1}
-.wallet-body{position:relative;width:100%;display:flex;flex-direction:column;padding:0 16px 32px;gap:0}
+.wallet-body{position:relative;width:100%;display:flex;flex-direction:column;padding:0 16px 32px;gap:12px}
 .wallet-action-group{background:white;border:1px solid #E9E6DD;border-radius:26px;overflow:hidden;width:100%}
-.wallet-action-row{display:flex;align-items:center;height:52px;padding:0 16px;cursor:pointer;text-decoration:none;background:white}
-.wallet-action-row-tall{display:flex;align-items:flex-start;padding:16px;cursor:pointer;text-decoration:none;background:white}
-.wallet-action-icon{width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wallet-action-row{display:flex;align-items:center;height:60px;padding:0 16px;cursor:pointer;text-decoration:none;background:white}
+.wallet-action-row-tall{display:flex;align-items:center;min-height:68px;padding:14px 12px 14px 16px;cursor:pointer;text-decoration:none;background:white;gap:12px}
+.wallet-action-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .wallet-action-icon img{width:18px;height:18px}
 .wallet-action-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
 .wallet-action-label{font-size:16px;font-weight:500;color:#101828;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wallet-action-sub{font-size:13px;font-weight:400;color:#7B8494;line-height:1.3}
-.wallet-action-chevron{width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto}
+.wallet-action-chevron{width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:8px}
 .wallet-action-chevron img{width:9px;height:16px;opacity:0.35}
-.wallet-separator{height:1px;background:#E9E6DD;margin-left:60px}
+.wallet-separator{height:1px;background:#E9E6DD;margin-left:16px}
 .wallet-radio{width:24px;height:24px;border-radius:50%;border:2px solid #E9E6DD;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .wallet-radio.selected{border-color:#101828}
 .wallet-radio-inner{width:10px;height:10px;border-radius:50%;background:#101828}
+.wallet-row-icon-btn{width:32px;height:32px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wallet-row-icon-btn img{width:16px;height:16px;opacity:0.4}
+.wallet-type-selector{display:flex;gap:8px;padding:0 16px 12px}
+.wallet-type-pill{flex:1;height:36px;border-radius:100px;border:none;cursor:pointer;font-size:12px;font-weight:600;color:#2A2F35;background:white;box-shadow:0px 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit}
+.wallet-type-pill.active{background:#E3E1DC;box-shadow:none}
+.wallet-type-pill img{width:14px;height:14px;opacity:0.6}
+.wallet-pay-link{display:block;text-align:center;font-size:13px;font-weight:400;color:#0091FF;padding:16px 0 4px;cursor:pointer;text-decoration:none}
 .wallet-form-stack{position:relative;width:100%;display:flex;flex-direction:column;gap:12px;padding:0 16px 32px}
 .wallet-right-link{font-size:13px;font-weight:400;color:#0091FF;white-space:nowrap;flex-shrink:0}
 .wa-field-hide{display:none!important}
 .wallet-apple-btn{width:100%;height:52px;background:#1C1C1E;border-radius:52px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;font-family:inherit}
 .wallet-apple-btn-icon{font-size:20px;color:white;line-height:1;margin-top:-2px}
 .wallet-apple-btn-label{font-size:18px;font-weight:500;color:white;letter-spacing:-0.3px}
-.wallet-or-divider{text-align:center;font-size:16px;font-weight:500;color:#101828}
+.wallet-or-divider{text-align:center;font-size:16px;font-weight:500;color:#101828;padding:4px 0}
 .wallet-form-input{width:100%;min-height:60px;background:white;border:1px solid #E9E6DD;border-radius:26px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.wallet-form-placeholder{font-size:16px;font-weight:400;color:#7B8494;letter-spacing:-0.5px}
-.wallet-form-value{font-size:16px;font-weight:500;color:#101828}
-/* Form field — filled vs empty state */
 .wallet-field{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
 .wallet-field-label{font-size:13px;font-weight:400;color:#7B8494;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .wallet-field-value{font-size:16px;font-weight:500;color:#101828}
-.wallet-field.empty .wallet-field-label{font-size:16px;font-weight:400;letter-spacing:-0.5px}
+.wallet-field.empty .wallet-field-label{font-size:16px;font-weight:400;letter-spacing:-0.5px;color:#7B8494}
 .wallet-field.empty .wallet-field-value{display:none}
 .wallet-form-icon{display:flex;align-items:center}
 .wallet-form-icon img{width:18px;height:18px;opacity:0.5}
@@ -2472,7 +2476,7 @@ body{
     </div>
     <div class="wallet-body">
       <div class="wallet-action-group">
-        <a class="wallet-action-row" id="wallet-open-delivery">
+        <a class="wallet-action-row" id="wallet-open-addresses">
           <div class="wallet-action-icon"><img id="wallet-shipping-icon" src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
           <div class="wallet-action-body">
             <div class="wallet-action-label" id="wallet-shipping-label">Shipping address</div>
@@ -2493,7 +2497,7 @@ body{
     </div>
   </div>
 
-  <!-- Sheet 2: Delivery method (Paczkomat + Courier) -->
+  <!-- Sheet 2: Delivery method (legacy, dostępny z Addresses) -->
   <div class="wallet-sheet" id="wallet-delivery-sheet">
     <div class="wallet-sheet-bg"></div>
     <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
@@ -2508,10 +2512,10 @@ body{
       <div class="wallet-action-group">
         <a class="wallet-action-row" id="wallet-open-paczkomat">
           <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Paczkomat.svg" alt=""></div>
-          <div class="wallet-action-body"><div class="wallet-action-label">Paczkomat Inpost</div></div>
+          <div class="wallet-action-body"><div class="wallet-action-label">Paczkomat InPost</div></div>
           <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
         </a>
-        <div class="wallet-separator" style="margin-left:16px"></div>
+        <div class="wallet-separator"></div>
         <a class="wallet-action-row" id="wallet-open-courier">
           <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
           <div class="wallet-action-body"><div class="wallet-action-label">Courier</div></div>
@@ -2529,14 +2533,9 @@ body{
       <button class="wallet-navi-btn" id="wallet-addresses-back">
         <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
       </button>
-      <span class="wallet-toolbar-title" id="wallet-addresses-title">Addresses</span>
-      <div style="display:flex;gap:12px;position:relative;z-index:1">
-        <!-- Normal mode: Edit button -->
-        <button class="wallet-navi-btn" id="wallet-addr-edit-toggle">
-          <img src="design-system/UI Icons/Icon Edit.svg" alt="">
-        </button>
-        <!-- Edit mode: Plus button (hidden by default) -->
-        <button class="wallet-navi-btn" id="wallet-addr-add-btn" style="display:none">
+      <span class="wallet-toolbar-title">Addresses</span>
+      <div style="display:flex;gap:8px;position:relative;z-index:1">
+        <button class="wallet-navi-btn" id="wallet-addr-add-btn">
           <img src="design-system/UI Icons/Icon Plus.svg" alt="">
         </button>
         <button class="wallet-navi-btn confirm" id="wallet-addresses-confirm">
@@ -2547,54 +2546,51 @@ body{
     <div class="wallet-body">
       <div class="wallet-action-group" id="wallet-addr-list">
         <a class="wallet-action-row-tall wallet-addr-row" id="wallet-addr-1" data-delivery="paczkomat">
-          <div class="wallet-action-icon wa-type-icon" style="padding-top:2px"><img src="design-system/UI Icons/Icon Paczkomat.svg" alt=""></div>
-          <button class="wallet-action-icon wa-trash-icon" style="display:none;padding-top:2px;background:none;border:none;cursor:pointer" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
-            <img src="design-system/UI Icons/Icon Trash.svg" alt="" style="width:18px;height:18px;opacity:0.45">
-          </button>
+          <div class="wallet-radio wa-radio"></div>
           <div class="wallet-action-body">
             <div class="wallet-action-label">POB04M</div>
             <div class="wallet-action-sub">ul. Fabryczna 2B<br>Pobiedziska 62-010</div>
           </div>
-          <div class="wallet-radio wa-radio"></div>
-          <button class="wa-edit-icon" style="display:none;background:none;border:none;cursor:pointer;padding:4px" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
-            <img src="design-system/UI Icons/Icon Edit.svg" alt="" style="width:18px;height:18px;opacity:0.45">
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Edit.svg" alt="">
+          </button>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Trash.svg" alt="">
           </button>
         </a>
-        <div class="wallet-separator" style="margin:0 16px 0 60px"></div>
+        <div class="wallet-separator"></div>
         <a class="wallet-action-row-tall wallet-addr-row" id="wallet-addr-2" data-delivery="courier">
-          <div class="wallet-action-icon wa-type-icon" style="padding-top:2px"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
-          <button class="wallet-action-icon wa-trash-icon" style="display:none;padding-top:2px;background:none;border:none;cursor:pointer" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
-            <img src="design-system/UI Icons/Icon Trash.svg" alt="" style="width:18px;height:18px;opacity:0.45">
-          </button>
+          <div class="wallet-radio selected wa-radio"><div class="wallet-radio-inner"></div></div>
           <div class="wallet-action-body">
             <div class="wallet-action-label">Marcin Gałęcki</div>
             <div class="wallet-action-sub">Lednogóra 62f<br>62-261 Lednogóra</div>
           </div>
-          <div class="wallet-radio selected wa-radio"><div class="wallet-radio-inner"></div></div>
-          <button class="wa-edit-icon" style="display:none;background:none;border:none;cursor:pointer;padding:4px" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
-            <img src="design-system/UI Icons/Icon Edit.svg" alt="" style="width:18px;height:18px;opacity:0.45">
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Edit.svg" alt="">
+          </button>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Trash.svg" alt="">
           </button>
         </a>
-        <div class="wallet-separator" style="margin:0 16px 0 60px"></div>
+        <div class="wallet-separator"></div>
         <a class="wallet-action-row-tall wallet-addr-row" id="wallet-addr-3" data-delivery="courier">
-          <div class="wallet-action-icon wa-type-icon" style="padding-top:2px"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
-          <button class="wallet-action-icon wa-trash-icon" style="display:none;padding-top:2px;background:none;border:none;cursor:pointer" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
-            <img src="design-system/UI Icons/Icon Trash.svg" alt="" style="width:18px;height:18px;opacity:0.45">
-          </button>
+          <div class="wallet-radio wa-radio"></div>
           <div class="wallet-action-body">
             <div class="wallet-action-label">Marcin Gałęcki</div>
             <div class="wallet-action-sub">os. Pod Lipami 12<br>61-633 Poznań</div>
           </div>
-          <div class="wallet-radio wa-radio"></div>
-          <button class="wa-edit-icon" style="display:none;background:none;border:none;cursor:pointer;padding:4px" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
-            <img src="design-system/UI Icons/Icon Edit.svg" alt="" style="width:18px;height:18px;opacity:0.45">
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Edit.svg" alt="">
+          </button>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Trash.svg" alt="">
           </button>
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Sheet 3b: Edit / Add Address -->
+  <!-- Sheet 4: Add / Edit Address -->
   <div class="wallet-sheet" id="wallet-edit-address-sheet">
     <div class="wallet-sheet-bg"></div>
     <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
@@ -2602,52 +2598,48 @@ body{
       <button class="wallet-navi-btn" id="wallet-edit-address-back">
         <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
       </button>
-      <span class="wallet-toolbar-title" id="wallet-edit-address-title">Edit Address</span>
-      <button class="wallet-navi-btn confirm" id="wallet-edit-address-confirm">
-        <img src="design-system/UI Icons/Icon Check.svg" alt="">
+      <span class="wallet-toolbar-title" id="wallet-edit-address-title">Add address</span>
+      <div class="wallet-toolbar-spacer"></div>
+    </div>
+    <div class="wallet-type-selector">
+      <button class="wallet-type-pill active" id="wa-seg-paczkomat" onclick="waSetType('paczkomat')">
+        <img src="design-system/UI Icons/Icon Paczkomat.svg" alt=""> Paczkomat
+      </button>
+      <button class="wallet-type-pill" id="wa-seg-courier" onclick="waSetType('courier')">
+        <img src="design-system/UI Icons/Icon Shipping.svg" alt=""> Courier
       </button>
     </div>
-    <div id="wa-type-selector" style="display:none;padding:0 0 4px">
-      <div class="ap-tabs" style="margin:0 0 4px">
-        <button class="ap-tab active" id="wa-seg-paczkomat" onclick="waSetType('paczkomat')">
-          <img src="design-system/UI Icons/Icon Paczkomat.svg" style="width:14px;height:14px;opacity:0.6"> Paczkomat
-        </button>
-        <button class="ap-tab" id="wa-seg-courier" onclick="waSetType('courier')">
-          <img src="design-system/UI Icons/Icon Shipping.svg" style="width:14px;height:14px;opacity:0.6"> Courier
-        </button>
-      </div>
-    </div>
     <div class="wallet-form-stack">
-      <!-- Paczkomat only: id + Select link -->
+      <!-- Paczkomat: ID + Select -->
       <div class="wallet-form-input" id="wa-row-paczkomat-id" onclick="walletFillField('wa-paczkomat-id','POB04M')">
-        <div class="wallet-field" id="wa-field-paczkomat-id">
-          <span class="wallet-field-label">Paczkomat id</span>
+        <div class="wallet-field empty" id="wa-field-paczkomat-id">
+          <span class="wallet-field-label">Paczkomat ID</span>
           <span class="wallet-field-value" id="wa-paczkomat-id"></span>
         </div>
         <span class="wallet-right-link">Select</span>
       </div>
-      <!-- Courier only: name, address, postal+city -->
-      <div class="wallet-form-input" id="wa-row-name" onclick="walletFillField('wa-name','Marcin Gałęcki')">
-        <div class="wallet-field" id="wa-field-name">
-          <span class="wallet-field-label">Name and Surname</span>
+      <!-- Courier: name, address, postal+city -->
+      <div class="wallet-form-input wa-field-hide" id="wa-row-name" onclick="walletFillField('wa-name','Marcin Gałęcki')">
+        <div class="wallet-field empty" id="wa-field-name">
+          <span class="wallet-field-label">Full name</span>
           <span class="wallet-field-value" id="wa-name"></span>
         </div>
       </div>
-      <div class="wallet-form-input" id="wa-row-address" onclick="walletFillField('wa-address','Lednogóra 62f')">
-        <div class="wallet-field" id="wa-field-address">
+      <div class="wallet-form-input wa-field-hide" id="wa-row-address" onclick="walletFillField('wa-address','Lednogóra 62f')">
+        <div class="wallet-field empty" id="wa-field-address">
           <span class="wallet-field-label">Address</span>
           <span class="wallet-field-value" id="wa-address"></span>
         </div>
       </div>
-      <div class="wallet-form-row" id="wa-row-postal-city">
+      <div class="wallet-form-row wa-field-hide" id="wa-row-postal-city">
         <div class="wallet-form-input" onclick="walletFillField('wa-postal','62-261')">
-          <div class="wallet-field" id="wa-field-postal">
-            <span class="wallet-field-label">Postal Code</span>
+          <div class="wallet-field empty" id="wa-field-postal">
+            <span class="wallet-field-label">Postal code</span>
             <span class="wallet-field-value" id="wa-postal"></span>
           </div>
         </div>
         <div class="wallet-form-input" onclick="walletFillField('wa-city','Lednogóra')">
-          <div class="wallet-field" id="wa-field-city">
+          <div class="wallet-field empty" id="wa-field-city">
             <span class="wallet-field-label">City</span>
             <span class="wallet-field-value" id="wa-city"></span>
           </div>
@@ -2655,21 +2647,22 @@ body{
       </div>
       <!-- Both: phone, email -->
       <div class="wallet-form-input" onclick="walletFillField('wa-phone','+48 507416939')">
-        <div class="wallet-field" id="wa-field-phone">
-          <span class="wallet-field-label">Phone</span>
+        <div class="wallet-field empty" id="wa-field-phone">
+          <span class="wallet-field-label">Phone number</span>
           <span class="wallet-field-value" id="wa-phone"></span>
         </div>
       </div>
       <div class="wallet-form-input" onclick="walletFillField('wa-email','marcin@example.com')">
-        <div class="wallet-field" id="wa-field-email">
-          <span class="wallet-field-label">E-mail Address</span>
+        <div class="wallet-field empty" id="wa-field-email">
+          <span class="wallet-field-label">Email</span>
           <span class="wallet-field-value" id="wa-email"></span>
         </div>
       </div>
+      <button class="wallet-cta-btn" id="wallet-edit-address-save">Save address</button>
     </div>
   </div>
 
-  <!-- Sheet 4: Payment method (Card / Blik / Apple Pay / PayPo) -->
+  <!-- Sheet 5: Payment method -->
   <div class="wallet-sheet" id="wallet-payment-sheet">
     <div class="wallet-sheet-bg"></div>
     <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
@@ -2682,34 +2675,38 @@ body{
     </div>
     <div class="wallet-body">
       <div class="wallet-action-group">
-        <a class="wallet-action-row" id="wallet-open-add-card">
+        <a class="wallet-action-row wallet-pay-row" data-payment="card">
           <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Card.svg" alt=""></div>
-          <div class="wallet-action-body"><div class="wallet-action-label">Card</div></div>
-          <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
+          <div class="wallet-action-body">
+            <div class="wallet-action-label">Card</div>
+            <div class="wallet-action-sub" id="wallet-pay-card-sub">Visa ·· 4242</div>
+          </div>
+          <div class="wallet-radio selected"><div class="wallet-radio-inner"></div></div>
         </a>
-        <div class="wallet-separator" style="margin-left:16px"></div>
-        <a class="wallet-action-row">
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row wallet-pay-row" data-payment="blik">
           <div class="wallet-action-icon" style="font-size:12px;font-weight:800;color:#2b2b2b;letter-spacing:-1px">blik</div>
           <div class="wallet-action-body"><div class="wallet-action-label">Blik</div></div>
-          <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
+          <div class="wallet-radio"></div>
         </a>
-        <div class="wallet-separator" style="margin-left:16px"></div>
-        <a class="wallet-action-row">
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row wallet-pay-row" data-payment="applepay">
           <div class="wallet-action-icon" style="font-size:11px;font-weight:600;color:#1C1C1E;letter-spacing:-0.5px"> Pay</div>
           <div class="wallet-action-body"><div class="wallet-action-label">Apple Pay</div></div>
-          <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
+          <div class="wallet-radio"></div>
         </a>
-        <div class="wallet-separator" style="margin-left:16px"></div>
-        <a class="wallet-action-row">
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row wallet-pay-row" data-payment="paypo">
           <div class="wallet-action-icon" style="font-size:11px;font-weight:700;color:var(--rd10)">PayPo</div>
           <div class="wallet-action-body"><div class="wallet-action-label">PayPo</div></div>
-          <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
+          <div class="wallet-radio"></div>
         </a>
       </div>
+      <a class="wallet-pay-link" id="wallet-open-add-card">+ Add payment method</a>
     </div>
   </div>
 
-  <!-- Sheet 5: Add Card -->
+  <!-- Sheet 6: Add Card -->
   <div class="wallet-sheet" id="wallet-add-card-sheet">
     <div class="wallet-sheet-bg"></div>
     <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
@@ -2717,7 +2714,7 @@ body{
       <button class="wallet-navi-btn" id="wallet-add-card-back">
         <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
       </button>
-      <span class="wallet-toolbar-title">Add Card</span>
+      <span class="wallet-toolbar-title">Add card</span>
       <div class="wallet-toolbar-spacer"></div>
     </div>
     <div class="wallet-form-stack">
@@ -2725,28 +2722,36 @@ body{
         <span class="wallet-apple-btn-icon"></span>
         <span class="wallet-apple-btn-label">Pay</span>
       </button>
-      <div class="wallet-or-divider">Or use card</div>
-      <div class="wallet-form-input">
-        <span class="wallet-form-placeholder">Card Number</span>
+      <div class="wallet-or-divider">or use card</div>
+      <div class="wallet-form-input" onclick="walletFillField('wac-number','4242 4242 4242 4242')">
+        <div class="wallet-field empty" id="wa-field-card-number">
+          <span class="wallet-field-label">Card number</span>
+          <span class="wallet-field-value" id="wac-number"></span>
+        </div>
         <div class="wallet-form-icon"><img src="design-system/UI Icons/Icon Scan.svg" alt=""></div>
       </div>
       <div class="wallet-form-row">
-        <div class="wallet-form-input">
-          <span class="wallet-form-placeholder">MM / YY</span>
+        <div class="wallet-form-input" onclick="walletFillField('wac-expiry','12 / 28')">
+          <div class="wallet-field empty" id="wa-field-expiry">
+            <span class="wallet-field-label">Expiry date</span>
+            <span class="wallet-field-value" id="wac-expiry"></span>
+          </div>
         </div>
-        <div class="wallet-form-input">
-          <span class="wallet-form-placeholder">CVC</span>
+        <div class="wallet-form-input" onclick="walletFillField('wac-cvv','123')">
+          <div class="wallet-field empty" id="wa-field-cvv">
+            <span class="wallet-field-label">CVV</span>
+            <span class="wallet-field-value" id="wac-cvv"></span>
+          </div>
           <div class="wallet-form-icon"><img src="design-system/UI Icons/Icon Card.svg" alt=""></div>
         </div>
       </div>
-      <div class="wallet-form-input" style="min-height:60px;align-items:center">
-        <div style="display:flex;flex-direction:column;gap:4px">
-          <span style="font-size:13px;font-weight:400;color:#7B8494">Country or region</span>
-          <span class="wallet-form-value">Poland</span>
+      <div class="wallet-form-input" onclick="walletFillField('wac-name','Marcin Galecki')">
+        <div class="wallet-field empty" id="wa-field-card-name">
+          <span class="wallet-field-label">Cardholder name</span>
+          <span class="wallet-field-value" id="wac-name"></span>
         </div>
-        <div class="wallet-form-icon"><img src="design-system/UI Icons/Icon Down Chevron.svg" alt=""></div>
       </div>
-      <button class="wallet-cta-btn" id="wallet-save-card-btn">Save payment method</button>
+      <button class="wallet-cta-btn" id="wallet-save-card-btn">Save card</button>
     </div>
   </div>
 
@@ -4325,23 +4330,18 @@ renderSellShows();
     overlay.classList.remove('active');
   }
 
-  // Open on Wallet button tap
   const lsWalletBtn = document.getElementById('ls-wallet-btn');
   if (lsWalletBtn) lsWalletBtn.addEventListener('click', () => openSheet(sheets.main));
-
-  // Overlay tap → close all
   overlay.addEventListener('click', closeAll);
 
   // Main sheet
   document.getElementById('wallet-main-close').addEventListener('click', closeAll);
-  document.getElementById('wallet-open-delivery').addEventListener('click', () => openSheet(sheets.addresses));
+  document.getElementById('wallet-open-addresses').addEventListener('click', () => openSheet(sheets.addresses));
   document.getElementById('wallet-open-payment').addEventListener('click', () => openSheet(sheets.payment));
 
-  let currentDeliveryType = 'courier'; // 'paczkomat' | 'courier'
+  let currentDeliveryType = 'paczkomat';
   let editingAddressRow = null;
-  let addressesInEditMode = false;
 
-  // Helper: set field value + toggle empty state
   function setField(id, value) {
     const val = document.getElementById(id);
     const field = val ? val.closest('.wallet-field') : null;
@@ -4350,22 +4350,16 @@ renderSellShows();
     field.classList.toggle('empty', !value);
   }
 
-  // Show correct fields based on delivery type
   function applyFormType(type) {
     const isPaczkomat = type === 'paczkomat';
-    ['wa-row-paczkomat-id'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.classList.toggle('wa-field-hide', !isPaczkomat);
-    });
+    document.getElementById('wa-row-paczkomat-id').classList.toggle('wa-field-hide', !isPaczkomat);
     ['wa-row-name','wa-row-address','wa-row-postal-city'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.classList.toggle('wa-field-hide', isPaczkomat);
+      document.getElementById(id).classList.toggle('wa-field-hide', isPaczkomat);
     });
-    document.getElementById('wallet-edit-address-title').textContent =
-      isPaczkomat ? 'Paczkomat Inpost' : 'Address for Courier';
+    document.getElementById('wa-seg-paczkomat').classList.toggle('active', isPaczkomat);
+    document.getElementById('wa-seg-courier').classList.toggle('active', !isPaczkomat);
   }
 
-  // Update icon + sub in main wallet sheet
   function updateShippingRow(row) {
     const delivery = row.dataset.delivery || 'courier';
     const label = row.querySelector('.wallet-action-label').textContent;
@@ -4374,114 +4368,35 @@ renderSellShows();
     document.getElementById('wallet-shipping-label').textContent = label;
     document.getElementById('wallet-shipping-sub').textContent = sub;
     const iconEl = document.getElementById('wallet-shipping-icon');
-    if (iconEl) {
-      iconEl.src = delivery === 'paczkomat'
-        ? 'design-system/UI Icons/Icon Paczkomat.svg'
-        : 'design-system/UI Icons/Icon Shipping.svg';
-    }
+    if (iconEl) iconEl.src = delivery === 'paczkomat'
+      ? 'design-system/UI Icons/Icon Paczkomat.svg'
+      : 'design-system/UI Icons/Icon Shipping.svg';
   }
 
-  // Delivery sheet
+  // Delivery sheet (legacy)
   document.getElementById('wallet-delivery-back').addEventListener('click', () => openSheet(sheets.main));
-  document.getElementById('wallet-open-paczkomat').addEventListener('click', () => {
-    currentDeliveryType = 'paczkomat';
-    openSheet(sheets.addresses);
-  });
-  document.getElementById('wallet-open-courier').addEventListener('click', () => {
-    currentDeliveryType = 'courier';
-    openSheet(sheets.addresses);
-  });
+  document.getElementById('wallet-open-paczkomat').addEventListener('click', () => { currentDeliveryType = 'paczkomat'; openSheet(sheets.addresses); });
+  document.getElementById('wallet-open-courier').addEventListener('click', () => { currentDeliveryType = 'courier'; openSheet(sheets.addresses); });
 
-  // Addresses sheet — mode toggle helpers
-  function enterAddressEditMode() {
-    addressesInEditMode = true;
-    document.getElementById('wallet-addresses-title').textContent = 'Edit';
-    document.getElementById('wallet-addr-edit-toggle').style.display = 'none';
-    document.getElementById('wallet-addr-add-btn').style.display = '';
-    document.querySelectorAll('#wallet-addr-list .wallet-addr-row').forEach(row => {
-      row.querySelector('.wa-type-icon').style.display = 'none';
-      row.querySelector('.wa-trash-icon').style.display = '';
-      row.querySelector('.wa-radio').style.display = 'none';
-      row.querySelector('.wa-edit-icon').style.display = '';
-    });
-  }
-
-  function exitAddressEditMode() {
-    addressesInEditMode = false;
-    document.getElementById('wallet-addresses-title').textContent = 'Addresses';
-    document.getElementById('wallet-addr-edit-toggle').style.display = '';
-    document.getElementById('wallet-addr-add-btn').style.display = 'none';
-    document.querySelectorAll('#wallet-addr-list .wallet-addr-row').forEach(row => {
-      row.querySelector('.wa-type-icon').style.display = '';
-      row.querySelector('.wa-trash-icon').style.display = 'none';
-      row.querySelector('.wa-radio').style.display = '';
-      row.querySelector('.wa-edit-icon').style.display = 'none';
-    });
-  }
-
-  // Addresses sheet — event listeners
-  document.getElementById('wallet-addresses-back').addEventListener('click', () => {
-    if (addressesInEditMode) {
-      exitAddressEditMode();
-    } else {
-      openSheet(sheets.main);
-    }
-  });
-
+  // Addresses sheet
+  document.getElementById('wallet-addresses-back').addEventListener('click', () => openSheet(sheets.main));
   document.getElementById('wallet-addresses-confirm').addEventListener('click', () => {
-    if (addressesInEditMode) {
-      exitAddressEditMode();
-    } else {
-      const selected = document.querySelector('#wallet-addr-list .wallet-radio.selected');
-      if (selected) {
-        const row = selected.closest('.wallet-addr-row');
-        updateShippingRow(row);
-      }
-      openSheet(sheets.main);
-    }
+    const selected = document.querySelector('#wallet-addr-list .wallet-radio.selected');
+    if (selected) updateShippingRow(selected.closest('.wallet-addr-row'));
+    openSheet(sheets.main);
   });
+  document.getElementById('wallet-addr-add-btn').addEventListener('click', () => openAddAddress('paczkomat'));
 
-  document.getElementById('wallet-addr-edit-toggle').addEventListener('click', () => {
-    enterAddressEditMode();
-  });
-
-  document.getElementById('wallet-addr-add-btn').addEventListener('click', () => {
-    openAddAddress('paczkomat');
-  });
-
-  // Row tap — select in normal mode only
   document.getElementById('wallet-addr-list').addEventListener('click', e => {
-    if (addressesInEditMode) return;
     const row = e.target.closest('.wallet-addr-row');
-    if (row) walletSelectAddress(row);
+    if (row && !e.target.closest('button')) walletSelectAddress(row);
   });
 
-  // Edit address row (from Edit icon in edit mode)
   function walletEditAddressRow(row) {
-    openEditAddress(row);
-  }
-
-  // Delete address row (from Trash icon in edit mode)
-  function walletDeleteAddressRow(row) {
-    const prev = row.previousElementSibling;
-    if (prev && prev.classList.contains('wallet-separator')) prev.remove();
-    const next = row.nextElementSibling;
-    if (next && next.classList.contains('wallet-separator')) next.remove();
-    row.remove();
-    // If deleted row was selected, select first remaining
-    const hasSelected = document.querySelector('#wallet-addr-list .wallet-radio.selected');
-    if (!hasSelected) {
-      const firstRow = document.querySelector('#wallet-addr-list .wallet-addr-row');
-      if (firstRow) walletSelectAddress(firstRow);
-    }
-  }
-
-  // Open edit address form
-  function openEditAddress(row) {
     editingAddressRow = row;
     const type = row.dataset.delivery || 'courier';
-    document.getElementById('wa-type-selector').style.display = 'none';
-    document.getElementById('wallet-edit-address-title').textContent = 'Edit Address';
+    currentDeliveryType = type;
+    document.getElementById('wallet-edit-address-title').textContent = 'Edit address';
     applyFormType(type);
     const sub = row.querySelector('.wallet-action-sub');
     const lines = sub ? sub.innerText.split('\n') : ['', ''];
@@ -4499,70 +4414,77 @@ renderSellShows();
     openSheet(sheets.editAddress);
   }
 
-  // Type selector in Add mode
-  function waSetType(type) {
-    currentDeliveryType = type;
-    applyFormType(type);
-    document.getElementById('wa-seg-paczkomat').classList.toggle('active', type === 'paczkomat');
-    document.getElementById('wa-seg-courier').classList.toggle('active', type === 'courier');
+  function walletDeleteAddressRow(row) {
+    const prev = row.previousElementSibling;
+    if (prev && prev.classList.contains('wallet-separator')) prev.remove();
+    const next = row.nextElementSibling;
+    if (next && next.classList.contains('wallet-separator')) next.remove();
+    row.remove();
+    if (!document.querySelector('#wallet-addr-list .wallet-radio.selected')) {
+      const first = document.querySelector('#wallet-addr-list .wallet-addr-row');
+      if (first) walletSelectAddress(first);
+    }
   }
 
-  // Open add address form
   function openAddAddress(type) {
     editingAddressRow = null;
     currentDeliveryType = type || 'paczkomat';
-    ['wa-paczkomat-id','wa-name','wa-address','wa-postal','wa-city','wa-phone','wa-email']
-      .forEach(id => setField(id, ''));
-    document.getElementById('wa-type-selector').style.display = 'block';
-    document.getElementById('wallet-edit-address-title').textContent = 'Add Address';
-    waSetType(currentDeliveryType);
+    ['wa-paczkomat-id','wa-name','wa-address','wa-postal','wa-city','wa-phone','wa-email'].forEach(id => setField(id, ''));
+    document.getElementById('wallet-edit-address-title').textContent = 'Add address';
+    applyFormType(currentDeliveryType);
     openSheet(sheets.editAddress);
   }
 
-  // Edit Address sheet nav
   document.getElementById('wallet-edit-address-back').addEventListener('click', () => openSheet(sheets.addresses));
-  document.getElementById('wallet-edit-address-confirm').addEventListener('click', () => openSheet(sheets.addresses));
+  document.getElementById('wallet-edit-address-save').addEventListener('click', () => openSheet(sheets.addresses));
 
-  // Expose functions called from HTML onclick
-  window.walletDeleteAddressRow = walletDeleteAddressRow;
-  window.walletEditAddressRow = walletEditAddressRow;
-  window.waSetType = waSetType;
+  function waSetType(type) {
+    currentDeliveryType = type;
+    applyFormType(type);
+  }
 
-  // Payment sheet
+  // Payment sheet — radio selection
   document.getElementById('wallet-payment-back').addEventListener('click', () => openSheet(sheets.main));
   document.getElementById('wallet-open-add-card').addEventListener('click', () => openSheet(sheets.addCard));
+
+  document.querySelectorAll('.wallet-pay-row').forEach(row => {
+    row.addEventListener('click', () => {
+      document.querySelectorAll('#wallet-payment-sheet .wallet-radio').forEach(r => { r.classList.remove('selected'); r.innerHTML = ''; });
+      const radio = row.querySelector('.wallet-radio');
+      if (radio) { radio.classList.add('selected'); radio.innerHTML = '<div class="wallet-radio-inner"></div>'; }
+      const labels = { card:'Card', blik:'Blik', applepay:'Apple Pay', paypo:'PayPo' };
+      const subs = { card:'Visa ·· 4242', blik:'Code via app', applepay:'Face ID', paypo:'Buy now, pay later' };
+      const p = row.dataset.payment;
+      document.getElementById('wallet-payment-label').textContent = labels[p] || 'Payment method';
+      document.getElementById('wallet-payment-sub').textContent = subs[p] || '';
+      setTimeout(() => openSheet(sheets.main), 200);
+    });
+  });
 
   // Add Card sheet
   document.getElementById('wallet-add-card-back').addEventListener('click', () => openSheet(sheets.payment));
   document.getElementById('wallet-save-card-btn').addEventListener('click', () => {
-    document.getElementById('wallet-payment-label').textContent = 'Credit Card';
-    document.getElementById('wallet-payment-sub').textContent = '**** **** **** ****';
+    document.getElementById('wallet-payment-label').textContent = 'Card';
+    document.getElementById('wallet-payment-sub').textContent = 'Visa ·· 4242';
     closeAll();
   });
+
+  window.walletDeleteAddressRow = walletDeleteAddressRow;
+  window.walletEditAddressRow = walletEditAddressRow;
+  window.waSetType = waSetType;
 })();
 
-// Address radio selection (global, called from onclick)
 function walletSelectAddress(row) {
-  document.querySelectorAll('#wallet-addresses-sheet .wallet-radio').forEach(r => {
-    r.classList.remove('selected');
-    r.innerHTML = '';
-  });
+  document.querySelectorAll('#wallet-addresses-sheet .wallet-radio').forEach(r => { r.classList.remove('selected'); r.innerHTML = ''; });
   const radio = row.querySelector('.wallet-radio');
-  if (radio) {
-    radio.classList.add('selected');
-    radio.innerHTML = '<div class="wallet-radio-inner"></div>';
-  }
+  if (radio) { radio.classList.add('selected'); radio.innerHTML = '<div class="wallet-radio-inner"></div>'; }
 }
 
-// Tap-to-fill sample data in form inputs (global, called from onclick)
 function walletFillField(id, sample) {
   const val = document.getElementById(id);
   const field = val ? val.closest('.wallet-field') : null;
   if (!val || !field) return;
-  if (!val.textContent.trim()) {
-    val.textContent = sample;
-    field.classList.remove('empty');
-  }
+  if (!val.textContent.trim()) { val.textContent = sample; field.classList.remove('empty'); }
 }
 </script>
 
