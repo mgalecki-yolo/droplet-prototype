@@ -2523,7 +2523,7 @@ body{
       </button>
       <span class="wallet-toolbar-title">Addresses</span>
       <div style="display:flex;gap:12px;position:relative;z-index:1">
-        <button class="wallet-navi-btn">
+        <button class="wallet-navi-btn" id="wallet-edit-address-btn">
           <img src="design-system/UI Icons/Icon Edit.svg" alt="">
         </button>
         <button class="wallet-navi-btn confirm" id="wallet-addresses-confirm">
@@ -2559,6 +2559,66 @@ body{
           </div>
           <div class="wallet-radio"></div>
         </a>
+        <div class="wallet-separator" style="margin-left:16px"></div>
+        <a class="wallet-action-row" id="wallet-add-address-btn" style="color:var(--rd10)">
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Plus.svg" alt="" style="opacity:0.85;filter:invert(38%) sepia(97%) saturate(2000%) hue-rotate(326deg) brightness(102%) contrast(106%)"></div>
+          <div class="wallet-action-body"><div class="wallet-action-label" style="color:var(--rd10)">Add new address</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet 3b: Edit / Add Address -->
+  <div class="wallet-sheet" id="wallet-edit-address-sheet">
+    <div class="wallet-sheet-bg"></div>
+    <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
+    <div class="wallet-toolbar">
+      <button class="wallet-navi-btn" id="wallet-edit-address-back">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
+      </button>
+      <span class="wallet-toolbar-title" id="wallet-edit-address-title">Edit Address</span>
+      <button class="wallet-navi-btn confirm" id="wallet-edit-address-confirm">
+        <img src="design-system/UI Icons/Icon Check.svg" alt="">
+      </button>
+    </div>
+    <div class="wallet-form-stack">
+      <div class="wallet-form-input" style="min-height:60px">
+        <div style="display:flex;flex-direction:column;gap:4px;flex:1">
+          <span style="font-size:13px;font-weight:400;color:#7B8494">Name and Surname</span>
+          <span class="wallet-form-value" id="wa-name">Joanna Rostowska</span>
+        </div>
+      </div>
+      <div class="wallet-form-input" style="min-height:60px">
+        <div style="display:flex;flex-direction:column;gap:4px;flex:1">
+          <span style="font-size:13px;font-weight:400;color:#7B8494">Address</span>
+          <span class="wallet-form-value" id="wa-address">ul. Fabryczna 3B/4</span>
+        </div>
+      </div>
+      <div class="wallet-form-row">
+        <div class="wallet-form-input" style="min-height:60px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:13px;font-weight:400;color:#7B8494">Postal Code</span>
+            <span class="wallet-form-value" id="wa-postal">62-261</span>
+          </div>
+        </div>
+        <div class="wallet-form-input" style="min-height:60px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:13px;font-weight:400;color:#7B8494">City</span>
+            <span class="wallet-form-value" id="wa-city">Pobiedziska</span>
+          </div>
+        </div>
+      </div>
+      <div class="wallet-form-input" style="min-height:60px">
+        <div style="display:flex;flex-direction:column;gap:4px;flex:1">
+          <span style="font-size:13px;font-weight:400;color:#7B8494">Phone</span>
+          <span class="wallet-form-value" id="wa-phone">+48 507416939</span>
+        </div>
+      </div>
+      <div class="wallet-form-input" style="min-height:60px">
+        <div style="display:flex;flex-direction:column;gap:4px;flex:1">
+          <span style="font-size:13px;font-weight:400;color:#7B8494">E-mail Address</span>
+          <span class="wallet-form-value" id="wa-email">customer@example.com</span>
+        </div>
       </div>
     </div>
   </div>
@@ -4203,6 +4263,7 @@ renderSellShows();
     main: document.getElementById('wallet-main-sheet'),
     delivery: document.getElementById('wallet-delivery-sheet'),
     addresses: document.getElementById('wallet-addresses-sheet'),
+    editAddress: document.getElementById('wallet-edit-address-sheet'),
     payment: document.getElementById('wallet-payment-sheet'),
     addCard: document.getElementById('wallet-add-card-sheet')
   };
@@ -4249,6 +4310,39 @@ renderSellShows();
     }
     openSheet(sheets.main);
   });
+
+  // Edit Address — open from Edit button (pre-fill with selected address)
+  document.getElementById('wallet-edit-address-btn').addEventListener('click', () => {
+    const selected = document.querySelector('#wallet-addresses-sheet .wallet-radio.selected');
+    const row = selected ? selected.closest('[class*="wallet-action-row"]') : null;
+    document.getElementById('wallet-edit-address-title').textContent = 'Edit Address';
+    if (row) {
+      document.getElementById('wa-name').textContent = row.querySelector('.wallet-action-label').textContent;
+      const sub = row.querySelector('.wallet-action-sub');
+      const lines = sub ? sub.innerText.split('\n') : ['', ''];
+      document.getElementById('wa-address').textContent = lines[0] || '';
+      const cityParts = (lines[1] || '').split(' ');
+      document.getElementById('wa-postal').textContent = cityParts[0] || '';
+      document.getElementById('wa-city').textContent = cityParts.slice(1).join(' ') || '';
+    }
+    openSheet(sheets.editAddress);
+  });
+
+  // Add Address — open with empty fields
+  document.getElementById('wallet-add-address-btn').addEventListener('click', () => {
+    document.getElementById('wallet-edit-address-title').textContent = 'Add Address';
+    document.getElementById('wa-name').textContent = '';
+    document.getElementById('wa-address').textContent = '';
+    document.getElementById('wa-postal').textContent = '';
+    document.getElementById('wa-city').textContent = '';
+    document.getElementById('wa-phone').textContent = '';
+    document.getElementById('wa-email').textContent = '';
+    openSheet(sheets.editAddress);
+  });
+
+  // Edit Address sheet nav
+  document.getElementById('wallet-edit-address-back').addEventListener('click', () => openSheet(sheets.addresses));
+  document.getElementById('wallet-edit-address-confirm').addEventListener('click', () => openSheet(sheets.addresses));
 
   // Payment sheet
   document.getElementById('wallet-payment-back').addEventListener('click', () => openSheet(sheets.main));
