@@ -324,6 +324,198 @@ Seller uruchamia i prowadzi transmisje na zywo — zarzadza aukcjami, sprzedaza,
 
 ---
 
+# FLOW D: Buyer — Przegladanie i kupowanie
+
+## Journey
+
+Uzytkownik (buyer) wchodzi do aplikacji, przegląda oferty i kupuje produkty — przez live show lub bezposrednio.
+
+1. Buyer otwiera aplikacje → **Home** z karuzelami show
+2. Przegląda karuzele: Live Now, Followed Hosts, popularne kategorie (do ~8 karuzeli)
+3. Moze tapnac kategorie z paska → przechodzi na **Subcategory** z 2 karuzelami + lista produktow
+4. Moze tapnac show tile → wchodzi w **Live Show (Buyer)**
+5. Moze tapnac produkt (z Subcategory lub Seller Profile) → wchodzi na **Product Page**
+6. Z Product Page: Buy Now → **Checkout**, lub Go to Show → Live Show, lub Notify Me → notyfikacja push
+7. W Live Show: ogląda, licytuje (Bid slider) lub kupuje (Buy Now), ustawia wallet i adres dostawy
+8. Po zakupie: zamówienie widoczne w **Activity → Orders**
+
+## Ekrany
+
+| Krok | Ekran | Node ID | Status |
+|------|-------|---------|--------|
+| 1-2 | Home | `4979:110252` | ✅ zbudowany |
+| 3 | Subcategory | — | ⚠️ czesciowo zbudowany |
+| 4,7 | Live Show (Buyer) | `2332:27496` | ⚠️ czesciowo zbudowany |
+| 5-6 | Product Page | — | ❌ nowy ekran — do zaprojektowania |
+| 6 | Checkout (sheet) | — | ❌ nowy ekran — do zaprojektowania |
+| 7 | Wallet (sheet w show) | — | ❌ nowy ekran — do zaprojektowania |
+| 7 | Delivery Address (sheet w show) | — | ❌ nowy ekran — do zaprojektowania |
+| 8 | Activity → Orders | — | ❌ pusty shell |
+
+## Stany ekranow
+
+### Home
+
+| Stan | Opis | Elementy widoczne |
+|------|------|-------------------|
+| default | Pelny ekran z karuzelami | Search Input (placeholder) + Category Buttons (10, scroll poziomy) + karuzele Show Tile |
+| loading | Ladowanie karuzeli | Skeleton placeholdery na karuzele |
+| no-live | Brak aktualnych live shows | Karuzela "Live Now" pusta lub ukryta, reszta widoczna |
+
+**Karuzele (kolejnosc od gory):**
+1. **Live Now** — aktualnie trwajace show (Show Tile wariant Default z Live Badge + liczba widzow)
+2. **Followed Hosts** — show od sprzedawcow ktorych followuje (Show Tile wariant Coming Soon lub Default)
+3. **Popularne w tym tygodniu** — algorytmicznie dobrane wg najpopularniejszych kategorii
+4. **Najwiecej ogladajacych** — show sortowane po viewerach
+5-8. Kolejne karuzele — dobierane algorytmicznie, rozne klucze
+
+**Category Buttons (10):**
+- Fashion (ma podkategorie), Collectibles (ma podkategorie), Beauty, Home, Electronics, For Kids, Handmade, Food & Nature, Outdoor & Sports, Mystery
+- Tap na kategorie BEZ podkategorii → Subcategory (z produktami tej kategorii)
+- Tap na kategorie Z podkategoriami → lista podkategorii → potem Subcategory
+
+**Komponenty:** Search Input, Button Category (scroll), Show Tile (Default/Coming Soon), App Tabbar (5 buttons, Start aktywny)
+
+### Subcategory
+
+| Stan | Opis | Elementy widoczne |
+|------|------|-------------------|
+| default | Kategoria z live shows i produktami | App Top (back + nazwa kategorii), 2 karuzele (Live Now + Upcoming) + lista produktow poniżej |
+| no-live | Brak live shows w kategorii | Karuzele puste/ukryte, tylko lista produktow |
+| empty | Brak show i produktow | Empty state z zacheta |
+
+**Layout:**
+- **Karuzela 1:** "Live Now" — show aktualnie trwajace w tej kategorii (Show Tile Default)
+- **Karuzela 2:** "Upcoming" — zaplanowane show w tej kategorii (Show Tile Coming Soon)
+- **Lista produktow:** Prod Tile Vertical — produkty wszystkich sprzedawcow w kategorii (followowani i nie)
+- Scroll w dol: jesli nie znajde nic w karuzelach, moge przegladac produkty
+
+**Komponenty:** App Top (Actions on left, back + tytul kategorii), Show Tile, Prod Tile Vertical, App Tabbar
+
+### Product Page
+
+| Stan | Opis | Elementy widoczne |
+|------|------|-------------------|
+| buy-now | Produkt w trybie Buy Now | Zdjecie + opis + atrybuty + Follow seller + Message + Track + **"Buy Now" CTA** |
+| auction-live | Produkt w trybie aukcji, show trwa | Zdjecie + opis + atrybuty + Follow seller + Message + Track + **"Go to Show" CTA** |
+| auction-upcoming | Produkt w trybie aukcji, show zaplanowany | Zdjecie + opis + atrybuty + Follow seller + Message + Track + **"Notify Me" CTA** |
+| auction-no-show | Produkt aukcyjny, brak zaplanowanego show | Zdjecie + opis + atrybuty + Follow + Message + Track + informacja "Available in upcoming shows" |
+
+**Elementy ekranu:**
+- **Zdjecie produktu** — glowne zdjecie, galeria jesli wiecej
+- **Nazwa i opis** — tekst, podstawowe atrybuty (rozmiar, stan, kategoria)
+- **Sprzedawca** — User Avatar + nazwa + przycisk **Follow**
+- **Message** — przycisk "Napisz do sprzedawcy w sprawie tego przedmiotu" → otwiera Messages w Activity
+- **Track / Watch** — przycisk sledzenia produktu (powiadomienia o zmianach)
+- **CTA (dolny pasek):**
+  - Buy Now: App Tabbar wariant "Product Two Button Message" — ikona Message (52px) + "Buy Now" (rd10, 293px)
+  - Auction live: App Tabbar wariant "Product Two Buttons" — Message + "Go to Show"
+  - Auction upcoming: App Tabbar wariant "Product Two Buttons" — Message + "Notify Me"
+
+**Komponenty:** App Top (back + tytul), User Avatar, Prod Tile (zdjecie), Product Page Details Element, App Tabbar (Product warianty), Button Follow
+
+### Live Show (Buyer) — rozszerzenie
+
+| Stan | Opis | Elementy widoczne |
+|------|------|-------------------|
+| watching | Ogladam show, brak aktywnego produktu | Video + App Top Show + Show Chat Buyer + Show Right Section Icons Buyer |
+| product-buy-now | Sprzedawca pokazuje produkt Buy Now | + Show Tool z produktem + "Buy Now" CTA (Bid slider zamieniony na Buy button) |
+| product-auction | Sprzedawca prowadzi aukcje | + Show Tool z produktem + Bid slider ("Bid $X" + double chevron) |
+| bidding | Zlozono oferte, czekam | Show Tool z aktualnym bid, timer |
+| outbid | Ktos przebil moja oferte | Toast/alert "You've been outbid" + mozliwosc ponownego bida |
+| won | Wygralem aukcje | Modal/toast "You won!" + przejscie do checkout |
+| lost | Przegralem aukcje | Toast "Auction ended" + info kto wygral |
+| checkout-in-show | Kupuje (Buy Now lub po wygranej aukcji) | Checkout sheet (overlay) — karta + adres → potwierdzenie |
+
+**Wallet i adres dostawy (z prawej kolumny ikon):**
+- Ikona **Wallet** (Show Right Section Icons) → otwiera sheet z opcjami platnosci
+  - Dodaj karte / wybierz zapisana karte
+  - Apple Pay
+- Ikona **Adres** → otwiera sheet z adresem dostawy
+  - Paczkomat (wybor z mapy/listy)
+  - Zwykly adres (formularz)
+- Buyer moze ustawic wallet i adres PRZED zakupem, na etapie show
+- Przy checkout: jesli wallet i adres juz ustawione → szybkie potwierdzenie
+
+**Komponenty:** App Top Show, Show Chat Buyer, Show Right Section Icons Buyer (Clip, Share, Wallet, Products), Show Tool, App Tabbar (Two Buttons: Pre-Bid + Buy Now)
+
+### Checkout (sheet)
+
+| Stan | Opis | Elementy widoczne |
+|------|------|-------------------|
+| default | Podsumowanie zamowienia | Produkt (miniatura + nazwa + cena) + metoda platnosci + adres dostawy + "Confirm" CTA |
+| no-payment | Brak metody platnosci | Sekcja platnosci podswietlona, "Add Payment Method" link |
+| no-address | Brak adresu dostawy | Sekcja adresu podswietlona, "Add Address" link |
+| processing | Platnosc w trakcie | Loading indicator na CTA |
+| confirmed | Zamowienie potwierdzone | Checkmark + "Order Confirmed" + "View in Orders" link |
+| failed | Platnosc nie powiodla sie | Error message + "Try Again" CTA |
+
+**Komponenty:** Wide Sheet (Top Element + content), Form Input (platnosc, adres), Button 1CTA (Confirm), Company Logo (Apple Pay/karta)
+
+### Activity — Orders
+
+| Stan | Opis | Elementy widoczne |
+|------|------|-------------------|
+| default | Lista zamowien | 3 taby: Orders / Notifications / Messages. Lista zamowien z miniatura + nazwa + status + data |
+| empty | Brak zamowien | Empty state z zacheta do przegladania show |
+| order-detail | Szczegoly zamowienia | Produkt + status (Paid/Shipped/Delivered/Returned) + tracking + sprzedawca |
+
+**Statusy zamowien:** Paid → Shipped → Delivered (happy path), Returned (zwrot)
+
+### Activity — Notifications
+
+| Stan | Opis | Elementy widoczne |
+|------|------|-------------------|
+| default | Lista notyfikacji | Typ: "Produkt dodany do show", "Show startuje za 5 min", "Twoja aukcja wygrana" itp. |
+| empty | Brak notyfikacji | Empty state |
+
+### Activity — Messages
+
+| Stan | Opis | Elementy widoczne |
+|------|------|-------------------|
+| default | Lista konwersacji | Konwersacje ze sprzedawcami + watek Droplet (administracyjny) |
+| conversation | Otwarta rozmowa | Chat z jednym sprzedawca — wiadomosci + input |
+| droplet-thread | Watek Droplet | Ogloszenia i nowosci od administratora aplikacji |
+
+**Zrodla wiadomosci:** z poziomu Product Page ("Message seller") lub z poziomu Seller Profile
+
+---
+
+# FLOW D — Nawigacja (podsumowanie)
+
+### Z Home:
+- Home → Subcategory (tap na Category Button)
+- Home → Live Show (tap na Show Tile)
+- Home → Browse (tab Browse)
+- Home → Seller Hub (tab Sell)
+- Home → Activity (tab Activity)
+- Home → Profile (tab Account)
+
+### Z Subcategory:
+- Subcategory → Live Show (tap na Show Tile)
+- Subcategory → Product Page (tap na produkt)
+- Subcategory → Home (back)
+
+### Z Product Page:
+- Product Page → Checkout (Buy Now CTA)
+- Product Page → Live Show (Go to Show CTA)
+- Product Page → push notification (Notify Me CTA)
+- Product Page → Messages (Message seller)
+- Product Page → Seller Profile (tap na sprzedawce)
+
+### Z Live Show (Buyer):
+- Live Show → Wallet sheet (ikona Wallet)
+- Live Show → Delivery Address sheet (ikona adresu)
+- Live Show → Checkout sheet (po Buy Now lub wygranej aukcji)
+- Live Show → Seller Profile (tap na hosta w App Top)
+
+### Z Activity:
+- Activity Orders → Order Detail
+- Activity Messages → Conversation
+- Activity Notifications → powiazany ekran (show, produkt, zamowienie)
+
+---
+
 # Opisy ekranow (referencja)
 
 ## Home (Start)

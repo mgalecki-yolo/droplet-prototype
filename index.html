@@ -579,9 +579,10 @@ body{
 .pp-app-top{
   position:absolute;top:0;left:0;right:0;height:109px;z-index:40;
   display:flex;flex-direction:column;transition:background 0.2s;
+  background:linear-gradient(to bottom,rgba(57,57,57,0.4) 0%,rgba(57,57,57,0) 100%);
 }
 .pp-app-top.scrolled{
-  background:linear-gradient(180deg,var(--ov40) 50%,rgba(242,240,236,0.85) 80%,rgba(242,240,236,0));
+  background:linear-gradient(to top,rgba(242,240,236,0) 5%,rgba(242,240,236,0.55) 15%,rgba(242,240,236,0.8) 34%,rgba(242,240,236,0.85) 50%,#F2F0EC 96%);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
 }
 .pp-app-top-status{height:59px;flex-shrink:0}
@@ -589,60 +590,51 @@ body{
   height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;
 }
 .pp-app-top-left{display:flex;align-items:center;gap:12px}
-.pp-app-top-title{
-  position:absolute;left:60px;right:60px;text-align:center;
-  font-size:16px;font-weight:700;color:var(--bw10);
-  pointer-events:none;opacity:0;transition:opacity 0.2s;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-}
-.pp-app-top.scrolled .pp-app-top-title{opacity:1}
+.pp-app-top-info{display:none;flex-direction:column;gap:2px;max-width:220px;overflow:hidden}
+.pp-app-top.scrolled .pp-app-top-info{display:flex}
+.pp-app-top-info-name{font-size:16px;font-weight:700;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-app-top-info-sub{font-size:11px;font-weight:400;color:var(--bw20);line-height:14px}
 .pp-app-top-right{display:flex;align-items:center;gap:8px}
 
 /* Product image */
 .pp-image{
-  width:393px;height:393px;background-size:cover;background-position:center;
+  width:393px;height:425px;background-size:cover;background-position:center;
   flex-shrink:0;position:relative;
 }
 .pp-image-gallery{
-  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
-  display:flex;gap:6px;
+  position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  display:flex;gap:4px;align-items:center;
+  background:rgba(255,255,255,0.6);border-radius:296px;padding:4px 8px;
 }
-.pp-image-dot{
-  width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.5);
-}
-.pp-image-dot.active{background:white}
+.pp-image-gallery img{width:8px;height:8px;opacity:0.5}
+.pp-image-gallery img.active{opacity:1}
 
 /* Product info section */
-.pp-content{padding:0 16px}
+.pp-content{padding:0 16px 8px}
 .pp-name{
-  font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px;
+  font-size:20px;font-weight:600;color:var(--bw30);letter-spacing:-0.5px;line-height:normal;
   margin-top:16px;
 }
 .pp-price-row{display:flex;align-items:center;gap:8px;margin-top:8px}
-.pp-price{font-size:16px;font-weight:700;color:var(--bw10)}
+.pp-price{font-size:20px;font-weight:700;color:var(--bw30);letter-spacing:-0.5px}
 .pp-price-badge{
   height:24px;border-radius:37px;padding:0 8px;display:inline-flex;align-items:center;gap:4px;
   font-size:12px;font-weight:600;
 }
-.pp-price-badge.buy-now{background:var(--gw20);color:var(--bw30)}
-.pp-price-badge.green{background:var(--gr10);color:white}
-.pp-attrs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.pp-attr{
-  height:24px;border-radius:37px;padding:0 8px;border:1px solid var(--gw20);
-  display:inline-flex;align-items:center;
-  font-size:12px;font-weight:600;color:var(--bw40);
-}
+.pp-price-badge.buy-now{background:var(--ov15);color:var(--bw30)}
 
 /* Seller section */
 .pp-seller{
-  display:flex;align-items:center;gap:12px;padding:15px 0;
-  border-bottom:1px solid var(--ov30);margin:0 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin:0 16px 12px;background:var(--ov15);border-radius:20px;padding:16px;
 }
-.pp-seller-info{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
-.pp-seller-name{font-size:12px;font-weight:700;color:var(--bw30)}
-.pp-seller-sub{font-size:11px;font-weight:400;color:var(--bw40);line-height:14px}
+.pp-seller-info{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+.pp-seller-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pp-seller-name{font-size:14px;font-weight:700;color:var(--bw30);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pp-seller-sub{font-size:12px;font-weight:600;color:var(--bw30);display:flex;align-items:center;gap:4px}
+.pp-seller-sub img{width:12px;height:12px}
 .pp-seller-follow{
-  height:36px;padding:0 14px;border-radius:70px;background:var(--wh10);
+  height:38px;padding:0 12px;border-radius:70px;background:var(--wh10);
   box-shadow:var(--shadow-interactive);border:none;cursor:pointer;
   font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;
   display:flex;align-items:center;gap:6px;flex-shrink:0;
@@ -658,24 +650,25 @@ body{
 .pp-detail-value{font-size:13px;font-weight:600;color:var(--bw30);display:flex;align-items:center;gap:4px}
 .pp-detail-value img{width:18px;height:18px}
 
-/* Description */
-.pp-description{
-  padding:15px 0;border-bottom:1px solid var(--ov30);margin:0 16px;
-}
-.pp-desc-label{font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:4px}
-.pp-desc-text{font-size:13px;font-weight:600;color:var(--bw30);line-height:18px}
+/* Info messages */
+.pp-info-messages{display:flex;flex-direction:column;padding:0 4px}
+.pp-info-msg{display:flex;flex-direction:column;gap:4px;padding:12px}
+.pp-info-msg-header{display:flex;align-items:center;gap:8px}
+.pp-info-msg-header img{width:18px;height:18px;flex-shrink:0}
+.pp-info-msg-title{font-size:12px;font-weight:700;color:var(--bw30)}
+.pp-info-msg-body{font-size:12px;font-weight:400;color:var(--bw30);line-height:normal;padding-left:26px;margin:0}
 
-/* Action buttons */
-.pp-actions{
-  display:flex;gap:12px;padding:15px 0;margin:0 16px;
-}
-.pp-action-btn{
+/* Report + Share buttons */
+.pp-btns-row{display:flex;gap:12px;padding:12px 16px 16px}
+.pp-btns-row button{
   flex:1;height:36px;border-radius:70px;background:var(--wh10);
   box-shadow:var(--shadow-interactive);border:none;cursor:pointer;
-  font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;
-  display:flex;align-items:center;justify-content:center;gap:6px;
+  font-size:12px;font-weight:600;font-family:inherit;
+  display:flex;align-items:center;justify-content:center;gap:4px;
 }
-.pp-action-btn img{width:16px;height:16px}
+.pp-btn-report{color:var(--rd10)}
+.pp-btn-share{color:var(--bw20)}
+.pp-btns-row button img{width:16px;height:16px}
 
 /* Bottom CTA bar */
 .pp-bottom-bar{
@@ -2968,12 +2961,14 @@ body{
         <button class="sp-navi-btn" id="pp-back-btn">
           <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back">
         </button>
+        <div class="pp-app-top-info" id="pp-top-info">
+          <span class="pp-app-top-info-name" id="pp-top-title">XX DENIM JACKET with drawstrings</span>
+          <span class="pp-app-top-info-sub" id="pp-top-price">Current price $149.99</span>
+        </div>
       </div>
-      <span class="pp-app-top-title" id="pp-top-title">XX DENIM JACKET with drawstrings</span>
       <div class="pp-app-top-right">
-        <button class="sp-navi-btn sp-navi-double">
+        <button class="sp-navi-btn">
           <img src="design-system/UI Icons/Icon Share.svg" alt="Share" style="width:18px;height:18px">
-          <img src="design-system/UI Icons/Icon Bookmark.svg" alt="Save" style="width:18px;height:18px">
         </button>
       </div>
     </div>
@@ -2985,10 +2980,8 @@ body{
     <!-- Product image -->
     <div class="pp-image" id="pp-image" style="background-image:url('images/Product Photos/image 1.png')">
       <div class="pp-image-gallery">
-        <div class="pp-image-dot active"></div>
-        <div class="pp-image-dot"></div>
-        <div class="pp-image-dot"></div>
-        <div class="pp-image-dot"></div>
+        <img src="design-system/UI Icons/Icon Gallery Photo Full.svg" class="active" alt="Photo">
+        <img src="design-system/UI Icons/Icon Gallery Video.svg" alt="Video">
       </div>
     </div>
 
@@ -2996,82 +2989,79 @@ body{
     <div class="pp-content">
       <h1 class="pp-name" id="pp-name">XX DENIM JACKET with drawstrings</h1>
       <div class="pp-price-row">
-        <span class="pp-price">$149.99</span>
+        <span class="pp-price" id="pp-price">$149.99</span>
         <span class="pp-price-badge buy-now">
+          <span id="pp-price-total">$160.73, with</span>
           <img src="design-system/UI Icons/Icon Protection.svg" width="12" height="12" alt="Protection">
-          Buy Now
         </span>
-      </div>
-      <div class="pp-attrs">
-        <span class="pp-attr">Size: L</span>
-        <span class="pp-attr">Condition: New</span>
-        <span class="pp-attr">Fashion</span>
       </div>
     </div>
 
     <!-- Seller section -->
     <div class="pp-seller">
-      <div class="avatar avatar-32" style="background:var(--bl10);font-size:10px">M</div>
       <div class="pp-seller-info">
-        <span class="pp-seller-name">MotherOfClothes</span>
-        <span class="pp-seller-sub">
-          <span style="display:inline-flex;align-items:center;gap:2px">
-            <img src="design-system/UI Icons/Icon Star Full.svg" width="12" height="12" alt="Star" style="vertical-align:middle">
+        <div class="avatar avatar-32" style="background:var(--bl10);font-size:10px;flex-shrink:0">M</div>
+        <div class="pp-seller-text">
+          <span class="pp-seller-name">MotherOfClothes</span>
+          <span class="pp-seller-sub">
+            <img src="design-system/UI Icons/Icon Star Full.svg" alt="Star">
             4.8
+            <img src="design-system/UI Icons/Icon Followers.svg" alt="Followers">
+            2.1k
           </span>
-          · 2.1k Followers
-        </span>
+        </div>
       </div>
       <button class="pp-seller-follow">
-        <img src="design-system/UI Icons/Icon Follow User.svg" alt="Follow">
+        <img src="design-system/UI Icons/Icon Alert Off.svg" alt="Follow">
         Follow
       </button>
     </div>
 
     <!-- Details rows -->
     <div class="pp-detail">
-      <span class="pp-detail-label">Category</span>
-      <span class="pp-detail-value">Fashion · Clothes
-        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
-      </span>
-    </div>
-    <div class="pp-detail">
       <span class="pp-detail-label">Condition</span>
-      <span class="pp-detail-value">New with tags</span>
+      <span class="pp-detail-value">New With Tags</span>
     </div>
     <div class="pp-detail">
-      <span class="pp-detail-label">Shipping</span>
-      <span class="pp-detail-value">
-        <img src="design-system/UI Icons/Icon Shipping.svg" alt="Shipping">
-        Standard · $4.99
-      </span>
+      <span class="pp-detail-label">Brand</span>
+      <span class="pp-detail-value">H&amp;M</span>
     </div>
     <div class="pp-detail">
-      <span class="pp-detail-label">Buyer Protection</span>
-      <span class="pp-detail-value">
-        <img src="design-system/UI Icons/Icon Protection.svg" alt="Protection">
-        Included
-        <img src="design-system/UI Icons/Icon Info.svg" alt="Info" style="width:16px;height:16px;opacity:0.5">
-      </span>
+      <span class="pp-detail-label">Quantity</span>
+      <span class="pp-detail-value">10</span>
+    </div>
+    <div class="pp-detail">
+      <span class="pp-detail-label">Views</span>
+      <span class="pp-detail-value">20</span>
     </div>
 
-    <!-- Description -->
-    <div class="pp-description">
-      <div class="pp-desc-label">Description</div>
-      <div class="pp-desc-text">
-        Classic XX denim jacket with adjustable drawstrings at the waist. Premium heavyweight denim, relaxed fit. Perfect for layering in any season. Brand new with original tags.
+    <!-- Info messages -->
+    <div class="pp-info-messages">
+      <div class="pp-info-msg">
+        <div class="pp-info-msg-header">
+          <img src="design-system/UI Icons/Icon Protection.svg" alt="Protection">
+          <span class="pp-info-msg-title">Droplet Buyer Guarantee</span>
+        </div>
+        <p class="pp-info-msg-body">Your purchase is protected. If the item doesn't arrive or doesn't match the description, we'll help you get a refund.</p>
+      </div>
+      <div class="pp-info-msg">
+        <div class="pp-info-msg-header">
+          <img src="design-system/UI Icons/Icon Shipping.svg" alt="Shipping">
+          <span class="pp-info-msg-title">Quick Shipping</span>
+        </div>
+        <p class="pp-info-msg-body">We guarantee fast and reliable shipping on every order. Your package will be dispatched as quickly as possible.</p>
       </div>
     </div>
 
-    <!-- Action buttons (Message seller, Track) -->
-    <div class="pp-actions">
-      <button class="pp-action-btn">
-        <img src="design-system/UI Icons/Icon Message.svg" alt="Message">
-        Message Seller
+    <!-- Report + Share buttons -->
+    <div class="pp-btns-row">
+      <button class="pp-btn-report">
+        <img src="design-system/UI Icons/Icon Report.svg" alt="Report">
+        Report
       </button>
-      <button class="pp-action-btn">
-        <img src="design-system/UI Icons/Icon Eye.svg" alt="Track">
-        Track
+      <button class="pp-btn-share">
+        <img src="design-system/UI Icons/Icon Share.svg" alt="Share">
+        Share
       </button>
     </div>
 
@@ -3918,10 +3908,16 @@ function openProductPage(data) {
   const ppImage = document.getElementById('pp-image');
   const ppName = document.getElementById('pp-name');
   const ppTopTitle = document.getElementById('pp-top-title');
+  const ppTopPrice = document.getElementById('pp-top-price');
+  const ppPrice = document.getElementById('pp-price');
   if (data && data.image) ppImage.style.backgroundImage = `url('${data.image}')`;
   if (data && data.name) {
     ppName.textContent = data.name;
-    ppTopTitle.textContent = data.name;
+    if (ppTopTitle) ppTopTitle.textContent = data.name;
+  }
+  if (data && data.price) {
+    if (ppPrice) ppPrice.textContent = data.price;
+    if (ppTopPrice) ppTopPrice.textContent = 'Current price ' + data.price;
   }
 
   // Reset scroll
