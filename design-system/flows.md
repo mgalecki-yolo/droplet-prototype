@@ -84,16 +84,30 @@ Seller chce zaplanowac nowy live show z poziomu Seller Hub.
 
 ## Stany ekranow
 
-### Seller Hub Summary
+### Seller Hub Summary (Dashboard)
+
+Nowa wersja Seller Hub to dashboard z 4 kafelkami metrycznymi — zastepuje stary widok z karuzelami Upcoming Shows / Products.
 
 | Stan | Opis | Elementy widoczne |
 |------|------|-------------------|
-| default | Seller ma zaplanowane show i produkty | Sekcja "Upcoming Shows" z Show Tile + sekcja "Products" z Prod Tile Horizontal |
-| no-shows | Brak zaplanowanych show | Sekcja "Upcoming Shows" z empty state (tekst zachety), przycisk "Schedule Show" widoczny |
-| no-products | Brak produktow | Sekcja "Products" z empty state, przycisk "Add Product" widoczny |
-| empty | Nowy seller, brak show i produktow | Obie sekcje w empty state |
+| default | Dashboard z metrkami | 4 kafelki (Produkty, Shows, Payout, Zamowienia) z liczbami + % zmiana vs poprzedni okres, filtr daty (wczoraj/tydzien/miesiac/rok), link "Edit Profile" |
+| empty | Nowy seller, brak danych | 4 kafelki z wartosciami zerowymi, zachety do dodania pierwszego produktu / show |
+| loading | Ladowanie danych | Skeleton placeholdery na kafelkach |
 
-**Komponenty:** App Top (No actions, tytul "Seller Hub"), Show Tile (Coming Soon), Prod Tile Horizontal, Button 1CTA ("Schedule Show", "Add Product"), App Tabbar (5 buttons, Sell aktywny)
+**Kafelki dashboardu:**
+
+| Kafelek | Informacja | Tap → ekran docelowy |
+|---------|-----------|---------------------|
+| Produkty | Liczba aktualnych produktow + % zmiana | Products list |
+| Shows | Liczba zaplanowanych show + % zmiana | Shows management (Upcoming/Ended) |
+| Payout | Saldo konta + kwota do wyplaty + % zmiana | Payout / Wallet |
+| Zamowienia | Biezace zamowienia + % zmiana | Orders list (Nowe/Wyslane/Zrealizowane) |
+
+**Filtrowanie:** Wszystkie 4 kafelki filtrowane wspolnie po dacie — wczoraj / ostatni tydzien / ostatni miesiac / ostatni rok. Domyslny interwal: ostatni tydzien.
+
+**Metryki:** Kazdy kafelek pokazuje glowna liczbe + procentowa zmiane vs poprzedni okres tego samego interwalu (tydzien do tygodnia). Wzrost = zielony (gr10), spadek = czerwony (rd10). Inspiracja: Etsy Seller Hub.
+
+**Komponenty:** App Top (No actions, tytul "Seller Hub"), App Tabbar (5 buttons, Sell aktywny). Kafelki dashboardu — nowy komponent do zaprojektowania (nie istnieje jeszcze w components.md).
 
 ### Schedule Show (empty)
 
@@ -308,7 +322,7 @@ Seller uruchamia i prowadzi transmisje na zywo — zarzadza aukcjami, sprzedaza,
 | live-auction-active | Aukcja trwa | Show Tool z aktualnym bid, timer odliczajacy, "X Bids" (Show Seller Button wariant "Bids - auction live") |
 | live-auction-ended | Aukcja zakonczona | Show Seller Button wariant "Next Auction" — "23 bids" pill + "Run Next" CTA |
 | live-buy-mode | Tryb Buy Now aktywny | Show Tool z produktem, "X sold" pill + "Run Next" CTA (Show Seller Button wariant "Buy Mode") |
-| live-giveaway | Giveaway aktywny | Show Giveaway Modal widoczny, timer losowania |
+| live-giveaway | ⏸️ ON HOLD (nie MVP) — Giveaway aktywny | Show Giveaway Modal widoczny, timer losowania |
 | show-ended | Show zakonczony | Ekran podsumowania (do zdefiniowania) |
 
 **Roznice Seller vs Buyer Mode:**
@@ -458,9 +472,11 @@ Uzytkownik (buyer) wchodzi do aplikacji, przegląda oferty i kupuje produkty —
 |------|------|-------------------|
 | default | Lista zamowien | 3 taby: Orders / Notifications / Messages. Lista zamowien z miniatura + nazwa + status + data |
 | empty | Brak zamowien | Empty state z zacheta do przegladania show |
-| order-detail | Szczegoly zamowienia | Produkt + status (Paid/Shipped/Delivered/Returned) + tracking + sprzedawca |
+| order-detail | Szczegoly zamowienia | Produkt + status + tracking + sprzedawca |
 
-**Statusy zamowien:** Paid → Shipped → Delivered (happy path), Returned (zwrot)
+**Statusy zamowien (buyer):** do opłacenia → opłacone → przygotowywane → wysłane → w drodze → do odebrania → odebrane (happy path)
+
+**Statusy zamowien (seller):** Nowe → Wysłane → Zrealizowane (uproszczona perspektywa sprzedawcy)
 
 ### Activity — Notifications
 
@@ -561,14 +577,16 @@ Uzytkownik (buyer) wchodzi do aplikacji, przegląda oferty i kupuje produkty —
 - Wybiera adres + platnosc → potwierdza
 - Stany: browsing, checkout, confirmed, payment-failed
 
-## Giveaway (podczas show)
+## Giveaway (podczas show) — ⏸️ ON HOLD (nie MVP)
+> Zaprojektowane w Figmie, ale nie wdrazamy w pierwszej wersji. Wrocimy do tego pozniej.
+
 - Host uruchamia giveaway → Show Giveaway Modal
 - Buyer: "Enter Giveaway!" CTA
 - Timer + losowanie + wynik
 - Stany: entry-open, countdown, drawing, winner-announced
 
 ## Activity
-- Zamowienia (lista z statusami: Paid, Shipped, Delivered, Returned)
+- Zamowienia (buyer: do opłacenia → opłacone → przygotowywane → wysłane → w drodze → do odebrania → odebrane; seller: Nowe → Wysłane → Zrealizowane)
 - Wiadomosci (czat z sellerami/buyerami)
 - Powiadomienia (show alerts, order updates, giveaway results)
 

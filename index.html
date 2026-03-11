@@ -202,6 +202,59 @@ body{
   box-shadow:var(--shadow-interactive);font-family:inherit;
 }
 
+/* ── Seller Hub Dashboard ── */
+.sh-profile{display:flex;align-items:center;gap:12px;padding:0 16px;margin-bottom:24px}
+.sh-avatar{width:48px;height:48px;border-radius:50%;background:var(--ov30);overflow:hidden;flex-shrink:0}
+.sh-avatar img{width:100%;height:100%;object-fit:cover}
+.sh-profile-info{flex:1;display:flex;flex-direction:column;gap:2px}
+.sh-profile-name{font-size:16px;font-weight:600;color:var(--bw10)}
+.sh-profile-link{font-size:13px;font-weight:500;color:var(--bl10);cursor:pointer}
+
+.sh-filter-row{display:flex;gap:6px;padding:0 16px;margin-bottom:20px}
+.sh-filter-pill{
+  height:32px;padding:0 14px;border-radius:70px;border:1.5px solid var(--ov15);
+  background:transparent;font-size:12px;font-weight:600;color:var(--bw40);
+  cursor:pointer;font-family:inherit;transition:all 0.2s;
+}
+.sh-filter-pill.active{
+  background:var(--bw10);color:var(--wh10);border-color:var(--bw10);
+}
+
+.sh-tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px}
+.sh-tile{
+  background:var(--wh10);border-radius:16px;padding:16px;cursor:pointer;
+  display:flex;flex-direction:column;gap:12px;
+  box-shadow:0px 1px 3px rgba(0,0,0,0.04);
+  border:1px solid var(--ov20);
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.sh-tile:active{transform:scale(0.97);box-shadow:0px 1px 2px rgba(0,0,0,0.08)}
+.sh-tile-header{display:flex;align-items:center;justify-content:space-between}
+.sh-tile-icon{
+  width:36px;height:36px;border-radius:10px;background:var(--ov30);
+  display:flex;align-items:center;justify-content:center;
+}
+.sh-tile-icon img{width:18px;height:18px;opacity:0.7}
+.sh-tile-chevron{width:16px;height:16px;color:var(--gw10)}
+.sh-tile-value{font-size:28px;font-weight:700;color:var(--bw10);letter-spacing:-1px;line-height:1}
+.sh-tile-label{font-size:13px;font-weight:500;color:var(--bw40);margin-top:-4px}
+.sh-tile-change{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600}
+.sh-tile-change.up{color:var(--gr10)}
+.sh-tile-change.down{color:var(--rd10)}
+.sh-tile-change .arrow{font-size:10px}
+
+.sh-section-title{font-size:14px;font-weight:600;color:var(--bw40);padding:0 16px;margin:28px 0 16px}
+
+.sh-quick-actions{display:flex;gap:12px;padding:0 16px}
+.sh-quick-btn{
+  flex:1;height:48px;border-radius:12px;border:1.5px dashed var(--ov15);
+  background:transparent;font-size:13px;font-weight:600;color:var(--bw20);
+  cursor:pointer;font-family:inherit;display:flex;align-items:center;
+  justify-content:center;gap:6px;transition:background 0.15s;
+}
+.sh-quick-btn:active{background:var(--ov30)}
+.sh-quick-btn img{width:16px;height:16px;opacity:0.6}
+
 /* ── Prod Tile Horizontal ── */
 .prod-h{display:flex;gap:12px;padding:0 16px;cursor:pointer}
 .prod-h-img{
@@ -404,7 +457,7 @@ body{
 /* ── Live Show ── */
 .ls-bg{
   position:absolute;inset:0;
-  background:url('images/shows/show1.jpg') center/cover no-repeat;
+  background:url('design-system/images/shows/show1.jpg') center/cover no-repeat;
 }
 .ls-bg::after{
   content:'';position:absolute;inset:0;
@@ -1457,32 +1510,32 @@ body{
     <h2 class="section-title">Hot Right Now</h2>
     <div class="show-carousel" style="margin-top:12px">
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">834</div>
           <div class="show-tile-bottom"><div class="show-tile-title">BRAND NEW TOYS ALL $1</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/CatMomPop.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/CatMomPop.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">CatMomPop</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">834</div>
           <div class="show-tile-bottom"><div class="show-tile-title">3 SECONDS SUDDEN DEATH - SPORTSWEAR</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/IllusionClothing.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/IllusionClothing.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">IllusionClothing</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">1.2k</div>
           <div class="show-tile-bottom"><div class="show-tile-title">Fi's Bargain Basement</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/TeamRare.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/TeamRare.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">TeamRare</span>
         </div>
       </div>
@@ -1494,7 +1547,7 @@ body{
     <h2 class="section-title">Followed Hosts</h2>
     <div class="show-carousel" style="margin-top:12px">
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-alert">
             <img src="design-system/UI Icons/Icon Alert.svg" width="12" height="12" alt="Alert">
             2
@@ -1502,22 +1555,22 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Summer Collection Drop</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">LuxeBotique</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">834</div>
           <div class="show-tile-bottom"><div class="show-tile-title">Mystery Boxes Opening</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/ButikKoti.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/ButikKoti.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">ButikKoti</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-alert">
             <img src="design-system/UI Icons/Icon Alert.svg" width="12" height="12" alt="Alert">
             5
@@ -1525,7 +1578,7 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Vintage Finds Weekly</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/VamosClearance.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/VamosClearance.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">VamosClearance</span>
         </div>
       </div>
@@ -1537,27 +1590,27 @@ body{
     <h2 class="section-title">Trending in Fashion</h2>
     <div class="show-carousel" style="margin-top:12px">
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">423</div>
           <div class="show-tile-bottom"><div class="show-tile-title">Designer Bags Auction</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/ByAn.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/ByAn.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">ByAn</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">189</div>
           <div class="show-tile-bottom"><div class="show-tile-title">Sneaker Drop $1 Start</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/WoooPlusSize.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/WoooPlusSize.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">WoooPlusSize</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-alert">
             <img src="design-system/UI Icons/Icon Alert.svg" width="12" height="12" alt="Alert">
             12
@@ -1565,7 +1618,7 @@ body{
           <div class="show-tile-bottom"><div class="show-tile-title">Jewelry Flash Sale</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/PupsikCosmetics.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/PupsikCosmetics.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">PupsikCosmetics</span>
         </div>
       </div>
@@ -1664,104 +1717,118 @@ body{
 <div class="screen" id="screen-sell">
 <div class="screen-scroll" style="padding-top:54px">
 
-  <div style="padding:24px 16px 0">
+  <!-- Big title (scroll behavior: H15 23px SemiBold) -->
+  <div style="padding:24px 16px 20px">
     <h1 style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">Seller Hub</h1>
   </div>
 
-  <!-- Upcoming Shows -->
-  <div style="margin-top:40px">
-    <div class="section-header">
-      <h2 class="section-title-md">Upcoming Shows</h2>
-      <button class="btn-cta-sm" data-action="schedule-show">Schedule Show</button>
+  <!-- Profile row -->
+  <div class="sh-profile">
+    <div class="sh-avatar">
+      <img src="design-system/images/avatars/CatMomPop.png" alt="Seller avatar">
     </div>
-    <div id="sell-upcoming-shows" style="padding:16px;display:flex;gap:12px;overflow-x:auto">
-      <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
-          <div class="show-tile-badge badge-alert">
-            <img src="design-system/UI Icons/Icon Alert.svg" width="12" height="12" alt="Alert">
-            344
-          </div>
-          <div class="show-tile-bottom">
-            <div class="show-tile-date">23 Jan, 6:00 PM</div>
-            <div class="show-tile-title">Daily from $1, Clothes, Home st...</div>
-          </div>
-        </div>
-      </div>
+    <div class="sh-profile-info">
+      <div class="sh-profile-name">CatMomPop</div>
+      <div class="sh-profile-link">Edit Profile</div>
     </div>
   </div>
 
-  <!-- Products -->
-  <div style="margin-top:16px">
-    <div class="section-header">
-      <h2 class="section-title-md">Products</h2>
-      <button class="btn-cta-sm" data-action="add-product">Add Product</button>
-    </div>
-    <div style="padding:16px;display:flex;flex-direction:column;gap:16px">
-
-      <!-- Product 1 -->
-      <div class="prod-h">
-        <div class="prod-h-img" style="background-image:url('images/product photos/image 1.png');background-size:cover;background-position:center">
-          <div class="show-tile-badge badge-alert" style="position:absolute;top:6px;right:6px;height:22px;font-size:9px;padding:0 8px">
-            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1.5v5M6 8.5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            34
-          </div>
-        </div>
-        <div class="prod-h-info">
-          <div class="prod-h-name">Airmax Classic 95 white blue red</div>
-          <div class="prod-h-attr">Size 42</div>
-          <div class="prod-h-attr">Qty: 92</div>
-          <div class="prod-h-price">$90</div>
-          <div class="prod-h-actions">
-            <button title="Delete">
-              <img src="design-system/UI Icons/Icon Trash.svg" width="16" height="16" alt="Delete">
-            </button>
-            <button title="Edit">
-              <img src="design-system/UI Icons/Icon Edit.svg" width="16" height="16" alt="Edit">
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="prod-h">
-        <div class="prod-h-img" style="background-image:url('images/product photos/image 2.png');background-size:cover;background-position:center"></div>
-        <div class="prod-h-info">
-          <div class="prod-h-name">Vintage Leather Jacket Brown</div>
-          <div class="prod-h-attr">Size M</div>
-          <div class="prod-h-attr">Qty: 5</div>
-          <div class="prod-h-price">$120</div>
-          <div class="prod-h-actions">
-            <button title="Delete">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12"/><path d="M5.33 4V2.67a.67.67 0 01.67-.67h4a.67.67 0 01.67-.67V4"/><path d="M12.67 4l-.6 8.4a1.33 1.33 0 01-1.33 1.27H5.27a1.33 1.33 0 01-1.33-1.27L3.33 4"/><path d="M6.67 7.33v3.34M9.33 7.33v3.34"/></svg>
-            </button>
-            <button title="Edit">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.33 2a1.88 1.88 0 112.67 2.67L5.33 13.33 2 14l.67-3.33L11.33 2z"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="prod-h">
-        <div class="prod-h-img" style="background-image:url('images/product photos/image 3.png');background-size:cover;background-position:center"></div>
-        <div class="prod-h-info">
-          <div class="prod-h-name">Handmade Ceramic Vase Set</div>
-          <div class="prod-h-attr">Variants: 3</div>
-          <div class="prod-h-attr">Qty: 18</div>
-          <div class="prod-h-price">$45</div>
-          <div class="prod-h-actions">
-            <button title="Delete">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12"/><path d="M5.33 4V2.67a.67.67 0 01.67-.67h4a.67.67 0 01.67-.67V4"/><path d="M12.67 4l-.6 8.4a1.33 1.33 0 01-1.33 1.27H5.27a1.33 1.33 0 01-1.33-1.27L3.33 4"/><path d="M6.67 7.33v3.34M9.33 7.33v3.34"/></svg>
-            </button>
-            <button title="Edit">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.33 2a1.88 1.88 0 112.67 2.67L5.33 13.33 2 14l.67-3.33L11.33 2z"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <!-- Time filter pills -->
+  <div class="sh-filter-row">
+    <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
+    <button class="sh-filter-pill active" data-period="week">Last Week</button>
+    <button class="sh-filter-pill" data-period="month">Last Month</button>
+    <button class="sh-filter-pill" data-period="year">Last Year</button>
   </div>
+
+  <!-- Dashboard tiles 2x2 -->
+  <div class="sh-tiles">
+
+    <!-- Products -->
+    <div class="sh-tile" data-action="manage-products">
+      <div class="sh-tile-header">
+        <div class="sh-tile-icon">
+          <img src="design-system/UI Icons/Icon Shop.svg" alt="Products">
+        </div>
+        <svg class="sh-tile-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
+      </div>
+      <div>
+        <div class="sh-tile-value">24</div>
+        <div class="sh-tile-label">Products</div>
+      </div>
+      <div class="sh-tile-change up">
+        <span class="arrow">&#9650;</span> 12%
+      </div>
+    </div>
+
+    <!-- Shows -->
+    <div class="sh-tile" data-action="manage-shows">
+      <div class="sh-tile-header">
+        <div class="sh-tile-icon">
+          <img src="design-system/UI Icons/Icon Video.svg" alt="Shows">
+        </div>
+        <svg class="sh-tile-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
+      </div>
+      <div>
+        <div class="sh-tile-value">3</div>
+        <div class="sh-tile-label">Shows</div>
+      </div>
+      <div class="sh-tile-change up">
+        <span class="arrow">&#9650;</span> 50%
+      </div>
+    </div>
+
+    <!-- Payout -->
+    <div class="sh-tile" data-action="payout">
+      <div class="sh-tile-header">
+        <div class="sh-tile-icon">
+          <img src="design-system/UI Icons/Icon Wallet.svg" alt="Payout">
+        </div>
+        <svg class="sh-tile-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
+      </div>
+      <div>
+        <div class="sh-tile-value">$640</div>
+        <div class="sh-tile-label">Payout</div>
+      </div>
+      <div class="sh-tile-change down">
+        <span class="arrow">&#9660;</span> 8%
+      </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="sh-tile" data-action="manage-orders">
+      <div class="sh-tile-header">
+        <div class="sh-tile-icon">
+          <img src="design-system/UI Icons/Icon Orders.svg" alt="Orders">
+        </div>
+        <svg class="sh-tile-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
+      </div>
+      <div>
+        <div class="sh-tile-value">7</div>
+        <div class="sh-tile-label">Orders</div>
+      </div>
+      <div class="sh-tile-change up">
+        <span class="arrow">&#9650;</span> 40%
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="sh-section-title">Quick Actions</div>
+  <div class="sh-quick-actions">
+    <button class="sh-quick-btn" data-action="schedule-show">
+      <img src="design-system/UI Icons/Icon Plus.svg" alt="">
+      New Show
+    </button>
+    <button class="sh-quick-btn" data-action="add-product">
+      <img src="design-system/UI Icons/Icon Plus.svg" alt="">
+      Add Product
+    </button>
+  </div>
+
+  <!-- Spacer for tabbar -->
+  <div style="height:100px"></div>
 
 </div>
 </div>
@@ -1823,32 +1890,32 @@ body{
     <h2 class="section-title">Live Now</h2>
     <div class="show-carousel" style="margin-top:12px">
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">834</div>
           <div class="show-tile-bottom"><div class="show-tile-title">3 SECONDS SUDDEN DEATH - SPORTSWEAR</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/IllusionClothing.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/IllusionClothing.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">IllusionClothing</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">423</div>
           <div class="show-tile-bottom"><div class="show-tile-title">Designer Bags Auction</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">LuxeBotique</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">189</div>
           <div class="show-tile-bottom"><div class="show-tile-title">Sneaker Drop $1 Start</div></div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/MButik.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/MButik.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">M-Butik</span>
         </div>
       </div>
@@ -1860,7 +1927,7 @@ body{
     <h2 class="section-title">Followed Hosts</h2>
     <div class="show-carousel" style="margin-top:12px">
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-alert">
             <img src="design-system/UI Icons/Icon Alert.svg" width="12" height="12" alt="Alert">
             102
@@ -1871,12 +1938,12 @@ body{
           </div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/TCGPokerealm.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/TCGPokerealm.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">CatchyDeals</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-live">23</div>
           <div class="show-tile-bottom">
             <div class="show-tile-date">23 Dec, 11:29</div>
@@ -1884,12 +1951,12 @@ body{
           </div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/MButik.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/MButik.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">GarageSale</span>
         </div>
       </div>
       <div class="show-tile">
-        <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+        <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
           <div class="show-tile-badge badge-alert">
             <img src="design-system/UI Icons/Icon Alert.svg" width="12" height="12" alt="Alert">
             344
@@ -1900,7 +1967,7 @@ body{
           </div>
         </div>
         <div class="show-tile-host">
-          <div class="avatar avatar-32" style="background-image:url('images/avatars/Shaun.png');background-size:cover;background-position:center"></div>
+          <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/Shaun.png');background-size:cover;background-position:center"></div>
           <span class="show-tile-hostname">CatchyDeals</span>
         </div>
       </div>
@@ -1914,88 +1981,88 @@ body{
       <!-- Left column -->
       <div class="products-col">
         <div class="ptv">
-          <div class="ptv-img" style="height:215px;background-image:url('images/Product Photos/image 1.png')">
+          <div class="ptv-img" style="height:215px;background-image:url('design-system/images/Product Photos/image 1.png')">
             <div class="ptv-badge">⚡ Today 11:20 AM</div>
           </div>
           <div class="ptv-name">Air Max Classic BW Vachett...</div>
           <div class="ptv-price">$103 ⚡ $???</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/MButik.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/MButik.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
         </div>
         <div class="ptv">
-          <div class="ptv-img" style="height:147px;background-image:url('images/Product Photos/image 3.png')">
+          <div class="ptv-img" style="height:147px;background-image:url('design-system/images/Product Photos/image 3.png')">
             <div class="ptv-badge">⚡ Today 11:20 AM</div>
           </div>
           <div class="ptv-name">Airmax Classic 95 white blu...</div>
           <div class="ptv-price">From $1</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/TCGPokerealm.png')"></div><span class="ptv-seller-name">Flexdog_pl</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/TCGPokerealm.png')"></div><span class="ptv-seller-name">Flexdog_pl</span></div>
         </div>
         <div class="ptv">
-          <div class="ptv-img" style="height:215px;background-image:url('images/Product Photos/image 5.png')">
+          <div class="ptv-img" style="height:215px;background-image:url('design-system/images/Product Photos/image 5.png')">
             <div class="ptv-badge">⚡ 28 min ago</div>
           </div>
           <div class="ptv-name">Airmax Classic 95 white blu...</div>
           <div class="ptv-price">Sold for $103.34</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/CatMomPop.png')"></div><span class="ptv-seller-name">CatchyDeals</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/CatMomPop.png')"></div><span class="ptv-seller-name">CatchyDeals</span></div>
         </div>
         <div class="ptv">
-          <div class="ptv-img" style="height:215px;background-image:url('images/Product Photos/image 7.png')">
+          <div class="ptv-img" style="height:215px;background-image:url('design-system/images/Product Photos/image 7.png')">
             <div class="ptv-badge">⚡ Today 11:20 AM</div>
           </div>
           <div class="ptv-name">Air Max Classic BW Vachett...</div>
           <div class="ptv-price">$103 ⚡ $???</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/MButik.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/MButik.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
         </div>
         <div class="ptv">
-          <div class="ptv-img" style="height:147px;background-image:url('images/Product Photos/image 9.png')">
+          <div class="ptv-img" style="height:147px;background-image:url('design-system/images/Product Photos/image 9.png')">
             <div class="ptv-badge">⚡ Today 11:20 AM</div>
           </div>
           <div class="ptv-name">Airmax Classic 95 white blu...</div>
           <div class="ptv-price">From $1</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/TCGPokerealm.png')"></div><span class="ptv-seller-name">Flexdog_pl</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/TCGPokerealm.png')"></div><span class="ptv-seller-name">Flexdog_pl</span></div>
         </div>
       </div>
       <!-- Right column -->
       <div class="products-col">
         <div class="ptv">
-          <div class="ptv-img" style="height:147px;background-image:url('images/Product Photos/image 2.png')">
+          <div class="ptv-img" style="height:147px;background-image:url('design-system/images/Product Photos/image 2.png')">
             <div class="ptv-badge">Buy Now</div>
           </div>
           <div class="ptv-name">Airmax Classic 95 white blu...</div>
           <div style="font-size:11px;font-weight:600;color:var(--bw40);margin-top:1px">Size 42</div>
           <div class="ptv-price">$90 · $102.34, with 🛡</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/CatMomPop.png')"></div><span class="ptv-seller-name">CatchyDeals</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/CatMomPop.png')"></div><span class="ptv-seller-name">CatchyDeals</span></div>
         </div>
         <div class="ptv">
-          <div class="ptv-img" style="height:215px;background-image:url('images/Product Photos/image 4.png')">
+          <div class="ptv-img" style="height:215px;background-image:url('design-system/images/Product Photos/image 4.png')">
             <div class="ptv-badge">⚡ Today 11:20 AM</div>
           </div>
           <div class="ptv-name">Air Force One Flash novel...</div>
           <div class="ptv-price">$103 ⚡ $???</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/Shaun.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/Shaun.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
         </div>
         <div class="ptv">
-          <div class="ptv-img" style="height:215px;background-image:url('images/Product Photos/image 6.png')">
+          <div class="ptv-img" style="height:215px;background-image:url('design-system/images/Product Photos/image 6.png')">
             <div class="ptv-badge">⚡ Today 11:03 AM</div>
           </div>
           <div class="ptv-name">Air Force One Flash novel...</div>
           <div class="ptv-price">$153 ⚡ $???</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/VamosClearance.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/VamosClearance.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
         </div>
         <div class="ptv">
-          <div class="ptv-img" style="height:147px;background-image:url('images/Product Photos/image 8.png')">
+          <div class="ptv-img" style="height:147px;background-image:url('design-system/images/Product Photos/image 8.png')">
             <div class="ptv-badge">⚡ Today 11:20 AM</div>
           </div>
           <div class="ptv-name">Air Force One Flash novel...</div>
           <div class="ptv-price">$103 ⚡ $???</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/Shaun.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/Shaun.png')"></div><span class="ptv-seller-name">ShoesGarage</span></div>
         </div>
         <div class="ptv">
-          <div class="ptv-img" style="height:215px;background-image:url('images/Product Photos/image 10.png')">
+          <div class="ptv-img" style="height:215px;background-image:url('design-system/images/Product Photos/image 10.png')">
             <div class="ptv-badge">Buy Now</div>
           </div>
           <div class="ptv-name">Airmax Classic 95 white blu...</div>
           <div class="ptv-price">$90 · $102.34, with 🛡</div>
-          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">CatchyDeals</span></div>
+          <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">CatchyDeals</span></div>
         </div>
       </div>
     </div>
@@ -2037,13 +2104,13 @@ body{
   <div class="screen-scroll" style="padding-bottom:80px">
 
     <!-- Cover photo -->
-    <div class="sp-cover" style="background-image:url('images/shows/show1.jpg')"></div>
+    <div class="sp-cover" style="background-image:url('design-system/images/shows/show1.jpg')"></div>
 
     <!-- Profile content (overlaps cover by 39px) -->
     <div class="sp-content">
 
       <!-- Avatar -->
-      <div class="sp-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div>
+      <div class="sp-avatar" style="background-image:url('design-system/images/avatars/LuxeBotique.png')"></div>
 
       <!-- Name + Follow -->
       <div class="sp-name-row">
@@ -2109,7 +2176,7 @@ body{
           <div class="review-tile">
             <div>
               <div class="rt-header">
-                <div class="rt-avatar" style="background-image:url('images/avatars/Ailema.png')"></div>
+                <div class="rt-avatar" style="background-image:url('design-system/images/avatars/Ailema.png')"></div>
                 <div class="rt-info">
                   <span class="rt-name">Miranda0291</span>
                   <span class="rt-date">8.11.2025</span>
@@ -2144,7 +2211,7 @@ body{
         <h2 class="section-title">Upcoming Shows</h2>
         <div class="show-carousel" style="margin-top:12px">
           <div class="show-tile">
-            <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+            <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
               <div class="show-tile-badge badge-alert"><img src="design-system/UI Icons/Icon Alert.svg" width="12" height="12" alt="">21</div>
               <div class="show-tile-bottom">
                 <div class="show-tile-date">18 Nov, 11:08</div>
@@ -2152,12 +2219,12 @@ body{
               </div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
               <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
           <div class="show-tile">
-            <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+            <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
               <div class="show-tile-badge badge-live">834</div>
               <div class="show-tile-bottom">
                 <div class="show-tile-date">18 Nov, 11:08</div>
@@ -2165,12 +2232,12 @@ body{
               </div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
               <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
           <div class="show-tile">
-            <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+            <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
               <div class="show-tile-badge badge-alert"><img src="design-system/UI Icons/Icon Alert.svg" width="12" height="12" alt="">344</div>
               <div class="show-tile-bottom">
                 <div class="show-tile-date">19 Nov, 9:00</div>
@@ -2178,7 +2245,7 @@ body{
               </div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
               <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
@@ -2190,29 +2257,29 @@ body{
         <h2 class="section-title">Finished Shows</h2>
         <div class="show-carousel" style="margin-top:12px">
           <div class="show-tile">
-            <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+            <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
               <div class="show-tile-bottom"><div class="show-tile-title">Daily from $1, Clothes, Home st...</div></div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
               <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
           <div class="show-tile">
-            <div class="show-tile-img" style="background-image:url('images/shows/show2.jpg');background-size:cover;background-position:center">
+            <div class="show-tile-img" style="background-image:url('design-system/images/shows/show2.jpg');background-size:cover;background-position:center">
               <div class="show-tile-bottom"><div class="show-tile-title">Daily from $1, Clothes, Home st...</div></div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
               <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
           <div class="show-tile">
-            <div class="show-tile-img" style="background-image:url('images/shows/show1.jpg');background-size:cover;background-position:center">
+            <div class="show-tile-img" style="background-image:url('design-system/images/shows/show1.jpg');background-size:cover;background-position:center">
               <div class="show-tile-bottom"><div class="show-tile-title">Vintage Finds Weekly</div></div>
             </div>
             <div class="show-tile-host">
-              <div class="avatar avatar-32" style="background-image:url('images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
+              <div class="avatar avatar-32" style="background-image:url('design-system/images/avatars/LuxeBotique.png');background-size:cover;background-position:center"></div>
               <span class="show-tile-hostname">LuxeBotique</span>
             </div>
           </div>
@@ -2226,54 +2293,54 @@ body{
           <!-- Left column -->
           <div class="products-col">
             <div class="ptv">
-              <div class="ptv-img" style="height:147px;background-image:url('images/product photos/image 5.png')">
+              <div class="ptv-img" style="height:147px;background-image:url('design-system/images/product photos/image 5.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic 95 white blue</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">$102.34, with 3</div>
             </div>
             <div class="ptv">
-              <div class="ptv-img" style="height:215px;background-image:url('images/product photos/image 10.png')">
+              <div class="ptv-img" style="height:215px;background-image:url('design-system/images/product photos/image 10.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic 95 white blu...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">From $1</div>
             </div>
             <div class="ptv">
-              <div class="ptv-img" style="height:147px;background-image:url('images/product photos/image 15.png')">
+              <div class="ptv-img" style="height:147px;background-image:url('design-system/images/product photos/image 15.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic 95 white blu...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">$102.34, with 3</div>
             </div>
           </div>
           <!-- Right column -->
           <div class="products-col">
             <div class="ptv">
-              <div class="ptv-img" style="height:215px;background-image:url('images/product photos/image 20.png')">
+              <div class="ptv-img" style="height:215px;background-image:url('design-system/images/product photos/image 20.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic BH Vachett...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">$102.34, with 3</div>
             </div>
             <div class="ptv">
-              <div class="ptv-img" style="height:147px;background-image:url('images/product photos/image 25.png')">
+              <div class="ptv-img" style="height:147px;background-image:url('design-system/images/product photos/image 25.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Air Force One Flash novel...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">From $1</div>
             </div>
             <div class="ptv">
-              <div class="ptv-img" style="height:215px;background-image:url('images/product photos/image 30.png')">
+              <div class="ptv-img" style="height:215px;background-image:url('design-system/images/product photos/image 30.png')">
                 <div class="ptv-badge">Buy Now</div>
               </div>
               <div class="ptv-name">Airmax Classic 95 white blu...</div>
-              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
+              <div class="ptv-seller"><div class="ptv-seller-avatar" style="background-image:url('design-system/images/avatars/LuxeBotique.png')"></div><span class="ptv-seller-name">LuxeBotique</span></div>
               <div class="ptv-price">$102.34, with 3</div>
             </div>
           </div>
@@ -2318,7 +2385,7 @@ body{
           <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back">
         </button>
         <div class="ls-host-info">
-          <div class="ls-host-avatar" style="background-image:url('images/avatars/CatMomPop.png')"></div>
+          <div class="ls-host-avatar" style="background-image:url('design-system/images/avatars/CatMomPop.png')"></div>
           <div class="ls-host-meta">
             <span class="ls-host-name">CatMomPop</span>
             <div class="ls-host-stats">
@@ -2346,7 +2413,7 @@ body{
     <div class="ls-chat">
       <!-- Message: tipped -->
       <div class="ls-chat-msg">
-        <div class="ls-chat-avatar" style="background-image:url('images/avatars/ButikMadame.png')"></div>
+        <div class="ls-chat-avatar" style="background-image:url('design-system/images/avatars/ButikMadame.png')"></div>
         <div class="ls-chat-body">
           <div class="ls-chat-user"><span class="ls-chat-username">inky_82</span></div>
           <div class="ls-chat-tipped">Tipped $1</div>
@@ -2365,7 +2432,7 @@ body{
       </div>
       <!-- Message: mention -->
       <div class="ls-chat-msg">
-        <div class="ls-chat-avatar" style="background-image:url('images/avatars/Shaun.png')"></div>
+        <div class="ls-chat-avatar" style="background-image:url('design-system/images/avatars/Shaun.png')"></div>
         <div class="ls-chat-body">
           <div class="ls-chat-user"><span class="ls-chat-username">kriztifa</span></div>
           <div class="ls-chat-text"><span class="mention">@martinaux</span> What tha fook ya talking on?</div>
@@ -2373,7 +2440,7 @@ body{
       </div>
       <!-- Message: long -->
       <div class="ls-chat-msg">
-        <div class="ls-chat-avatar" style="background-image:url('images/avatars/Ailema.png')"></div>
+        <div class="ls-chat-avatar" style="background-image:url('design-system/images/avatars/Ailema.png')"></div>
         <div class="ls-chat-body">
           <div class="ls-chat-user"><span class="ls-chat-username">FashionLover</span></div>
           <div class="ls-chat-text">Have you any 12UK NewBalance? 576 or 311? Or Seezers or Reebok perhaps? 👟👟</div>
@@ -2396,7 +2463,7 @@ body{
       </div>
       <!-- Won notice -->
       <div class="ls-chat-won" style="margin-top:8px">
-        <div class="won-avatar" style="background-image:url('images/avatars/ButikMadame.png')"></div>
+        <div class="won-avatar" style="background-image:url('design-system/images/avatars/ButikMadame.png')"></div>
         <span>inky_82 is <span class="won-text">won!</span></span>
       </div>
     </div>
@@ -2428,7 +2495,7 @@ body{
   <div class="ls-tool">
     <div class="ls-tool-product">
       <div class="ls-tool-prod-left">
-        <div class="ls-tool-prod-img" style="background-image:url('images/product photos/image 8.png')"></div>
+        <div class="ls-tool-prod-img" style="background-image:url('design-system/images/product photos/image 8.png')"></div>
         <div class="ls-tool-prod-info" style="width:167px">
           <div class="ls-tool-prod-name">Rituals Private Collection Home Perfume - Clear</div>
           <div class="ls-tool-prod-attr">Atrribute - Attribute</div>
@@ -2846,7 +2913,7 @@ body{
       </div>
       <!-- Filled state -->
       <div style="display:none;flex-direction:row;gap:27px;align-items:flex-start;justify-content:center" id="ss-video-filled">
-        <div class="ss-video-thumb" style="background-image:url('images/shows/show2.jpg')">
+        <div class="ss-video-thumb" style="background-image:url('design-system/images/shows/show2.jpg')">
           <span class="ss-video-date">22 Jan, 6:00 PM</span>
           <span class="ss-video-title">Daily from $1, Clothes, Home st...</span>
         </div>
@@ -2957,7 +3024,7 @@ body{
     <div style="height:59px;flex-shrink:0"></div>
     <div class="sched-top-action">
       <div class="sched-top-left">
-        <div class="sched-avatar" style="background-image:url('images/avatars/TCGPokerealm.png')"></div>
+        <div class="sched-avatar" style="background-image:url('design-system/images/avatars/TCGPokerealm.png')"></div>
         <span class="sched-name">PokeRealmTCG</span>
       </div>
       <div class="sched-top-right">
@@ -3109,7 +3176,7 @@ body{
 
     <!-- Cover + Add Media -->
     <div class="rp-media">
-      <div class="rp-cover" id="rp-cover-img" style="background-image:url('images/product photos/image 3.png')">
+      <div class="rp-cover" id="rp-cover-img" style="background-image:url('design-system/images/product photos/image 3.png')">
         <span class="rp-cover-label">Cover</span>
       </div>
       <div class="rp-add-media">
@@ -3239,7 +3306,7 @@ body{
     <!-- Product list -->
     <div id="pl-product-list">
       <div class="pl-item">
-        <div class="pl-item-img" style="background-image:url('images/product photos/image 3.png')"></div>
+        <div class="pl-item-img" style="background-image:url('design-system/images/product photos/image 3.png')"></div>
         <div class="pl-item-info">
           <p class="pl-item-name">Airmax Classic 95 white blue red</p>
           <p class="pl-item-attr">Variants: 3</p>
@@ -3249,7 +3316,7 @@ body{
         </div>
       </div>
       <div class="pl-item">
-        <div class="pl-item-img" style="background-image:url('images/product photos/image 5.png')"></div>
+        <div class="pl-item-img" style="background-image:url('design-system/images/product photos/image 5.png')"></div>
         <div class="pl-item-info">
           <p class="pl-item-name">Airmax Classic 95 white blue red</p>
           <p class="pl-item-attr">Variants: 3</p>
@@ -3259,7 +3326,7 @@ body{
         </div>
       </div>
       <div class="pl-item">
-        <div class="pl-item-img" style="background-image:url('images/product photos/image 8.png')"></div>
+        <div class="pl-item-img" style="background-image:url('design-system/images/product photos/image 8.png')"></div>
         <div class="pl-item-info">
           <p class="pl-item-name">Airmax Classic 95 white blue red</p>
           <p class="pl-item-attr">Quantity: 5</p>
@@ -3330,7 +3397,7 @@ body{
   <div class="screen-scroll" id="pp-scroll" style="padding-bottom:140px">
 
     <!-- Product image -->
-    <div class="pp-image" id="pp-image" style="background-image:url('images/Product Photos/image 1.png')">
+    <div class="pp-image" id="pp-image" style="background-image:url('design-system/images/Product Photos/image 1.png')">
       <div class="pp-image-gallery">
         <img src="design-system/UI Icons/Icon Gallery Photo Full.svg" class="active" alt="Photo">
         <img src="design-system/UI Icons/Icon Gallery Video.svg" alt="Video">
@@ -3622,6 +3689,14 @@ if (lsHostAvatar) {
   });
 }
 
+// ── Seller Hub Dashboard — filter pills ──
+document.querySelectorAll('.sh-filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.sh-filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+
 // ── Schedule Show — navigate from Seller Hub ──
 const ssScheduleAction = document.querySelector('[data-action="schedule-show"]');
 if (ssScheduleAction) {
@@ -3719,7 +3794,7 @@ if (schedBack) {
     // Save show to localStorage + render on Seller Hub
     if (ssFormFilled) {
       scheduledShowCount++;
-      const showImages = ['images/shows/show1.jpg','images/shows/show2.jpg'];
+      const showImages = ['design-system/images/shows/show1.jpg','design-system/images/shows/show2.jpg'];
       const img = showImages[scheduledShowCount % showImages.length];
       const show = {
         id: Date.now(),
@@ -3749,7 +3824,7 @@ handleHash();
 // ════════════════════════════════════
 
 // ── Product photos pool ──
-const productPhotos = Array.from({length:20}, (_,i) => `images/product photos/image ${i+1}.png`);
+const productPhotos = Array.from({length:20}, (_,i) => `design-system/images/product photos/image ${i+1}.png`);
 
 // ── Navigate: Seller Hub → Add Products ──
 const apAddAction = document.querySelector('[data-action="add-product"]');
