@@ -217,19 +217,19 @@ body{
 /* F30: 13px Medium 500 — tresc sheetu, uzyte jako link */
 .sh-profile-link{font-size:13px;font-weight:500;color:var(--bl10);cursor:pointer}
 
-/* Time filter pills — match cat-btn pattern from Home */
-.sh-filter-row{display:flex;gap:8px;padding:0 16px;margin-bottom:20px;overflow-x:auto;scrollbar-width:none}
-.sh-filter-row::-webkit-scrollbar{display:none}
+/* Time filter — lightweight segmented control */
+.sh-filter-row{display:flex;gap:4px;padding:0 16px;margin-bottom:20px}
 .sh-filter-pill{
-  flex-shrink:0;height:36px;padding:0 16px;border-radius:50px;
-  background:var(--wh10);border:none;
-  box-shadow:var(--shadow-interactive);
-  /* B20: 12px SemiBold 600 */
-  font-size:12px;font-weight:600;color:var(--bw20);
-  cursor:pointer;font-family:inherit;transition:all 0.2s;
+  flex:1;height:30px;padding:0;border-radius:8px;
+  background:transparent;border:none;
+  /* F70: 12px Regular 400 */
+  font-size:12px;font-weight:400;color:var(--bw40);
+  cursor:pointer;font-family:inherit;transition:all 0.15s;
 }
 .sh-filter-pill.active{
-  background:var(--ov15);box-shadow:none;
+  background:var(--ov30);
+  /* F60: 12px SemiBold 600 */
+  font-weight:600;color:var(--bw20);
 }
 
 /* Tiles grid 2×2 */
