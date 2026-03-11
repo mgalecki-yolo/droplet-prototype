@@ -231,27 +231,24 @@ body{
 /* Chevron after Edit Profile */
 .sh-profile-link img{width:12px;height:12px;vertical-align:middle;margin-left:2px;opacity:0.4}
 
-/* Time filter — inline text, not buttons. Barely there. */
-.sh-filter-row{display:flex;gap:0;padding:0 16px;margin-bottom:16px}
+/* Time filter pills — B20 12px SemiBold, 36px pill buttons */
+.sh-filter-row{display:flex;gap:8px;padding:0 16px;margin-bottom:10px;overflow-x:auto}
 .sh-filter-pill{
-  height:28px;padding:0 10px;border-radius:40px;
-  background:transparent;border:none;
-  /* F90: 11px Regular 400 */
-  font-size:11px;font-weight:400;color:var(--gw10);
+  height:36px;padding:0 12px;border-radius:70px;
+  background:var(--wh10);border:none;
+  font-size:12px;font-weight:600;color:var(--bw20);
   cursor:pointer;font-family:inherit;transition:all 0.15s;
+  box-shadow:var(--shadow-interactive);white-space:nowrap;flex-shrink:0;
 }
-.sh-filter-pill:first-child{padding-left:0}
 .sh-filter-pill.active{
-  /* F75: 11px SemiBold 600 */
-  font-weight:600;color:var(--bw20);
+  background:var(--ov15);box-shadow:none;
 }
 
-/* Tiles grid — same as category-grid from Browse */
-.sh-tiles{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 16px}
+/* Tiles grid — 2×2, gap 13px matching Figma layout */
+.sh-tiles{display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:0 16px}
 .sh-tile{
-  /* Same as .category-tile */
-  height:114px;border-radius:20px;background:var(--wh10);
-  box-shadow:var(--shadow-interactive);padding:12px;
+  height:92px;border-radius:16px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);padding:14px;
   cursor:pointer;position:relative;overflow:hidden;
   display:flex;flex-direction:column;justify-content:space-between;
 }
@@ -273,12 +270,13 @@ body{
 .sh-tile-c{
   display:flex;flex-direction:column;gap:8px;
   padding:14px;justify-content:space-between;
-  height:auto;min-height:96px;position:relative;
+  position:relative;
 }
 .sh-tile-c-top{display:flex;align-items:center;justify-content:space-between}
 .sh-tile-c-label{font-size:12px;font-weight:600;color:var(--bw40)}
-.sh-tile-c-value{font-size:28px;font-weight:700;color:var(--bw10);letter-spacing:-1px;line-height:1}
-.sh-tile-c-sub{font-size:11px;font-weight:400;color:var(--ov10);margin-top:2px}
+.sh-tile-c-value{font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:30px}
+.sh-tile-c-value-row{display:flex;align-items:center;gap:4px}
+.sh-tile-c-sub{font-size:11px;font-weight:400;color:var(--ov10);line-height:14px}
 .sh-tile-c-chevron{
   position:absolute;bottom:14px;right:14px;
   width:16px;height:16px;opacity:0.3;
@@ -1747,14 +1745,14 @@ body{
 <div class="screen" id="screen-sell">
 <div class="screen-scroll" style="padding-top:54px">
 
-  <!-- H15: 23px SemiBold -0.5px -->
-  <div style="padding:24px 16px 16px">
-    <h1 style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">Seller Hub</h1>
+  <!-- H10: 32px Bold — main title -->
+  <div style="padding:40px 16px 36px">
+    <h1 style="font-size:32px;font-weight:700;color:#000">Seller Hub</h1>
   </div>
 
-  <!-- Performance section header -->
-  <div style="padding:0 16px 12px">
-    <div style="font-size:20px;font-weight:700;color:var(--bw10);letter-spacing:-0.3px">Performance</div>
+  <!-- H15: 23px SemiBold -0.5px — section heading -->
+  <div style="padding:0 16px 16px">
+    <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Performance</div>
   </div>
 
   <!-- Time filter pills — Today active by default -->
@@ -1765,16 +1763,18 @@ body{
     <button class="sh-filter-pill" data-period="month">Last Month</button>
   </div>
 
-  <!-- Dashboard tiles 2×2 — Variant C style (label+% top, big number, subtext) -->
+  <!-- Dashboard tiles 2×2 — Figma node 5540:29811 -->
   <div class="sh-tiles">
 
     <div class="sh-tile sh-tile-c" data-action="manage-products">
       <div class="sh-tile-c-top">
         <div class="sh-tile-c-label">Products</div>
-        <div class="sh-tile-change up">+12%</div>
       </div>
       <div>
-        <div class="sh-tile-c-value">24</div>
+        <div class="sh-tile-c-value-row">
+          <div class="sh-tile-c-value">24</div>
+          <div class="sh-tile-change up">+12%</div>
+        </div>
         <div class="sh-tile-c-sub">3 drafts</div>
       </div>
       <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
@@ -1818,8 +1818,13 @@ body{
 
   </div>
 
+  <!-- Quick Actions section -->
+  <div style="padding:48px 16px 16px">
+    <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Quick Actions</div>
+  </div>
+
   <!-- CTA buttons — Add Product + Schedule Show -->
-  <div style="display:flex;gap:12px;padding:24px 16px 0">
+  <div style="display:flex;gap:12px;padding:0 16px">
     <button class="btn-cta-sm" data-action="add-product" style="flex:1">Add Product</button>
     <button class="btn-cta-sm" data-action="schedule-show" style="flex:1">Schedule Show</button>
   </div>
