@@ -203,84 +203,79 @@ body{
 }
 
 /* ── Seller Hub Dashboard ── */
+/*
+  Design rationale:
+  - Tiles reuse Browse category-tile pattern: border-radius 20px, wh10 bg, shadow-interactive, padding 12px
+  - Grid reuses category-grid pattern: 2-col, gap 16px, padding 0 16px
+  - Tile height 114px (same as category-tile) keeps rhythm consistent
+  - Typography: tile name = ct-name pattern (H40 16px SemiBold 600 bw20)
+  - Metric value = large but not heading-level — we use H15 (23px SemiBold) at bw10
+  - Change badge = F100 (10px SemiBold) same as product badge status
+  - Time filter = inline text row, not buttons — minimal visual weight
+  - Profile row follows Seller Profile header pattern (avatar + name + action)
+  - Quick actions = same btn-cta-sm pattern used for "Schedule Show" / "Add Product" in old hub
+*/
 
-/* Profile row */
-.sh-profile{display:flex;align-items:center;gap:12px;padding:0 16px;margin-bottom:24px}
+/* Profile row — matches Seller Profile header (avatar 48px + info) */
+.sh-profile{display:flex;align-items:center;gap:12px;padding:0 16px;margin-bottom:20px}
 .sh-avatar{
   width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;
   box-shadow:var(--shadow-interactive);
 }
 .sh-avatar img{width:100%;height:100%;object-fit:cover}
 .sh-profile-info{flex:1;display:flex;flex-direction:column;gap:2px}
-/* F10: 16px Medium 500 — naglowki formularzy */
-.sh-profile-name{font-size:16px;font-weight:500;color:var(--bw10)}
-/* F30: 13px Medium 500 — tresc sheetu, uzyte jako link */
-.sh-profile-link{font-size:13px;font-weight:500;color:var(--bl10);cursor:pointer}
+/* H40: 16px Bold 700 — matches category tile name weight */
+.sh-profile-name{font-size:16px;font-weight:700;color:var(--bw10)}
+/* F90: 11px Regular 400 — subtle secondary text */
+.sh-profile-link{font-size:11px;font-weight:400;color:var(--ov10);cursor:pointer}
+/* Chevron after Edit Profile */
+.sh-profile-link img{width:12px;height:12px;vertical-align:middle;margin-left:2px;opacity:0.4}
 
-/* Time filter — lightweight segmented control */
-.sh-filter-row{display:flex;gap:4px;padding:0 16px;margin-bottom:20px}
+/* Time filter — inline text, not buttons. Barely there. */
+.sh-filter-row{display:flex;gap:0;padding:0 16px;margin-bottom:16px}
 .sh-filter-pill{
-  flex:1;height:30px;padding:0;border-radius:8px;
+  height:28px;padding:0 10px;border-radius:40px;
   background:transparent;border:none;
-  /* F70: 12px Regular 400 */
-  font-size:12px;font-weight:400;color:var(--bw40);
+  /* F90: 11px Regular 400 */
+  font-size:11px;font-weight:400;color:var(--gw10);
   cursor:pointer;font-family:inherit;transition:all 0.15s;
 }
+.sh-filter-pill:first-child{padding-left:0}
 .sh-filter-pill.active{
-  background:var(--ov30);
-  /* F60: 12px SemiBold 600 */
+  /* F75: 11px SemiBold 600 */
   font-weight:600;color:var(--bw20);
 }
 
-/* Tiles grid 2×2 */
-.sh-tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px}
+/* Tiles grid — same as category-grid from Browse */
+.sh-tiles{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 16px}
 .sh-tile{
-  background:var(--wh10);border-radius:16px;padding:16px;cursor:pointer;
-  display:flex;flex-direction:column;gap:10px;
-  box-shadow:var(--shadow-interactive);
-  transition:transform 0.15s, box-shadow 0.15s;
+  /* Same as .category-tile */
+  height:114px;border-radius:20px;background:var(--wh10);
+  box-shadow:var(--shadow-interactive);padding:12px;
+  cursor:pointer;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;
 }
-.sh-tile:active{transform:scale(0.97)}
+.sh-tile:active{opacity:0.85}
 
-/* Tile header: icon + chevron */
-.sh-tile-header{display:flex;align-items:center;justify-content:space-between}
+/* Tile name — H40: 16px SemiBold 600, bw20 (same as ct-name but SemiBold not Bold to soften) */
+.sh-tile-name{font-size:16px;font-weight:600;color:var(--bw20)}
+
+/* Tile metric row — value + change side by side at bottom */
+.sh-tile-metric{display:flex;align-items:baseline;gap:6px}
+/* H15: 23px SemiBold 600, letter-spacing -0.5px, bw10 */
+.sh-tile-value{font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:1}
+/* F100: 10px SemiBold 600 — same as product badge */
+.sh-tile-change{font-size:10px;font-weight:600}
+.sh-tile-change.up{color:var(--gr10)}
+.sh-tile-change.down{color:var(--rd10)}
+
+/* Tile icon — positioned bottom-right like category-tile ct-icon */
 .sh-tile-icon{
-  width:36px;height:36px;border-radius:10px;background:var(--ov30);
-  display:flex;align-items:center;justify-content:center;
+  position:absolute;bottom:8px;right:8px;
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  opacity:0.12;
 }
-.sh-tile-icon img{width:18px;height:18px;opacity:0.65}
-.sh-tile-chevron{width:16px;height:16px;color:var(--gw10)}
-
-/* Tile value — H15: 23px SemiBold 600, letter-spacing -0.5px */
-.sh-tile-value{font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:1.1}
-/* Tile label — F30: 13px Medium 500, content tertiary */
-.sh-tile-label{font-size:13px;font-weight:500;color:var(--bw40)}
-/* Tile change — F100: 10px SemiBold 600, badge-like */
-.sh-tile-change{
-  display:inline-flex;align-items:center;gap:3px;
-  font-size:10px;font-weight:600;
-  padding:2px 8px;border-radius:40px;
-  align-self:flex-start;
-}
-.sh-tile-change.up{color:var(--gr10);background:rgba(52,199,89,0.1)}
-.sh-tile-change.down{color:var(--rd10);background:rgba(255,66,82,0.1)}
-.sh-tile-change .arrow{font-size:8px}
-
-/* Quick actions section */
-/* H40: 16px Bold 700 — section title (matches Category Browse) */
-.sh-section-title{font-size:16px;font-weight:700;color:var(--bw10);padding:0 16px;margin:28px 0 14px}
-
-.sh-quick-actions{display:flex;gap:12px;padding:0 16px}
-.sh-quick-btn{
-  flex:1;height:48px;border-radius:12px;border:1.5px dashed var(--ov15);
-  background:transparent;
-  /* F30: 13px Medium 500 */
-  font-size:13px;font-weight:500;color:var(--bw20);
-  cursor:pointer;font-family:inherit;display:flex;align-items:center;
-  justify-content:center;gap:6px;transition:background 0.15s;
-}
-.sh-quick-btn:active{background:var(--ov30)}
-.sh-quick-btn img{width:16px;height:16px;opacity:0.5}
+.sh-tile-icon img{width:32px;height:32px}
 
 /* ── Prod Tile Horizontal ── */
 .prod-h{display:flex;gap:12px;padding:0 16px;cursor:pointer}
@@ -1489,6 +1484,7 @@ body{
   background:linear-gradient(180deg,rgba(242,240,236,0) 0%,var(--ov40) 30%);
 }
 </style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 </head>
 <body>
 
@@ -1744,8 +1740,8 @@ body{
 <div class="screen" id="screen-sell">
 <div class="screen-scroll" style="padding-top:54px">
 
-  <!-- Big title (scroll behavior: H15 23px SemiBold) -->
-  <div style="padding:24px 16px 20px">
+  <!-- H15: 23px SemiBold -0.5px — same as all page titles -->
+  <div style="padding:24px 16px 16px">
     <h1 style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">Seller Hub</h1>
   </div>
 
@@ -1756,11 +1752,11 @@ body{
     </div>
     <div class="sh-profile-info">
       <div class="sh-profile-name">CatMomPop</div>
-      <div class="sh-profile-link">Edit Profile</div>
+      <div class="sh-profile-link">Edit Profile <img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
     </div>
   </div>
 
-  <!-- Time filter pills -->
+  <!-- Time filter — inline text, minimal -->
   <div class="sh-filter-row">
     <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
     <button class="sh-filter-pill active" data-period="week">Last Week</button>
@@ -1768,90 +1764,55 @@ body{
     <button class="sh-filter-pill" data-period="year">Last Year</button>
   </div>
 
-  <!-- Dashboard tiles 2x2 -->
+  <!-- Dashboard tiles 2×2 — same grid as Browse category-grid -->
   <div class="sh-tiles">
 
-    <!-- Products -->
+    <!-- Products tile — mirrors category-tile structure -->
     <div class="sh-tile" data-action="manage-products">
-      <div class="sh-tile-header">
-        <div class="sh-tile-icon">
-          <img src="design-system/UI Icons/Icon Shop.svg" alt="Products">
-        </div>
-        <svg class="sh-tile-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
-      </div>
-      <div>
+      <div class="sh-tile-name">Products</div>
+      <div class="sh-tile-metric">
         <div class="sh-tile-value">24</div>
-        <div class="sh-tile-label">Products</div>
+        <div class="sh-tile-change up">+12%</div>
       </div>
-      <div class="sh-tile-change up">
-        <span class="arrow">&#9650;</span> 12%
-      </div>
+      <div class="sh-tile-icon"><img src="design-system/UI Icons/Icon Shop.svg" alt=""></div>
     </div>
 
-    <!-- Shows -->
+    <!-- Shows tile -->
     <div class="sh-tile" data-action="manage-shows">
-      <div class="sh-tile-header">
-        <div class="sh-tile-icon">
-          <img src="design-system/UI Icons/Icon Video.svg" alt="Shows">
-        </div>
-        <svg class="sh-tile-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
-      </div>
-      <div>
+      <div class="sh-tile-name">Shows</div>
+      <div class="sh-tile-metric">
         <div class="sh-tile-value">3</div>
-        <div class="sh-tile-label">Shows</div>
+        <div class="sh-tile-change up">+50%</div>
       </div>
-      <div class="sh-tile-change up">
-        <span class="arrow">&#9650;</span> 50%
-      </div>
+      <div class="sh-tile-icon"><img src="design-system/UI Icons/Icon Video.svg" alt=""></div>
     </div>
 
-    <!-- Payout -->
+    <!-- Payout tile -->
     <div class="sh-tile" data-action="payout">
-      <div class="sh-tile-header">
-        <div class="sh-tile-icon">
-          <img src="design-system/UI Icons/Icon Wallet.svg" alt="Payout">
-        </div>
-        <svg class="sh-tile-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
-      </div>
-      <div>
+      <div class="sh-tile-name">Payout</div>
+      <div class="sh-tile-metric">
         <div class="sh-tile-value">$640</div>
-        <div class="sh-tile-label">Payout</div>
+        <div class="sh-tile-change down">−8%</div>
       </div>
-      <div class="sh-tile-change down">
-        <span class="arrow">&#9660;</span> 8%
-      </div>
+      <div class="sh-tile-icon"><img src="design-system/UI Icons/Icon Wallet.svg" alt=""></div>
     </div>
 
-    <!-- Orders -->
+    <!-- Orders tile -->
     <div class="sh-tile" data-action="manage-orders">
-      <div class="sh-tile-header">
-        <div class="sh-tile-icon">
-          <img src="design-system/UI Icons/Icon Orders.svg" alt="Orders">
-        </div>
-        <svg class="sh-tile-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
-      </div>
-      <div>
+      <div class="sh-tile-name">Orders</div>
+      <div class="sh-tile-metric">
         <div class="sh-tile-value">7</div>
-        <div class="sh-tile-label">Orders</div>
+        <div class="sh-tile-change up">+40%</div>
       </div>
-      <div class="sh-tile-change up">
-        <span class="arrow">&#9650;</span> 40%
-      </div>
+      <div class="sh-tile-icon"><img src="design-system/UI Icons/Icon Orders.svg" alt=""></div>
     </div>
 
   </div>
 
-  <!-- Quick Actions -->
-  <div class="sh-section-title">Quick Actions</div>
-  <div class="sh-quick-actions">
-    <button class="sh-quick-btn" data-action="schedule-show">
-      <img src="design-system/UI Icons/Icon Plus.svg" alt="">
-      New Show
-    </button>
-    <button class="sh-quick-btn" data-action="add-product">
-      <img src="design-system/UI Icons/Icon Plus.svg" alt="">
-      Add Product
-    </button>
+  <!-- CTA buttons — same btn-cta-sm as before, now in a row under tiles -->
+  <div style="display:flex;gap:12px;padding:20px 16px 0">
+    <button class="btn-cta-sm" data-action="schedule-show" style="flex:1">Schedule Show</button>
+    <button class="btn-cta-sm" data-action="add-product" style="flex:1">Add Product</button>
   </div>
 
   <!-- Spacer for tabbar -->
