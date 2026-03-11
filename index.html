@@ -269,13 +269,20 @@ body{
 .sh-tile-change.up{color:var(--gr10)}
 .sh-tile-change.down{color:var(--rd10)}
 
-/* Tile icon — positioned bottom-right like category-tile ct-icon */
-.sh-tile-icon{
-  position:absolute;bottom:8px;right:8px;
-  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
-  opacity:0.12;
+/* Variant C tile style */
+.sh-tile-c{
+  display:flex;flex-direction:column;gap:8px;
+  padding:14px;justify-content:space-between;
+  height:auto;min-height:96px;position:relative;
 }
-.sh-tile-icon img{width:32px;height:32px}
+.sh-tile-c-top{display:flex;align-items:center;justify-content:space-between}
+.sh-tile-c-label{font-size:12px;font-weight:600;color:var(--bw40)}
+.sh-tile-c-value{font-size:28px;font-weight:700;color:var(--bw10);letter-spacing:-1px;line-height:1}
+.sh-tile-c-sub{font-size:11px;font-weight:400;color:var(--ov10);margin-top:2px}
+.sh-tile-c-chevron{
+  position:absolute;bottom:14px;right:14px;
+  width:16px;height:16px;opacity:0.3;
+}
 
 /* ── Prod Tile Horizontal ── */
 .prod-h{display:flex;gap:12px;padding:0 16px;cursor:pointer}
@@ -1740,79 +1747,81 @@ body{
 <div class="screen" id="screen-sell">
 <div class="screen-scroll" style="padding-top:54px">
 
-  <!-- H15: 23px SemiBold -0.5px — same as all page titles -->
+  <!-- H15: 23px SemiBold -0.5px -->
   <div style="padding:24px 16px 16px">
     <h1 style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">Seller Hub</h1>
   </div>
 
-  <!-- Profile row -->
-  <div class="sh-profile">
-    <div class="sh-avatar">
-      <img src="design-system/images/avatars/CatMomPop.png" alt="Seller avatar">
-    </div>
-    <div class="sh-profile-info">
-      <div class="sh-profile-name">CatMomPop</div>
-      <div class="sh-profile-link">Edit Profile <img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
-    </div>
+  <!-- Performance section header -->
+  <div style="padding:0 16px 12px">
+    <div style="font-size:20px;font-weight:700;color:var(--bw10);letter-spacing:-0.3px">Performance</div>
   </div>
 
-  <!-- Time filter — inline text, minimal -->
+  <!-- Time filter pills — Today active by default -->
   <div class="sh-filter-row">
+    <button class="sh-filter-pill active" data-period="today">Today</button>
     <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
-    <button class="sh-filter-pill active" data-period="week">Last Week</button>
+    <button class="sh-filter-pill" data-period="week">Last Week</button>
     <button class="sh-filter-pill" data-period="month">Last Month</button>
-    <button class="sh-filter-pill" data-period="year">Last Year</button>
   </div>
 
-  <!-- Dashboard tiles 2×2 — same grid as Browse category-grid -->
+  <!-- Dashboard tiles 2×2 — Variant C style (label+% top, big number, subtext) -->
   <div class="sh-tiles">
 
-    <!-- Products tile — mirrors category-tile structure -->
-    <div class="sh-tile" data-action="manage-products">
-      <div class="sh-tile-name">Products</div>
-      <div class="sh-tile-metric">
-        <div class="sh-tile-value">24</div>
+    <div class="sh-tile sh-tile-c" data-action="manage-products">
+      <div class="sh-tile-c-top">
+        <div class="sh-tile-c-label">Products</div>
         <div class="sh-tile-change up">+12%</div>
       </div>
-      <div class="sh-tile-icon"><img src="design-system/UI Icons/Icon Shop.svg" alt=""></div>
+      <div>
+        <div class="sh-tile-c-value">24</div>
+        <div class="sh-tile-c-sub">3 drafts</div>
+      </div>
+      <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
     </div>
 
-    <!-- Shows tile -->
-    <div class="sh-tile" data-action="manage-shows">
-      <div class="sh-tile-name">Shows</div>
-      <div class="sh-tile-metric">
-        <div class="sh-tile-value">3</div>
+    <div class="sh-tile sh-tile-c" data-action="manage-shows">
+      <div class="sh-tile-c-top">
+        <div class="sh-tile-c-label">Shows</div>
         <div class="sh-tile-change up">+50%</div>
       </div>
-      <div class="sh-tile-icon"><img src="design-system/UI Icons/Icon Video.svg" alt=""></div>
+      <div>
+        <div class="sh-tile-c-value">3</div>
+        <div class="sh-tile-c-sub">2 upcoming</div>
+      </div>
+      <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
     </div>
 
-    <!-- Payout tile -->
-    <div class="sh-tile" data-action="payout">
-      <div class="sh-tile-name">Payout</div>
-      <div class="sh-tile-metric">
-        <div class="sh-tile-value">$640</div>
+    <div class="sh-tile sh-tile-c" data-action="payout">
+      <div class="sh-tile-c-top">
+        <div class="sh-tile-c-label">Payout</div>
         <div class="sh-tile-change down">−8%</div>
       </div>
-      <div class="sh-tile-icon"><img src="design-system/UI Icons/Icon Wallet.svg" alt=""></div>
+      <div>
+        <div class="sh-tile-c-value">$640</div>
+        <div class="sh-tile-c-sub">Available to withdraw</div>
+      </div>
+      <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
     </div>
 
-    <!-- Orders tile -->
-    <div class="sh-tile" data-action="manage-orders">
-      <div class="sh-tile-name">Orders</div>
-      <div class="sh-tile-metric">
-        <div class="sh-tile-value">7</div>
+    <div class="sh-tile sh-tile-c" data-action="manage-orders">
+      <div class="sh-tile-c-top">
+        <div class="sh-tile-c-label">Orders</div>
         <div class="sh-tile-change up">+40%</div>
       </div>
-      <div class="sh-tile-icon"><img src="design-system/UI Icons/Icon Orders.svg" alt=""></div>
+      <div>
+        <div class="sh-tile-c-value">7</div>
+        <div class="sh-tile-c-sub">2 to ship</div>
+      </div>
+      <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
     </div>
 
   </div>
 
-  <!-- CTA buttons — same btn-cta-sm as before, now in a row under tiles -->
-  <div style="display:flex;gap:12px;padding:20px 16px 0">
-    <button class="btn-cta-sm" data-action="schedule-show" style="flex:1">Schedule Show</button>
+  <!-- CTA buttons — Add Product + Schedule Show -->
+  <div style="display:flex;gap:12px;padding:24px 16px 0">
     <button class="btn-cta-sm" data-action="add-product" style="flex:1">Add Product</button>
+    <button class="btn-cta-sm" data-action="schedule-show" style="flex:1">Schedule Show</button>
   </div>
 
   <!-- Spacer for tabbar -->
