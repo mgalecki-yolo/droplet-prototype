@@ -8,12 +8,12 @@
 | bw30 | Black Warm 30 | `#222A35` | Content Secondary |
 | bw40 | Black Warm 40 | `#7B8494` | Content Tertiary — muted |
 | wh10 | White 10 | `#FFFFFF` | Absolute white |
-| bl10 | Black 10 | `#000000` | Absolute black |
+| bk10 | Black 10 | `#000000` | Absolute black |
 
 ## Surface (tla, karty)
 | Token | Nazwa | Hex | Uzycie |
 |-------|-------|-----|--------|
-| gw05 | Gray Warm 05 | `#BCBCBC` | Surface Strong |
+| gw05 | Gray Warm 05 | `#7A7A7A` | Surface Strong |
 | gw10 | Gray Warm 10 | `#BCBCBC` | Surface Primary |
 | gw20 | Gray Warm 20 | `#D9D9D9` | Surface Secondary — bordery |
 | gw30 | Gray Warm 30 | `#F7F6F4` | Surface Tertiary — BG App |

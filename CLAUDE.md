@@ -64,6 +64,7 @@ Szczegoly design systemu sa w osobnych plikach:
 | [`design-system/icons.md`](design-system/icons.md) | Biblioteka ikon (node'y Figma) |
 | [`design-system/components.md`](design-system/components.md) | Komponenty UI (46 komponentow) |
 | [`design-system/flows.md`](design-system/flows.md) | Przeplywy ekranow |
+| [`design-system/ux-principles.md`](design-system/ux-principles.md) | Zasady UX, kontekst produktu, persony, tryby sprzedazy |
 
 ---
 
@@ -97,7 +98,7 @@ Przed uzyciem KAZDEGO komponentu lub ikony w kodzie:
 5. Jesli potrzebny element nie istnieje — poinformuj uzytkownika i zaproponuj dostepna alternatywe
 
 **Dostepne komponenty (pelna lista z components.md):**
-App Top, Top Element, Navi Button 42px, Button (warianty: Category, Sub Category, User, 36px, 1CTA, 2CTA, 1CTA Disable, Link), Checkbox, Radio Button, Switch, Form Input, Search Input, User Avatar, App Tabbar, Prod Tile Vertical, Prod Tile Horizontal, Show Tile, Live Badge, Product Badge, Price Badge, Internal Message, Product Page Details Element, Category Button, Main Category Icons, Separator, Context Menu, Popup Component, Review Tile, Category Pastel Icons, Sheet / Bottom Sheet, Action Sheet, Action Bar, Show Chat Element, Discount, Company Logo, Category, Scroll Edge Effect Soft, Show Button, Show Shop Button, Show Chat, Show Right Section Icons, Show Tool, Show Seller Button, Show Giveaway Modal, Show Notes, Wide Sheet, Toast / Snackbar, Image Library Tile
+App Top, Top Element, Navi Button 42px, Button (warianty: Category, Sub Category, User, 36px, 1CTA, 2CTA, 1CTA Disable, Link), Checkbox, Radio Button, Switch, Form Input, Search Input, User Avatar, App Tabbar, Prod Tile Vertical, Prod Tile Horizontal, Show Tile, Live Badge, Product Badge, Price Badge, Internal Message, Product Page Details Element, Category Button, Main Category Icons, Separator, Context Menu, Popup Component, Review Tile, Category Pastel Icons, Sheet / Bottom Sheet, Action Sheet, Action Bar, Show Chat Element, Discount, Company Logo, Category, Scroll Edge Effect Soft, Show Button, Show Shop Button, Main Category Pastel Icons, Show Chat, Show Right Section Icons, Show Tool, Show Seller Button, Show Giveaway Modal, Show Notes, Wide Sheet, Toast / Snackbar, Image Library Tile
 
 **Dostepne ikony (pelna lista z folderu):**
 Account, Account Full, Add Photo, Add Video, Alert, Alert Full, Alert Off, Alert Off Full, Block, Bookmark, Bookmark Full, Browse, Browse Full, Camera, Camera Switch, Card, Check, Clip, Clock, Close, Close Round, Collapse, Corners, Datepicker, Double Chevron, Down Chevron, Download, Edit, Eye, Eye Close, Filter, Flash, Flash Sale, Follow User, Followers, Gallery Photo, Gallery Photo Full, Gallery Video, Gallery Video Full, Giveaway, Hammer 2, Info, Left Chevron, Locker, Locker Full, Message, Minus, more, Open, Orders, Orders Full, Package, Paczkomat, Photo, Pin, Play, Play full, Plus, Promote, Protection, Quote, Recipe, Report, Right Chevron, Scan, Search, Sell, Send Chat, Share, Shipping, Shop, Shop Full, Shortcut, Skull, Skull Full, Slow Motion, Sound Off, Sound On, Star, Star Full, Start, Start Full, Trash, Unfollow User, Up Chevron, Upload, Video, Wallet, Warning

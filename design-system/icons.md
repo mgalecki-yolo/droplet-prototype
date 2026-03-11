@@ -14,6 +14,8 @@ Kazda ikona dostepna w: `18px` / `16px` / `12px` (niektore tez `8px` lub `24px`)
 | Radio On.svg | Komponent formularza |
 | Radio Off.svg | Komponent formularza |
 | Radio Disable.svg | Komponent formularza |
+| admin_panel_elements.svg | Plik pomocniczy — ignoruj, nie uzywa w prototypie |
+| Droplet_App_Ref.png | Referencja wizualna — ignoruj, nie uzywa w prototypie |
 
 ## Nawigacja (Tab Bar)
 | Nazwa | Figma node |
@@ -93,7 +95,7 @@ Kazda ikona dostepna w: `18px` / `16px` / `12px` (niektore tez `8px` lub `24px`)
 | Icon Bookmark | 850:5614 |
 | Icon Bookmark Full | 1526:22774 |
 | Icon Promote | 925:6501 |
-| Icon Quote | 721:8109 |
+| Icon Quote | 721:8328 |
 | Icon Locker | 923:6110 |
 | Icon Locker Full | 4394:60600 |
 | Icon Hammer 2 | 1092:12840 |
