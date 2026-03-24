@@ -23,16 +23,29 @@ Prototyp aplikacji **Droplet App** — platformy live commerce, na ktorej uzytko
 
 ---
 
-## Deployment
-
-- **URL:** https://cheery-clafoutis-7deb87.netlify.app
-- **GitHub:** https://github.com/mgalecki-yolo/droplet-prototype
-- **Hosting:** Netlify (deploy z repozytorium)
-
 ## Struktura projektu
 
-Pojedynczy plik `index.html` — brak bundlera, frameworka ani zaleznosci lokalnych.
+Prototyp podzielony na osobne pliki HTML per ekran/flow + wspolne CSS:
+
+| Plik | Zawartosc |
+|------|-----------|
+| `styles.css` | Wspolne CSS (tokeny, komponenty, layouty) |
+| `index.html` | Home + Subcategory |
+| `browse.html` | Browse (kategorie) |
+| `sell.html` | Seller Hub + Schedule Show, Add Products, Review Product, Products List, Orders, Seller Shows, Finances, Success/Track Explore |
+| `activity.html` | Activity (placeholder) |
+| `account.html` | Account + Settings + Edit Profile + UI Explore warianty |
+| `live-show.html` | Live Show + Wallet flow |
+| `seller-profile.html` | Seller Profile |
+| `product-page.html` | Product Page |
+| `account-export.html` | Export: wariant Account Settings (do Figma capture) |
+| `finances-export.html` | Export: dashboard Finances (do Figma capture) |
+| `seller-hub-variants.html` | Eksploracja: 3 warianty layoutu Seller Hub (A/B/C) |
+
+Brak bundlera, frameworka ani zaleznosci lokalnych.
 Fonty ladowane z Google Fonts (Inter).
+Podglad: otwierac lokalnie w przegladarce (`open index.html`).
+Tabbar nawiguje miedzy plikami przez `<a href="...">`.
 
 ## Figma
 
@@ -85,8 +98,12 @@ Szczegoly design systemu sa w osobnych plikach:
 - Przed implementacja komponentu — sprawdz `design-system/components.md`
 - Figma: odpytuj konkretne node ID (lista w `design-system/flows.md`), nigdy cale strony
 - Figma: `get_screenshot` do podgladu layoutu, `get_design_context` do szczegolowej implementacji
+- Figma: jesli `get_design_context` zwroci obcieta/truncated odpowiedz — uzyj `get_metadata` aby poznac strukture node'ow, potem odpytaj poszczegolne child node'y osobno
 - FigJam board key: `smdQpxfQiBbesEFpLBlhq6` — do notatek i planowania
-- Single HTML file, brak bundlerow/frameworkow
+- Osobne pliki HTML per ekran/flow + wspolne `styles.css`, brak bundlerow/frameworkow
+- Nowe ekrany dodawaj do odpowiedniego pliku HTML wg taba (np. Account → `account.html`, Sell flow → `sell.html`)
+- Nowe style CSS dodawaj do `styles.css`
+- **Ikony SVG zawsze inline** — w HTML uzywaj `<svg>...</svg>` (wklejony kod SVG), NIE `<img src="...svg">`. Figma HTML-to-Design capture rasteryzuje `<img>` do PNG, inline SVG zachowuje wektory
 
 ### Zasada weryfikacji komponentow i ikon (KRYTYCZNE)
 
@@ -101,16 +118,28 @@ Przed uzyciem KAZDEGO komponentu lub ikony w kodzie:
 App Top, Top Element, Navi Button 42px, Button (warianty: Category, Sub Category, User, 36px, 1CTA, 2CTA, 1CTA Disable, Link), Checkbox, Radio Button, Switch, Form Input, Search Input, User Avatar, App Tabbar, Prod Tile Vertical, Prod Tile Horizontal, Show Tile, Live Badge, Product Badge, Price Badge, Internal Message, Product Page Details Element, Category Button, Main Category Icons, Separator, Context Menu, Popup Component, Review Tile, Category Pastel Icons, Sheet / Bottom Sheet, Action Sheet, Action Bar, Show Chat Element, Discount, Company Logo, Category, Scroll Edge Effect Soft, Show Button, Show Shop Button, Main Category Pastel Icons, Show Chat, Show Right Section Icons, Show Tool, Show Seller Button, Show Giveaway Modal, Show Notes, Wide Sheet, Toast / Snackbar, Image Library Tile
 
 **Dostepne ikony (pelna lista z folderu):**
-Account, Account Full, Add Photo, Add Video, Alert, Alert Full, Alert Off, Alert Off Full, Block, Bookmark, Bookmark Full, Browse, Browse Full, Camera, Camera Switch, Card, Check, Clip, Clock, Close, Close Round, Collapse, Corners, Datepicker, Double Chevron, Down Chevron, Download, Edit, Eye, Eye Close, Filter, Flash, Flash Sale, Follow User, Followers, Gallery Photo, Gallery Photo Full, Gallery Video, Gallery Video Full, Giveaway, Hammer 2, Info, Left Chevron, Locker, Locker Full, Message, Minus, more, Open, Orders, Orders Full, Package, Paczkomat, Photo, Pin, Play, Play full, Plus, Promote, Protection, Quote, Recipe, Report, Right Chevron, Scan, Search, Sell, Send Chat, Share, Shipping, Shop, Shop Full, Shortcut, Skull, Skull Full, Slow Motion, Sound Off, Sound On, Star, Star Full, Start, Start Full, Trash, Unfollow User, Up Chevron, Upload, Video, Wallet, Warning
+Account, Account Full, Add Photo, Add Video, Alert, Alert Full, Alert Off, Alert Off Full, Block, Bookmark, Bookmark Full, Browse, Browse Full, Camera, Camera Switch, Card, Check, Chevron Mini, Clip, Clock, Close, Close Round, Collapse, Corners, Datepicker, Delivery, Double Chevron, Down Chevron, Download, Edit, Eye, Eye Close, Filter, Flash, Flash Sale, Follow User, Follower, Followers, Gallery Photo, Gallery Photo Full, Gallery Video, Gallery Video Full, Giveaway, Hammer 2, Info, Left Chevron, Locker, Locker Full, Message, Minus, more, Open, Orders, Orders Full, Package, Paczkomat, Photo, Pin, Play, Play full, Plus, Plus Circle, Promote, Protection, Quote, Recipe, Report, Right Chevron, Scan, Search, Sell, Send Chat, Settings, Share, Shipping, Shop, Shop Full, Shortcut, Skull, Skull Full, Slow Motion, Small Bookmark, Sorting, Sound Off, Sound On, Star, Star Full, Start, Start Full, Trash, Unfollow User, Up Chevron, Upload, Video, Wallet, Warning
 
 ## Zasady budowy ekranow
 
 - Buduj JEDEN ekran na raz — nigdy nie rob wielu ekranow naraz
+- Waliduj w trakcie budowy, nie tylko na koncu — po kazdej wiekszej sekcji porownuj z Figma
 - Dla kazdego ekranu:
   1. Sprawdz lokalne specs (`components.md`, `typography.md`, `icons.md`)
   2. Odpytaj `get_design_context` z Figmy (konkretny node ID)
   3. Zweryfikuj KAZDA ikone, font, wymiar i kolor przed implementacja
   4. Zbuduj ekran
-  5. Poczekaj na review uzytkownika → poprawki → dopiero wtedy nastepny ekran
+  5. Walidacja koncowa — checklist ponizej
+  6. Poczekaj na review uzytkownika → poprawki → dopiero wtedy nastepny ekran
 - NIE zgaduj layoutu, pozycji ani komponentow — zawsze czytaj z Figmy lub lokalnych specs
 - Screenshot (`get_screenshot`) daje ogolny obraz — do detali implementacji zawsze uzywaj `get_design_context`
+
+### Checklist walidacji ekranu
+
+Przed zakonczeniem pracy nad ekranem zweryfikuj:
+- [ ] Layout zgodny z Figma (spacing, alignment, sizing)
+- [ ] Typografia zgodna (font, size, weight, line-height)
+- [ ] Kolory dokladnie pasuja (tokeny z `colors.md`)
+- [ ] Ikony poprawne (nazwy z `icons.md`, pliki z `UI Icons/`)
+- [ ] Stany interaktywne dzialaja (hover, active, disabled — jesli dotyczy)
+- [ ] Assety renderuja sie poprawnie

@@ -63,6 +63,13 @@ Top page frame (149px)
 | Actions on both sides | Back + tytul + 2 przyciski prawo |
 | App Top (scroll) | 4 instancje z roznymi kombinacjami |
 | App Top with Icons | Wariant z ikonami |
+| Search | Szukajka — Search Input na gorze |
+| Search + categories | Szukajka + poziomy scroll buttonow kategorii |
+| Search + categories + filters | Szukajka + kategorie + filtry |
+| Product Page | Wariant na stronie produktu (przezroczyste tlo, glass buttons) |
+| Product Page Scroll | Wariant po scrollu na stronie produktu (tlo gradient + blur) |
+| Wide Sheet Top | Naglowek Wide Sheet (grabber + toolbar) |
+| Wide Sheet Top Solid | Naglowek Wide Sheet z solidnym tlem |
 | **Show** (node `1829:416392`) | Wariant na ekranie live show — ciemne tlo z gradientem `rgba(57,57,57,0.5)→transparent`, backdrop-blur 2px. Left: Show Button (back) + User Avatar 32px + nazwa hosta (14px Bold white) + rating (Icon Star Full 12px + 4.8) + followers (Icon Followers 12px + 5k) + Follow pill (bg rd10, 10px SemiBold white). Right: Live Badge + Show Button (down chevron). |
 
 ---
@@ -247,6 +254,8 @@ Search Input
 | `Product Two Buttons` | Message + Notify — dwa rowne biale przyciski |
 | `Single Circle button` | Jeden okragly przycisk 52x52px (rd10) z ikona Plus |
 | `Seller Page Search` | Pole wyszukiwania (42px, bg white, shadow) |
+| `2CTA + 2CTA + 2CTA` | Trzy podwojne przyciski w rzedzie |
+| `Product Page Flash Sale` | Wariant dla Flash Sale na Product Page |
 
 **Zakladki w "5 buttons":**
 - Ikony: 28x28px slot, ikony 20px
@@ -298,6 +307,7 @@ Search Input
 | Place Your Bid | Live Badge Alert | "Place Your Bid" 36px white |
 | Just Sold | Ciemna nakladka + "Sold" + badge "Now" | Brak |
 | Sold (Sold List) | Badge z czasem (np. "23 min ago") | Brak |
+| Activity - Purchase | Badge statusu zamowienia (Price Badge) | Brak — widok zamowienia kupujacego |
 
 **Nazwa produktu:** F22 14px SemiBold, bw30 `#222A35`
 **Attribute badges:** border gw20, F60 12px SemiBold bw40 (np. "Variants: 3", "Quantity: 92")
@@ -317,6 +327,7 @@ Search Input
 | Default | Live Badge rd10 (liczba widzow) | Aktywny show |
 | Coming Soon | Alert badge (liczba alertow) | Zaplanowany, badge z data |
 | Passed | "Replay" badge bw10 | Zakonczony show |
+| On grid (Seller Hub) | Live Badge / Alert badge | Wariant gridowy na Seller Hub — mniejszy tile |
 
 **Tytul show:** F22 14px SemiBold, white, text-shadow `0px 1px 1px rgba(0,0,0,0.6)`
 **Hostname:** F45 13px Bold, bw20 `#2A2F35`, z User Avatar 32px
@@ -368,6 +379,8 @@ Pill z cena. `h-24px`, rounded `37px`, `px-8px`, tekst F60 12px SemiBold.
 | Red / Sold Out | rd10 `#FF4252` | "Sold Out" bialy |
 | Stroke | border gw20 | bw40 (np. "Variants 4") |
 | Type8 / Payment Pending | or10 `#FF8D28` | Tekst bialy |
+| Blue | bl10 `#0091FF` | Tekst bialy |
+| Grey | gw10 `#BCBCBC` | Tekst bialy |
 
 ---
 
@@ -443,6 +456,12 @@ Item (px-8px)
 **Overlay:** bg `rgba(0,0,0,0.25)`, pelny ekran 393x852px
 **Karta:** `300px` szerokosc, rounded `34px`, glass effect, padding `14px`
 **Shadow:** `0px 8px 40px rgba(0,0,0,0.12)`
+
+**Warianty stylu:**
+| Styl | Opis |
+|------|------|
+| System | Standardowy systemowy popup (neutral) |
+| Brand | Popup z brandingiem Droplet (accent rd10) |
 
 **Struktura:**
 ```

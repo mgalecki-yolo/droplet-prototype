@@ -29,6 +29,7 @@ Kazda ikona dostepna w: `18px` / `16px` / `12px` (niektore tez `8px` lub `24px`)
 | Icon Account | 2919:29673 |
 | Icon Account Full | 2025:144436 |
 | Icon Sell | 3831:49317 |
+| Icon Plus Circle | 4219:52192 |
 
 ## Galeria / Media
 | Nazwa | Figma node |
@@ -76,6 +77,9 @@ Kazda ikona dostepna w: `18px` / `16px` / `12px` (niektore tez `8px` lub `24px`)
 | Icon Share | 674:8171 |
 | Icon Shortcut | 1250:15780 |
 | Icon Send Chat | 4648:36482 |
+| Icon Sorting | 405:2487 |
+| Icon Settings | 5548:65807 |
+| Chevron Mini | 312:2995 |
 
 ## Commerce / Status
 | Nazwa | Figma node |
@@ -94,6 +98,8 @@ Kazda ikona dostepna w: `18px` / `16px` / `12px` (niektore tez `8px` lub `24px`)
 | Icon Star Full | 635:7243 |
 | Icon Bookmark | 850:5614 |
 | Icon Bookmark Full | 1526:22774 |
+| Icon Small Bookmark | 312:2420 |
+| Icon Delivery | 635:7273 |
 | Icon Promote | 925:6501 |
 | Icon Quote | 721:8328 |
 | Icon Locker | 923:6110 |
@@ -108,6 +114,7 @@ Kazda ikona dostepna w: `18px` / `16px` / `12px` (niektore tez `8px` lub `24px`)
 | Icon Follow User | 850:5850 |
 | Icon Unfollow User | 850:5861 |
 | Icon Followers | 635:7713 |
+| Icon Follower | 5852:43613 |
 | Icon Alert | 312:2403 |
 | Icon Alert Full | 1657:16725 |
 | Icon Alert Off | 850:5757 |

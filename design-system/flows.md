@@ -24,6 +24,39 @@
 | 11 | Add Products (drafts) | `4569:36199` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=4569-36199) |
 | 12 | Review Product | `4733:40207` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=4733-40207) |
 | 13 | Products list | `5189:45460` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=5189-45460) |
+| | **Product Page (buyer)** | | |
+| 14 | Product Page | `4199:165573` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=4199-165573) |
+| 15 | Product Page (full scroll) | `4199:163322` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=4199-163322) |
+| 16 | Bid Tool | `4199:164350` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=4199-164350) |
+| | **Subcategory / Filtry** | | |
+| 17 | Subcategory (list) | `443:3021` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=443-3021) |
+| 18 | Filters on list | `328:2552` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=328-2552) |
+| 19 | Category selector | `3186:45266` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=3186-45266) |
+| | **Seller Hub — taby** | | |
+| 20 | Seller Hub - Products | `5560:73063` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=5560-73063) |
+| 21 | Seller Hub - Orders | `5560:74127` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=5560-74127) |
+| 22 | Seller Hub - Shows | `5560:74922` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=5560-74922) |
+| 23 | Seller Hub - Finances | `5576:38255` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=5576-38255) |
+| | **Wallet / Platnosci** | | |
+| 24 | Wallet - Payment Options | `846:5459` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=846-5459) |
+| 25 | Wallet - Add Card | `881:6411` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=881-6411) |
+| 26 | Wallet - Card Filled | `881:6712` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=881-6712) |
+| 27 | Wallet - Delivery Options | `1663:21265` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=1663-21265) |
+| 28 | Wallet - Paczkomat | `1663:21026` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=1663-21026) |
+| 29 | Wallet - Kurier | `1663:20913` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=1663-20913) |
+| 30 | Wallet - Addresses | `850:7731` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=850-7731) |
+| 31 | Wallet - Edit Address | `879:7336` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=879-7336) |
+| | **Live Show — stany / sheety** | | |
+| 32 | Show - Bid Tool | `2345:29321` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=2345-29321) |
+| 33 | Show - Chat active | `4651:39250` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=4651-39250) |
+| 34 | Show - Seller chat options | `1433:15707` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=1433-15707) |
+| 35 | Show - Shop preview | `2709:23863` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=2709-23863) |
+| 36 | Show - Shop Sold | `4406:57833` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=4406-57833) |
+| | **Sheety / Overlaye** | | |
+| 37 | Adding a video | `5408:35500` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=5408-35500) |
+| 38 | Reviews sheet | `1582:17115` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=1582-17115) |
+| 39 | Show Repeat sheet | `3311:46418` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=3311-46418) |
+| 40 | Popup Component | `5192:36016` | [link](https://www.figma.com/design/8Q6f8lepXFXel1BVjyJeNU/Droplet-App?node-id=5192-36016) |
 
 ---
 
@@ -360,10 +393,10 @@ Uzytkownik (buyer) wchodzi do aplikacji, przegląda oferty i kupuje produkty —
 | 1-2 | Home | `4979:110252` | ✅ zbudowany |
 | 3 | Subcategory | — | ⚠️ czesciowo zbudowany |
 | 4,7 | Live Show (Buyer) | `2332:27496` | ⚠️ czesciowo zbudowany |
-| 5-6 | Product Page | — | ❌ nowy ekran — do zaprojektowania |
+| 5-6 | Product Page | `4199:165573` | ✅ zbudowany (`product-page.html`) |
 | 6 | Checkout (sheet) | — | ❌ nowy ekran — do zaprojektowania |
-| 7 | Wallet (sheet w show) | — | ❌ nowy ekran — do zaprojektowania |
-| 7 | Delivery Address (sheet w show) | — | ❌ nowy ekran — do zaprojektowania |
+| 7 | Wallet (sheet w show) | — | ✅ zbudowany (`live-show.html`) |
+| 7 | Delivery Address (sheet w show) | — | ✅ zbudowany (`live-show.html`) |
 | 8 | Activity → Orders | — | ❌ pusty shell |
 
 ## Stany ekranow
