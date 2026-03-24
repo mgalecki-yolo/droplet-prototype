@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#C8C6C0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Inter',-apple-system,sans-serif}
+:root{
+  --bw10:#101828;--bw20:#2A2F35;--bw30:#222A35;--bw40:#7B8494;
+  --wh10:#FFFFFF;
+  --gw10:#BCBCBC;--gw20:#D9D9D9;--gw30:#F7F6F4;
+  --ov10:#77716B;--ov15:#E3E1DC;--ov20:#E9E6DD;--ov30:#EFEDE8;--ov40:#F2F0EC;
+  --rd10:#FF4252;--rd20:#FFF2F2;--or10:#FF8D28;--yl10:#FFCC00;--bl10:#0091FF;--gr10:#34C759;
+  --shadow-interactive:0px 2px 8px rgba(0,0,0,0.06);
+}
+.phone{width:393px;height:852px;background:var(--ov40);border-radius:52px;overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 0 0 1px rgba(0,0,0,0.12),0 32px 96px rgba(0,0,0,0.4)}
+</style>
+</head>
+<body>
+<div class="phone">
+  <!-- Status bar -->
+  <div style="padding:14px 28px 0;display:flex;align-items:center;justify-content:space-between">
+    <span style="font-size:16px;font-weight:600;color:#000;letter-spacing:-0.3px">9:41</span>
+    <div style="display:flex;align-items:center;gap:6px">
+      <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
+      <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
+    </div>
+  </div>
+
+  <!-- App Top -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px">
+    <div style="width:42px;height:42px;border-radius:296px;background:var(--wh10);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive)">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="#101828" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <span style="font-size:12px;font-weight:600;color:var(--bl10)">Manage</span>
+  </div>
+
+  <!-- Content -->
+  <div style="flex:1;overflow-y:auto;padding:0 16px 130px;scrollbar-width:none">
+
+    <!-- Title: H15 — 23px SemiBold -0.5px -->
+    <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;margin-top:4px">Finances</div>
+
+    <!-- Tabs: B20 — 12px SemiBold -->
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <div style="height:36px;padding:0 16px;border-radius:296px;background:var(--ov15);display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--bw20)">Payments</div>
+      <div style="height:36px;padding:0 16px;border-radius:296px;background:var(--wh10);display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive)">Transactions</div>
+    </div>
+
+    <!-- Section: H15 -->
+    <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;margin-top:20px">Payments</div>
+
+    <!-- Balance -->
+    <div style="margin-top:8px">
+      <!-- F80: 11px Medium -->
+      <div style="font-size:11px;font-weight:500;color:var(--bw40)">Total Balance</div>
+      <!-- H10: 32px Bold -->
+      <div style="font-size:32px;font-weight:700;color:var(--bw10);letter-spacing:-0.5px;margin-top:2px">$1,302.00</div>
+
+      <!-- Stacked bar -->
+      <div style="display:flex;height:8px;border-radius:4px;overflow:hidden;margin-top:12px;gap:2px">
+        <div style="flex:72.2;background:var(--gr10);border-radius:4px"></div>
+        <div style="flex:23;background:var(--yl10);border-radius:4px"></div>
+        <div style="flex:4.8;background:var(--rd10);border-radius:4px"></div>
+      </div>
+
+      <!-- Legend: F70 — 12px Regular -->
+      <div style="display:flex;justify-content:space-between;margin-top:10px">
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:50%;background:var(--gr10)"></div><span style="font-size:12px;font-weight:400;color:var(--bw30)">Available $940</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:50%;background:var(--yl10)"></div><span style="font-size:12px;font-weight:400;color:var(--bw30)">Pending $300</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:50%;background:var(--rd10)"></div><span style="font-size:12px;font-weight:400;color:var(--bw30)">Refunded</span></div>
+      </div>
+    </div>
+
+    <!-- Metric cards -->
+    <div style="display:flex;gap:10px;margin-top:20px">
+      <div style="flex:1;background:var(--wh10);border-radius:16px;padding:14px;box-shadow:var(--shadow-interactive)">
+        <div style="width:32px;height:32px;border-radius:10px;background:#E8F8EC;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M9 15l-4-4M9 15l4-4" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <!-- F80: 11px Medium -->
+        <div style="font-size:11px;font-weight:500;color:var(--bw40)">Withdraw</div>
+        <!-- H40: 16px Bold -->
+        <div style="font-size:16px;font-weight:700;color:var(--bw10);margin-top:2px">$940.00</div>
+      </div>
+      <div style="flex:1;background:var(--wh10);border-radius:16px;padding:14px;box-shadow:var(--shadow-interactive)">
+        <div style="width:32px;height:32px;border-radius:10px;background:#FFF8E0;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#101828" stroke-width="1.5"/><path d="M9 5v4l3 2" stroke="#101828" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div style="font-size:11px;font-weight:500;color:var(--bw40)">Pending</div>
+        <div style="font-size:16px;font-weight:700;color:var(--bw10);margin-top:2px">$300.00</div>
+      </div>
+    </div>
+
+    <!-- Early payout banner -->
+    <div style="display:flex;align-items:center;background:var(--wh10);border-radius:14px;padding:14px;margin-top:10px;box-shadow:var(--shadow-interactive);gap:12px">
+      <div style="width:36px;height:36px;border-radius:10px;background:var(--rd20);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M10 2L5 10h4l-1 6 5-8h-4l1-6z" stroke="#FF4252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div style="flex:1">
+        <!-- F22: 14px SemiBold -->
+        <div style="font-size:14px;font-weight:600;color:var(--bw10)">Early Payout</div>
+        <!-- F70: 12px Regular -->
+        <div style="font-size:12px;font-weight:400;color:var(--bw40)">Access your money early</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" style="opacity:0.4"><path d="M7 4l5 5-5 5" stroke="#101828" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <!-- History: H15 -->
+    <div style="font-size:23px;font-weight:600;color:var(--bw10);margin-top:24px;margin-bottom:12px;letter-spacing:-0.5px">History</div>
+
+    <!-- Clean rows -->
+    <div style="background:var(--wh10);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-interactive)">
+      <div style="display:flex;align-items:center;padding:12px 14px;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#00C7BE;flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Blue Airmax 95 unisex</div>
+          <div style="font-size:12px;font-weight:400;color:var(--bw40)">Label Created · <span style="color:var(--bl10)">CatchyDeals</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$102.34</div>
+          <div style="font-size:11px;font-weight:400;color:var(--bw40)">2/7/26</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--ov30);margin:0 14px"></div>
+      <div style="display:flex;align-items:center;padding:12px 14px;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--gr10);flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">#45 Used Stuff on the screen</div>
+          <div style="font-size:12px;font-weight:400;color:var(--bw40)">Completed · <span style="color:var(--bl10)">IllusionClothing</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$2.00</div>
+          <div style="font-size:11px;font-weight:400;color:var(--bw40)">2/7/26</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--ov30);margin:0 14px"></div>
+      <div style="display:flex;align-items:center;padding:12px 14px;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--gr10);flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Airmax Classic 95 white blue red</div>
+          <div style="font-size:12px;font-weight:400;color:var(--bw40)">Completed · <span style="color:var(--bl10)">JsrCoins</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$30.00</div>
+          <div style="font-size:11px;font-weight:400;color:var(--bw40)">2/7/26</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--ov30);margin:0 14px"></div>
+      <div style="display:flex;align-items:center;padding:12px 14px;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--rd10);flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">#923 Item On Screen Sale</div>
+          <div style="font-size:12px;font-weight:400;color:var(--bw40)">Refunded · <span style="color:var(--bl10)">FoodBargrains</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$30.00</div>
+          <div style="font-size:11px;font-weight:400;color:var(--bw40)">2/7/26</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA: B10 — 16px SemiBold -->
+  <div style="position:absolute;bottom:0;left:0;right:0;padding:0 16px 34px;z-index:50;background:linear-gradient(to bottom,rgba(242,240,236,0) 0%,var(--ov40) 40%)">
+    <div style="width:100%;height:52px;border-radius:70px;background:var(--rd10);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:var(--wh10);box-shadow:var(--shadow-interactive)">Withdraw $304.20</div>
+  </div>
+</div>
+</body>
+</html>

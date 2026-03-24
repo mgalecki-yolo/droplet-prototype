@@ -1,0 +1,3058 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Droplet App</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="phone">
+
+<!-- ── Status Bar ── -->
+<div class="status-bar">
+  <span class="status-time">9:41</span>
+  <div class="status-icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#000"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#000"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#000"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#000"/></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#000"/><path d="M3.5 7.5C5 6 6.5 5.2 8 5.2s3 .8 4.5 2.3M1 4.5C3.5 2 5.8 1 8 1s4.5 1 7 3.5" stroke="#000" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <svg width="27" height="12" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="2.5" fill="none" stroke="#000" stroke-opacity=".35"/><rect x="2" y="2" width="19" height="8" rx="1.5" fill="#000"/><path d="M25 4.5v3a1.5 1.5 0 000-3z" fill="#000" fill-opacity=".4"/></svg>
+  </div>
+</div>
+
+<div class="screen active" id="screen-sell">
+<div class="screen-scroll" style="padding-top:54px">
+
+  <!-- Variant Toggle (debug — hidden, A is final) -->
+  <div class="shv-toggle" style="display:none">
+    <button class="shv-toggle-btn active" data-variant="a">A — Figma</button>
+    <button class="shv-toggle-btn" data-variant="b">B — Action</button>
+    <button class="shv-toggle-btn" data-variant="c">C — Data</button>
+  </div>
+
+  <!-- State Toggle: Zero State / With Data -->
+  <div class="sh-state-toggle">
+    <button class="sh-state-btn active" onclick="switchHubState('zero')">Zero State</button>
+    <button class="sh-state-btn" onclick="switchHubState('data')">With Data</button>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- ZERO STATE — Fresh seller account  -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="shv-variant active" id="shv-zero">
+
+    <!-- Header: Seller Hub + glass navi button -->
+    <div style="padding:32px 16px 8px">
+      <div class="shv-app-top" style="padding:0">
+        <h1 style="font-size:32px;font-weight:700;color:#000;line-height:21px">Seller Hub</h1>
+        <button class="shv-navi-btn" onclick="window.location.href='account.html'">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="2.5" cy="8" r="1.5" fill="#364153"/><circle cx="8" cy="8" r="1.5" fill="#364153"/><circle cx="13.5" cy="8" r="1.5" fill="#364153"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Profile row: placeholder avatar + greeting + stats -->
+    <div class="sh-profile" style="margin-bottom:4px">
+      <div class="sh-avatar sh-avatar-placeholder">
+        <span>M</span>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Hi, Marcin</div>
+        <div style="font-size:13px;font-weight:400;color:var(--ov10)">CatchyDeals</div>
+      </div>
+      <div class="sh-stats-a">
+        <div class="sh-stat-badge">
+          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M4.77,7.99c.99,0,1.81-.85,1.81-1.93s-.83-1.88-1.81-1.88-1.81.84-1.81,1.89.82,1.92,1.81,1.92Z" fill="#353b42"/><path d="M10.68,7.88c1.14,0,2.08-.98,2.08-2.21s-.95-2.16-2.08-2.16-2.08.97-2.08,2.17.94,2.21,2.08,2.21Z" fill="#353b42"/><path d="M6.92,9.31c-.55-.33-1.28-.58-2.16-.58-2.25,0-3.77,1.61-3.77,2.91,0,.54.26.86,1,.86h3.74c-.56-.77-.03-2.26,1.18-3.19Z" fill="#353b42"/><path d="M10.68,8.74c-2.64,0-4.33,1.74-4.33,3,0,.48.3.76,1.18.76h6.28c.89,0,1.18-.28,1.18-.76,0-1.26-1.68-3-4.32-3Z" fill="#353b42"/></svg>
+          <span class="sh-stat-badge-val">0</span>
+        </div>
+        <div class="sh-stat-badge">
+          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M15.71,6.1c-.11-.33-.52-1.11-1.82-1.11h-3.26l-1-3.09c-.38-1.21-1.18-1.39-1.63-1.39s-1.25.18-1.63,1.39l-1,3.1h-3.27c-1.29,0-1.7.77-1.82,1.11-.11.34-.26,1.23.81,2l2.66,1.9-1.05,3.1c-.29.86-.12,1.61.48,2.07.29.22,1.07.65,2.16-.15l2.64-1.94,2.64,1.95c.48.34.9.46,1.24.46.41,0,.72-.17.91-.32.6-.46.78-1.22.49-2.07l-1.05-3.1,2.66-1.9c1.08-.77.93-1.65.81-2Z" fill="#364153"/></svg>
+          <span class="sh-stat-badge-val">New</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Welcome prompt -->
+    <div style="padding:4px 16px 20px">
+      <div style="font-size:13px;font-weight:400;color:var(--ov10);line-height:18px">Start by adding products and scheduling your first live show.</div>
+    </div>
+
+    <!-- 2×2 tiles — zero state (matching Figma layout) -->
+    <div class="sh-tiles-zero">
+      <!-- Products — primary, white bg, red CTA -->
+      <div class="sh-ztile sh-ztile-primary" data-action="manage-products">
+        <div class="sh-ztile-header">
+          <span class="sh-ztile-label">Products</span>
+          <svg class="sh-ztile-chevron" width="10" height="16" viewBox="3.5 0 9 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+        </div>
+        <div class="sh-ztile-body">
+          <div class="sh-ztile-value">0</div>
+          <div class="sh-ztile-sub">No products yet</div>
+        </div>
+        <button class="sh-ztile-cta sh-ztile-cta-red" data-action="add-product">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23c-.23-.03-.68.02-1 .17-1.56.72-4.8 4.31-5.88 6.02-.98 1.53-1.34 4.62-.66 5.13.65.49 4.03.19 5.41-.92 1.59-1.28 4.93-4.97 5.39-6.57.5-1.71-2.05-3.66-3.26-3.83zM12.29 5.79c-.13.29-.49.79-.95 1.39-.48-.5-1.51-1.2-1.84-1.49-.14-.12-.89.66-.75.77l1.85 1.64c-1.17 1.41-2.61 2.99-3.32 3.61-.85.74-3.42.84-3.55.74v-.02h-.02c-.24-.22.05-2.13.8-3.22.92-1.34 3.75-4.47 4.91-5.37.94-.72 1.78.23 2.1.47.46.34 1.01 1.02.77 1.48z" fill="white"/></svg>
+          Add Product
+        </button>
+      </div>
+
+      <!-- Shows — primary, white bg, red CTA -->
+      <div class="sh-ztile sh-ztile-primary" data-action="manage-shows">
+        <div class="sh-ztile-header">
+          <span class="sh-ztile-label">Shows</span>
+          <svg class="sh-ztile-chevron" width="10" height="16" viewBox="3.5 0 9 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+        </div>
+        <div class="sh-ztile-body">
+          <div class="sh-ztile-value">0</div>
+          <div class="sh-ztile-sub">No shows yet</div>
+        </div>
+        <button class="sh-ztile-cta sh-ztile-cta-red" data-action="schedule-show">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23c-.23-.03-.68.02-1 .17-1.56.72-4.8 4.31-5.88 6.02-.98 1.53-1.34 4.62-.66 5.13.65.49 4.03.19 5.41-.92 1.59-1.28 4.93-4.97 5.39-6.57.5-1.71-2.05-3.66-3.26-3.83zM12.29 5.79c-.13.29-.49.79-.95 1.39-.48-.5-1.51-1.2-1.84-1.49-.14-.12-.89.66-.75.77l1.85 1.64c-1.17 1.41-2.61 2.99-3.32 3.61-.85.74-3.42.84-3.55.74v-.02h-.02c-.24-.22.05-2.13.8-3.22.92-1.34 3.75-4.47 4.91-5.37.94-.72 1.78.23 2.1.47.46.34 1.01 1.02.77 1.48z" fill="white"/></svg>
+          Schedule Show
+        </button>
+      </div>
+
+      <!-- Orders — secondary, muted bg, no CTA -->
+      <div class="sh-ztile sh-ztile-secondary">
+        <div class="sh-ztile-header">
+          <span class="sh-ztile-label">Orders</span>
+          <svg class="sh-ztile-chevron" width="10" height="16" viewBox="3.5 0 9 16" fill="none" opacity="0.3"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+        </div>
+        <div class="sh-ztile-body">
+          <div class="sh-ztile-value sh-ztile-value-muted">0</div>
+          <div class="sh-ztile-sub">Orders will appear here after your first sale</div>
+        </div>
+      </div>
+
+      <!-- Finances — secondary, muted bg -->
+      <div class="sh-ztile sh-ztile-secondary" onclick="document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-finances').classList.add('active');document.querySelector('.tabbar').style.display='none'">
+        <div class="sh-ztile-header">
+          <span class="sh-ztile-label">Finances</span>
+          <svg class="sh-ztile-chevron" width="10" height="16" viewBox="3.5 0 9 16" fill="none" opacity="0.3"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+        </div>
+        <div class="sh-ztile-body">
+          <div class="sh-ztile-value sh-ztile-value-muted">$0</div>
+          <div class="sh-ztile-sub">Start selling to earn</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions — onboarding-focused -->
+    <div style="padding:28px 16px 12px">
+      <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Get Started</div>
+    </div>
+
+    <div class="shv-qa-list">
+      <button class="shv-qa-list-item" data-action="add-product">
+        <div class="shv-qa-list-icon shv-qa-icon-blue">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><g clip-path="url(#clip_plus_z)"><path d="M9 0.95c.52 0 .95.43.95.95v6.1h6.15c.52 0 .95.43.95.95s-.43.95-.95.95H9.95v6.15c0 .52-.43.95-.95.95s-.95-.43-.95-.95V9.95H1.9c-.52 0-.95-.43-.95-.95s.43-.95.95-.95h6.15V1.9c0-.52.43-.95.95-.95z" fill="#0091FF"/></g><defs><clipPath id="clip_plus_z"><rect width="16" height="16" fill="white" transform="translate(1 1)"/></clipPath></defs></svg>
+        </div>
+        <div class="shv-qa-list-text">
+          <div class="shv-qa-list-label">Add Product</div>
+          <div class="shv-qa-list-desc">Add your first item to the catalog</div>
+        </div>
+        <svg class="shv-qa-list-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+      </button>
+      <button class="shv-qa-list-item" data-action="schedule-show">
+        <div class="shv-qa-list-icon shv-qa-icon-red">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#clip_play_z)"><path d="M5.02 3.4c.24 0 .49.06.73.18l5.97 3.05c1.13.58 1.13 2.17 0 2.75l-5.97 3.03c-.24.12-.49.18-.73.18-.83 0-1.58-.65-1.58-1.55V4.96c0-.9.75-1.56 1.58-1.56m-.01-1.4C3.35 2 2 3.32 2 4.96v6.09c0 1.63 1.35 2.96 3.02 2.96.48 0 .96-.12 1.39-.34l5.97-3.03C13.38 10.13 14 9.12 14 8.02s-.62-2.11-1.62-2.62L6.42 2.34C5.99 2.11 5.5 2 5.02 2z" fill="#FF4252"/></g><defs><clipPath id="clip_play_z"><rect width="12" height="12" fill="white" transform="translate(2 2)"/></clipPath></defs></svg>
+        </div>
+        <div class="shv-qa-list-text">
+          <div class="shv-qa-list-label">Schedule Show</div>
+          <div class="shv-qa-list-desc">Plan your first live session</div>
+        </div>
+        <svg class="shv-qa-list-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+      </button>
+      <button class="shv-qa-list-item" data-action="share-shop">
+        <div class="shv-qa-list-icon shv-qa-icon-green">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M9 11.95c-.48 0-.88-.41-.88-.89V4.34l.09-1.47-.52.65-1.37 1.49c-.15.18-.39.27-.61.27-.44 0-.79-.32-.79-.78 0-.24.1-.41.25-.58L8.34.8c.22-.23.43-.3.66-.3s.45.08.67.3l3.16 3.11c.16.17.26.34.26.58 0 .46-.37.78-.8.78-.22 0-.44-.1-.6-.27l-1.37-1.49-.52-.64.09 1.47v6.71c0 .48-.4.89-.89.89z" fill="#34C759"/><path d="M17.18 8.63c-.44 0-.81.36-.82.81-.04 1.87-.22 3.59-.48 4.38-.59 1.81-2.9 1.85-4.55 1.97-1.77.13-7.75.2-8.79-1.23-.5-.69-.79-2.82-.84-5.11-.01-.45-.37-.82-.82-.82h-.07c-.45 0-.82.38-.82.84.04 3.04.58 6.51 3.03 7.35 2.64.91 12.1 1.25 13.81-1.21.69-1 1.09-3.49 1.16-6.13.01-.47-.36-.86-.82-.86z" fill="#34C759"/></svg>
+        </div>
+        <div class="shv-qa-list-text">
+          <div class="shv-qa-list-label">Share Shop</div>
+          <div class="shv-qa-list-desc">Send your shop link to social media</div>
+        </div>
+        <svg class="shv-qa-list-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+      </button>
+    </div>
+
+    <div style="height:120px"></div>
+  </div>
+
+  <!-- ═══════════════════════════════ -->
+  <!-- VARIANT A — Figma 1:1 (5548:65390) -->
+  <!-- ═══════════════════════════════ -->
+  <div class="shv-variant" id="shv-a">
+
+    <!-- Header: Seller Hub + glass navi button -->
+    <div style="padding:32px 16px 8px">
+      <div class="shv-app-top" style="padding:0">
+        <h1 style="font-size:32px;font-weight:700;color:#000;line-height:21px">Seller Hub</h1>
+        <button class="shv-navi-btn" onclick="window.location.href='account.html'">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="2.5" cy="8" r="1.5" fill="#364153"/><circle cx="8" cy="8" r="1.5" fill="#364153"/><circle cx="13.5" cy="8" r="1.5" fill="#364153"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Profile row: avatar + greeting + unified stats badge -->
+    <div class="shf-profile-row">
+      <div class="shf-profile-left">
+        <div class="sh-avatar">
+          <img src="design-system/images/avatars/LuxeBotique.png" alt="">
+        </div>
+        <div class="shf-profile-info">
+          <div class="shf-profile-name">Hi, Marcin</div>
+          <div class="shf-profile-shop">CatchyDeals</div>
+        </div>
+      </div>
+      <div class="shf-stats-wrap">
+        <div class="shf-stat">
+          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M4.77,7.99c.99,0,1.81-.85,1.81-1.93s-.83-1.88-1.81-1.88-1.81.84-1.81,1.89.82,1.92,1.81,1.92Z" fill="#353b42"/><path d="M10.68,7.88c1.14,0,2.08-.98,2.08-2.21s-.95-2.16-2.08-2.16-2.08.97-2.08,2.17.94,2.21,2.08,2.21Z" fill="#353b42"/><path d="M6.92,9.31c-.55-.33-1.28-.58-2.16-.58-2.25,0-3.77,1.61-3.77,2.91,0,.54.26.86,1,.86h3.74c-.56-.77-.03-2.26,1.18-3.19Z" fill="#353b42"/><path d="M10.68,8.74c-2.64,0-4.33,1.74-4.33,3,0,.48.3.76,1.18.76h6.28c.89,0,1.18-.28,1.18-.76,0-1.26-1.68-3-4.32-3Z" fill="#353b42"/></svg>
+          <span>39</span>
+        </div>
+        <div class="shf-stat">
+          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M15.71,6.1c-.11-.33-.52-1.11-1.82-1.11h-3.26l-1-3.09c-.38-1.21-1.18-1.39-1.63-1.39s-1.25.18-1.63,1.39l-1,3.1h-3.27c-1.29,0-1.7.77-1.82,1.11-.11.34-.26,1.23.81,2l2.66,1.9-1.05,3.1c-.29.86-.12,1.61.48,2.07.29.22,1.07.65,2.16-.15l2.64-1.94,2.64,1.95c.48.34.9.46,1.24.46.41,0,.72-.17.91-.32.6-.46.78-1.22.49-2.07l-1.05-3.1,2.66-1.9c1.08-.77.93-1.65.81-2Z" fill="#364153"/></svg>
+          <span>4.9</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Date filter pills -->
+    <div style="padding:0 16px;margin-bottom:16px">
+      <div class="sh-filter-row" style="padding:0;margin-bottom:0">
+        <button class="sh-filter-pill" data-period="today">Today</button>
+        <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
+        <button class="sh-filter-pill active" data-period="week">Last Week</button>
+        <button class="sh-filter-pill" data-period="month">Last Month</button>
+      </div>
+    </div>
+
+    <!-- 2×2 tiles with CTA buttons (Figma layout) -->
+    <div class="shf-tiles">
+      <!-- Products — white, red CTA -->
+      <div class="shf-tile shf-tile-white" data-action="manage-products">
+        <div class="shf-tile-top">
+          <span class="shf-tile-label">Products</span>
+          <svg class="shf-tile-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+        </div>
+        <div class="shf-tile-body">
+          <div class="shf-tile-value-row">
+            <span class="shf-tile-value">6</span>
+            <span class="shf-tile-change down">-2%</span>
+          </div>
+          <div class="shf-tile-sub">3 drafts</div>
+        </div>
+        <button class="shf-tile-cta shf-cta-red" data-action="add-product">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23c-.23-.03-.68.02-1 .17-1.56.72-4.8 4.31-5.88 6.02-.98 1.53-1.34 4.62-.66 5.13.65.49 4.03.19 5.41-.92 1.59-1.28 4.93-4.97 5.39-6.57.5-1.71-2.05-3.66-3.26-3.83zM12.29 5.79c-.13.29-.49.79-.95 1.39-.48-.5-1.51-1.2-1.84-1.49-.14-.12-.89.66-.75.77l1.85 1.64c-1.17 1.41-2.61 2.99-3.32 3.61-.85.74-3.42.84-3.55.74v-.02h-.02c-.24-.22.05-2.13.8-3.22.92-1.34 3.75-4.47 4.91-5.37.94-.72 1.78.23 2.1.47.46.34 1.01 1.02.77 1.48z" fill="#fff"/></svg>
+          Add Product
+        </button>
+      </div>
+
+      <!-- Shows — white, red CTA -->
+      <div class="shf-tile shf-tile-white" data-action="manage-shows">
+        <div class="shf-tile-top">
+          <span class="shf-tile-label">Shows</span>
+          <svg class="shf-tile-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+        </div>
+        <div class="shf-tile-body">
+          <div class="shf-tile-value-row">
+            <span class="shf-tile-value">3</span>
+            <span class="shf-tile-change up">+50%</span>
+          </div>
+          <div class="shf-tile-sub">2 upcoming</div>
+        </div>
+        <button class="shf-tile-cta shf-cta-red" data-action="schedule-show">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23c-.23-.03-.68.02-1 .17-1.56.72-4.8 4.31-5.88 6.02-.98 1.53-1.34 4.62-.66 5.13.65.49 4.03.19 5.41-.92 1.59-1.28 4.93-4.97 5.39-6.57.5-1.71-2.05-3.66-3.26-3.83zM12.29 5.79c-.13.29-.49.79-.95 1.39-.48-.5-1.51-1.2-1.84-1.49-.14-.12-.89.66-.75.77l1.85 1.64c-1.17 1.41-2.61 2.99-3.32 3.61-.85.74-3.42.84-3.55.74v-.02h-.02c-.24-.22.05-2.13.8-3.22.92-1.34 3.75-4.47 4.91-5.37.94-.72 1.78.23 2.1.47.46.34 1.01 1.02.77 1.48z" fill="#fff"/></svg>
+          Schedule Show
+        </button>
+      </div>
+
+      <!-- Orders — gray bg, white CTA -->
+      <div class="shf-tile shf-tile-gray" data-action="manage-orders">
+        <div class="shf-tile-top">
+          <span class="shf-tile-label">Orders</span>
+          <svg class="shf-tile-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+        </div>
+        <div class="shf-tile-body">
+          <div class="shf-tile-value-row">
+            <span class="shf-tile-value">24</span>
+            <span class="shf-tile-change up">+12%</span>
+          </div>
+          <div class="shf-tile-sub"><strong>5</strong> as Buy Me<br><strong>19</strong> as Auction</div>
+        </div>
+        <button class="shf-tile-cta shf-cta-white" data-action="manage-orders">Manage Orders</button>
+      </div>
+
+      <!-- Finances — gray bg, white CTA -->
+      <div class="shf-tile shf-tile-gray" onclick="document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-finances').classList.add('active');document.querySelector('.tabbar').style.display='none'">
+        <div class="shf-tile-top">
+          <span class="shf-tile-label">Finances</span>
+          <svg class="shf-tile-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
+        </div>
+        <div class="shf-tile-body">
+          <div class="shf-tile-value-row">
+            <span class="shf-tile-value">$1312</span>
+            <span class="shf-tile-change down">-28%</span>
+          </div>
+          <div class="shf-tile-sub"><strong>$1002</strong> to Payout</div>
+        </div>
+        <button class="shf-tile-cta shf-cta-white" onclick="event.stopPropagation();document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-finances').classList.add('active');document.querySelector('.tabbar').style.display='none'">Check Finances</button>
+      </div>
+    </div>
+
+    <div style="height:120px"></div>
+  </div>
+
+  <!-- ═══════════════════════════════ -->
+  <!-- VARIANT B — Compact & Action   -->
+  <!-- ═══════════════════════════════ -->
+  <div class="shv-variant" id="shv-b">
+
+    <!-- Header: avatar + greeting + settings -->
+    <div style="padding:32px 0 16px">
+      <div class="shv-header-b">
+        <div class="sh-avatar">
+          <img src="design-system/images/avatars/LuxeBotique.png" alt="">
+        </div>
+        <div class="shv-header-b-info">
+          <div class="shv-header-b-greeting">Hi, Tom &amp; Anna!</div>
+          <div class="shv-header-b-shop">LuxeBoutique</div>
+        </div>
+        <button class="shv-navi-btn">
+          <img src="design-system/UI Icons/Icon Account.svg" alt="">
+        </button>
+      </div>
+    </div>
+
+    <!-- Upcoming Show Banner — dark -->
+    <div class="shv-banner-dark" id="shv-banner-b">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <div class="shv-banner-dot"></div>
+        <div class="shv-banner-title">Summer Fashion Drop</div>
+      </div>
+      <div class="shv-banner-time">Starts in 45 min — get ready!</div>
+      <div class="shv-banner-actions">
+        <button class="shv-banner-btn secondary" data-action="schedule-show">Edit</button>
+        <button class="shv-banner-btn primary" data-action="go-live">Go Live</button>
+      </div>
+    </div>
+
+    <!-- Quick actions — 3 tiles with icons -->
+    <div class="shv-quick-tiles">
+      <button class="shv-quick-tile" data-action="add-product">
+        <div class="shv-quick-tile-icon"><img src="design-system/UI Icons/Icon Plus.svg" alt=""></div>
+        <div class="shv-quick-tile-label">Add Product</div>
+      </button>
+      <button class="shv-quick-tile" data-action="schedule-show">
+        <div class="shv-quick-tile-icon"><img src="design-system/UI Icons/Icon Play.svg" alt=""></div>
+        <div class="shv-quick-tile-label">Schedule Show</div>
+      </button>
+      <button class="shv-quick-tile" onclick="window.location.href='account.html'">
+        <div class="shv-quick-tile-icon"><img src="design-system/UI Icons/Icon Account.svg" alt=""></div>
+        <div class="shv-quick-tile-label">Settings</div>
+      </button>
+    </div>
+
+    <!-- Performance + time pills -->
+    <div class="shv-perf-inline">
+      <div class="shv-perf-inline-header">
+        <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Performance</div>
+      </div>
+      <div style="display:flex;gap:8px;overflow-x:auto">
+        <button class="sh-filter-pill active" data-period="today">Today</button>
+        <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
+        <button class="sh-filter-pill" data-period="week">Last Week</button>
+        <button class="sh-filter-pill" data-period="month">Last Month</button>
+      </div>
+    </div>
+
+    <!-- Orders full-width tile (no chart) -->
+    <div class="shv-orders-wide" data-action="manage-orders" style="margin-bottom:13px">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <span class="sh-tile-c-label">Orders</span>
+          <span class="sh-tile-change up">+40%</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <span class="sh-tile-c-value">7</span>
+          <span class="sh-tile-c-sub">2 to ship</span>
+        </div>
+      </div>
+      <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
+    </div>
+
+    <!-- 2×2 grid: Products, Shows, Payout, Income -->
+    <div class="sh-tiles">
+      <div class="sh-tile sh-tile-c" data-action="manage-products">
+        <div class="sh-tile-c-top"><div class="sh-tile-c-label">Products</div></div>
+        <div>
+          <div class="sh-tile-c-value-row">
+            <div class="sh-tile-c-value">24</div>
+            <div class="sh-tile-change up">+12%</div>
+          </div>
+          <div class="sh-tile-c-sub">3 drafts</div>
+        </div>
+        <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+      <div class="sh-tile sh-tile-c" data-action="manage-shows">
+        <div class="sh-tile-c-top"><div class="sh-tile-c-label">Shows</div><div class="sh-tile-change up">+50%</div></div>
+        <div>
+          <div class="sh-tile-c-value">3</div>
+          <div class="sh-tile-c-sub">2 upcoming</div>
+        </div>
+        <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+      <div class="sh-tile sh-tile-c" data-action="payout">
+        <div class="sh-tile-c-top"><div class="sh-tile-c-label">Payout</div><div class="sh-tile-change down">−8%</div></div>
+        <div>
+          <div class="sh-tile-c-value">$640</div>
+          <div class="sh-tile-c-sub">Available to withdraw</div>
+        </div>
+        <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+      <div class="sh-tile sh-tile-c" data-action="manage-orders">
+        <div class="sh-tile-c-top"><div class="sh-tile-c-label">Income</div><div class="sh-tile-change down">−38%</div></div>
+        <div>
+          <div class="sh-tile-c-value">$1240</div>
+          <div class="sh-tile-c-sub">Finances</div>
+        </div>
+        <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+    </div>
+
+    <div style="height:120px"></div>
+  </div>
+
+  <!-- ═══════════════════════════════ -->
+  <!-- VARIANT C — Data-rich sections  -->
+  <!-- ═══════════════════════════════ -->
+  <div class="shv-variant" id="shv-c">
+
+    <!-- App Top: Seller Hub + more button -->
+    <div style="padding:32px 16px 12px">
+      <div class="shv-app-top" style="padding:0">
+        <h1 style="font-size:32px;font-weight:700;color:#000">Seller Hub</h1>
+        <button class="shv-navi-btn">
+          <img src="design-system/UI Icons/Icon more.svg" alt="">
+        </button>
+      </div>
+    </div>
+
+    <!-- Profile card -->
+    <div class="shv-profile-card" onclick="window.location.href='seller-profile.html'">
+      <div class="sh-avatar">
+        <img src="design-system/images/avatars/LuxeBotique.png" alt="">
+      </div>
+      <div style="flex:1">
+        <div style="font-size:16px;font-weight:700;color:var(--bw10)">LuxeBoutique</div>
+        <div class="shv-profile-card-link">View Profile</div>
+      </div>
+      <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
+    </div>
+
+    <!-- Upcoming Show Banner — inline -->
+    <div class="shv-banner-inline" id="shv-banner-c">
+      <img class="shv-banner-inline-icon" src="design-system/UI Icons/Icon Alert.svg" alt="">
+      <div class="shv-banner-inline-text"><strong>Summer Fashion Drop</strong> starts in 45 min</div>
+      <button class="shv-banner-btn primary" data-action="go-live">Go Live</button>
+    </div>
+
+    <!-- Quick Actions heading + 2×2 grid -->
+    <div style="padding:0 16px 10px">
+      <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Quick Actions</div>
+    </div>
+    <div class="shv-quick-grid">
+      <button class="shv-quick-grid-item" data-action="add-product">
+        <img src="design-system/UI Icons/Icon Plus.svg" alt="">
+        <span>Add Product</span>
+      </button>
+      <button class="shv-quick-grid-item" data-action="schedule-show">
+        <img src="design-system/UI Icons/Icon Play.svg" alt="">
+        <span>Schedule Show</span>
+      </button>
+      <button class="shv-quick-grid-item" onclick="window.location.href='activity.html'">
+        <img src="design-system/UI Icons/Icon Orders.svg" alt="">
+        <span>My Orders</span>
+      </button>
+      <button class="shv-quick-grid-item" onclick="window.location.href='account.html'">
+        <img src="design-system/UI Icons/Icon Account.svg" alt="">
+        <span>Settings</span>
+      </button>
+    </div>
+
+    <!-- Performance heading + time pills -->
+    <div style="padding:8px 16px 12px">
+      <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Performance</div>
+    </div>
+    <div class="sh-filter-row">
+      <button class="sh-filter-pill active" data-period="today">Today</button>
+      <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
+      <button class="sh-filter-pill" data-period="week">Last Week</button>
+      <button class="sh-filter-pill" data-period="month">Last Month</button>
+    </div>
+
+    <!-- 5 metric tiles — full-width list -->
+    <div class="shv-metric-list">
+      <div class="shv-metric-item" data-action="manage-orders">
+        <div class="shv-metric-left">
+          <div class="sh-tile-c-label">Orders</div>
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span class="sh-tile-c-value">7</span>
+            <span class="sh-tile-change up">+40%</span>
+          </div>
+          <div class="sh-tile-c-sub">2 to ship</div>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
+      </div>
+      <div class="shv-metric-item" data-action="manage-products">
+        <div class="shv-metric-left">
+          <div class="sh-tile-c-label">Products</div>
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span class="sh-tile-c-value">24</span>
+            <span class="sh-tile-change up">+12%</span>
+          </div>
+          <div class="sh-tile-c-sub">3 drafts</div>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
+      </div>
+      <div class="shv-metric-item" data-action="manage-shows">
+        <div class="shv-metric-left">
+          <div class="sh-tile-c-label">Shows</div>
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span class="sh-tile-c-value">3</span>
+            <span class="sh-tile-change up">+50%</span>
+          </div>
+          <div class="sh-tile-c-sub">2 upcoming</div>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
+      </div>
+      <div class="shv-metric-item" data-action="payout">
+        <div class="shv-metric-left">
+          <div class="sh-tile-c-label">Payout</div>
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span class="sh-tile-c-value">$640</span>
+            <span class="sh-tile-change down">−8%</span>
+          </div>
+          <div class="sh-tile-c-sub">Available to withdraw</div>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
+      </div>
+      <div class="shv-metric-item" data-action="manage-orders">
+        <div class="shv-metric-left">
+          <div class="sh-tile-c-label">Income</div>
+          <div style="display:flex;align-items:baseline;gap:6px">
+            <span class="sh-tile-c-value">$1240</span>
+            <span class="sh-tile-change down">−38%</span>
+          </div>
+          <div class="sh-tile-c-sub">Finances</div>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
+      </div>
+    </div>
+
+    <div style="height:120px"></div>
+  </div>
+
+</div>
+</div>
+
+
+<div class="screen" id="screen-schedule-show">
+
+  <!-- App Top (fixed) -->
+  <div class="ss-app-top">
+    <div class="ss-app-top-status"></div>
+    <div class="ss-app-top-action">
+      <button class="ss-back" id="ss-back-btn">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back">
+      </button>
+      <span class="ss-app-top-title">Schedule a Live Show</span>
+    </div>
+  </div>
+
+<div class="ss-scroll" id="ss-scroll">
+
+  <!-- Title -->
+  <h1 class="ss-title">Schedule a Live Show</h1>
+
+  <!-- Form Inputs -->
+  <div style="padding:8px 16px 0;display:flex;flex-direction:column;gap:12px" id="ss-form">
+
+    <!-- Name -->
+    <div class="fi" data-ss-input>
+      <div class="fi-content">
+        <span class="fi-placeholder">Name your show</span>
+        <span class="fi-label">Name your show</span>
+        <span class="fi-value">Daily from $1, Clothes, Home stuff</span>
+      </div>
+    </div>
+
+    <!-- Date & Time -->
+    <div class="fi filled">
+      <div class="fi-content">
+        <span class="fi-placeholder">Date &amp; Time</span>
+        <span class="fi-label">Date &amp; Time</span>
+        <span class="fi-value">Jan 22, 2025 at 6:00 PM</span>
+      </div>
+      <div class="fi-icon"><img src="design-system/UI Icons/Icon Datepicker.svg" alt="Date"></div>
+    </div>
+
+    <!-- Moderators -->
+    <div class="fi" data-ss-input>
+      <div class="fi-content">
+        <span class="fi-placeholder">Add Moderators (optional)</span>
+        <span class="fi-label">Add Moderators (optional)</span>
+        <span class="fi-value">Cardmaster_TCG, TeamRare, +2</span>
+      </div>
+      <div class="fi-icon"><img src="design-system/UI Icons/Icon Down Chevron.svg" alt="Expand"></div>
+    </div>
+
+    <!-- Repeats -->
+    <div class="fi filled">
+      <div class="fi-content">
+        <span class="fi-placeholder">Repeats</span>
+        <span class="fi-label">Repeats</span>
+        <span class="fi-value">Does not repeat</span>
+      </div>
+      <div class="fi-icon"><img src="design-system/UI Icons/Icon Down Chevron.svg" alt="Expand"></div>
+    </div>
+
+  </div>
+
+  <!-- Introduce your show -->
+  <div style="padding:32px 16px 0">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="ss-section-title">Introduce your show</p>
+      <p class="ss-section-desc">Video helps tell your story and allows you to introduce yourself.</p>
+    </div>
+    <div style="margin-top:16px">
+      <!-- Empty state -->
+      <div class="ss-upload-area" id="ss-video-empty">
+        <div class="ss-upload-box">
+          <div class="ss-upload-plus"><img src="design-system/UI Icons/Icon Plus.svg" alt="+"></div>
+          <span class="ss-upload-link">Add or record video</span>
+          <span class="ss-upload-opt">(Optional)</span>
+        </div>
+        <div class="ss-tips">
+          <p class="ss-tips-title">Practical tips:</p>
+          <div class="ss-tip"><img src="design-system/UI Icons/Icon Corners.svg" alt=""><span>Vertical video 9:16</span></div>
+          <div class="ss-tip"><img src="design-system/UI Icons/Icon Clock.svg" alt=""><span>Up to 25 seconds</span></div>
+          <div class="ss-tip"><img src="design-system/UI Icons/Icon Star.svg" alt=""><span>Show yourself</span></div>
+          <div class="ss-tip"><img src="design-system/UI Icons/Icon Package.svg" alt=""><span>Explain what you'll sell</span></div>
+        </div>
+      </div>
+      <!-- Filled state -->
+      <div style="display:none;flex-direction:row;gap:27px;align-items:flex-start;justify-content:center" id="ss-video-filled">
+        <div class="ss-video-thumb" style="background-image:url('design-system/images/shows/show2.jpg')">
+          <span class="ss-video-date">22 Jan, 6:00 PM</span>
+          <span class="ss-video-title">Daily from $1, Clothes, Home st...</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1;justify-content:space-between;min-height:264px">
+          <div class="ss-tips">
+            <p class="ss-tips-title">Practical tips:</p>
+            <div class="ss-tip"><img src="design-system/UI Icons/Icon Corners.svg" alt=""><span>Vertical video 9:16</span></div>
+            <div class="ss-tip"><img src="design-system/UI Icons/Icon Clock.svg" alt=""><span>Up to 25 seconds</span></div>
+            <div class="ss-tip"><img src="design-system/UI Icons/Icon Star.svg" alt=""><span>Show yourself</span></div>
+            <div class="ss-tip"><img src="design-system/UI Icons/Icon Package.svg" alt=""><span>Explain what you'll sell</span></div>
+          </div>
+          <div class="ss-video-actions">
+            <button class="ss-video-edit"><img src="design-system/UI Icons/Icon Edit.svg" alt="Edit">Edit Video</button>
+            <button class="ss-video-trash"><img src="design-system/UI Icons/Icon Trash.svg" alt="Delete"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category -->
+  <div style="padding:32px 16px 0">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="ss-section-title">Category</p>
+      <p class="ss-section-desc">Accurately categorizing your show will help to increase its discoverability</p>
+    </div>
+    <div style="margin-top:12px">
+      <p style="font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:8px">Recently used</p>
+      <div class="ss-cat-pills">
+        <div class="ss-cat-pill"><img src="design-system/Category Icons/Coins&Money.png" alt="Coins"><span>Coins &amp; Money</span></div>
+        <div class="ss-cat-pill"><img src="design-system/Category Icons/Figures & Statues.png" alt="Figures"><span>Figures &amp; Statues</span></div>
+        <div class="ss-cat-pill"><img src="design-system/Category Icons/Outdoor & Sports.png" alt="Outdoor"><span>Outdoor and Sports</span></div>
+      </div>
+    </div>
+    <div style="margin-top:16px">
+      <div class="fi" data-ss-input id="ss-cat-input">
+        <div class="fi-content">
+          <span class="fi-placeholder">Category</span>
+          <span class="fi-label">Category</span>
+          <span class="fi-value">Coin &amp; Money</span>
+        </div>
+        <div class="fi-icon"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt="Select" id="ss-cat-chevron"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Settings -->
+  <div style="padding:32px 16px 0">
+    <p class="ss-section-title">Content Settings</p>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-top:12px">
+      <div style="flex:1">
+        <p style="font-size:13px;font-weight:700;color:var(--bw10)">Explicit content</p>
+        <p style="font-size:13px;font-weight:400;color:var(--bw40);margin-top:4px;line-height:1.35">Turn this on if your stream contains explicit content.</p>
+        <div style="display:flex;align-items:center;gap:4px;margin-top:4px">
+          <span style="font-size:13px;font-weight:400;color:var(--bl10)">Learn more</span>
+          <img src="design-system/UI Icons/Icon Info.svg" alt="Info" style="width:16px;height:16px;filter:brightness(0) saturate(100%) invert(42%) sepia(98%) saturate(1956%) hue-rotate(190deg) brightness(101%) contrast(104%)">
+        </div>
+      </div>
+      <div class="ss-switch" style="margin-left:16px">
+        <div class="ss-switch-thumb"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show Discoverability -->
+  <div style="padding:32px 16px 0">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="ss-section-title">Show Discoverability</p>
+      <p class="ss-section-desc">Choose how you want your show to be discovered.</p>
+    </div>
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:16px">
+      <!-- Public -->
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--bw20)">Public</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
+          <p style="font-size:13px;font-weight:400;color:var(--bw40)">Discoverable by everyone</p>
+          <div class="ss-radio"><img src="design-system/UI Icons/Radio Off.svg" alt="Off"></div>
+        </div>
+      </div>
+      <!-- Private -->
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--bw20)">Private</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
+          <p style="font-size:13px;font-weight:400;color:var(--bw40)">Only discoverable through sharing.</p>
+          <div class="ss-radio"><img src="design-system/UI Icons/Radio On.svg" alt="On"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:40px"></div>
+
+</div>
+
+<!-- Fixed bottom CTA -->
+<div class="ss-bottom">
+  <button class="ss-cta" id="ss-schedule-btn">Schedule Show</button>
+</div>
+</div>
+
+
+<div class="screen sched-screen" id="screen-show-scheduled">
+
+  <!-- App Top -->
+  <div class="sched-app-top">
+    <div style="height:59px;flex-shrink:0"></div>
+    <div class="sched-top-action">
+      <div class="sched-top-left">
+        <div class="sched-avatar" style="background-image:url('design-system/images/avatars/TCGPokerealm.png')"></div>
+        <span class="sched-name">PokeRealmTCG</span>
+      </div>
+      <div class="sched-top-right">
+        <div class="sched-badge">Scheduled</div>
+        <div class="sched-chevron" id="sched-back-btn">
+          <img src="design-system/UI Icons/Icon Down Chevron.svg" alt="Close">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Central card — dark transparent -->
+  <div class="sched-card">
+    <div class="sched-card-header">
+      <span class="sched-card-label">Show Starts</span>
+      <span class="sched-card-time">Tomorrow, 9:36 PM</span>
+    </div>
+    <button class="sched-card-1cta">Start Show</button>
+    <button class="sched-card-2cta">Add Products to This Show</button>
+  </div>
+
+  <!-- Bottom row: Chat (left) + Right icons -->
+  <div class="sched-bottom-row">
+    <!-- Show Chat -->
+    <div class="sched-chat">
+      <div class="sched-chat-row">
+        <div class="sched-chat-shortcut">
+          <img src="design-system/UI Icons/Icon Shortcut.svg" alt="">
+        </div>
+        <div class="sched-chat-input">
+          <span>Say something...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Show Right Section Icons -->
+    <div class="sched-right">
+      <div class="sched-right-btn">
+        <div class="sched-right-icon"><img src="design-system/UI Icons/Icon Promote.svg" alt="Calendar"></div>
+        <span class="sched-right-label">Add to<br>Calendar</span>
+      </div>
+      <div class="sched-right-btn">
+        <div class="sched-right-icon"><img src="design-system/UI Icons/Icon Clip.svg" alt="Share"></div>
+        <span class="sched-right-label">Share</span>
+      </div>
+      <div class="sched-right-btn">
+        <div style="position:relative">
+          <div class="sched-right-icon"><img src="design-system/UI Icons/Icon Add Video.svg" alt="Add Video"></div>
+          <div class="sched-right-dot"></div>
+        </div>
+        <span class="sched-right-label">Add<br>Video</span>
+      </div>
+      <div class="sched-right-btn">
+        <div class="sched-right-icon"><img src="design-system/UI Icons/Icon Camera Switch.svg" alt="Edit"></div>
+        <span class="sched-right-label">Edit</span>
+      </div>
+      <div class="sched-right-btn">
+        <div class="sched-right-shop">
+          <img src="design-system/UI Icons/Icon Shop.svg" alt="Products">
+          <div class="sched-right-shop-badge">10</div>
+        </div>
+        <span class="sched-right-label">Products</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="screen ap-screen" id="screen-add-products">
+  <div class="ap-top">
+    <div class="ap-top-status"></div>
+    <div class="ap-top-action">
+      <button class="ap-close" id="ap-close-btn"><img src="design-system/UI Icons/Icon Close.svg" alt="Close"></button>
+    </div>
+  </div>
+  <div class="screen-scroll" id="ap-scroll" style="padding-top:0">
+    <h1 class="ap-title">Add Products</h1>
+
+    <!-- Tabs -->
+    <div class="ap-tabs">
+      <button class="ap-tab active" id="ap-tab-media">Media Library</button>
+      <button class="ap-tab" id="ap-tab-drafts">Drafts</button>
+    </div>
+
+    <!-- TAB: Media Library — empty state -->
+    <div id="ap-media-empty" style="margin-top:16px">
+      <div class="ap-empty">
+        <div class="ap-empty-sparkles">
+          <img src="design-system/sparkles-empty.svg" alt="" width="289" height="145">
+        </div>
+        <img class="ap-empty-icon" src="design-system/UI Icons/Icon Photo.svg" alt="">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:24px">
+          <button class="ap-empty-btn" id="ap-add-photos-btn">
+            <img src="design-system/UI Icons/Icon Plus.svg" alt="+">
+            Add Photos and Videos
+          </button>
+          <p class="ap-empty-hint">Add your photos and videos first,<br>then create multiple products.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: Media Library — with photos selected -->
+    <div id="ap-media-filled" style="display:none;margin-top:16px">
+      <p class="ap-media-hint">Select media to create Product</p>
+      <div class="ap-media-grid" id="ap-media-grid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <!-- TAB: Drafts list -->
+    <div id="ap-drafts-tab" style="display:none;margin-top:16px">
+      <div id="ap-drafts-list">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <div style="height:100px"></div>
+  </div>
+
+  <!-- Bottom bar (appears in media-filled state) -->
+  <div class="ap-bottom" id="ap-media-bottom" style="display:none" data-state="all">
+    <!-- State: no selection — create from all photos -->
+    <button class="ap-btn-create" id="ap-create-all-btn">
+      <span class="ap-btn-create-title">Create 3 Products</span>
+      <span class="ap-btn-create-sub">One product per each photo or video</span>
+    </button>
+    <!-- State: has selection — delete + create from selected -->
+    <button class="ap-btn-delete" id="ap-delete-btn" style="display:none">Delete</button>
+    <button class="ap-btn-cta" id="ap-create-selected-btn" style="display:none">Create 1 Product</button>
+  </div>
+</div>
+
+
+<div class="screen rp-screen" id="screen-review-product">
+  <!-- App Top with scroll state -->
+  <div class="rp-top" id="rp-top">
+    <div class="rp-top-status"></div>
+    <div class="rp-top-action">
+      <button class="rp-back" id="rp-back-btn"><img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back"></button>
+      <span class="rp-top-title">Review Product</span>
+    </div>
+  </div>
+  <div class="screen-scroll" id="rp-scroll" style="padding-top:0">
+    <h1 class="rp-title">Review Product</h1>
+
+    <!-- Cover + Add Media -->
+    <div class="rp-media">
+      <div class="rp-cover" id="rp-cover-img" style="background-image:url('design-system/images/product photos/image 3.png')">
+        <span class="rp-cover-label">Cover</span>
+      </div>
+      <div class="rp-add-media">
+        <button class="rp-add-media-btn"><img src="design-system/UI Icons/Icon Plus.svg" alt="+"></button>
+        <span>Add Media</span>
+      </div>
+    </div>
+
+    <!-- Product name -->
+    <div class="rp-name-box" id="rp-name-box" data-rp-input>
+      <p class="rp-name-placeholder" id="rp-name-ph">Product name</p>
+      <p class="rp-name-text" id="rp-name-val" style="display:none">Airmax Classic 95 white blue black</p>
+    </div>
+    <p class="rp-char-count"><span id="rp-char">0</span>/150</p>
+
+    <!-- Grouped fields: Category / For Who / Condition -->
+    <div class="rp-field-group" id="rp-fields">
+      <div class="rp-field" data-rp-input>
+        <div class="rp-field-content">
+          <span class="rp-field-placeholder">Category</span>
+          <span class="rp-field-label" style="display:none">Category</span>
+          <span class="rp-field-value" style="display:none">Clothes</span>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+      <div class="rp-field" data-rp-input>
+        <div class="rp-field-content">
+          <span class="rp-field-placeholder">For Who</span>
+          <span class="rp-field-label" style="display:none">For Who</span>
+          <span class="rp-field-value" style="display:none">Women</span>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+      <div class="rp-field" data-rp-input>
+        <div class="rp-field-content">
+          <span class="rp-field-placeholder">Condition</span>
+          <span class="rp-field-label" style="display:none">Condition</span>
+          <span class="rp-field-value" style="display:none">Lightly Used</span>
+        </div>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+    </div>
+
+    <!-- Sections below fields — all in padded container -->
+    <div style="padding:0 16px;display:flex;flex-direction:column;gap:16px">
+      <!-- Buy now / Auction toggle -->
+      <div class="rp-toggle">
+        <button class="rp-toggle-btn active">Buy now</button>
+        <button class="rp-toggle-btn">Auction</button>
+      </div>
+
+      <!-- Price + Quantity -->
+      <div class="rp-price-row" id="rp-price-row">
+        <div class="rp-price-box" data-rp-input>
+          <span class="rp-price-label">Price</span>
+          <p class="rp-price-value" id="rp-price-val" style="visibility:hidden">$40</p>
+        </div>
+        <div class="rp-price-box" data-rp-input>
+          <span class="rp-price-label">Quantity</span>
+          <p class="rp-price-value" id="rp-qty-val" style="visibility:hidden">1</p>
+        </div>
+      </div>
+
+      <!-- Add Variant -->
+      <button class="rp-add-variant">
+        <img src="design-system/UI Icons/Icon Star.svg" alt="">
+        <span>Add Variant</span>
+      </button>
+
+      <!-- Reserved for Live -->
+      <div class="rp-reserved">
+        <p class="rp-reserved-title">Reserved for Live</p>
+        <div class="rp-reserved-row">
+          <p class="rp-reserved-desc">The product can only be purchased within a show.</p>
+          <div class="ss-switch" style="margin:0">
+            <div class="ss-switch-thumb"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping size -->
+      <div class="rp-shipping" data-rp-input>
+        <span class="rp-shipping-label">Shipping size</span>
+        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
+      </div>
+    </div>
+
+    <div style="height:126px"></div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="rp-bottom">
+    <button class="ap-btn-2cta" id="rp-save-draft">Save Draft</button>
+    <button class="ap-btn-cta" id="rp-publish-btn">Publish</button>
+  </div>
+</div>
+
+
+<div class="screen pl-screen" id="screen-products-list">
+  <div class="pl-top">
+    <div class="pl-top-status"></div>
+    <div class="pl-top-action">
+      <button class="pl-back" id="pl-back-btn"><img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back"></button>
+      <button class="pl-manage">Manage</button>
+    </div>
+  </div>
+  <div class="screen-scroll" id="pl-scroll" style="padding-top:0">
+    <h1 class="pl-title">Products</h1>
+
+    <!-- Status pills -->
+    <div class="pl-status-pills">
+      <button class="pl-status-pill active">Active <span class="pl-status-count">2</span></button>
+      <button class="pl-status-pill">Drafts <span class="pl-status-count">10</span></button>
+      <button class="pl-status-pill">Inactive <span class="pl-status-count">1</span></button>
+      <button class="pl-status-pill">Sold out</button>
+    </div>
+
+    <!-- Filter pills -->
+    <div class="pl-filter-pills">
+      <button class="pl-filter active">All</button>
+      <button class="pl-filter">Auction 1</button>
+      <button class="pl-filter">Buy now 1</button>
+    </div>
+
+    <!-- Product list -->
+    <div id="pl-product-list">
+      <div class="pl-item">
+        <div class="pl-item-img" style="background-image:url('design-system/images/product photos/image 3.png')"></div>
+        <div class="pl-item-info">
+          <p class="pl-item-name">Airmax Classic 95 white blue red</p>
+          <p class="pl-item-attr">Variants: 3</p>
+          <p class="pl-item-attr">Quantity: 92</p>
+          <span class="pl-item-price">$90</span>
+          <button class="pl-item-menu"><img src="design-system/UI Icons/Icon more.svg" alt="..."></button>
+        </div>
+      </div>
+      <div class="pl-item">
+        <div class="pl-item-img" style="background-image:url('design-system/images/product photos/image 5.png')"></div>
+        <div class="pl-item-info">
+          <p class="pl-item-name">Airmax Classic 95 white blue red</p>
+          <p class="pl-item-attr">Variants: 3</p>
+          <p class="pl-item-attr">Quantity: 92</p>
+          <span class="pl-item-price">$90</span>
+          <button class="pl-item-menu"><img src="design-system/UI Icons/Icon more.svg" alt="..."></button>
+        </div>
+      </div>
+      <div class="pl-item">
+        <div class="pl-item-img" style="background-image:url('design-system/images/product photos/image 8.png')"></div>
+        <div class="pl-item-info">
+          <p class="pl-item-name">Airmax Classic 95 white blue red</p>
+          <p class="pl-item-attr">Quantity: 5</p>
+          <span class="pl-item-auction"><img src="design-system/UI Icons/Icon Hammer 2.svg" alt="">From $1</span>
+          <button class="pl-item-menu"><img src="design-system/UI Icons/Icon more.svg" alt="..."></button>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:100px"></div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="pl-bottom">
+    <button class="ap-btn-cta" id="pl-add-product-btn">Add Product</button>
+  </div>
+</div>
+
+
+<div class="screen" id="screen-orders">
+  <div class="ord-header">
+    <div class="ord-status-bar">
+      <span style="font-size:16px;font-weight:600;color:#000;letter-spacing:-0.3px">9:41</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
+      </div>
+    </div>
+    <div class="ord-top-action">
+      <button class="ord-back-btn" id="ord-back-btn">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
+      </button>
+      <button class="ord-manage-btn">Manage</button>
+    </div>
+    <div class="ord-title">Orders</div>
+    <!-- Variant toggle -->
+    <div class="ord-variant-toggle" id="ord-variant-toggle">
+      <button class="ord-variant-btn active" data-variant="a">A — Cards</button>
+      <button class="ord-variant-btn" data-variant="b">B — Compact</button>
+      <button class="ord-variant-btn" data-variant="c">C — Grouped</button>
+    </div>
+    <div class="ord-filters" id="ord-filters">
+      <button class="ord-filter-pill active" data-status="all">All <span class="ord-filter-count">21</span></button>
+      <button class="ord-filter-pill" data-status="new">New <span class="ord-filter-count">10</span></button>
+      <button class="ord-filter-pill" data-status="shipped">Shipped <span class="ord-filter-count">1</span></button>
+      <button class="ord-filter-pill" data-status="delivered">Delivered <span class="ord-filter-count">2</span></button>
+      <button class="ord-filter-pill" data-status="refund-request">Refund Request <span class="ord-filter-count">2</span></button>
+      <button class="ord-filter-pill" data-status="refunded">Refunded <span class="ord-filter-count">2</span></button>
+      <button class="ord-filter-pill" data-status="cancelled">Cancelled <span class="ord-filter-count">4</span></button>
+    </div>
+  </div>
+
+  <!-- Temp: explore link -->
+  <div style="padding:8px 16px 0">
+    <button onclick="showScreen('screen-track-explore');document.querySelector('.tabbar').style.display='none'" style="width:100%;height:40px;border-radius:12px;background:var(--bl10);border:none;font-size:12px;font-weight:600;color:white;cursor:pointer;font-family:inherit">🔍 Explore: Tracking Card (A/B/C)</button>
+    <button onclick="showScreen('screen-success-explore');document.querySelector('.tabbar').style.display='none'" style="width:100%;height:40px;border-radius:12px;background:var(--gr10);border:none;font-size:12px;font-weight:600;color:white;cursor:pointer;font-family:inherit;margin-top:6px">🔍 Explore: Ship Success — Apple HIG (A/B/C)</button>
+  </div>
+
+  <div class="screen-scroll" id="ord-scroll" style="padding-top:0">
+
+    <!-- ═══ VARIANT A: Cards (Figma-faithful) ═══ -->
+    <div class="ord-variant active" id="ord-var-a">
+      <div class="ord-list-a" id="ord-list-a">
+        <div class="ord-card-a" data-order-status="new" data-order-id="8323234">
+          <div class="ord-card-a-img">
+            <img src="design-system/images/Product Photos/image 1.png" alt="">
+            <div class="ord-card-a-items">2 Items</div>
+          </div>
+          <div class="ord-card-a-body">
+            <div><span class="ord-badge new">New</span></div>
+            <div class="ord-card-a-id-row">
+              <span class="ord-card-a-id">ID #8323234</span>
+              <span class="ord-card-a-size">Size L</span>
+            </div>
+            <div class="ord-card-a-paid">Paid $102.34</div>
+            <div class="ord-card-a-buyer">Buyer <span>kelx188</span></div>
+            <div class="ord-card-a-actions">
+              <button class="ord-card-a-more"><img src="design-system/UI Icons/Icon more.svg" alt=""></button>
+              <button class="ord-card-a-detail" onclick="openOrderDetails('8323234')">Order Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="ord-card-a" data-order-status="shipped" data-order-id="8323233">
+          <div class="ord-card-a-img">
+            <img src="design-system/images/Product Photos/image 5.png" alt="">
+          </div>
+          <div class="ord-card-a-body">
+            <div><span class="ord-badge shipped">Shipped</span></div>
+            <div class="ord-card-a-id-row"><span class="ord-card-a-id">ID #8323232</span></div>
+            <div class="ord-card-a-paid">Paid $102.34</div>
+            <div class="ord-card-a-buyer">Buyer <span>kelx188</span></div>
+            <div class="ord-card-a-actions">
+              <button class="ord-card-a-more"><img src="design-system/UI Icons/Icon more.svg" alt=""></button>
+              <button class="ord-card-a-detail" onclick="openOrderDetails('8323233')">Order Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="ord-card-a" data-order-status="delivered" data-order-id="8323232">
+          <div class="ord-card-a-img">
+            <img src="design-system/images/Product Photos/image 10.png" alt="">
+          </div>
+          <div class="ord-card-a-body">
+            <div><span class="ord-badge delivered">Delivered</span></div>
+            <div class="ord-card-a-id-row"><span class="ord-card-a-id">ID #8323232</span></div>
+            <div class="ord-card-a-paid">Paid $20.30</div>
+            <div class="ord-card-a-buyer">Buyer <span>Trisha_BirmUK</span></div>
+            <div class="ord-card-a-actions">
+              <button class="ord-card-a-more"><img src="design-system/UI Icons/Icon more.svg" alt=""></button>
+              <button class="ord-card-a-detail" onclick="openOrderDetails('8323232')">Order Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="ord-card-a" data-order-status="cancelled" data-order-id="8323231">
+          <div class="ord-card-a-img">
+            <img src="design-system/images/Product Photos/image 15.png" alt="">
+          </div>
+          <div class="ord-card-a-body">
+            <div><span class="ord-badge cancelled">Cancelled</span></div>
+            <div class="ord-card-a-id-row"><span class="ord-card-a-id">ID #8323232</span></div>
+            <div class="ord-card-a-paid">Paid $100.00</div>
+            <div class="ord-card-a-buyer">Buyer <span>user034123</span></div>
+            <div class="ord-card-a-actions">
+              <button class="ord-card-a-more"><img src="design-system/UI Icons/Icon more.svg" alt=""></button>
+              <button class="ord-card-a-detail" onclick="openOrderDetails('8323231')">Order Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ VARIANT B: Compact rows ═══ -->
+    <div class="ord-variant" id="ord-var-b">
+      <div class="ord-list-b" id="ord-list-b">
+        <div class="ord-row-b" data-order-status="new" onclick="openOrderDetails('8323234')">
+          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
+          <div class="ord-row-b-body">
+            <div class="ord-row-b-top">
+              <span class="ord-row-b-id">#8323234</span>
+              <span class="ord-badge new">New</span>
+            </div>
+            <div class="ord-row-b-sub">Nike Air Max 90 — Blue · kelx188</div>
+          </div>
+          <div class="ord-row-b-right">
+            <span class="ord-row-b-price">$102.34</span>
+            <span class="ord-row-b-date">Mar 14</span>
+          </div>
+          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
+        </div>
+        <div class="ord-row-b" data-order-status="new" onclick="openOrderDetails('8323234')">
+          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 3.png" alt=""></div>
+          <div class="ord-row-b-body">
+            <div class="ord-row-b-top">
+              <span class="ord-row-b-id">#8323236</span>
+              <span class="ord-badge new">New</span>
+            </div>
+            <div class="ord-row-b-sub">Handmade Bracelet Set · fashionista99</div>
+          </div>
+          <div class="ord-row-b-right">
+            <span class="ord-row-b-price">$34.50</span>
+            <span class="ord-row-b-date">Mar 14</span>
+          </div>
+          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
+        </div>
+        <div class="ord-row-b" data-order-status="shipped" onclick="openOrderDetails('8323233')">
+          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 5.png" alt=""></div>
+          <div class="ord-row-b-body">
+            <div class="ord-row-b-top">
+              <span class="ord-row-b-id">#8323233</span>
+              <span class="ord-badge shipped">Shipped</span>
+            </div>
+            <div class="ord-row-b-sub">Vintage Denim Jacket · kelx188</div>
+          </div>
+          <div class="ord-row-b-right">
+            <span class="ord-row-b-price">$102.34</span>
+            <span class="ord-row-b-date">Mar 12</span>
+          </div>
+          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
+        </div>
+        <div class="ord-row-b" data-order-status="delivered" onclick="openOrderDetails('8323232')">
+          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 10.png" alt=""></div>
+          <div class="ord-row-b-body">
+            <div class="ord-row-b-top">
+              <span class="ord-row-b-id">#8323232</span>
+              <span class="ord-badge delivered">Delivered</span>
+            </div>
+            <div class="ord-row-b-sub">Handmade Earrings Set · Trisha_BirmUK</div>
+          </div>
+          <div class="ord-row-b-right">
+            <span class="ord-row-b-price">$20.30</span>
+            <span class="ord-row-b-date">Mar 8</span>
+          </div>
+          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
+        </div>
+        <div class="ord-row-b" data-order-status="delivered" onclick="openOrderDetails('8323232')">
+          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 12.png" alt=""></div>
+          <div class="ord-row-b-body">
+            <div class="ord-row-b-top">
+              <span class="ord-row-b-id">#8323230</span>
+              <span class="ord-badge delivered">Delivered</span>
+            </div>
+            <div class="ord-row-b-sub">Ceramic Vase Set · home_lover42</div>
+          </div>
+          <div class="ord-row-b-right">
+            <span class="ord-row-b-price">$45.00</span>
+            <span class="ord-row-b-date">Mar 6</span>
+          </div>
+          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
+        </div>
+        <div class="ord-row-b" data-order-status="cancelled" onclick="openOrderDetails('8323231')">
+          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 15.png" alt=""></div>
+          <div class="ord-row-b-body">
+            <div class="ord-row-b-top">
+              <span class="ord-row-b-id">#8323231</span>
+              <span class="ord-badge cancelled">Cancelled</span>
+            </div>
+            <div class="ord-row-b-sub">Retro Sneakers Collection · user034123</div>
+          </div>
+          <div class="ord-row-b-right">
+            <span class="ord-row-b-price">$100.00</span>
+            <span class="ord-row-b-date">Mar 5</span>
+          </div>
+          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ VARIANT C: Grouped by status ═══ -->
+    <div class="ord-variant" id="ord-var-c">
+      <div class="ord-list-c">
+        <!-- New -->
+        <div class="ord-group-c">
+          <div class="ord-group-c-header">
+            <span class="ord-badge new" style="font-size:11px">New</span>
+            <span class="ord-group-c-count">10 orders</span>
+          </div>
+          <div class="ord-group-c-items">
+            <div class="ord-cell-c" onclick="openOrderDetails('8323234')">
+              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
+              <div class="ord-cell-c-body">
+                <div class="ord-cell-c-name">Nike Air Max 90 — Blue</div>
+                <div class="ord-cell-c-meta">#8323234 · Mar 14</div>
+              </div>
+              <div class="ord-cell-c-right">
+                <span class="ord-cell-c-price">$102.34</span>
+                <span class="ord-cell-c-buyer">kelx188</span>
+              </div>
+              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
+            </div>
+            <div class="ord-cell-c" onclick="openOrderDetails('8323234')">
+              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 3.png" alt=""></div>
+              <div class="ord-cell-c-body">
+                <div class="ord-cell-c-name">Handmade Bracelet Set</div>
+                <div class="ord-cell-c-meta">#8323236 · Mar 14</div>
+              </div>
+              <div class="ord-cell-c-right">
+                <span class="ord-cell-c-price">$34.50</span>
+                <span class="ord-cell-c-buyer">fashionista99</span>
+              </div>
+              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
+            </div>
+          </div>
+        </div>
+        <!-- Shipped -->
+        <div class="ord-group-c">
+          <div class="ord-group-c-header">
+            <span class="ord-badge shipped" style="font-size:11px">Shipped</span>
+            <span class="ord-group-c-count">1 order</span>
+          </div>
+          <div class="ord-group-c-items">
+            <div class="ord-cell-c" onclick="openOrderDetails('8323233')">
+              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 5.png" alt=""></div>
+              <div class="ord-cell-c-body">
+                <div class="ord-cell-c-name">Vintage Denim Jacket</div>
+                <div class="ord-cell-c-meta">#8323233 · Mar 12</div>
+              </div>
+              <div class="ord-cell-c-right">
+                <span class="ord-cell-c-price">$102.34</span>
+                <span class="ord-cell-c-buyer">kelx188</span>
+              </div>
+              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
+            </div>
+          </div>
+        </div>
+        <!-- Delivered -->
+        <div class="ord-group-c">
+          <div class="ord-group-c-header">
+            <span class="ord-badge delivered" style="font-size:11px">Delivered</span>
+            <span class="ord-group-c-count">2 orders</span>
+          </div>
+          <div class="ord-group-c-items">
+            <div class="ord-cell-c" onclick="openOrderDetails('8323232')">
+              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 10.png" alt=""></div>
+              <div class="ord-cell-c-body">
+                <div class="ord-cell-c-name">Handmade Earrings Set</div>
+                <div class="ord-cell-c-meta">#8323232 · Mar 8</div>
+              </div>
+              <div class="ord-cell-c-right">
+                <span class="ord-cell-c-price">$20.30</span>
+                <span class="ord-cell-c-buyer">Trisha_BirmUK</span>
+              </div>
+              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
+            </div>
+            <div class="ord-cell-c" onclick="openOrderDetails('8323232')">
+              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 12.png" alt=""></div>
+              <div class="ord-cell-c-body">
+                <div class="ord-cell-c-name">Ceramic Vase Set</div>
+                <div class="ord-cell-c-meta">#8323230 · Mar 6</div>
+              </div>
+              <div class="ord-cell-c-right">
+                <span class="ord-cell-c-price">$45.00</span>
+                <span class="ord-cell-c-buyer">home_lover42</span>
+              </div>
+              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
+            </div>
+          </div>
+        </div>
+        <!-- Cancelled -->
+        <div class="ord-group-c">
+          <div class="ord-group-c-header">
+            <span class="ord-badge cancelled" style="font-size:11px">Cancelled</span>
+            <span class="ord-group-c-count">4 orders</span>
+          </div>
+          <div class="ord-group-c-items">
+            <div class="ord-cell-c" onclick="openOrderDetails('8323231')">
+              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 15.png" alt=""></div>
+              <div class="ord-cell-c-body">
+                <div class="ord-cell-c-name">Retro Sneakers Collection</div>
+                <div class="ord-cell-c-meta">#8323231 · Mar 5</div>
+              </div>
+              <div class="ord-cell-c-right">
+                <span class="ord-cell-c-price">$100.00</span>
+                <span class="ord-cell-c-buyer">user034123</span>
+              </div>
+              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Order Details overlay + sheet -->
+  <div class="od-overlay" id="od-overlay" onclick="closeOrderDetails()"></div>
+  <div class="od-sheet" id="od-sheet">
+    <div class="od-sheet-bg"></div>
+    <div class="od-grabber-wrap"><div class="od-grabber"></div></div>
+    <div class="od-toolbar">
+      <button class="wallet-navi-btn" onclick="closeOrderDetails()">
+        <img src="design-system/UI Icons/Icon Close.svg" alt="">
+      </button>
+      <span class="od-toolbar-title" id="od-title">#8323234</span>
+      <div class="od-toolbar-spacer"></div>
+    </div>
+
+    <!-- Link to tracking explore -->
+    <div style="padding:0 16px 8px;text-align:center">
+      <button onclick="closeOrderDetails();showScreen('screen-track-explore');document.querySelector('.tabbar').style.display='none'" style="background:none;border:none;font-size:12px;font-weight:600;color:var(--bl10);cursor:pointer;font-family:inherit">View Tracking Card Variants →</button>
+    </div>
+
+    <!-- Variant toggle -->
+    <div class="od-var-toggle" id="od-var-toggle">
+      <button class="od-var-btn active" data-var="a">A — Action</button>
+      <button class="od-var-btn" data-var="b">B — Linear</button>
+      <button class="od-var-btn" data-var="c">C — Tabs</button>
+    </div>
+
+    <!-- ═══ VARIANT A: Action-first — status + next step na górze, CTA wyeksponowany ═══ -->
+    <div class="od-body od-var active" id="od-var-a">
+      <!-- Status hero -->
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ord-badge new" id="od-a-badge">New</span>
+        <span style="font-size:13px;font-weight:400;color:var(--bw40)" id="od-a-date">Mar 14, 2026</span>
+      </div>
+      <div style="font-size:13px;font-weight:500;color:var(--bw30);padding:2px 0" id="od-a-next">Ship this order — generate label below</div>
+
+      <!-- Primary action card -->
+      <div class="od-a-action-card" id="od-a-ship-card">
+        <div class="od-a-action-title">Shipping</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="width:18px;height:18px">
+          <span style="font-size:14px;font-weight:500;color:var(--bw10)">Inpost · Domestic · $5.99</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <button class="od-size-pill active" data-size="S">S</button>
+          <button class="od-size-pill" data-size="M">M</button>
+          <button class="od-size-pill" data-size="L">L</button>
+        </div>
+        <button class="od-cta-btn" id="od-a-gen-label">Generate Shipping Label</button>
+      </div>
+
+      <!-- Product -->
+      <div class="od-a-hero">
+        <div class="od-a-hero-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
+        <div class="od-a-hero-body">
+          <div class="od-a-hero-name" id="od-a-name">Nike Air Max 90 — Blue</div>
+          <div class="od-a-hero-meta" id="od-a-sku">SKU: 9967194240 · #004 · Qty: 1</div>
+          <div class="od-a-hero-price">$70.00</div>
+        </div>
+      </div>
+
+      <!-- Payout summary — compact -->
+      <div style="display:flex;justify-content:space-between;background:white;border-radius:16px;padding:12px 16px;border:1px solid var(--ov20)">
+        <div style="text-align:center"><div style="font-size:11px;font-weight:600;color:var(--bw40)">Total</div><div style="font-size:16px;font-weight:700;color:var(--bw10)">$74.19</div></div>
+        <div style="text-align:center"><div style="font-size:11px;font-weight:600;color:var(--bw40)">Fees</div><div style="font-size:16px;font-weight:700;color:var(--bw40)">−$1.80</div></div>
+        <div style="text-align:center"><div style="font-size:11px;font-weight:600;color:var(--gr10)">You earn</div><div style="font-size:16px;font-weight:700;color:var(--gr10)">$68.20</div></div>
+      </div>
+
+      <!-- Video Receipt -->
+      <button class="od-cta-btn secondary" style="display:flex;align-items:center;justify-content:center;gap:8px">
+        <img src="design-system/UI Icons/Icon Play.svg" alt="" style="width:16px;height:16px;opacity:0.5"> View Video Receipt
+      </button>
+
+      <!-- Note -->
+      <div class="od-note-card" id="od-a-note">
+        <img src="design-system/UI Icons/Icon Quote.svg" alt="" class="od-note-icon" style="opacity:0.4">
+        <div class="od-note-text">first auction win!</div>
+      </div>
+
+      <!-- Buyer + address — collapsible -->
+      <div class="od-a-action-card">
+        <div class="od-a-action-title">Customer</div>
+        <div class="od-buyer-row" style="padding:0">
+          <div class="od-buyer-avatar"><span id="od-a-initial">K</span></div>
+          <div class="od-buyer-name" id="od-a-buyer">kelx188</div>
+          <button class="od-msg-btn">Message</button>
+        </div>
+        <div class="od-address-block" style="margin-top:8px;font-size:12px" id="od-a-address">Kevin Lawson<br>InPost Locker ID: WAW188M<br>Warszawa, 03-994, Poland</div>
+      </div>
+
+      <!-- Refund link -->
+      <div class="od-link-row"><span class="od-link-label">Make Refund</span><img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="od-link-chevron"></div>
+    </div>
+
+    <!-- ═══ VARIANT B: Linear scroll (Tilt-style) — all sections flat ═══ -->
+    <div class="od-body od-var" id="od-var-b">
+      <!-- Date + status -->
+      <div class="od-meta-row">
+        <span class="od-meta-label">Date</span>
+        <span class="od-meta-value">Mar 14, 2026</span>
+      </div>
+      <div class="od-status-row"><span class="ord-badge new">New</span></div>
+      <div class="od-next-step">Next: Generate shipping label & ship this order</div>
+
+      <div class="od-separator"></div>
+
+      <!-- Shipping Label -->
+      <div class="od-b-section">
+        <div class="od-b-section-title">Shipping Label</div>
+        <div class="od-b-card">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="width:18px;height:18px">
+            <span style="font-size:14px;font-weight:500;color:var(--bw10)">Inpost</span>
+            <span style="margin-left:auto;font-size:13px;font-weight:600;color:var(--bw30)">$5.99</span>
+          </div>
+          <div style="font-size:12px;font-weight:400;color:var(--bw40);margin-bottom:10px">Domestic</div>
+          <div style="font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:6px">PARCEL SIZE</div>
+          <div style="display:flex;gap:8px;margin-bottom:12px">
+            <button class="od-size-pill active" data-size="S">S</button>
+            <button class="od-size-pill" data-size="M">M</button>
+            <button class="od-size-pill" data-size="L">L</button>
+          </div>
+          <button class="od-cta-btn">Generate Shipping Label</button>
+        </div>
+      </div>
+
+      <div class="od-separator"></div>
+
+      <!-- Details -->
+      <div class="od-b-section">
+        <div class="od-b-section-title">Details</div>
+        <div class="od-b-item">
+          <div class="od-b-item-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:600;color:var(--bw30)">Nike Air Max 90 — Blue</div>
+            <div style="font-size:12px;font-weight:400;color:var(--bw40)">SKU: 9967194240 · #004</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:14px;font-weight:600;color:var(--bw10)">$70.00</div>
+            <div style="font-size:12px;font-weight:400;color:var(--bw40)">Qty: 1</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="od-b-card">
+        <div class="od-b-row"><span class="od-b-row-label">Subtotal</span><span class="od-b-row-value">$70.00</span></div>
+        <div class="od-b-row"><span class="od-b-row-label">Shipping</span><span class="od-b-row-value">$5.99</span></div>
+        <div class="od-b-row"><span class="od-b-row-label">Payment Processing Fee</span><span class="od-b-row-value">−$1.80</span></div>
+        <div class="od-b-row"><span class="od-b-row-label">Droplet Fee</span><span class="od-b-row-value">$0.00</span></div>
+        <div class="od-separator"></div>
+        <div class="od-b-row"><span class="od-b-row-label" style="font-weight:600;color:var(--bw10)">Total</span><span class="od-b-row-value" style="font-weight:700;color:var(--bw10)">$74.19</span></div>
+        <div class="od-b-row highlight"><span class="od-b-row-label" style="font-weight:600;color:var(--gr10)">Your payout</span><span class="od-b-row-value">$68.20</span></div>
+      </div>
+
+      <div class="od-separator"></div>
+
+      <!-- Video Receipt -->
+      <div class="od-b-section">
+        <div style="display:flex;align-items:center;gap:6px">
+          <div class="od-b-section-title" style="margin-bottom:0">Video Receipt</div>
+          <img src="design-system/UI Icons/Icon Info.svg" alt="" style="width:14px;height:14px;opacity:0.35">
+        </div>
+        <button class="od-cta-btn secondary" style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px">
+          <img src="design-system/UI Icons/Icon Play.svg" alt="" style="width:16px;height:16px;opacity:0.5"> View Video Receipt
+        </button>
+      </div>
+
+      <div class="od-separator"></div>
+
+      <!-- Order Note -->
+      <div class="od-b-section">
+        <div class="od-b-section-title">Order Note</div>
+        <div class="od-note-card">
+          <img src="design-system/UI Icons/Icon Quote.svg" alt="" class="od-note-icon" style="opacity:0.4">
+          <div class="od-note-text">first auction win!</div>
+        </div>
+      </div>
+
+      <div class="od-separator"></div>
+
+      <!-- Customer Info -->
+      <div class="od-b-section">
+        <div class="od-b-section-title">Customer Info</div>
+        <div style="font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:4px">Shipping Address</div>
+        <div class="od-address-block">Kevin Lawson<br>InPost Locker ID: WAW188M<br>Wał Miedzeszyński, Warszawa, 03-994, Poland<br>kelx188@gmail.com<br>+48555123456</div>
+        <div style="font-size:12px;font-weight:600;color:var(--bw40);margin-top:12px;margin-bottom:4px">Buyer</div>
+        <div class="od-buyer-row">
+          <div class="od-buyer-avatar"><span>K</span></div>
+          <div class="od-buyer-name">kelx188</div>
+          <button class="od-msg-btn">Message</button>
+        </div>
+      </div>
+
+      <div class="od-separator"></div>
+      <div class="od-b-section">
+        <div class="od-b-section-title">Need help?</div>
+        <div class="od-link-row"><span class="od-link-label">Make Refund</span><img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="od-link-chevron"></div>
+      </div>
+    </div>
+
+    <!-- ═══ VARIANT C: Tabbed — Order / Shipping / Buyer ═══ -->
+    <div class="od-body od-var" id="od-var-c">
+      <!-- Status bar -->
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ord-badge new">New</span>
+        <span style="font-size:13px;font-weight:400;color:var(--bw40)">Mar 14, 2026</span>
+        <span style="font-size:12px;font-weight:500;color:var(--bw30);margin-left:auto">Ship this order</span>
+      </div>
+
+      <!-- Tabs -->
+      <div class="od-c-tabs" id="od-c-tabs">
+        <button class="od-c-tab active" data-panel="order">Order</button>
+        <button class="od-c-tab" data-panel="shipping">Shipping</button>
+        <button class="od-c-tab" data-panel="buyer">Buyer</button>
+      </div>
+
+      <!-- Panel: Order -->
+      <div class="od-c-panel active" id="od-c-order">
+        <!-- Summary cards -->
+        <div class="od-c-info-grid">
+          <div class="od-c-info-cell"><div class="od-c-info-label">Total</div><div class="od-c-info-value">$74.19</div></div>
+          <div class="od-c-info-cell"><div class="od-c-info-label">You earn</div><div class="od-c-info-value green">$68.20</div></div>
+        </div>
+
+        <!-- Product -->
+        <div class="od-a-hero">
+          <div class="od-a-hero-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
+          <div class="od-a-hero-body">
+            <div class="od-a-hero-name">Nike Air Max 90 — Blue</div>
+            <div class="od-a-hero-meta">SKU: 9967194240 · #004 · Qty: 1</div>
+            <div class="od-a-hero-price">$70.00</div>
+          </div>
+        </div>
+
+        <!-- Breakdown -->
+        <div class="od-b-card">
+          <div class="od-b-row"><span class="od-b-row-label">Subtotal</span><span class="od-b-row-value">$70.00</span></div>
+          <div class="od-b-row"><span class="od-b-row-label">Shipping</span><span class="od-b-row-value">$5.99</span></div>
+          <div class="od-b-row"><span class="od-b-row-label">Processing Fee</span><span class="od-b-row-value">−$1.80</span></div>
+          <div class="od-b-row"><span class="od-b-row-label">Droplet Fee</span><span class="od-b-row-value">$0.00</span></div>
+        </div>
+
+        <!-- Video + Note -->
+        <button class="od-cta-btn secondary" style="display:flex;align-items:center;justify-content:center;gap:8px">
+          <img src="design-system/UI Icons/Icon Play.svg" alt="" style="width:16px;height:16px;opacity:0.5"> Video Receipt
+        </button>
+        <div class="od-note-card">
+          <img src="design-system/UI Icons/Icon Quote.svg" alt="" class="od-note-icon" style="opacity:0.4">
+          <div class="od-note-text">first auction win!</div>
+        </div>
+      </div>
+
+      <!-- Panel: Shipping -->
+      <div class="od-c-panel" id="od-c-shipping">
+        <div class="od-a-action-card">
+          <div class="od-a-action-title">Inpost — Domestic</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="width:18px;height:18px">
+            <span style="font-size:14px;font-weight:500;color:var(--bw10)">$5.99</span>
+          </div>
+          <div style="font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:6px">PARCEL SIZE</div>
+          <div style="display:flex;gap:8px;margin-bottom:14px">
+            <button class="od-size-pill active" data-size="S">S</button>
+            <button class="od-size-pill" data-size="M">M</button>
+            <button class="od-size-pill" data-size="L">L</button>
+          </div>
+          <button class="od-cta-btn">Generate Shipping Label</button>
+        </div>
+      </div>
+
+      <!-- Panel: Buyer -->
+      <div class="od-c-panel" id="od-c-buyer">
+        <div class="od-a-action-card">
+          <div class="od-buyer-row" style="padding:0;margin-bottom:8px">
+            <div class="od-buyer-avatar"><span>K</span></div>
+            <div class="od-buyer-name">kelx188</div>
+            <button class="od-msg-btn">Message</button>
+          </div>
+          <div class="od-separator"></div>
+          <div style="font-size:12px;font-weight:600;color:var(--bw40);margin:8px 0 4px">Shipping Address</div>
+          <div class="od-address-block" style="font-size:12px">Kevin Lawson<br>InPost Locker ID: WAW188M<br>Wał Miedzeszyński, Warszawa, 03-994<br>kelx188@gmail.com · +48555123456</div>
+        </div>
+        <div class="od-link-row"><span class="od-link-label">Make Refund</span><img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="od-link-chevron"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- UI EXPLORE: Ship Success (Apple HIG — after "Mark as Shipped" tap) -->
+<!-- ════════════════════════════════════ -->
+
+<div class="screen" id="screen-seller-shows">
+  <!-- App Top -->
+  <div style="position:sticky;top:0;z-index:100;background:var(--ov40)">
+    <div style="height:54px;padding:14px 28px 0;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:16px;font-weight:600;color:#000;letter-spacing:-0.3px">9:41</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px">
+      <button id="shs-back-btn" style="width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" width="18" height="18">
+      </button>
+      <button id="shs-manage-btn" style="background:none;border:none;font-size:12px;font-weight:600;color:var(--bl10);font-family:inherit;cursor:pointer">Manage</button>
+    </div>
+  </div>
+
+  <!-- Title + counter + variant toggle -->
+  <div style="padding:4px 16px 8px">
+    <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:30px">Shows</div>
+    <div id="shs-counter" class="shs-counter" style="padding:8px 0 0;display:none"></div>
+  </div>
+
+  <!-- Grid -->
+  <div class="shs-grid" id="shs-grid" style="padding-bottom:130px">
+    <!-- Tile 1 — Live Now -->
+    <div class="shs-tile" data-shs-id="1" style="background-image:url('design-system/images/shows/show1.jpg')">
+      <div class="shs-tile-overlay"></div>
+      <div class="shs-radio"><span class="shs-radio-num"></span></div>
+      <div class="shs-tile-content">
+        <div class="shs-alert-badge">
+          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
+          <span>344</span>
+        </div>
+        <div class="shs-tile-bottom">
+          <div class="shs-tile-badge live">Live Now</div>
+          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
+        </div>
+      </div>
+    </div>
+    <!-- Tile 2 -->
+    <div class="shs-tile" data-shs-id="2" style="background-image:url('design-system/images/shows/show2.jpg')">
+      <div class="shs-tile-overlay"></div>
+      <div class="shs-radio"><span class="shs-radio-num"></span></div>
+      <div class="shs-tile-content">
+        <div class="shs-alert-badge">
+          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
+          <span>344</span>
+        </div>
+        <div class="shs-tile-bottom">
+          <div class="shs-tile-badge date">23 Dec, 11:29</div>
+          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
+        </div>
+      </div>
+    </div>
+    <!-- Tile 3 -->
+    <div class="shs-tile" data-shs-id="3" style="background-image:url('design-system/images/shows/show2.jpg')">
+      <div class="shs-tile-overlay"></div>
+      <div class="shs-radio"><span class="shs-radio-num"></span></div>
+      <div class="shs-tile-content">
+        <div class="shs-alert-badge">
+          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
+          <span>344</span>
+        </div>
+        <div class="shs-tile-bottom">
+          <div class="shs-tile-badge date">23 Dec, 11:29</div>
+          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
+        </div>
+      </div>
+    </div>
+    <!-- Tile 4 -->
+    <div class="shs-tile" data-shs-id="4" style="background-image:url('design-system/images/shows/show2.jpg')">
+      <div class="shs-tile-overlay"></div>
+      <div class="shs-radio"><span class="shs-radio-num"></span></div>
+      <div class="shs-tile-content">
+        <div class="shs-alert-badge">
+          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
+          <span>344</span>
+        </div>
+        <div class="shs-tile-bottom">
+          <div class="shs-tile-badge date">23 Dec, 11:29</div>
+          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
+        </div>
+      </div>
+    </div>
+    <!-- Tile 5 -->
+    <div class="shs-tile" data-shs-id="5" style="background-image:url('design-system/images/shows/show1.jpg')">
+      <div class="shs-tile-overlay"></div>
+      <div class="shs-radio"><span class="shs-radio-num"></span></div>
+      <div class="shs-tile-content">
+        <div class="shs-alert-badge">
+          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
+          <span>344</span>
+        </div>
+        <div class="shs-tile-bottom">
+          <div class="shs-tile-badge date">23 Dec, 11:29</div>
+          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA: Schedule Show -->
+  <div class="shs-bottom" id="shs-bottom-cta">
+    <button class="shs-schedule-btn" data-action="schedule-show">Schedule Show</button>
+  </div>
+
+  <!-- Action Bar (bulk mode) -->
+  <div class="shs-action-bar" id="shs-action-bar">
+    <button class="shs-btn-delete" id="shs-btn-delete">Delete</button>
+    <button class="shs-btn-share" id="shs-btn-share">Share</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- UI EXPLORE: FINANCES (3 warianty)   -->
+<!-- ════════════════════════════════════ -->
+
+<div class="screen" id="screen-success-explore">
+  <!-- Variant toggle — floats over content -->
+  <div class="suc-var-toggle">
+    <button class="suc-var-btn active" data-suc="a">A — Apple Pay</button>
+    <button class="suc-var-btn" data-suc="b">B — Summary</button>
+    <button class="suc-var-btn" data-suc="c">C — Morph</button>
+  </div>
+
+  <!-- ═══ VARIANT A: Pure checkmark — Apple Pay style, auto-dismiss ═══ -->
+  <!-- Flow: user tapped "Mark as Shipped" on OD → this appears immediately -->
+  <div class="suc-var active" id="suc-var-a">
+    <!-- Dimmed/scaled OD sheet showing filled state before tap -->
+    <div class="suc-od-bg">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <div style="width:36px;height:36px;border-radius:296px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0px 2px 8px rgba(0,0,0,0.06)"><img src="design-system/UI Icons/Icon Close.svg" width="14" height="14"></div>
+        <span style="flex:1;text-align:center;font-size:17px;font-weight:600;color:var(--bw30);letter-spacing:-0.4px">Order #8323234</span>
+        <div style="width:36px"></div>
+      </div>
+      <div style="font-size:11px;font-weight:500;color:var(--bw40);text-align:center;margin-bottom:10px">Generate a shipping label and send the package</div>
+      <!-- Shipping section -->
+      <div style="font-size:15px;font-weight:600;color:var(--bw10);margin:6px 0 8px">Shipping</div>
+      <div style="background:white;border-radius:14px;overflow:hidden">
+        <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
+          <div style="font-size:10px;color:var(--bw40)">Shipping Address</div>
+          <div style="font-size:12px;font-weight:500;color:var(--bw20)">POB04M · ul. Fabryczna 2B</div>
+        </div>
+        <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
+          <div style="font-size:10px;color:var(--bw40)">Shipping Size</div>
+          <div style="font-size:12px;font-weight:500;color:var(--bw20)">Large</div>
+        </div>
+        <div style="padding:10px 14px">
+          <div style="font-size:10px;color:var(--bw40)">Tracking Number</div>
+          <div style="font-size:12px;font-weight:500;color:var(--bw20);font-variant-numeric:tabular-nums">645100000000000000000</div>
+        </div>
+      </div>
+      <!-- The CTA that was just tapped -->
+      <div style="height:40px;border-radius:70px;background:var(--rd10);margin-top:12px;display:flex;align-items:center;justify-content:center">
+        <span style="font-size:13px;font-weight:600;color:white">Mark as Shipped</span>
+      </div>
+    </div>
+    <!-- Dark overlay -->
+    <div class="suc-overlay"></div>
+    <!-- Action Sheet — immediate SUCCESS (no extra confirm) -->
+    <div class="suc-as" id="suc-a-sheet">
+      <div class="suc-as-card" style="text-align:center;padding:32px 16px 24px">
+        <div class="suc-check"><img src="design-system/UI Icons/Icon Check.svg" alt=""></div>
+        <div class="suc-done-title">Shipped!</div>
+        <div class="suc-done-sub">Order marked as shipped</div>
+        <div class="suc-auto-hint">Dismissing automatically…</div>
+      </div>
+    </div>
+    <!-- Replay button -->
+    <button class="suc-replay" onclick="replaySuccessA()">↻ Replay</button>
+  </div>
+
+  <!-- ═══ VARIANT B: Checkmark + shipping summary + Done ═══ -->
+  <div class="suc-var" id="suc-var-b">
+    <div class="suc-od-bg">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+        <div style="width:36px;height:36px;border-radius:296px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0px 2px 8px rgba(0,0,0,0.06)"><img src="design-system/UI Icons/Icon Close.svg" width="14" height="14"></div>
+        <span style="flex:1;text-align:center;font-size:17px;font-weight:600;color:var(--bw30);letter-spacing:-0.4px">Order #8323234</span>
+        <div style="width:36px"></div>
+      </div>
+      <div style="font-size:11px;font-weight:500;color:var(--bw40);text-align:center;margin-bottom:10px">Generate a shipping label and send the package</div>
+      <div style="font-size:15px;font-weight:600;color:var(--bw10);margin:6px 0 8px">Shipping</div>
+      <div style="background:white;border-radius:14px;overflow:hidden">
+        <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
+          <div style="font-size:10px;color:var(--bw40)">Shipping Address</div>
+          <div style="font-size:12px;font-weight:500;color:var(--bw20)">POB04M · ul. Fabryczna 2B</div>
+        </div>
+        <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
+          <div style="font-size:10px;color:var(--bw40)">Shipping Size</div>
+          <div style="font-size:12px;font-weight:500;color:var(--bw20)">Large</div>
+        </div>
+        <div style="padding:10px 14px">
+          <div style="font-size:10px;color:var(--bw40)">Tracking Number</div>
+          <div style="font-size:12px;font-weight:500;color:var(--bw20);font-variant-numeric:tabular-nums">645100000000000000000</div>
+        </div>
+      </div>
+      <div style="height:40px;border-radius:70px;background:var(--rd10);margin-top:12px;display:flex;align-items:center;justify-content:center">
+        <span style="font-size:13px;font-weight:600;color:white">Mark as Shipped</span>
+      </div>
+    </div>
+    <div class="suc-overlay"></div>
+    <!-- Action Sheet — SUCCESS + summary info -->
+    <div class="suc-as" id="suc-b-sheet">
+      <div class="suc-as-card" style="text-align:center;padding:28px 16px 16px">
+        <div class="suc-check"><img src="design-system/UI Icons/Icon Check.svg" alt=""></div>
+        <div class="suc-done-title">Shipped!</div>
+        <div class="suc-done-sub">Order marked as shipped</div>
+        <div class="suc-b-info">
+          <div class="suc-b-cell">
+            <div class="suc-b-cell-label">Carrier</div>
+            <div class="suc-b-cell-value">Inpost</div>
+          </div>
+          <div class="suc-b-cell">
+            <div class="suc-b-cell-label">Size</div>
+            <div class="suc-b-cell-value">Large</div>
+          </div>
+          <div class="suc-b-cell">
+            <div class="suc-b-cell-label">Tracking</div>
+            <div class="suc-b-cell-value" style="font-size:10px;font-variant-numeric:tabular-nums">6451000000…</div>
+          </div>
+        </div>
+        <button class="suc-as-btn done" style="margin-top:16px">Done</button>
+      </div>
+    </div>
+    <button class="suc-replay" onclick="replaySuccessB()">↻ Replay</button>
+  </div>
+
+  <!-- ═══ VARIANT C: In-place morph — no overlay, CTA morphs on the OD sheet itself ═══ -->
+  <div class="suc-var" id="suc-var-c">
+    <!-- Full OD sheet (not dimmed) — the morph happens IN the sheet -->
+    <div id="suc-c-od" style="flex:1;display:flex;flex-direction:column;background:var(--gw30);border-radius:20px;overflow:hidden">
+      <div style="padding:50px 16px 0 16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <div style="width:36px;height:36px;border-radius:296px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0px 2px 8px rgba(0,0,0,0.06)"><img src="design-system/UI Icons/Icon Close.svg" width="14" height="14"></div>
+          <span style="flex:1;text-align:center;font-size:17px;font-weight:600;color:var(--bw30);letter-spacing:-0.4px">Order #8323234</span>
+          <div style="width:36px"></div>
+        </div>
+        <div style="font-size:11px;font-weight:500;color:var(--bw40);text-align:center;margin-bottom:10px">Generate a shipping label and send the package</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="ord-badge new" id="suc-c-badge">New</span><span style="font-size:13px;color:var(--bw40)">Mar 14</span></div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:0 16px 120px">
+        <div style="font-size:15px;font-weight:600;color:var(--bw10);margin:0 0 8px">Shipping</div>
+        <div style="background:white;border-radius:14px;overflow:hidden">
+          <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
+            <div style="font-size:10px;color:var(--bw40)">Shipping Address</div>
+            <div style="font-size:12px;font-weight:500;color:var(--bw20)">POB04M · ul. Fabryczna 2B · Pobiedziska 62-010</div>
+          </div>
+          <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
+            <div style="font-size:10px;color:var(--bw40)">Shipping Size</div>
+            <div style="font-size:12px;font-weight:500;color:var(--bw20)">Large</div>
+          </div>
+          <div style="padding:10px 14px">
+            <div style="font-size:10px;color:var(--bw40)">Tracking Number</div>
+            <div style="font-size:12px;font-weight:500;color:var(--bw20);font-variant-numeric:tabular-nums">645100000000000000000</div>
+          </div>
+        </div>
+        <!-- CTA that morphs -->
+        <button id="suc-c-cta" class="suc-as-btn cta" style="margin-top:14px" onclick="morphShipC()">Mark as Shipped</button>
+        <!-- Product card below -->
+        <div style="font-size:15px;font-weight:600;color:var(--bw10);margin:20px 0 8px">Details</div>
+        <div style="display:flex;gap:12px;align-items:center;background:white;border-radius:14px;padding:10px 12px">
+          <div style="width:44px;height:44px;border-radius:10px;overflow:hidden;flex-shrink:0;background:var(--gw20)"><img src="design-system/images/Product Photos/image 1.png" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;color:var(--bw30)">#34 Product on Screen</div><div style="font-size:11px;color:var(--bw40)">Price $70.00</div></div>
+        </div>
+      </div>
+    </div>
+    <button class="suc-replay" onclick="replaySuccessC()">↻ Replay</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- UI EXPLORE: Tracking Card variants  -->
+<!-- ════════════════════════════════════ -->
+
+<div class="screen" id="screen-track-explore">
+  <!-- Simplified OD context header -->
+  <div style="position:sticky;top:0;z-index:100;background:var(--ov40)">
+    <div style="height:54px;padding:14px 28px 0;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:16px;font-weight:600;color:#000;letter-spacing:-0.3px">9:41</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;padding:0 16px;height:50px">
+      <button id="trk-back-btn" style="width:42px;height:42px;border-radius:296px;background:white;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0px 2px 8px rgba(0,0,0,0.06);cursor:pointer">
+        <img src="design-system/UI Icons/Icon Close.svg" width="18" height="18">
+      </button>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:20px;font-weight:600;color:var(--bw30);letter-spacing:-0.5px">Order #8323234</span>
+      <div style="width:42px"></div>
+    </div>
+  </div>
+
+  <!-- Scrollable explore area -->
+  <div class="screen-scroll" style="padding:0 0 130px;background:var(--gw30)">
+
+    <!-- Context: show which part we're exploring -->
+    <div style="padding:12px 16px 0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+        <span class="ord-badge shipped" style="font-size:10px">Shipped</span>
+        <span style="font-size:13px;font-weight:400;color:var(--bw40)">Mar 14, 2026</span>
+      </div>
+      <div style="font-size:12px;font-weight:500;color:var(--bw30)">Shipped — waiting for delivery</div>
+    </div>
+
+    <!-- Variant toggle -->
+    <div class="trk-var-toggle" style="padding:12px 16px">
+      <button class="trk-var-btn active" data-trk="a">A — Stepper</button>
+      <button class="trk-var-btn" data-trk="b">B — Compact</button>
+      <button class="trk-var-btn" data-trk="c">C — Timeline</button>
+    </div>
+
+    <!-- ═══ VARIANT A: Horizontal Stepper ═══ -->
+    <div class="trk-var active" id="trk-var-a">
+      <div class="trk-explore">
+        <div class="trk-a-card">
+          <div class="trk-a-title">Delivery Date Pending</div>
+          <div class="trk-a-sub">1 item</div>
+          <div class="trk-a-msg">Your estimated delivery date will be provided as soon as it's available from the carrier.</div>
+
+          <!-- Stepper -->
+          <div class="trk-a-stepper">
+            <div class="trk-a-line"><div class="trk-a-line-fill" style="width:37%"></div></div>
+            <div class="trk-a-step">
+              <div class="trk-a-dot done"><img src="design-system/UI Icons/Icon Check.svg" alt=""></div>
+              <span class="trk-a-label done">Placed</span>
+            </div>
+            <div class="trk-a-step">
+              <div class="trk-a-dot current"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
+              <span class="trk-a-label current">Shipped</span>
+            </div>
+            <div class="trk-a-step">
+              <div class="trk-a-dot"></div>
+              <span class="trk-a-label">On Its Way</span>
+            </div>
+            <div class="trk-a-step">
+              <div class="trk-a-dot"></div>
+              <span class="trk-a-label">Delivered</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <button class="trk-a-cta">
+          <img src="design-system/UI Icons/Icon Shipping.svg" alt="" style="width:18px;height:18px;filter:brightness(0) invert(1)">
+          Track Shipment
+        </button>
+
+        <!-- Footer -->
+        <div class="trk-a-footer">Shipped with Inpost · Tracking # 624018726354981726</div>
+
+        <!-- Product context (mini) -->
+        <div style="display:flex;gap:12px;align-items:center;background:white;border-radius:16px;padding:12px;border:1px solid var(--ov20)">
+          <div style="width:48px;height:48px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0px 2px 8px rgba(0,0,0,0.25)"><img src="design-system/images/Product Photos/image 1.png" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:600;color:var(--bw30);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nike Air Max 90 — Blue</div>
+            <div style="font-size:11px;font-weight:400;color:var(--bw40)">SKU: 9967194240 · #004</div>
+          </div>
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$70.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ VARIANT B: Compact Row ═══ -->
+    <div class="trk-var" id="trk-var-b">
+      <div class="trk-explore">
+        <div class="trk-b-card">
+          <!-- Header row -->
+          <div class="trk-b-header">
+            <div class="trk-b-icon shipped">
+              <img src="design-system/UI Icons/Icon Shipping.svg" alt="">
+            </div>
+            <div class="trk-b-info">
+              <div class="trk-b-status">Shipped — In Transit</div>
+              <div class="trk-b-date">Shipped Mar 14, 2026 · 1 item</div>
+            </div>
+            <span class="trk-b-badge shipped">Shipped</span>
+          </div>
+
+          <!-- Tracking number row -->
+          <div class="trk-b-tracking">
+            <span class="trk-b-tracking-label">Tracking</span>
+            <span class="trk-b-tracking-num">624018726354981726</span>
+            <button class="trk-b-copy"><img src="design-system/UI Icons/Icon Clip.svg" alt="Copy"></button>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="trk-b-actions">
+            <button class="trk-b-btn secondary">
+              <img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="opacity:0.6"> Check on Inpost
+            </button>
+            <button class="trk-b-btn primary">
+              <img src="design-system/UI Icons/Icon Shipping.svg" alt="" style="filter:brightness(0) invert(1)"> Track
+            </button>
+          </div>
+        </div>
+
+        <!-- Delivery estimate -->
+        <div style="display:flex;align-items:center;gap:10px;background:white;border-radius:16px;padding:12px 14px;border:1px solid var(--ov20)">
+          <img src="design-system/UI Icons/Icon Info.svg" alt="" style="width:16px;height:16px;opacity:0.4;flex-shrink:0">
+          <span style="font-size:12px;font-weight:400;color:var(--bw40);line-height:1.4">Delivery date pending — estimate will appear once the carrier scans the package.</span>
+        </div>
+
+        <!-- Product context (mini) -->
+        <div style="display:flex;gap:12px;align-items:center;background:white;border-radius:16px;padding:12px;border:1px solid var(--ov20)">
+          <div style="width:48px;height:48px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0px 2px 8px rgba(0,0,0,0.25)"><img src="design-system/images/Product Photos/image 1.png" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:600;color:var(--bw30);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nike Air Max 90 — Blue</div>
+            <div style="font-size:11px;font-weight:400;color:var(--bw40)">SKU: 9967194240 · #004</div>
+          </div>
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$70.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ VARIANT C: Vertical Timeline ═══ -->
+    <div class="trk-var" id="trk-var-c">
+      <div class="trk-explore">
+        <div class="trk-c-card">
+          <div class="trk-c-header">
+            <div class="trk-c-title">Shipment Tracking</div>
+            <span class="trk-c-badge trk-b-badge shipped">In Transit</span>
+          </div>
+
+          <!-- Timeline -->
+          <div class="trk-c-timeline">
+            <!-- Step 1: Placed — done -->
+            <div class="trk-c-step">
+              <div class="trk-c-dot-col">
+                <div class="trk-c-dot done"></div>
+                <div class="trk-c-line done"></div>
+              </div>
+              <div class="trk-c-step-body">
+                <div class="trk-c-step-label">Order Placed</div>
+                <div class="trk-c-step-date">Mar 14, 2026 · 10:23 AM</div>
+              </div>
+            </div>
+
+            <!-- Step 2: Shipped — current -->
+            <div class="trk-c-step">
+              <div class="trk-c-dot-col">
+                <div class="trk-c-dot current"></div>
+                <div class="trk-c-line"></div>
+              </div>
+              <div class="trk-c-step-body">
+                <div class="trk-c-step-label">Shipped</div>
+                <div class="trk-c-step-date">Mar 14, 2026 · 2:15 PM</div>
+                <div class="trk-c-step-msg">Package picked up by Inpost. Label generated, awaiting first scan.</div>
+              </div>
+            </div>
+
+            <!-- Step 3: On Its Way — future -->
+            <div class="trk-c-step">
+              <div class="trk-c-dot-col">
+                <div class="trk-c-dot"></div>
+                <div class="trk-c-line"></div>
+              </div>
+              <div class="trk-c-step-body">
+                <div class="trk-c-step-label future">On Its Way</div>
+                <div class="trk-c-step-date">Pending</div>
+              </div>
+            </div>
+
+            <!-- Step 4: Delivered — future -->
+            <div class="trk-c-step">
+              <div class="trk-c-dot-col">
+                <div class="trk-c-dot"></div>
+              </div>
+              <div class="trk-c-step-body">
+                <div class="trk-c-step-label future">Delivered</div>
+                <div class="trk-c-step-date">Estimated: pending</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carrier footer -->
+          <div class="trk-c-footer">
+            <div class="trk-c-carrier-icon"><img src="design-system/UI Icons/Icon Paczkomat.svg" alt=""></div>
+            <div class="trk-c-carrier">
+              <div class="trk-c-carrier-name">Inpost · Domestic</div>
+              <div class="trk-c-carrier-num">624018726354981726</div>
+            </div>
+            <button class="trk-c-track-btn">Track</button>
+          </div>
+        </div>
+
+        <!-- Product context (mini) -->
+        <div style="display:flex;gap:12px;align-items:center;background:white;border-radius:16px;padding:12px;border:1px solid var(--ov20)">
+          <div style="width:48px;height:48px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0px 2px 8px rgba(0,0,0,0.25)"><img src="design-system/images/Product Photos/image 1.png" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:600;color:var(--bw30);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nike Air Max 90 — Blue</div>
+            <div style="font-size:11px;font-weight:400;color:var(--bw40)">SKU: 9967194240 · #004</div>
+          </div>
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$70.00</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- FINANCES — Chart variants comparison  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="screen" id="screen-finances">
+<div class="screen-scroll" style="padding-top:54px;padding-bottom:130px">
+
+  <!-- App Top: Back + Settings -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;margin-bottom:4px">
+    <button class="shv-navi-btn" id="fin-back-btn" onclick="document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-sell').classList.add('active');document.querySelector('.tabbar').style.display=''">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8C3.5 7.74 3.61 7.52 3.8 7.32L10.96 0.27C11.12 0.1 11.34 0 11.59 0C12.11 0 12.5 0.4 12.5 0.91C12.5 1.16 12.39 1.39 12.23 1.56L5.7 8L12.23 14.43C12.39 14.61 12.5 14.83 12.5 15.08C12.5 15.6 12.11 16 11.59 16C11.34 16 11.12 15.9 10.96 15.73L3.8 8.68C3.61 8.48 3.5 8.25 3.5 8Z" fill="#222A35"/></svg>
+    </button>
+    <div style="height:42px;padding:0 16px;border-radius:296px;background:#fff;display:flex;align-items:center;font-size:16px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive)">Settings</div>
+  </div>
+
+  <!-- Title -->
+  <div style="padding:0 16px">
+    <div style="font-size:23px;font-weight:600;color:#000;letter-spacing:-0.5px;line-height:30px">Finances</div>
+  </div>
+
+  <!-- Total revenue + Month picker -->
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:0 16px;margin-top:16px">
+    <div>
+      <div style="font-size:11px;font-weight:500;color:var(--bw40);line-height:14px">Całkowity przychód w <span style="color:var(--bw20)">Marcu</span></div>
+      <div style="font-size:32px;font-weight:700;color:var(--bw10);line-height:21px;margin-top:8px">$1312.00</div>
+    </div>
+    <div style="height:36px;padding:0 12px;border-radius:70px;background:#fff;display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive)">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2.58 15.5C0.88 15.5 0 14.61 0 12.89V3.11C0 1.39 0.88 0.5 2.58 0.5H13.41C15.11 0.5 15.99 1.39 15.99 3.11V12.89C15.99 14.6 15.11 15.5 13.41 15.5H2.58ZM2.56 13.93H13.43C14.09 13.93 14.46 13.58 14.46 12.88V5.46C14.46 4.75 14.09 4.41 13.43 4.41H2.56C1.91 4.41 1.54 4.76 1.54 5.46V12.88C1.54 13.58 1.9 13.93 2.56 13.93Z" fill="#222A35"/></svg>
+      Marzec
+    </div>
+  </div>
+
+  <!-- Metric cards: Bieżące saldo + Do wypłaty -->
+  <div style="display:flex;gap:16px;padding:0 16px;margin-top:16px">
+    <!-- Bieżące saldo -->
+    <div class="fin-card" style="flex:1">
+      <div style="width:32px;height:32px;border-radius:10px;background:var(--gw30);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 15C4.14 15 1 11.86 1 8C1 4.14 4.14 1 8 1C11.86 1 15 4.14 15 8C15 11.86 11.86 15 8 15ZM8 13.62C11.11 13.62 13.62 11.11 13.62 8C13.62 4.89 11.11 2.38 8 2.38C4.89 2.38 2.38 4.89 2.38 8C2.38 11.11 4.89 13.62 8 13.62ZM4.57 8.84C4.27 8.84 4.04 8.6 4.04 8.3C4.04 8 4.27 7.77 4.57 7.77H7.46V3.86C7.46 3.56 7.7 3.32 8 3.32C8.3 3.32 8.54 3.56 8.54 3.86V8.3C8.54 8.6 8.3 8.84 8 8.84H4.57Z" fill="#222A35"/></svg>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px">
+        <span style="font-size:11px;font-weight:400;color:var(--ov10);line-height:14px">Bieżące saldo</span>
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" class="fin-info-icon" data-tooltip="saldo"><path d="M7.11,7.37v4.83c0,.33,1.64.33,1.64,0,0-.96.32-4.19,0-4.83-.2-.4-1.64-.27-1.64,0Z" fill="#7B8494"/><path d="M8.75,5.61c0-.39.32-1.69,0-1.95-.2-.16-1.64-.11-1.64,0v1.95c0,.13,1.63.13,1.64,0Z" fill="#7B8494"/><path d="M8,0C3.58,0,0,3.58,0,8c0,4.42,3.58,8,8,8s8-3.58,8-8S12.42,0,8,0ZM8,14.55c-3.62,0-6.55-2.93-6.55-6.55,0-3.62,2.93-6.55,6.55-6.55s6.55,2.93,6.55,6.55-2.93,6.55-6.55,6.55Z" fill="#7B8494"/></svg>
+      </div>
+      <div style="font-size:20px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;margin-top:2px">$350.00</div>
+    </div>
+    <!-- Do wypłaty -->
+    <div class="fin-card" style="flex:1">
+      <div style="width:32px;height:32px;border-radius:10px;background:var(--gw30);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14.74,13.07c-1.99.13-12.07.27-13.85.07-1.1.46-.89,1.17.12,1.44,4.29.14,8.54.07,13.74.03,1.09-.11,1.47-1.34,0-1.53Z" fill="#222A35"/><path d="M8.08,1.33c.43,0,.79.37.79.79v5.97l-.08,1.31.46-.57,1.22-1.32c.14-.16.34-.24.54-.24.39,0,.7.29.7.7,0,.21-.09.37-.22.51l-2.82,2.76c-.2.2-.38.27-.59.27s-.4-.07-.6-.27l-2.81-2.76c-.14-.15-.23-.31-.23-.51,0-.41.32-.7.71-.7.2,0,.39.09.53.24l1.22,1.32.46.57-.08-1.31V2.13c0-.43.36-.79.79-.79h0Z" fill="#222A35"/></svg>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px">
+        <span style="font-size:11px;font-weight:400;color:var(--ov10);line-height:14px">Do wypłaty</span>
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" class="fin-info-icon" data-tooltip="wyplata"><path d="M7.11,7.37v4.83c0,.33,1.64.33,1.64,0,0-.96.32-4.19,0-4.83-.2-.4-1.64-.27-1.64,0Z" fill="#7B8494"/><path d="M8.75,5.61c0-.39.32-1.69,0-1.95-.2-.16-1.64-.11-1.64,0v1.95c0,.13,1.63.13,1.64,0Z" fill="#7B8494"/><path d="M8,0C3.58,0,0,3.58,0,8c0,4.42,3.58,8,8,8s8-3.58,8-8S12.42,0,8,0ZM8,14.55c-3.62,0-6.55-2.93-6.55-6.55,0-3.62,2.93-6.55,6.55-6.55s6.55,2.93,6.55,6.55-2.93,6.55-6.55,6.55Z" fill="#7B8494"/></svg>
+      </div>
+      <div style="font-size:20px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;margin-top:2px">$300.00</div>
+    </div>
+  </div>
+
+  <!-- Info Tooltip (hidden, shown on tap) -->
+  <div class="fin-tooltip" id="fin-tooltip" style="display:none">
+    <div class="fin-tooltip-text" id="fin-tooltip-text"></div>
+  </div>
+
+  <!-- ═══ Chart Variant Toggle ═══ -->
+  <div style="display:flex;gap:6px;padding:0 16px;margin-top:24px">
+    <button class="fin-chart-btn active" onclick="switchFinChart('bars')">A — Stacked Bars</button>
+    <button class="fin-chart-btn" onclick="switchFinChart('donut')">B — Donut</button>
+  </div>
+
+  <!-- ═══ CHART A: Stacked Bar Chart (March — weekly) ═══ -->
+  <div class="fin-chart-variant active" id="fin-chart-bars">
+    <div style="padding:16px 16px 0">
+      <div class="fin-chart-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+          <div style="font-size:12px;font-weight:600;color:var(--bw40)">Saldo na koniec tygodnia</div>
+          <div style="font-size:11px;font-weight:500;color:var(--ov10)">Marzec</div>
+        </div>
+        <!-- Y-axis labels + Bars -->
+        <div style="display:flex;gap:8px">
+          <!-- Y axis -->
+          <div style="display:flex;flex-direction:column;justify-content:space-between;height:120px;padding-bottom:20px">
+            <span style="font-size:9px;font-weight:500;color:var(--bw40)">$400</span>
+            <span style="font-size:9px;font-weight:500;color:var(--bw40)">$200</span>
+            <span style="font-size:9px;font-weight:500;color:var(--bw40)">$0</span>
+          </div>
+          <!-- Bars -->
+          <div class="fin-bars" style="flex:1">
+            <!-- Tydz 1: saldo $120 = $100 avail + $20 pending (30% of max 400) -->
+            <div class="fin-bar-col">
+              <div class="fin-bar" style="height:36px"><div class="fin-bar-pending" style="height:6px"></div><div class="fin-bar-avail" style="height:30px"></div></div>
+              <span class="fin-bar-label">Tydz 1</span>
+            </div>
+            <!-- Tydz 2: saldo $280 = $240 avail + $40 pending (70%) -->
+            <div class="fin-bar-col">
+              <div class="fin-bar" style="height:70px"><div class="fin-bar-pending" style="height:10px"></div><div class="fin-bar-avail" style="height:60px"></div></div>
+              <span class="fin-bar-label">Tydz 2</span>
+            </div>
+            <!-- Tydz 3: saldo $390 = $360 avail + $30 pending (97.5%) -->
+            <div class="fin-bar-col">
+              <div class="fin-bar" style="height:97px"><div class="fin-bar-pending" style="height:8px"></div><div class="fin-bar-avail" style="height:89px"></div></div>
+              <span class="fin-bar-label">Tydz 3</span>
+            </div>
+            <!-- Tydz 4 (teraz): saldo $350 = $300 avail + $50 pending (87.5%) — current -->
+            <div class="fin-bar-col">
+              <div class="fin-bar fin-bar-current" style="height:87px"><div class="fin-bar-pending" style="height:12px"></div><div class="fin-bar-avail" style="height:75px"></div></div>
+              <span class="fin-bar-label" style="font-weight:600;color:var(--bw20)">Teraz</span>
+            </div>
+          </div>
+        </div>
+        <!-- Current value callout -->
+        <div style="display:flex;align-items:center;gap:8px;margin-top:12px;padding:8px 12px;background:var(--gw30);border-radius:12px">
+          <div style="font-size:20px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">$350</div>
+          <div style="font-size:11px;font-weight:400;color:var(--ov10);line-height:14px">bieżące saldo<br>= <strong style="color:var(--gr10)">$300</strong> do wypłaty + <strong style="color:var(--or10)">$50</strong> w przetwarzaniu</div>
+        </div>
+        <!-- Legend -->
+        <div class="fin-legend" style="margin-top:10px">
+          <div class="fin-legend-item"><div class="fin-legend-dot" style="background:var(--gr10)"></div><span>Do wypłaty</span></div>
+          <div class="fin-legend-item"><div class="fin-legend-dot" style="background:var(--or10)"></div><span>W przetwarzaniu</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CHART B: Donut Chart ═══ -->
+  <div class="fin-chart-variant" id="fin-chart-donut">
+    <div style="padding:16px 16px 0">
+      <div class="fin-chart-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-size:12px;font-weight:600;color:var(--bw40)">Struktura bieżącego salda</div>
+          <div style="font-size:11px;font-weight:500;color:var(--ov10)">Marzec</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:24px">
+          <!-- Donut SVG -->
+          <div style="position:relative;width:120px;height:120px;flex-shrink:0">
+            <svg viewBox="0 0 120 120" width="120" height="120">
+              <circle cx="60" cy="60" r="48" fill="none" stroke="var(--ov30)" stroke-width="18"/>
+              <!-- Do wypłaty: 300/350 = 85.7% → 0.857 × 301.6 = 258.5 -->
+              <circle cx="60" cy="60" r="48" fill="none" stroke="var(--gr10)" stroke-width="18" stroke-dasharray="258.5 301.6" stroke-dashoffset="75.4" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              <!-- W przetwarzaniu: 50/350 = 14.3% → 0.143 × 301.6 = 43.1 -->
+              <circle cx="60" cy="60" r="48" fill="none" stroke="var(--or10)" stroke-width="18" stroke-dasharray="43.1 301.6" stroke-dashoffset="-183.1" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <div style="font-size:20px;font-weight:700;color:var(--bw10);letter-spacing:-0.5px">$350</div>
+              <div style="font-size:10px;font-weight:500;color:var(--bw40)">saldo</div>
+            </div>
+          </div>
+          <!-- Breakdown -->
+          <div style="display:flex;flex-direction:column;gap:12px;flex:1">
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--gr10)"></div>
+                <span style="font-size:11px;font-weight:500;color:var(--bw40)">Do wypłaty</span>
+              </div>
+              <div style="font-size:20px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">$300</div>
+              <div style="font-size:11px;font-weight:400;color:var(--ov10)">85.7% — gotowe do wypłaty</div>
+            </div>
+            <div style="height:1px;background:var(--ov20)"></div>
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--or10)"></div>
+                <span style="font-size:11px;font-weight:500;color:var(--bw40)">W przetwarzaniu</span>
+              </div>
+              <div style="font-size:20px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">$50</div>
+              <div style="font-size:11px;font-weight:400;color:var(--ov10)">14.3% — oczekuje na zaksięgowanie</div>
+            </div>
+          </div>
+        </div>
+        <!-- Relationship callout -->
+        <div style="margin-top:14px;padding:10px 12px;background:var(--gw30);border-radius:12px;font-size:11px;font-weight:400;color:var(--ov10);line-height:16px">
+          Bieżące saldo <strong style="color:var(--bw10)">$350</strong> = Do wypłaty <strong style="color:var(--gr10)">$300</strong> + W przetwarzaniu <strong style="color:var(--or10)">$50</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transaction History -->
+  <div style="padding:24px 16px 0">
+    <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px;margin-bottom:4px">Transaction History</div>
+    <!-- Filter pills -->
+    <div style="display:flex;gap:8px;padding:8px 0 12px;overflow-x:auto">
+      <div style="height:36px;padding:0 12px;border-radius:70px;background:var(--ov15);display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--bw20);flex-shrink:0">All</div>
+      <div style="height:36px;padding:0 12px;border-radius:70px;background:#fff;display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive);flex-shrink:0">Payments <span style="color:var(--bw40)">10</span></div>
+      <div style="height:36px;padding:0 12px;border-radius:70px;background:#fff;display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive);flex-shrink:0">Payouts <span style="color:var(--bw40)">2</span></div>
+      <div style="height:36px;padding:0 12px;border-radius:70px;background:#fff;display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive);flex-shrink:0">Refunds <span style="color:var(--bw40)">1</span></div>
+    </div>
+  </div>
+
+  <!-- Transactions -->
+  <div style="display:flex;flex-direction:column;gap:12px;padding:0 16px">
+    <!-- Requested Payout (pending) -->
+    <div class="fin-tx-card">
+      <div class="fin-tx-row"><span style="font-size:14px;font-weight:600;color:var(--bw30)">Requested Payout</span><span style="font-size:14px;font-weight:600;color:var(--rd10)">-$32.10</span></div>
+      <div class="fin-tx-row"><span style="font-size:14px;font-weight:500;color:var(--or10)">Payout Pending</span><span style="font-size:14px;font-weight:500;color:var(--bw40)">2 Mar</span></div>
+    </div>
+    <!-- Payment -->
+    <div class="fin-tx-card" style="padding:12px 16px">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="width:40px;height:40px;border-radius:12px;background:var(--ov15);flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div class="fin-tx-row"><span style="font-size:14px;font-weight:600;color:var(--bw30);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Airmax Used - almost new</span><span style="font-size:14px;font-weight:600;color:var(--bw10);flex-shrink:0">$32.10</span></div>
+          <div class="fin-tx-row"><span style="font-size:14px;font-weight:500;color:var(--bw40)">Payment Complete</span><span style="font-size:14px;font-weight:500;color:var(--bw40)">2 Mar</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Scheduled Payout -->
+    <div class="fin-tx-card">
+      <div class="fin-tx-row"><span style="font-size:14px;font-weight:600;color:var(--bw30)">Scheduled Monthly Payout</span><span style="font-size:14px;font-weight:600;color:var(--rd10)">-$32.10</span></div>
+      <div class="fin-tx-row"><span style="font-size:14px;font-weight:500;color:var(--bw40)">Payout Complete</span><span style="font-size:14px;font-weight:500;color:var(--bw40)">2 Mar</span></div>
+    </div>
+    <!-- Payment -->
+    <div class="fin-tx-card" style="padding:12px 16px">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="width:40px;height:40px;border-radius:12px;background:var(--ov15);flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div class="fin-tx-row"><span style="font-size:14px;font-weight:600;color:var(--bw30)">Orange Nike Shoes Fresh</span><span style="font-size:14px;font-weight:600;color:var(--bw10);flex-shrink:0">$832.10</span></div>
+          <div class="fin-tx-row"><span style="font-size:14px;font-weight:500;color:var(--bw40)">Payment Complete</span><span style="font-size:14px;font-weight:500;color:var(--bw40)">2 Mar</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bottom CTA -->
+<div style="position:absolute;bottom:0;left:0;right:0;padding:0 16px 34px;z-index:50;background:linear-gradient(to bottom,rgba(242,240,236,0) 0%,var(--ov40) 40%)">
+  <div style="width:100%;height:52px;border-radius:70px;background:var(--rd10);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;color:#fff;box-shadow:var(--shadow-interactive)">Wypłać teraz $300.00</div>
+</div>
+</div>
+
+<!-- ── Tab Bar ── -->
+<div class="tabbar">
+  <div class="tabbar-pill">
+    <a class="tab-item" href="index.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Start.svg" alt="Start"></div>
+      <span class="tab-label">Start</span>
+    </a>
+    <a class="tab-item" href="browse.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Browse.svg" alt="Browse"></div>
+      <span class="tab-label">Browse</span>
+    </a>
+    <a class="tab-item active" href="sell.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Sell.svg" alt="Sell"></div>
+      <span class="tab-label">Sell</span>
+    </a>
+    <a class="tab-item" href="activity.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Message.svg" alt="Activity"></div>
+      <span class="tab-label">Activity</span>
+    </a>
+    <a class="tab-item" href="account.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Account.svg" alt="Account"></div>
+      <span class="tab-label">Account</span>
+    </a>
+  </div>
+</div>
+
+</div><!-- .phone -->
+
+<script>
+// ── Screen Navigation ──
+const screens = document.querySelectorAll('.screen');
+const mainTabbar = document.querySelector('.tabbar');
+
+function showScreen(screenId) {
+  const screen = document.getElementById(screenId);
+  if (!screen) return;
+  screens.forEach(s => s.classList.remove('active'));
+  screen.classList.add('active');
+}
+
+// ── LocalStorage ──
+function getProducts() {
+  try { return JSON.parse(localStorage.getItem('droplet_products') || '[]'); }
+  catch { return []; }
+}
+function saveProduct(product) {
+  const products = getProducts();
+  products.push(product);
+  localStorage.setItem('droplet_products', JSON.stringify(products));
+}
+function getShows() {
+  try { return JSON.parse(localStorage.getItem('droplet_shows') || '[]'); }
+  catch { return []; }
+}
+function saveShow(show) {
+  const shows = getShows();
+  shows.push(show);
+  localStorage.setItem('droplet_shows', JSON.stringify(shows));
+}
+
+// ── Seller Hub — Proposal Toggle (A/B/C) ──
+function switchProposal(variant) {
+  document.querySelectorAll('.sh-proposal-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`.sh-proposal-btn[onclick="switchProposal('${variant}')"]`);
+  if (btn) btn.classList.add('active');
+  ['a','b','c'].forEach(v => {
+    const el = document.getElementById('sh-proposal-' + v);
+    if (el) el.style.display = (v === variant) ? '' : 'none';
+  });
+}
+
+// ── Seller Hub — State Toggle (Zero / Data) ──
+function switchHubState(state) {
+  document.querySelectorAll('.sh-state-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`.sh-state-btn[onclick="switchHubState('${state}')"]`);
+  if (btn) btn.classList.add('active');
+  const zero = document.getElementById('shv-zero');
+  const data = document.getElementById('shv-a');
+  if (state === 'zero') {
+    if (zero) { zero.classList.add('active'); zero.style.display = ''; }
+    if (data) { data.classList.remove('active'); data.style.display = 'none'; }
+  } else {
+    if (zero) { zero.classList.remove('active'); zero.style.display = 'none'; }
+    if (data) { data.classList.add('active'); data.style.display = ''; }
+  }
+}
+
+// ── Seller Hub — Variant Toggle ──
+document.querySelectorAll('.shv-toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.shv-toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const v = btn.dataset.variant;
+    document.querySelectorAll('.shv-variant').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById('shv-' + v);
+    if (target) target.classList.add('active');
+  });
+});
+
+// ── Quick Actions — tap feedback ──
+document.querySelectorAll('[data-action="promote-show"],[data-action="share-shop"],[data-action="manage-shipping"],[data-action="create-giveaway"]').forEach(el => {
+  el.addEventListener('click', () => { el.style.opacity = '0.5'; setTimeout(() => el.style.opacity = '', 250); });
+});
+
+// ── Filter pills ──
+document.querySelectorAll('.sh-filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const parent = pill.closest('.sh-filter-row') || pill.closest('.shv-perf-inline') || pill.parentElement;
+    parent.querySelectorAll('.sh-filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+
+// ── Go Live action ──
+document.querySelectorAll('[data-action="go-live"]').forEach(btn => {
+  btn.addEventListener('click', () => { window.location.href = 'live-show.html'; });
+});
+
+// ── Metric tile navigation ──
+document.querySelectorAll('[data-action="manage-products"]').forEach(el => {
+  el.addEventListener('click', () => { mainTabbar.style.display = 'none'; showScreen('screen-products-list'); });
+});
+document.querySelectorAll('[data-action="manage-shows"]').forEach(el => {
+  el.addEventListener('click', () => { mainTabbar.style.display = 'none'; showScreen('screen-seller-shows'); });
+});
+document.querySelectorAll('[data-action="manage-orders"]').forEach(el => {
+  el.addEventListener('click', () => { mainTabbar.style.display = 'none'; showScreen('screen-orders'); });
+});
+
+// ── Finances ──
+document.querySelectorAll('[data-action="check-finances"]').forEach(el => {
+  el.addEventListener('click', () => { mainTabbar.style.display = 'none'; showScreen('screen-finances'); });
+});
+const finBackBtn = document.getElementById('fin-back-btn');
+if (finBackBtn) finBackBtn.addEventListener('click', () => { mainTabbar.style.display = ''; showScreen('screen-sell'); });
+
+// Chart variant toggle
+function switchFinChart(variant) {
+  document.querySelectorAll('.fin-chart-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`.fin-chart-btn[onclick="switchFinChart('${variant}')"]`);
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.fin-chart-variant').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById('fin-chart-' + variant);
+  if (target) target.classList.add('active');
+}
+
+// Info tooltips
+const tooltipTexts = {
+  saldo: 'Bieżące saldo to łączna kwota środków na Twoim koncie Droplet — zarówno dostępnych do wypłaty, jak i tych w trakcie przetwarzania.\n\nŚrodki z Blik i karty są dostępne od razu. Przelewy bankowe mogą wymagać 1–3 dni roboczych.',
+  wyplata: 'Do wypłaty to kwota, którą możesz wypłacić natychmiast na swoje konto bankowe.\n\nJeśli jest niższa niż bieżące saldo, część środków jest jeszcze przetwarzana i zostanie udostępniona automatycznie.'
+};
+document.querySelectorAll('.fin-info-icon').forEach(icon => {
+  icon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const key = icon.dataset.tooltip;
+    const tooltip = document.getElementById('fin-tooltip');
+    const text = document.getElementById('fin-tooltip-text');
+    if (tooltip.style.display !== 'none' && text.dataset.current === key) {
+      tooltip.style.display = 'none'; return;
+    }
+    text.textContent = tooltipTexts[key] || '';
+    text.dataset.current = key;
+    tooltip.style.display = 'block';
+  });
+});
+document.addEventListener('click', () => {
+  const tooltip = document.getElementById('fin-tooltip');
+  if (tooltip) tooltip.style.display = 'none';
+});
+
+// ── Schedule Show ──
+let ssFormFilled = false;
+function ssNavigateToSchedule() {
+  mainTabbar.style.display = 'none';
+  ssFormFilled = false;
+  document.querySelectorAll('#ss-form .fi[data-ss-input]').forEach(fi => fi.classList.remove('filled'));
+  const videoEmpty = document.getElementById('ss-video-empty');
+  const videoFilled = document.getElementById('ss-video-filled');
+  if (videoEmpty) videoEmpty.style.display = 'flex';
+  if (videoFilled) videoFilled.style.display = 'none';
+  const catInput = document.getElementById('ss-cat-input');
+  if (catInput) {
+    catInput.classList.remove('filled');
+    const chevron = document.getElementById('ss-cat-chevron');
+    if (chevron) chevron.src = 'design-system/UI Icons/Icon Right Chevron.svg';
+  }
+  const ssScrollEl = document.getElementById('ss-scroll');
+  if (ssScrollEl) ssScrollEl.scrollTop = 0;
+  const ssAppTopEl = document.querySelector('.ss-app-top');
+  if (ssAppTopEl) ssAppTopEl.classList.remove('scrolled');
+  showScreen('screen-schedule-show');
+}
+document.querySelectorAll('[data-action="schedule-show"]').forEach(el => {
+  el.addEventListener('click', ssNavigateToSchedule);
+});
+
+const ssScroll = document.getElementById('ss-scroll');
+const ssAppTop = document.querySelector('.ss-app-top');
+if (ssScroll && ssAppTop) {
+  ssScroll.addEventListener('scroll', () => { ssAppTop.classList.toggle('scrolled', ssScroll.scrollTop > 40); });
+}
+
+function ssFillForm() {
+  if (ssFormFilled) return;
+  ssFormFilled = true;
+  document.querySelectorAll('#ss-form .fi[data-ss-input]').forEach(f => f.classList.add('filled'));
+  const videoEmpty = document.getElementById('ss-video-empty');
+  const videoFilled = document.getElementById('ss-video-filled');
+  if (videoEmpty) videoEmpty.style.display = 'none';
+  if (videoFilled) videoFilled.style.display = 'flex';
+  const catInput = document.getElementById('ss-cat-input');
+  if (catInput) {
+    catInput.classList.add('filled');
+    const chevron = document.getElementById('ss-cat-chevron');
+    if (chevron) chevron.src = 'design-system/UI Icons/Icon Down Chevron.svg';
+  }
+}
+
+const ssForm = document.getElementById('ss-form');
+if (ssForm) ssForm.addEventListener('click', e => { if (e.target.closest('.fi')) ssFillForm(); });
+const ssCatInput = document.getElementById('ss-cat-input');
+if (ssCatInput) ssCatInput.addEventListener('click', ssFillForm);
+
+const ssBack = document.getElementById('ss-back-btn');
+if (ssBack) ssBack.addEventListener('click', () => { mainTabbar.style.display = ''; showScreen('screen-sell'); });
+
+const ssScheduleBtn = document.getElementById('ss-schedule-btn');
+if (ssScheduleBtn) ssScheduleBtn.addEventListener('click', () => showScreen('screen-show-scheduled'));
+
+// Show Scheduled — back
+let scheduledShowCount = 0;
+const schedBack = document.getElementById('sched-back-btn');
+if (schedBack) {
+  schedBack.addEventListener('click', () => {
+    mainTabbar.style.display = '';
+    showScreen('screen-sell');
+    if (ssFormFilled) {
+      scheduledShowCount++;
+      const showImages = ['design-system/images/shows/show1.jpg','design-system/images/shows/show2.jpg'];
+      const img = showImages[scheduledShowCount % showImages.length];
+      saveShow({ id: Date.now(), title: 'Daily from $1, Clothes, Home st...', date: '22 Jan, 6:00 PM', photo: img, createdAt: new Date().toISOString() });
+      renderSellShows();
+    }
+  });
+}
+
+// ════════════════════════════════════
+// ADD PRODUCTS FLOW
+// ════════════════════════════════════
+const productPhotos = Array.from({length:20}, (_,i) => `design-system/images/product photos/image ${i+1}.png`);
+
+document.querySelectorAll('[data-action="add-product"]').forEach(el => {
+  el.addEventListener('click', () => { mainTabbar.style.display = 'none'; apResetToEmpty(); showScreen('screen-add-products'); });
+});
+
+const apCloseBtn = document.getElementById('ap-close-btn');
+if (apCloseBtn) apCloseBtn.addEventListener('click', () => { mainTabbar.style.display = ''; showScreen('screen-sell'); });
+
+const apTabMedia = document.getElementById('ap-tab-media');
+const apTabDrafts = document.getElementById('ap-tab-drafts');
+
+function apShowMediaEmpty() {
+  document.getElementById('ap-media-empty').style.display = '';
+  document.getElementById('ap-media-filled').style.display = 'none';
+  document.getElementById('ap-drafts-tab').style.display = 'none';
+  document.getElementById('ap-media-bottom').style.display = 'none';
+  if (apTabMedia) apTabMedia.classList.add('active');
+  if (apTabDrafts) apTabDrafts.classList.remove('active');
+}
+function apShowMediaFilled() {
+  document.getElementById('ap-media-empty').style.display = 'none';
+  document.getElementById('ap-media-filled').style.display = '';
+  document.getElementById('ap-drafts-tab').style.display = 'none';
+  document.getElementById('ap-media-bottom').style.display = 'flex';
+  if (apTabMedia) apTabMedia.classList.add('active');
+  if (apTabDrafts) apTabDrafts.classList.remove('active');
+  apBuildMediaGrid();
+}
+function apShowDrafts() {
+  document.getElementById('ap-media-empty').style.display = 'none';
+  document.getElementById('ap-media-filled').style.display = 'none';
+  document.getElementById('ap-drafts-tab').style.display = '';
+  document.getElementById('ap-media-bottom').style.display = 'none';
+  if (apTabMedia) apTabMedia.classList.remove('active');
+  if (apTabDrafts) { apTabDrafts.classList.add('active'); apTabDrafts.innerHTML = apDrafts.length > 0 ? `Drafts <span class="ap-tab-badge">${apDrafts.length}</span>` : 'Drafts'; }
+  apBuildDraftsList();
+}
+function apResetToEmpty() {
+  apShowMediaEmpty();
+  if (apTabDrafts) apTabDrafts.innerHTML = 'Drafts';
+  const s = document.getElementById('ap-scroll'); if (s) s.scrollTop = 0;
+}
+
+if (apTabMedia) apTabMedia.addEventListener('click', () => { if (apMediaState === 'filled') apShowMediaFilled(); else apShowMediaEmpty(); });
+if (apTabDrafts) apTabDrafts.addEventListener('click', apShowDrafts);
+
+let apMediaState = 'empty';
+const apAddPhotosBtn = document.getElementById('ap-add-photos-btn');
+if (apAddPhotosBtn) apAddPhotosBtn.addEventListener('click', () => { apMediaState = 'filled'; apShowMediaFilled(); });
+
+let apSelectedItems = [];
+function apBuildMediaGrid() {
+  const grid = document.getElementById('ap-media-grid');
+  if (!grid || grid.children.length > 0) return;
+  apSelectedItems = [];
+  productPhotos.slice(0, 3).forEach(src => {
+    const item = document.createElement('div');
+    item.className = 'ap-media-item';
+    item.style.backgroundImage = `url('${src}')`;
+    const radio = document.createElement('div'); radio.className = 'ap-media-radio'; radio.innerHTML = '<span></span>'; item.appendChild(radio);
+    const play = document.createElement('div'); play.className = 'ap-media-play'; play.innerHTML = `<img src="design-system/UI Icons/Icon Play.svg" alt="">`; item.appendChild(play);
+    item.addEventListener('click', () => {
+      if (item.classList.contains('selected')) { item.classList.remove('selected'); apSelectedItems = apSelectedItems.filter(el => el !== item); }
+      else { item.classList.add('selected'); apSelectedItems.push(item); }
+      apRenumberSelection(); apUpdateCTA();
+    });
+    grid.appendChild(item);
+  });
+  const addMedia = document.createElement('div'); addMedia.className = 'ap-add-media';
+  addMedia.innerHTML = `<button class="ap-add-media-btn"><img src="design-system/UI Icons/Icon Plus.svg" alt="+"></button><span>Add Media</span>`;
+  grid.appendChild(addMedia);
+  apUpdateCTA();
+}
+
+function apRenumberSelection() {
+  document.querySelectorAll('.ap-media-radio span').forEach(s => s.textContent = '');
+  apSelectedItems.forEach((item, i) => { const span = item.querySelector('.ap-media-radio span'); if (span) span.textContent = i + 1; });
+}
+
+function apUpdateCTA() {
+  const count = apSelectedItems.length;
+  const totalPhotos = document.querySelectorAll('.ap-media-item').length;
+  const bottom = document.getElementById('ap-media-bottom');
+  const createAllBtn = document.getElementById('ap-create-all-btn');
+  const deleteBtn = document.getElementById('ap-delete-btn');
+  const createSelBtn = document.getElementById('ap-create-selected-btn');
+  if (!bottom) return;
+  if (count === 0) {
+    bottom.dataset.state = 'all'; createAllBtn.style.display = ''; deleteBtn.style.display = 'none'; createSelBtn.style.display = 'none';
+    const title = createAllBtn.querySelector('.ap-btn-create-title'); if (title) title.textContent = `Create ${totalPhotos} Product${totalPhotos > 1 ? 's' : ''}`;
+  } else {
+    bottom.dataset.state = 'selected'; createAllBtn.style.display = 'none'; deleteBtn.style.display = ''; createSelBtn.style.display = ''; createSelBtn.textContent = 'Create 1 Product';
+  }
+}
+
+let apDrafts = [];
+function apGetPhotoUrl(item) { return item.style.backgroundImage.replace(/url\(['"]?/, '').replace(/['"]?\)/, ''); }
+
+const createAllBtn = document.getElementById('ap-create-all-btn');
+if (createAllBtn) createAllBtn.addEventListener('click', () => {
+  document.querySelectorAll('.ap-media-item').forEach(item => { apDrafts.push({ id: Date.now() + Math.random(), photos: [apGetPhotoUrl(item)], name: '' }); });
+  apShowDrafts();
+});
+const createSelBtn = document.getElementById('ap-create-selected-btn');
+if (createSelBtn) createSelBtn.addEventListener('click', () => {
+  apDrafts.push({ id: Date.now(), photos: apSelectedItems.map(item => apGetPhotoUrl(item)), name: '' });
+  apSelectedItems.forEach(item => item.classList.remove('selected')); apSelectedItems = []; apRenumberSelection(); apUpdateCTA(); apShowDrafts();
+});
+const apDeleteBtn = document.getElementById('ap-delete-btn');
+if (apDeleteBtn) apDeleteBtn.addEventListener('click', () => { apSelectedItems.forEach(item => item.remove()); apSelectedItems = []; apUpdateCTA(); });
+
+function apBuildDraftsList() {
+  const list = document.getElementById('ap-drafts-list'); if (!list) return;
+  list.innerHTML = '';
+  if (apDrafts.length === 0) { list.innerHTML = '<p style="text-align:center;color:var(--bw40);font-size:13px;padding:32px 16px">No drafts yet</p>'; return; }
+  apDrafts.forEach(draft => {
+    const el = document.createElement('div'); el.className = 'ap-draft';
+    const coverUrl = draft.photos[0]; const name = draft.name || 'Untitled Product';
+    const photoBadge = draft.photos.length > 1 ? `<span class="ap-draft-badge">${draft.photos.length} photos</span>` : '';
+    el.innerHTML = `<div class="ap-draft-img" style="background-image:url('${coverUrl}')"></div><div class="ap-draft-info"><p class="ap-draft-name">${name}</p><span class="ap-draft-badge">Recently Added</span>${photoBadge}<div class="ap-draft-actions"><button class="ap-draft-trash"><img src="design-system/UI Icons/Icon Trash.svg" alt="Delete"></button><button class="ap-draft-review">Review Product</button></div></div>`;
+    el.querySelector('.ap-draft-trash').addEventListener('click', () => { apDrafts = apDrafts.filter(d => d !== draft); apBuildDraftsList(); });
+    el.querySelector('.ap-draft-review').addEventListener('click', () => { rpCoverPhoto = coverUrl; rpResetForm(); showScreen('screen-review-product'); });
+    list.appendChild(el);
+  });
+}
+
+// ════════════════════════════════════
+// REVIEW PRODUCT
+// ════════════════════════════════════
+let rpCoverPhoto = productPhotos[1];
+let rpFormFilled = false;
+
+function rpResetForm() {
+  rpFormFilled = false;
+  const c = document.getElementById('rp-cover-img'); if (c) c.style.backgroundImage = `url('${rpCoverPhoto}')`;
+  const ph = document.getElementById('rp-name-ph'); if (ph) ph.style.display = '';
+  const vl = document.getElementById('rp-name-val'); if (vl) vl.style.display = 'none';
+  const ch = document.getElementById('rp-char'); if (ch) ch.textContent = '0';
+  document.querySelectorAll('#rp-fields [data-rp-input], .rp-field[data-rp-input], .rp-shipping[data-rp-input]').forEach(f => {
+    const a = f.querySelector('.rp-field-placeholder, .rp-shipping-label'); if (a) a.style.display = '';
+    const b = f.querySelector('.rp-field-label'); if (b) b.style.display = 'none';
+    const d = f.querySelector('.rp-field-value'); if (d) d.style.display = 'none';
+  });
+  const pv = document.getElementById('rp-price-val'); if (pv) pv.style.visibility = 'hidden';
+  const qv = document.getElementById('rp-qty-val'); if (qv) qv.style.visibility = 'hidden';
+  const rs = document.getElementById('rp-scroll'); if (rs) rs.scrollTop = 0;
+  const rt = document.getElementById('rp-top'); if (rt) rt.classList.remove('scrolled');
+}
+
+const rpScroll = document.getElementById('rp-scroll');
+const rpTop = document.getElementById('rp-top');
+if (rpScroll && rpTop) rpScroll.addEventListener('scroll', () => { rpTop.classList.toggle('scrolled', rpScroll.scrollTop > 40); });
+
+function rpFillForm() {
+  if (rpFormFilled) return; rpFormFilled = true;
+  const ph = document.getElementById('rp-name-ph'); if (ph) ph.style.display = 'none';
+  const vl = document.getElementById('rp-name-val'); if (vl) vl.style.display = '';
+  const ch = document.getElementById('rp-char'); if (ch) ch.textContent = '35';
+  document.querySelectorAll('#rp-fields [data-rp-input], .rp-field[data-rp-input]').forEach(f => {
+    const a = f.querySelector('.rp-field-placeholder'); if (a) a.style.display = 'none';
+    const b = f.querySelector('.rp-field-label'); if (b) b.style.display = '';
+    const d = f.querySelector('.rp-field-value'); if (d) d.style.display = '';
+  });
+  const pv = document.getElementById('rp-price-val'); if (pv) pv.style.visibility = '';
+  const qv = document.getElementById('rp-qty-val'); if (qv) qv.style.visibility = '';
+}
+
+const rpScreen = document.getElementById('screen-review-product');
+if (rpScreen) rpScreen.addEventListener('click', e => { if (e.target.closest('[data-rp-input]') || e.target.closest('.rp-name-box') || e.target.closest('.rp-price-box') || e.target.closest('.rp-shipping')) rpFillForm(); });
+const rpBackBtn = document.getElementById('rp-back-btn');
+if (rpBackBtn) rpBackBtn.addEventListener('click', () => { showScreen('screen-add-products'); apShowDrafts(); });
+const rpPublishBtn = document.getElementById('rp-publish-btn');
+if (rpPublishBtn) rpPublishBtn.addEventListener('click', () => {
+  saveProduct({ id: Date.now(), name: 'Airmax Classic 95 white blue black', photo: rpCoverPhoto, price: '$40', quantity: 1, variants: 1, type: 'buy_now', createdAt: new Date().toISOString() });
+  showScreen('screen-products-list'); plRenderProducts();
+});
+const rpSaveDraft = document.getElementById('rp-save-draft');
+if (rpSaveDraft) rpSaveDraft.addEventListener('click', () => { mainTabbar.style.display = ''; showScreen('screen-sell'); });
+
+// ════════════════════════════════════
+// PRODUCTS LIST
+// ════════════════════════════════════
+const plBackBtn = document.getElementById('pl-back-btn');
+if (plBackBtn) plBackBtn.addEventListener('click', () => { mainTabbar.style.display = ''; showScreen('screen-sell'); renderSellProducts(); });
+const plAddProductBtn = document.getElementById('pl-add-product-btn');
+if (plAddProductBtn) plAddProductBtn.addEventListener('click', () => { apResetToEmpty(); showScreen('screen-add-products'); });
+
+function plRenderProducts() {
+  const list = document.getElementById('pl-product-list'); if (!list) return;
+  const saved = getProducts();
+  list.querySelectorAll('.pl-item:not([data-dynamic])').forEach(el => el.setAttribute('data-static',''));
+  list.querySelectorAll('.pl-item[data-dynamic]').forEach(el => el.remove());
+  saved.reverse().forEach(p => {
+    const item = document.createElement('div'); item.className = 'pl-item'; item.setAttribute('data-dynamic','');
+    item.innerHTML = `<div class="pl-item-img" style="background-image:url('${p.photo}')"></div><div class="pl-item-info"><p class="pl-item-name">${p.name}</p><p class="pl-item-attr">Variants: ${p.variants}</p><p class="pl-item-attr">Quantity: ${p.quantity}</p><span class="pl-item-price">${p.price}</span><button class="pl-item-menu"><img src="design-system/UI Icons/Icon more.svg" alt="..."></button></div>`;
+    list.insertBefore(item, list.firstChild);
+  });
+}
+
+function renderSellProducts() {
+  const container = document.querySelector('#screen-sell .screen-scroll'); if (!container) return;
+  container.querySelectorAll('.prod-h[data-dynamic]').forEach(el => el.remove());
+  const saved = getProducts();
+  const prodSection = container.querySelector('[data-action="add-product"]')?.closest('.section-header')?.parentElement; if (!prodSection) return;
+  const prodList = prodSection.querySelector('div[style*="flex-direction:column"]'); if (!prodList) return;
+  saved.forEach(p => {
+    const tile = document.createElement('div'); tile.className = 'prod-h'; tile.setAttribute('data-dynamic','');
+    tile.innerHTML = `<div class="prod-h-img" style="background-image:url('${p.photo}');background-size:cover;background-position:center"></div><div class="prod-h-info"><div class="prod-h-name">${p.name}</div><div class="prod-h-attr">Qty: ${p.quantity}</div><div class="prod-h-price">${p.price}</div><div class="prod-h-actions"><button title="Delete"><img src="design-system/UI Icons/Icon Trash.svg" width="16" height="16" alt="Delete"></button><button title="Edit"><img src="design-system/UI Icons/Icon Edit.svg" width="16" height="16" alt="Edit"></button></div></div>`;
+    prodList.appendChild(tile);
+  });
+}
+
+function renderSellShows() {
+  const container = document.getElementById('sell-upcoming-shows'); if (!container) return;
+  container.querySelectorAll('.show-tile[data-dynamic]').forEach(el => el.remove());
+  getShows().reverse().forEach(s => {
+    const tile = document.createElement('div'); tile.className = 'show-tile'; tile.setAttribute('data-dynamic','');
+    tile.innerHTML = `<div class="show-tile-img" style="background-image:url('${s.photo}');background-size:cover;background-position:center"><div class="show-tile-badge badge-alert" style="background:rgba(255,255,255,0.85);color:var(--bw30)"><span style="font-size:10px;font-weight:700">Scheduled</span></div><div class="show-tile-bottom"><div class="show-tile-date">${s.date}</div><div class="show-tile-title">${s.title}</div></div></div>`;
+    tile.addEventListener('click', () => { window.location.href = 'live-show.html'; });
+    container.insertBefore(tile, container.firstChild);
+  });
+}
+
+// ════════════════════════════════════
+// SELLER SHOWS — bulk selection
+// ════════════════════════════════════
+(function() {
+  const grid = document.getElementById('shs-grid');
+  const manageBtn = document.getElementById('shs-manage-btn');
+  const backBtn = document.getElementById('shs-back-btn');
+  const actionBar = document.getElementById('shs-action-bar');
+  const bottomCta = document.getElementById('shs-bottom-cta');
+  const counter = document.getElementById('shs-counter');
+  const deleteBtn = document.getElementById('shs-btn-delete');
+  const shareBtn = document.getElementById('shs-btn-share');
+  if (!grid || !manageBtn) return;
+  let bulkMode = false, selected = [];
+
+  function enterBulkMode() { bulkMode = true; selected = []; grid.classList.add('bulk-mode','shs-variant-b'); manageBtn.textContent = 'Cancel'; manageBtn.style.color = 'var(--rd10)'; bottomCta.style.display = 'none'; updateUI(); }
+  function exitBulkMode() { bulkMode = false; selected = []; grid.classList.remove('bulk-mode','shs-variant-b'); manageBtn.textContent = 'Manage'; manageBtn.style.color = 'var(--bl10)'; actionBar.classList.remove('visible'); bottomCta.style.display = ''; counter.style.display = 'none'; grid.querySelectorAll('.shs-tile').forEach(t => { t.classList.remove('selected'); const r = t.querySelector('.shs-radio'); if (r) r.classList.remove('selected'); }); }
+  function updateUI() {
+    grid.querySelectorAll('.shs-tile').forEach(tile => {
+      const id = tile.dataset.shsId; const idx = selected.indexOf(id); const radio = tile.querySelector('.shs-radio'); const num = tile.querySelector('.shs-radio-num');
+      if (idx >= 0) { tile.classList.add('selected'); radio.classList.add('selected'); num.textContent = idx + 1; }
+      else { tile.classList.remove('selected'); radio.classList.remove('selected'); num.textContent = ''; }
+    });
+    if (selected.length > 0) { counter.style.display = 'block'; counter.textContent = selected.length + ' selected'; actionBar.classList.add('visible'); }
+    else { counter.style.display = 'none'; actionBar.classList.remove('visible'); }
+  }
+
+  manageBtn.addEventListener('click', () => { if (bulkMode) exitBulkMode(); else enterBulkMode(); });
+  grid.addEventListener('click', e => {
+    const tile = e.target.closest('.shs-tile'); if (!tile) return;
+    if (!bulkMode) { tile.style.opacity = '0.7'; setTimeout(() => tile.style.opacity = '', 150); return; }
+    const id = tile.dataset.shsId; const idx = selected.indexOf(id);
+    if (idx >= 0) selected.splice(idx, 1); else selected.push(id); updateUI();
+  });
+  backBtn.addEventListener('click', () => { if (bulkMode) { exitBulkMode(); return; } mainTabbar.style.display = ''; showScreen('screen-sell'); });
+  deleteBtn.addEventListener('click', () => {
+    if (!selected.length) return;
+    selected.forEach(id => { const tile = grid.querySelector(`.shs-tile[data-shs-id="${id}"]`); if (tile) { tile.style.transition = 'opacity .2s, transform .2s'; tile.style.opacity = '0'; tile.style.transform = 'scale(0.9)'; setTimeout(() => tile.remove(), 200); } });
+    setTimeout(() => exitBulkMode(), 250);
+  });
+  shareBtn.addEventListener('click', () => { if (!selected.length) return; shareBtn.textContent = 'Shared ' + selected.length + '!'; setTimeout(() => { shareBtn.textContent = 'Share'; exitBulkMode(); }, 800); });
+  const scheduleBtn = document.querySelector('#screen-seller-shows .shs-schedule-btn');
+  if (scheduleBtn) scheduleBtn.addEventListener('click', ssNavigateToSchedule);
+})();
+
+// ════════════════════════════════════
+// ORDERS + ORDER DETAILS
+// ════════════════════════════════════
+(function() {
+  const ordBackBtn = document.getElementById('ord-back-btn');
+  const ordFilters = document.getElementById('ord-filters');
+  const odOverlay = document.getElementById('od-overlay');
+  const odSheet = document.getElementById('od-sheet');
+
+  if (ordBackBtn) ordBackBtn.addEventListener('click', () => { showScreen('screen-sell'); mainTabbar.style.display = ''; });
+
+  const varToggle = document.getElementById('ord-variant-toggle');
+  if (varToggle) varToggle.addEventListener('click', e => {
+    const btn = e.target.closest('.ord-variant-btn'); if (!btn) return;
+    varToggle.querySelectorAll('.ord-variant-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#screen-orders .ord-variant').forEach(v => v.classList.remove('active'));
+    const target = document.getElementById('ord-var-' + btn.dataset.variant); if (target) target.classList.add('active');
+  });
+
+  if (ordFilters) ordFilters.addEventListener('click', e => {
+    const pill = e.target.closest('.ord-filter-pill'); if (!pill) return;
+    ordFilters.querySelectorAll('.ord-filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    const status = pill.dataset.status;
+    document.querySelectorAll('#ord-list-a .ord-card-a').forEach(card => { card.style.display = (status === 'all' || card.dataset.orderStatus === status) ? '' : 'none'; });
+    document.querySelectorAll('#ord-list-b .ord-row-b').forEach(row => { row.style.display = (status === 'all' || row.dataset.orderStatus === status) ? '' : 'none'; });
+    document.querySelectorAll('#ord-var-c .ord-group-c').forEach(group => { const badge = group.querySelector('.ord-badge'); if (!badge) return; const gs = badge.classList[1]; group.style.display = (status === 'all' || gs === status) ? '' : 'none'; });
+  });
+
+  window.openOrderDetails = function(orderId) {
+    const titleEl = document.getElementById('od-title'); if (titleEl) titleEl.textContent = '#' + orderId;
+    if (odOverlay) odOverlay.classList.add('active'); if (odSheet) odSheet.classList.add('active');
+    document.querySelectorAll('#od-sheet .od-var').forEach(v => v.scrollTop = 0);
+  };
+  window.closeOrderDetails = function() { if (odOverlay) odOverlay.classList.remove('active'); if (odSheet) odSheet.classList.remove('active'); };
+
+  const odVarToggle = document.getElementById('od-var-toggle');
+  if (odVarToggle) odVarToggle.addEventListener('click', e => {
+    const btn = e.target.closest('.od-var-btn'); if (!btn) return;
+    odVarToggle.querySelectorAll('.od-var-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
+    document.querySelectorAll('#od-sheet .od-var').forEach(v => v.classList.remove('active'));
+    const target = document.getElementById('od-var-' + btn.dataset.var); if (target) target.classList.add('active');
+  });
+
+  const odCTabs = document.getElementById('od-c-tabs');
+  if (odCTabs) odCTabs.addEventListener('click', e => {
+    const tab = e.target.closest('.od-c-tab'); if (!tab) return;
+    odCTabs.querySelectorAll('.od-c-tab').forEach(t => t.classList.remove('active')); tab.classList.add('active');
+    document.querySelectorAll('#od-var-c .od-c-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('od-c-' + tab.dataset.panel); if (panel) panel.classList.add('active');
+  });
+
+  document.querySelectorAll('.od-size-pill').forEach(pill => { pill.addEventListener('click', () => { document.querySelectorAll('.od-size-pill').forEach(p => p.classList.remove('active')); pill.classList.add('active'); }); });
+  document.querySelectorAll('#od-sheet .od-cta-btn:not(.secondary)').forEach(btn => {
+    if (btn.textContent.trim() === 'Generate Shipping Label') {
+      btn.addEventListener('click', () => { btn.textContent = 'Generating...'; btn.style.opacity = '0.6'; setTimeout(() => { btn.textContent = 'Label Generated ✓'; btn.style.opacity = ''; btn.style.background = 'var(--gr10)'; }, 1200); });
+    }
+  });
+})();
+
+// ════════════════════════════════════
+// SUCCESS EXPLORE
+// ════════════════════════════════════
+(function() {
+  const sucToggle = document.querySelector('.suc-var-toggle');
+  if (sucToggle) sucToggle.addEventListener('click', e => {
+    const btn = e.target.closest('.suc-var-btn'); if (!btn) return;
+    sucToggle.querySelectorAll('.suc-var-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
+    document.querySelectorAll('#screen-success-explore .suc-var').forEach(v => v.classList.remove('active'));
+    const target = document.getElementById('suc-var-' + btn.dataset.suc); if (target) target.classList.add('active');
+  });
+
+  window.replaySuccessA = function() {
+    var sheet = document.getElementById('suc-a-sheet'); var overlay = sheet.previousElementSibling; if (!sheet) return;
+    sheet.style.transition = 'opacity 0.2s, transform 0.2s'; sheet.style.opacity = '0'; sheet.style.transform = 'translateY(30px)';
+    overlay.style.transition = 'opacity 0.2s'; overlay.style.opacity = '0';
+    var bg = sheet.parentElement.querySelector('.suc-od-bg'); bg.style.transition = 'transform 0.3s, opacity 0.3s'; bg.style.transform = 'scale(1)'; bg.style.opacity = '1';
+    setTimeout(function() { bg.style.transform = 'scale(0.95)'; bg.style.opacity = '0.4'; overlay.style.opacity = '1'; sheet.style.opacity = '1'; sheet.style.transform = 'translateY(0)'; }, 1200);
+  };
+  window.replaySuccessB = function() {
+    var sheet = document.getElementById('suc-b-sheet'); var overlay = sheet.previousElementSibling; if (!sheet) return;
+    sheet.style.transition = 'opacity 0.2s, transform 0.2s'; sheet.style.opacity = '0'; sheet.style.transform = 'translateY(30px)';
+    overlay.style.transition = 'opacity 0.2s'; overlay.style.opacity = '0';
+    var bg = sheet.parentElement.querySelector('.suc-od-bg'); bg.style.transition = 'transform 0.3s, opacity 0.3s'; bg.style.transform = 'scale(1)'; bg.style.opacity = '1';
+    setTimeout(function() { bg.style.transform = 'scale(0.95)'; bg.style.opacity = '0.4'; overlay.style.opacity = '1'; sheet.style.opacity = '1'; sheet.style.transform = 'translateY(0)'; }, 1200);
+  };
+  window.morphShipC = function() {
+    var cta = document.getElementById('suc-c-cta'); var badge = document.getElementById('suc-c-badge'); if (!cta) return;
+    cta.style.transition = 'background 0.3s, transform 0.15s'; cta.style.transform = 'scale(0.97)';
+    setTimeout(function() { cta.className = 'suc-as-btn success'; cta.innerHTML = '<img src="design-system/UI Icons/Icon Check.svg" alt=""> Shipped'; cta.style.transform = 'scale(1)'; cta.onclick = null; if (badge) { badge.className = 'ord-badge shipped'; badge.textContent = 'Shipped'; } }, 200);
+  };
+  window.replaySuccessC = function() {
+    var cta = document.getElementById('suc-c-cta'); var badge = document.getElementById('suc-c-badge'); if (!cta) return;
+    cta.className = 'suc-as-btn cta'; cta.style.cssText = 'margin-top:14px'; cta.innerHTML = 'Mark as Shipped'; cta.onclick = morphShipC;
+    if (badge) { badge.className = 'ord-badge new'; badge.textContent = 'New'; }
+  };
+})();
+
+// ════════════════════════════════════
+// TRACKING EXPLORE
+// ════════════════════════════════════
+(function() {
+  const trkToggle = document.querySelector('.trk-var-toggle');
+  if (trkToggle) trkToggle.addEventListener('click', e => {
+    const btn = e.target.closest('.trk-var-btn'); if (!btn) return;
+    trkToggle.querySelectorAll('.trk-var-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
+    document.querySelectorAll('#screen-track-explore .trk-var').forEach(v => v.classList.remove('active'));
+    const target = document.getElementById('trk-var-' + btn.dataset.trk); if (target) target.classList.add('active');
+  });
+  const trkBack = document.getElementById('trk-back-btn');
+  if (trkBack) trkBack.addEventListener('click', () => showScreen('screen-orders'));
+  document.querySelectorAll('.trk-b-copy').forEach(btn => {
+    btn.addEventListener('click', () => { btn.innerHTML = '<span style="font-size:10px;font-weight:600;color:var(--gr10)">✓</span>'; setTimeout(() => { btn.innerHTML = '<img src="design-system/UI Icons/Icon Clip.svg" alt="Copy" style="width:14px;height:14px;opacity:0.5">'; }, 1500); });
+  });
+})();
+
+// ── On page load ──
+renderSellProducts();
+renderSellShows();
+</script>
+
+</body>
+</html>

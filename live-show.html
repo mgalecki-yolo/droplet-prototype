@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Droplet App</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="phone">
+
+<!-- ── Status Bar ── -->
+<div class="status-bar">
+  <span class="status-time">9:41</span>
+  <div class="status-icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#000"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#000"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#000"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#000"/></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#000"/><path d="M3.5 7.5C5 6 6.5 5.2 8 5.2s3 .8 4.5 2.3M1 4.5C3.5 2 5.8 1 8 1s4.5 1 7 3.5" stroke="#000" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <svg width="27" height="12" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="2.5" fill="none" stroke="#000" stroke-opacity=".35"/><rect x="2" y="2" width="19" height="8" rx="1.5" fill="#000"/><path d="M25 4.5v3a1.5 1.5 0 000-3z" fill="#000" fill-opacity=".4"/></svg>
+  </div>
+</div>
+
+<div class="screen active" id="screen-live-show">
+
+  <!-- Background video placeholder -->
+  <div class="ls-bg"></div>
+
+  <!-- App Top -->
+  <div class="ls-top">
+    <div class="ls-top-status">
+      <span class="status-time" style="color:white;flex:1">9:41</span>
+      <div style="width:125px"></div>
+      <div class="status-icons" style="flex:1;justify-content:flex-end">
+        <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#fff"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#fff"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#fff"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#fff"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#fff"/><path d="M3.5 7.5C5 6 6.5 5.2 8 5.2s3 .8 4.5 2.3M1 4.5C3.5 2 5.8 1 8 1s4.5 1 7 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg width="27" height="12" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="2.5" fill="none" stroke="#fff" stroke-opacity=".35"/><rect x="2" y="2" width="19" height="8" rx="1.5" fill="#fff"/><path d="M25 4.5v3a1.5 1.5 0 000-3z" fill="#fff" fill-opacity=".4"/></svg>
+      </div>
+    </div>
+    <div class="ls-top-action">
+      <div class="ls-top-left">
+        <button class="ls-show-btn" id="ls-back-btn">
+          <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="Back">
+        </button>
+        <div class="ls-host-info">
+          <div class="ls-host-avatar" style="background-image:url('design-system/images/avatars/CatMomPop.png')"></div>
+          <div class="ls-host-meta">
+            <span class="ls-host-name">CatMomPop</span>
+            <div class="ls-host-stats">
+              <img src="design-system/UI Icons/Icon Star Full.svg" alt="">
+              <span>4.8</span>
+              <img src="design-system/UI Icons/Icon Followers.svg" alt="" style="filter:brightness(0) invert(1)">
+              <span>5k</span>
+              <button class="ls-follow-pill">Follow</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ls-top-right">
+        <div class="show-tile-badge badge-live" style="height:26px;font-size:10px;font-weight:700">834</div>
+        <button class="ls-show-btn">
+          <img src="design-system/UI Icons/Icon Down Chevron.svg" alt="Minimize">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat + Right Icons -->
+  <div class="ls-chat-area" style="bottom:174px">
+    <!-- Chat column -->
+    <div class="ls-chat">
+      <!-- Message: tipped -->
+      <div class="ls-chat-msg">
+        <div class="ls-chat-avatar" style="background-image:url('design-system/images/avatars/ButikMadame.png')"></div>
+        <div class="ls-chat-body">
+          <div class="ls-chat-user"><span class="ls-chat-username">inky_82</span></div>
+          <div class="ls-chat-tipped">Tipped $1</div>
+        </div>
+      </div>
+      <!-- Message: moderator -->
+      <div class="ls-chat-msg">
+        <div class="ls-chat-avatar" style="background:var(--bl10)">M</div>
+        <div class="ls-chat-body">
+          <div class="ls-chat-user">
+            <span class="ls-chat-username">Martinaux</span>
+            <span class="ls-chat-badge mod">Mod</span>
+          </div>
+          <div class="ls-chat-text">Again - Please don't swear</div>
+        </div>
+      </div>
+      <!-- Message: mention -->
+      <div class="ls-chat-msg">
+        <div class="ls-chat-avatar" style="background-image:url('design-system/images/avatars/Shaun.png')"></div>
+        <div class="ls-chat-body">
+          <div class="ls-chat-user"><span class="ls-chat-username">kriztifa</span></div>
+          <div class="ls-chat-text"><span class="mention">@martinaux</span> What tha fook ya talking on?</div>
+        </div>
+      </div>
+      <!-- Message: long -->
+      <div class="ls-chat-msg">
+        <div class="ls-chat-avatar" style="background-image:url('design-system/images/avatars/Ailema.png')"></div>
+        <div class="ls-chat-body">
+          <div class="ls-chat-user"><span class="ls-chat-username">FashionLover</span></div>
+          <div class="ls-chat-text">Have you any 12UK NewBalance? 576 or 311? Or Seezers or Reebok perhaps? 👟👟</div>
+        </div>
+      </div>
+      <!-- Pinned message (Host) -->
+      <div class="ls-chat-pinned">
+        <div class="ls-chat-avatar" style="background:var(--bl10)">M</div>
+        <div class="ls-chat-body">
+          <div class="ls-chat-user">
+            <span class="ls-chat-username">Martinaux</span>
+            <span class="ls-chat-badge host">Host</span>
+          </div>
+          <div class="ls-chat-text"><span class="mention">@all</span> Please don't swear</div>
+        </div>
+      </div>
+      <!-- Chat input -->
+      <div class="ls-chat-input">
+        <span>Say something...</span>
+      </div>
+      <!-- Won notice -->
+      <div class="ls-chat-won" style="margin-top:8px">
+        <div class="won-avatar" style="background-image:url('design-system/images/avatars/ButikMadame.png')"></div>
+        <span>inky_82 is <span class="won-text">won!</span></span>
+      </div>
+    </div>
+    <!-- Right side icons -->
+    <div class="ls-right">
+      <div class="ls-right-btn">
+        <div class="ls-right-icon"><img src="design-system/UI Icons/Icon Clip.svg" alt="Clip"></div>
+        <span class="ls-right-label">Clip</span>
+      </div>
+      <div class="ls-right-btn">
+        <div class="ls-right-icon"><img src="design-system/UI Icons/Icon Share.svg" alt="Share"></div>
+        <span class="ls-right-label">Share</span>
+      </div>
+      <div class="ls-right-btn" id="ls-wallet-btn" style="cursor:pointer">
+        <div class="ls-right-icon"><img src="design-system/UI Icons/Icon Wallet.svg" alt="Wallet"></div>
+        <span class="ls-right-label">Wallet</span>
+      </div>
+      <div class="ls-right-btn">
+        <div class="ls-right-shop">
+          <img src="design-system/UI Icons/Icon Shop.svg" alt="Products">
+          <div class="ls-right-shop-badge">6</div>
+        </div>
+        <span class="ls-right-label">Products</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show Tool (product + bid) -->
+  <div class="ls-tool">
+    <div class="ls-tool-product">
+      <div class="ls-tool-prod-left">
+        <div class="ls-tool-prod-img" style="background-image:url('design-system/images/product photos/image 8.png')"></div>
+        <div class="ls-tool-prod-info" style="width:167px">
+          <div class="ls-tool-prod-name">Rituals Private Collection Home Perfume - Clear</div>
+          <div class="ls-tool-prod-attr">Atrribute - Attribute</div>
+        </div>
+      </div>
+      <div class="ls-tool-prod-right">
+        <div class="ls-tool-prod-price">$1500</div>
+        <div class="ls-tool-prod-timer">0:40</div>
+      </div>
+    </div>
+    <div class="ls-bid">
+      <div class="ls-bid-track">
+        <div class="ls-bid-thumb">
+          <span class="ls-bid-text">Bid $1500</span>
+          <span class="ls-bid-sub">$1650, with <img src="design-system/UI Icons/Icon Protection.svg" alt=""></span>
+        </div>
+        <div class="ls-bid-chevron">
+          <img src="design-system/UI Icons/Icon Double Chevron.svg" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="ls-tool-footer">
+      <span>Total: $1500 with</span>
+      <img src="design-system/UI Icons/Icon Shipping.svg" alt="">
+      <span>shipping +</span>
+      <img src="design-system/UI Icons/Icon Protection.svg" alt="">
+      <span>Buyers protection</span>
+      <img src="design-system/UI Icons/Icon Info.svg" alt="">
+    </div>
+  </div>
+
+  <!-- ── Wallet Sheets ── -->
+  <div class="wallet-overlay" id="wallet-overlay"></div>
+
+  <!-- Sheet 1: Wallet overview (Shipping + Payment) -->
+  <div class="wallet-sheet" id="wallet-main-sheet">
+    <div class="wallet-sheet-bg"></div>
+    <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
+    <div class="wallet-toolbar">
+      <button class="wallet-navi-btn" id="wallet-main-close">
+        <img src="design-system/UI Icons/Icon Close.svg" alt="">
+      </button>
+      <span class="wallet-toolbar-title">Wallet</span>
+      <div class="wallet-toolbar-spacer"></div>
+    </div>
+    <div class="wallet-body">
+      <div class="wallet-action-group">
+        <a class="wallet-action-row" id="wallet-open-addresses">
+          <div class="wallet-action-icon"><img id="wallet-shipping-icon" src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
+          <div class="wallet-action-body">
+            <div class="wallet-action-label" id="wallet-shipping-label">Shipping address</div>
+            <div class="wallet-action-sub" id="wallet-shipping-sub">Tap to set</div>
+          </div>
+          <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
+        </a>
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row" id="wallet-open-payment">
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Card.svg" alt=""></div>
+          <div class="wallet-action-body">
+            <div class="wallet-action-label" id="wallet-payment-label">Payment method</div>
+            <div class="wallet-action-sub" id="wallet-payment-sub">Tap to set</div>
+          </div>
+          <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet 2: Delivery method (legacy, dostępny z Addresses) -->
+  <div class="wallet-sheet" id="wallet-delivery-sheet">
+    <div class="wallet-sheet-bg"></div>
+    <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
+    <div class="wallet-toolbar">
+      <button class="wallet-navi-btn" id="wallet-delivery-back">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
+      </button>
+      <span class="wallet-toolbar-title">Delivery method</span>
+      <div class="wallet-toolbar-spacer"></div>
+    </div>
+    <div class="wallet-body">
+      <div class="wallet-action-group">
+        <a class="wallet-action-row" id="wallet-open-paczkomat">
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Paczkomat.svg" alt=""></div>
+          <div class="wallet-action-body"><div class="wallet-action-label">Paczkomat InPost</div></div>
+          <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
+        </a>
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row" id="wallet-open-courier">
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
+          <div class="wallet-action-body"><div class="wallet-action-label">Courier</div></div>
+          <div class="wallet-action-chevron"><img src="design-system/UI Icons/Icon Right Chevron.svg" alt=""></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet 3: Addresses -->
+  <div class="wallet-sheet" id="wallet-addresses-sheet">
+    <div class="wallet-sheet-bg"></div>
+    <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
+    <div class="wallet-toolbar">
+      <button class="wallet-navi-btn" id="wallet-addresses-back">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
+      </button>
+      <span class="wallet-toolbar-title">Addresses</span>
+      <div style="display:flex;gap:8px;position:relative;z-index:1">
+        <button class="wallet-navi-btn" id="wallet-addr-add-btn">
+          <img src="design-system/UI Icons/Icon Plus.svg" alt="">
+        </button>
+        <button class="wallet-navi-btn confirm" id="wallet-addresses-confirm">
+          <img src="design-system/UI Icons/Icon Check.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="wallet-body">
+      <div class="wallet-action-group" id="wallet-addr-list">
+        <a class="wallet-action-row-tall wallet-addr-row" id="wallet-addr-1" data-delivery="paczkomat">
+          <div class="wallet-radio wa-radio"></div>
+          <div class="wallet-action-body">
+            <div class="wallet-action-label">POB04M</div>
+            <div class="wallet-action-sub">ul. Fabryczna 2B<br>Pobiedziska 62-010</div>
+          </div>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Edit.svg" alt="">
+          </button>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Trash.svg" alt="">
+          </button>
+        </a>
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row-tall wallet-addr-row" id="wallet-addr-2" data-delivery="courier">
+          <div class="wallet-radio selected wa-radio"><div class="wallet-radio-inner"></div></div>
+          <div class="wallet-action-body">
+            <div class="wallet-action-label">Marcin Gałęcki</div>
+            <div class="wallet-action-sub">Lednogóra 62f<br>62-261 Lednogóra</div>
+          </div>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Edit.svg" alt="">
+          </button>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Trash.svg" alt="">
+          </button>
+        </a>
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row-tall wallet-addr-row" id="wallet-addr-3" data-delivery="courier">
+          <div class="wallet-radio wa-radio"></div>
+          <div class="wallet-action-body">
+            <div class="wallet-action-label">Marcin Gałęcki</div>
+            <div class="wallet-action-sub">os. Pod Lipami 12<br>61-633 Poznań</div>
+          </div>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletEditAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Edit.svg" alt="">
+          </button>
+          <button class="wallet-row-icon-btn" onclick="event.stopPropagation();walletDeleteAddressRow(this.closest('.wallet-addr-row'))">
+            <img src="design-system/UI Icons/Icon Trash.svg" alt="">
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet 4: Add / Edit Address -->
+  <div class="wallet-sheet" id="wallet-edit-address-sheet">
+    <div class="wallet-sheet-bg"></div>
+    <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
+    <div class="wallet-toolbar">
+      <button class="wallet-navi-btn" id="wallet-edit-address-back">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
+      </button>
+      <span class="wallet-toolbar-title" id="wallet-edit-address-title">Add address</span>
+      <div class="wallet-toolbar-spacer"></div>
+    </div>
+    <div class="wallet-type-selector">
+      <button class="wallet-type-pill active" id="wa-seg-paczkomat" onclick="waSetType('paczkomat')">
+        <img src="design-system/UI Icons/Icon Paczkomat.svg" alt=""> Paczkomat
+      </button>
+      <button class="wallet-type-pill" id="wa-seg-courier" onclick="waSetType('courier')">
+        <img src="design-system/UI Icons/Icon Shipping.svg" alt=""> Courier
+      </button>
+    </div>
+    <div class="wallet-form-stack">
+      <!-- Paczkomat: ID + Select -->
+      <div class="wallet-form-input" id="wa-row-paczkomat-id" onclick="walletFillField('wa-paczkomat-id','POB04M')">
+        <div class="wallet-field empty" id="wa-field-paczkomat-id">
+          <span class="wallet-field-label">Paczkomat ID</span>
+          <span class="wallet-field-value" id="wa-paczkomat-id"></span>
+        </div>
+        <span class="wallet-right-link">Select</span>
+      </div>
+      <!-- Courier: name, address, postal+city -->
+      <div class="wallet-form-input wa-field-hide" id="wa-row-name" onclick="walletFillField('wa-name','Marcin Gałęcki')">
+        <div class="wallet-field empty" id="wa-field-name">
+          <span class="wallet-field-label">Full name</span>
+          <span class="wallet-field-value" id="wa-name"></span>
+        </div>
+      </div>
+      <div class="wallet-form-input wa-field-hide" id="wa-row-address" onclick="walletFillField('wa-address','Lednogóra 62f')">
+        <div class="wallet-field empty" id="wa-field-address">
+          <span class="wallet-field-label">Address</span>
+          <span class="wallet-field-value" id="wa-address"></span>
+        </div>
+      </div>
+      <div class="wallet-form-row wa-field-hide" id="wa-row-postal-city">
+        <div class="wallet-form-input" onclick="walletFillField('wa-postal','62-261')">
+          <div class="wallet-field empty" id="wa-field-postal">
+            <span class="wallet-field-label">Postal code</span>
+            <span class="wallet-field-value" id="wa-postal"></span>
+          </div>
+        </div>
+        <div class="wallet-form-input" onclick="walletFillField('wa-city','Lednogóra')">
+          <div class="wallet-field empty" id="wa-field-city">
+            <span class="wallet-field-label">City</span>
+            <span class="wallet-field-value" id="wa-city"></span>
+          </div>
+        </div>
+      </div>
+      <!-- Both: phone, email -->
+      <div class="wallet-form-input" onclick="walletFillField('wa-phone','+48 507416939')">
+        <div class="wallet-field empty" id="wa-field-phone">
+          <span class="wallet-field-label">Phone number</span>
+          <span class="wallet-field-value" id="wa-phone"></span>
+        </div>
+      </div>
+      <div class="wallet-form-input" onclick="walletFillField('wa-email','marcin@example.com')">
+        <div class="wallet-field empty" id="wa-field-email">
+          <span class="wallet-field-label">Email</span>
+          <span class="wallet-field-value" id="wa-email"></span>
+        </div>
+      </div>
+      <button class="wallet-cta-btn" id="wallet-edit-address-save">Save address</button>
+    </div>
+  </div>
+
+  <!-- Sheet 5: Payment method -->
+  <div class="wallet-sheet" id="wallet-payment-sheet">
+    <div class="wallet-sheet-bg"></div>
+    <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
+    <div class="wallet-toolbar">
+      <button class="wallet-navi-btn" id="wallet-payment-back">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
+      </button>
+      <span class="wallet-toolbar-title">Payment method</span>
+      <div class="wallet-toolbar-spacer"></div>
+    </div>
+    <div class="wallet-body">
+      <div class="wallet-action-group">
+        <a class="wallet-action-row wallet-pay-row" data-payment="card">
+          <div class="wallet-action-icon"><img src="design-system/UI Icons/Icon Card.svg" alt=""></div>
+          <div class="wallet-action-body">
+            <div class="wallet-action-label">Card</div>
+            <div class="wallet-action-sub" id="wallet-pay-card-sub">Visa ·· 4242</div>
+          </div>
+          <div class="wallet-radio selected"><div class="wallet-radio-inner"></div></div>
+        </a>
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row wallet-pay-row" data-payment="blik">
+          <div class="wallet-action-icon" style="font-size:12px;font-weight:800;color:#2b2b2b;letter-spacing:-1px">blik</div>
+          <div class="wallet-action-body"><div class="wallet-action-label">Blik</div></div>
+          <div class="wallet-radio"></div>
+        </a>
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row wallet-pay-row" data-payment="applepay">
+          <div class="wallet-action-icon" style="font-size:11px;font-weight:600;color:#1C1C1E;letter-spacing:-0.5px"> Pay</div>
+          <div class="wallet-action-body"><div class="wallet-action-label">Apple Pay</div></div>
+          <div class="wallet-radio"></div>
+        </a>
+        <div class="wallet-separator"></div>
+        <a class="wallet-action-row wallet-pay-row" data-payment="paypo">
+          <div class="wallet-action-icon" style="font-size:11px;font-weight:700;color:var(--rd10)">PayPo</div>
+          <div class="wallet-action-body"><div class="wallet-action-label">PayPo</div></div>
+          <div class="wallet-radio"></div>
+        </a>
+      </div>
+      <a class="wallet-pay-link" id="wallet-open-add-card">+ Add payment method</a>
+    </div>
+  </div>
+
+  <!-- Sheet 6: Add Card -->
+  <div class="wallet-sheet" id="wallet-add-card-sheet">
+    <div class="wallet-sheet-bg"></div>
+    <div class="wallet-grabber-wrap"><div class="wallet-grabber"></div></div>
+    <div class="wallet-toolbar">
+      <button class="wallet-navi-btn" id="wallet-add-card-back">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" alt="">
+      </button>
+      <span class="wallet-toolbar-title">Add card</span>
+      <div class="wallet-toolbar-spacer"></div>
+    </div>
+    <div class="wallet-form-stack">
+      <button class="wallet-apple-btn">
+        <span class="wallet-apple-btn-icon"></span>
+        <span class="wallet-apple-btn-label">Pay</span>
+      </button>
+      <div class="wallet-or-divider">or use card</div>
+      <div class="wallet-form-input" onclick="walletFillField('wac-number','4242 4242 4242 4242')">
+        <div class="wallet-field empty" id="wa-field-card-number">
+          <span class="wallet-field-label">Card number</span>
+          <span class="wallet-field-value" id="wac-number"></span>
+        </div>
+        <div class="wallet-form-icon"><img src="design-system/UI Icons/Icon Scan.svg" alt=""></div>
+      </div>
+      <div class="wallet-form-row">
+        <div class="wallet-form-input" onclick="walletFillField('wac-expiry','12 / 28')">
+          <div class="wallet-field empty" id="wa-field-expiry">
+            <span class="wallet-field-label">Expiry date</span>
+            <span class="wallet-field-value" id="wac-expiry"></span>
+          </div>
+        </div>
+        <div class="wallet-form-input" onclick="walletFillField('wac-cvv','123')">
+          <div class="wallet-field empty" id="wa-field-cvv">
+            <span class="wallet-field-label">CVV</span>
+            <span class="wallet-field-value" id="wac-cvv"></span>
+          </div>
+          <div class="wallet-form-icon"><img src="design-system/UI Icons/Icon Card.svg" alt=""></div>
+        </div>
+      </div>
+      <div class="wallet-form-input" onclick="walletFillField('wac-name','Marcin Galecki')">
+        <div class="wallet-field empty" id="wa-field-card-name">
+          <span class="wallet-field-label">Cardholder name</span>
+          <span class="wallet-field-value" id="wac-name"></span>
+        </div>
+      </div>
+      <button class="wallet-cta-btn" id="wallet-save-card-btn">Save card</button>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- .phone -->
+
+<script>
+// Back button
+const lsBack = document.getElementById('ls-back-btn');
+if (lsBack) lsBack.addEventListener('click', () => { if (history.length > 1) history.back(); else window.location.href = 'index.html'; });
+
+// Host avatar → Seller Profile
+const lsHostAvatar = document.querySelector('#screen-live-show .ls-host-info');
+if (lsHostAvatar) { lsHostAvatar.style.cursor = 'pointer'; lsHostAvatar.addEventListener('click', () => { window.location.href = 'seller-profile.html'; }); }
+
+// Wallet Flow
+(function() {
+  const overlay = document.getElementById('wallet-overlay');
+  const sheets = { main: document.getElementById('wallet-main-sheet'), delivery: document.getElementById('wallet-delivery-sheet'), addresses: document.getElementById('wallet-addresses-sheet'), editAddress: document.getElementById('wallet-edit-address-sheet'), payment: document.getElementById('wallet-payment-sheet'), addCard: document.getElementById('wallet-add-card-sheet') };
+
+  function openSheet(sheet) { closeAll(); overlay.classList.add('active'); sheet.classList.add('active'); }
+  function closeAll() { Object.values(sheets).forEach(s => { if(s) s.classList.remove('active'); }); overlay.classList.remove('active'); }
+
+  const lsWalletBtn = document.getElementById('ls-wallet-btn');
+  if (lsWalletBtn) lsWalletBtn.addEventListener('click', () => openSheet(sheets.main));
+  if (overlay) overlay.addEventListener('click', closeAll);
+
+  const mainClose = document.getElementById('wallet-main-close');
+  if (mainClose) mainClose.addEventListener('click', closeAll);
+  const openAddresses = document.getElementById('wallet-open-addresses');
+  if (openAddresses) openAddresses.addEventListener('click', () => openSheet(sheets.addresses));
+  const openPayment = document.getElementById('wallet-open-payment');
+  if (openPayment) openPayment.addEventListener('click', () => openSheet(sheets.payment));
+
+  let currentDeliveryType = 'paczkomat';
+  let editingAddressRow = null;
+
+  function setField(id, value) { const val = document.getElementById(id); const field = val ? val.closest('.wallet-field') : null; if (!val || !field) return; val.textContent = value; field.classList.toggle('empty', !value); }
+
+  function applyFormType(type) {
+    const isPaczkomat = type === 'paczkomat';
+    const pr = document.getElementById('wa-row-paczkomat-id'); if (pr) pr.classList.toggle('wa-field-hide', !isPaczkomat);
+    ['wa-row-name','wa-row-address','wa-row-postal-city'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.toggle('wa-field-hide', isPaczkomat); });
+    const segP = document.getElementById('wa-seg-paczkomat'); const segC = document.getElementById('wa-seg-courier');
+    if (segP) segP.classList.toggle('active', isPaczkomat); if (segC) segC.classList.toggle('active', !isPaczkomat);
+  }
+
+  function updateShippingRow(row) {
+    const delivery = row.dataset.delivery || 'courier';
+    const label = row.querySelector('.wallet-action-label').textContent;
+    const subEl = row.querySelector('.wallet-action-sub'); const sub = subEl ? subEl.innerText.replace('\n', ', ') : '';
+    document.getElementById('wallet-shipping-label').textContent = label;
+    document.getElementById('wallet-shipping-sub').textContent = sub;
+    const iconEl = document.getElementById('wallet-shipping-icon');
+    if (iconEl) iconEl.src = delivery === 'paczkomat' ? 'design-system/UI Icons/Icon Paczkomat.svg' : 'design-system/UI Icons/Icon Shipping.svg';
+  }
+
+  const delBack = document.getElementById('wallet-delivery-back');
+  if (delBack) delBack.addEventListener('click', () => openSheet(sheets.main));
+  const openPaczkomat = document.getElementById('wallet-open-paczkomat');
+  if (openPaczkomat) openPaczkomat.addEventListener('click', () => { currentDeliveryType = 'paczkomat'; openSheet(sheets.addresses); });
+  const openCourier = document.getElementById('wallet-open-courier');
+  if (openCourier) openCourier.addEventListener('click', () => { currentDeliveryType = 'courier'; openSheet(sheets.addresses); });
+
+  const addrBack = document.getElementById('wallet-addresses-back');
+  if (addrBack) addrBack.addEventListener('click', () => openSheet(sheets.main));
+  const addrConfirm = document.getElementById('wallet-addresses-confirm');
+  if (addrConfirm) addrConfirm.addEventListener('click', () => { const selected = document.querySelector('#wallet-addr-list .wallet-radio.selected'); if (selected) updateShippingRow(selected.closest('.wallet-addr-row')); openSheet(sheets.main); });
+  const addrAddBtn = document.getElementById('wallet-addr-add-btn');
+  if (addrAddBtn) addrAddBtn.addEventListener('click', () => openAddAddress('paczkomat'));
+
+  const addrList = document.getElementById('wallet-addr-list');
+  if (addrList) addrList.addEventListener('click', e => { const row = e.target.closest('.wallet-addr-row'); if (row && !e.target.closest('button')) walletSelectAddress(row); });
+
+  function walletEditAddressRow(row) {
+    editingAddressRow = row; const type = row.dataset.delivery || 'courier'; currentDeliveryType = type;
+    document.getElementById('wallet-edit-address-title').textContent = 'Edit address'; applyFormType(type);
+    const sub = row.querySelector('.wallet-action-sub'); const subLines = sub ? sub.innerText.split('\n') : ['', ''];
+    if (type === 'paczkomat') { setField('wa-paczkomat-id', row.querySelector('.wallet-action-label').textContent); }
+    else { const cityParts = (subLines[1] || '').split(' '); setField('wa-name', row.querySelector('.wallet-action-label').textContent); setField('wa-address', subLines[0] || ''); setField('wa-postal', cityParts[0] || ''); setField('wa-city', cityParts.slice(1).join(' ') || ''); }
+    setField('wa-phone', ''); setField('wa-email', ''); openSheet(sheets.editAddress);
+  }
+
+  function walletDeleteAddressRow(row) {
+    const prev = row.previousElementSibling; if (prev && prev.classList.contains('wallet-separator')) prev.remove();
+    const next = row.nextElementSibling; if (next && next.classList.contains('wallet-separator')) next.remove();
+    row.remove();
+    if (!document.querySelector('#wallet-addr-list .wallet-radio.selected')) { const first = document.querySelector('#wallet-addr-list .wallet-addr-row'); if (first) walletSelectAddress(first); }
+  }
+
+  function openAddAddress(type) {
+    editingAddressRow = null; currentDeliveryType = type || 'paczkomat';
+    ['wa-paczkomat-id','wa-name','wa-address','wa-postal','wa-city','wa-phone','wa-email'].forEach(id => setField(id, ''));
+    document.getElementById('wallet-edit-address-title').textContent = 'Add address'; applyFormType(currentDeliveryType); openSheet(sheets.editAddress);
+  }
+
+  const editBack = document.getElementById('wallet-edit-address-back');
+  if (editBack) editBack.addEventListener('click', () => openSheet(sheets.addresses));
+  const editSave = document.getElementById('wallet-edit-address-save');
+  if (editSave) editSave.addEventListener('click', () => openSheet(sheets.addresses));
+
+  function waSetType(type) { currentDeliveryType = type; applyFormType(type); }
+
+  const payBack = document.getElementById('wallet-payment-back');
+  if (payBack) payBack.addEventListener('click', () => openSheet(sheets.main));
+  const openAddCard = document.getElementById('wallet-open-add-card');
+  if (openAddCard) openAddCard.addEventListener('click', () => openSheet(sheets.addCard));
+
+  document.querySelectorAll('.wallet-pay-row').forEach(row => {
+    row.addEventListener('click', () => {
+      document.querySelectorAll('#wallet-payment-sheet .wallet-radio').forEach(r => { r.classList.remove('selected'); r.innerHTML = ''; });
+      const radio = row.querySelector('.wallet-radio'); if (radio) { radio.classList.add('selected'); radio.innerHTML = '<div class="wallet-radio-inner"></div>'; }
+      const labels = { card:'Card', blik:'Blik', applepay:'Apple Pay', paypo:'PayPo' };
+      const subs = { card:'Visa ·· 4242', blik:'Code via app', applepay:'Face ID', paypo:'Buy now, pay later' };
+      const p = row.dataset.payment;
+      document.getElementById('wallet-payment-label').textContent = labels[p] || 'Payment method';
+      document.getElementById('wallet-payment-sub').textContent = subs[p] || '';
+      setTimeout(() => openSheet(sheets.main), 200);
+    });
+  });
+
+  const cardBack = document.getElementById('wallet-add-card-back');
+  if (cardBack) cardBack.addEventListener('click', () => openSheet(sheets.payment));
+  const saveCardBtn = document.getElementById('wallet-save-card-btn');
+  if (saveCardBtn) saveCardBtn.addEventListener('click', () => { document.getElementById('wallet-payment-label').textContent = 'Card'; document.getElementById('wallet-payment-sub').textContent = 'Visa ·· 4242'; closeAll(); });
+
+  window.walletDeleteAddressRow = walletDeleteAddressRow;
+  window.walletEditAddressRow = walletEditAddressRow;
+  window.waSetType = waSetType;
+})();
+
+function walletSelectAddress(row) {
+  document.querySelectorAll('#wallet-addresses-sheet .wallet-radio').forEach(r => { r.classList.remove('selected'); r.innerHTML = ''; });
+  const radio = row.querySelector('.wallet-radio'); if (radio) { radio.classList.add('selected'); radio.innerHTML = '<div class="wallet-radio-inner"></div>'; }
+}
+
+function walletFillField(id, sample) {
+  const val = document.getElementById(id); const field = val ? val.closest('.wallet-field') : null;
+  if (!val || !field) return; if (!val.textContent.trim()) { val.textContent = sample; field.classList.remove('empty'); }
+}
+</script>
+
+</body>
+</html>

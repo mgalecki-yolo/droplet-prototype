@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Droplet App</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="phone">
+
+<!-- ── Status Bar ── -->
+<div class="status-bar">
+  <span class="status-time">9:41</span>
+  <div class="status-icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#000"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#000"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#000"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#000"/></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#000"/><path d="M3.5 7.5C5 6 6.5 5.2 8 5.2s3 .8 4.5 2.3M1 4.5C3.5 2 5.8 1 8 1s4.5 1 7 3.5" stroke="#000" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <svg width="27" height="12" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="2.5" fill="none" stroke="#000" stroke-opacity=".35"/><rect x="2" y="2" width="19" height="8" rx="1.5" fill="#000"/><path d="M25 4.5v3a1.5 1.5 0 000-3z" fill="#000" fill-opacity=".4"/></svg>
+  </div>
+</div>
+
+<div class="screen active" id="screen-account">
+  <!-- Status bar -->
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
+      <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
+    </div>
+  </div>
+
+  <div class="screen-scroll" id="acc-scroll">
+    <!-- Spacer for status bar -->
+    <div style="height:54px"></div>
+
+    <!-- Big Title — H10 32px Bold (Top navi pattern: big title state) -->
+    <div style="padding:10px 16px 0">
+      <h1 style="font-size:32px;font-weight:700;color:#000;line-height:1.1">Account</h1>
+    </div>
+
+    <!-- Profile card — Figma 5652:72972 style -->
+    <div style="padding:12px 16px 0">
+      <div style="display:flex;align-items:center;justify-content:space-between;background:var(--gw30);border-radius:20px;padding:16px;box-shadow:var(--shadow-interactive)">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--yl10);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M9.22 2C9.86 2 10.19 2.16 10.52 2.49L11.02 3C11.33 3.31 11.49 3.39 11.98 3.39H13.66C15.03 3.39 15.76 4.08 15.76 5.39V11.74C15.77 13.05 15.04 13.75 13.67 13.75C13.65 13.75 10.21 14 8 14C5.79 14 2.36 13.75 2.32 13.75C.95 13.75 .22 13.05 .22 11.74V5.39C.22 4.08 .94 3.39 2.31 3.39H3.97C4.46 3.39 4.63 3.31 4.93 3L5.43 2.49C5.76 2.16 6.09 2 6.73 2H9.22ZM8 4.64C5.73 4.64 4.04 6.33 4.04 8.4C4.04 10.47 5.73 12.16 8 12.16C10.07 12.16 11.56 10.47 11.56 8.4C11.56 6.33 9.87 4.64 8 4.64ZM8 6.04C9.1 6.04 10.16 7.1 10.16 8.4C10.16 9.7 9.1 10.76 8 10.76C6.5 10.76 5.44 9.7 5.44 8.4C5.44 7.1 6.5 6.04 8 6.04Z" fill="#222A35"/></svg>
+          </div>
+          <div>
+            <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Marcin</div>
+            <div style="font-size:13px;font-weight:400;color:#000">CatchyDeals</div>
+          </div>
+        </div>
+        <button onclick="showScreen('screen-edit-profile')" style="height:36px;padding:0 16px;border-radius:70px;background:var(--wh10);border:none;box-shadow:var(--shadow-interactive);font-family:inherit;font-size:12px;font-weight:600;color:var(--bw20);cursor:pointer;flex-shrink:0">Edit Profile</button>
+      </div>
+    </div>
+
+    <!-- Pill navigation — Category Button pattern -->
+    <div class="acc-pills" style="display:flex;gap:8px;overflow-x:auto;padding:12px 16px 8px;scrollbar-width:none">
+      <button class="acc-pill" data-acc-tab="purchases" onclick="switchAccTab('purchases')">Purchases</button>
+      <button class="acc-pill" data-acc-tab="notifications" onclick="switchAccTab('notifications')">Notifications</button>
+      <button class="acc-pill active" data-acc-tab="settings" onclick="switchAccTab('settings')">Settings</button>
+      <button class="acc-pill" data-acc-tab="payments" onclick="switchAccTab('payments')">Payments and shipping</button>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- TAB: Purchases (placeholder)        -->
+    <!-- ═══════════════════════════════════ -->
+    <div class="acc-tab" id="acc-tab-purchases">
+      <div class="placeholder-screen" style="height:500px">
+        <img src="design-system/UI Icons/Icon Orders.svg" style="width:48px;height:48px;opacity:0.2">
+        <span style="font-size:16px;font-weight:500;color:var(--bw40)">Purchases</span>
+        <span style="font-size:13px;font-weight:400;color:var(--bw40)">Coming soon</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- TAB: Notifications (placeholder)    -->
+    <!-- ═══════════════════════════════════ -->
+    <div class="acc-tab" id="acc-tab-notifications">
+      <div class="placeholder-screen" style="height:500px">
+        <img src="design-system/UI Icons/Icon Alert.svg" style="width:48px;height:48px;opacity:0.2">
+        <span style="font-size:16px;font-weight:500;color:var(--bw40)">Notifications</span>
+        <span style="font-size:13px;font-weight:400;color:var(--bw40)">Coming soon</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- TAB: Settings (Variant A style)     -->
+    <!-- ═══════════════════════════════════ -->
+    <div class="acc-tab active" id="acc-tab-settings">
+
+      <!-- Variant switcher -->
+      <div style="display:flex;gap:6px;padding:8px 16px 4px">
+        <button class="acc-var-btn active" onclick="switchAccVar('a')">A</button>
+        <button class="acc-var-btn" onclick="switchAccVar('b')">B</button>
+        <button class="acc-var-btn" onclick="switchAccVar('c')">C</button>
+      </div>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- A: Card + Flat — toggles bez ikon,         -->
+      <!--    linki flat z ikonami na tle              -->
+      <!-- ══════════════════════════════════════════ -->
+      <div class="acc-var active" id="acc-var-a">
+        <div class="acc-section-label">Preferences</div>
+        <div class="acc-card">
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Direct Messages</span>
+              <span class="acc-toggle-row-desc">Receive messages from other users. You can always block individual users.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Private Entry</span>
+              <span class="acc-toggle-row-desc">Join shows without being announced. Other viewers won't see you entered.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Activity Status</span>
+              <span class="acc-toggle-row-desc">Share your activity with friends. Shows when you're online or watching.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Auction Haptic Feedback</span>
+              <span class="acc-toggle-row-desc">Vibration when auction starts in a show. Helps you react faster to new bids.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+        </div>
+
+        <!-- List 2: flat links with icons on background -->
+        <div class="acc-section-label">Support</div>
+        <div class="acc-flat-row">
+          <img class="acc-flat-icon" src="design-system/UI Icons/Icon Message.svg">
+          <span class="acc-flat-row-label">Contact Us</span>
+          <img class="acc-flat-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+        </div>
+        <div class="acc-flat-sep"></div>
+        <div class="acc-flat-row" onclick="showScreen('screen-reports-list')" style="cursor:pointer">
+          <img class="acc-flat-icon" src="design-system/UI Icons/Icon Report.svg">
+          <span class="acc-flat-row-label">User Reports</span>
+          <img class="acc-flat-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+        </div>
+        <div class="acc-flat-sep"></div>
+        <div class="acc-flat-row">
+          <img class="acc-flat-icon" src="design-system/UI Icons/Icon Protection.svg">
+          <span class="acc-flat-row-label">Privacy Policy</span>
+          <img class="acc-flat-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+        </div>
+        <div class="acc-flat-sep"></div>
+        <div class="acc-flat-row">
+          <img class="acc-flat-icon" src="design-system/UI Icons/Icon Recipe.svg">
+          <span class="acc-flat-row-label">Terms & Conditions</span>
+          <img class="acc-flat-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+        </div>
+        <div class="acc-flat-sep"></div>
+        <div class="acc-flat-row">
+          <img class="acc-flat-icon" src="design-system/UI Icons/Icon Info.svg">
+          <span class="acc-flat-row-label">FAQ</span>
+          <img class="acc-flat-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+        </div>
+        <div class="acc-flat-sep"></div>
+        <div class="acc-flat-row">
+          <img class="acc-flat-icon" src="design-system/UI Icons/Icon Trash.svg">
+          <span class="acc-flat-row-label">Delete Account</span>
+          <img class="acc-flat-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+        </div>
+
+        <button class="acc-signout">
+          <img src="design-system/UI Icons/Icon Open.svg">
+          Sign Out
+        </button>
+        <div class="acc-version">Droplet v1.0.0</div>
+      </div>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- B: Card + Icon card — toggles bez ikon,    -->
+      <!--    linki w karcie z icon-circles            -->
+      <!-- ══════════════════════════════════════════ -->
+      <div class="acc-var" id="acc-var-b">
+        <div class="acc-section-label">Preferences</div>
+        <div class="acc-card">
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Direct Messages</span>
+              <span class="acc-toggle-row-desc">Receive messages from other users. You can always block individual users.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Private Entry</span>
+              <span class="acc-toggle-row-desc">Join shows without being announced. Other viewers won't see you entered.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Activity Status</span>
+              <span class="acc-toggle-row-desc">Share your activity with friends. Shows when you're online or watching.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Auction Haptic Feedback</span>
+              <span class="acc-toggle-row-desc">Vibration when auction starts in a show. Helps you react faster to new bids.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+        </div>
+
+        <!-- List 2: white card with icon circles -->
+        <div class="acc-section-label">Support</div>
+        <div class="acc-card">
+          <div class="acc-row">
+            <div class="acc-row-icon"><img src="design-system/UI Icons/Icon Message.svg"></div>
+            <span class="acc-row-label">Contact Us</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-row">
+            <div class="acc-row-icon"><img src="design-system/UI Icons/Icon Report.svg"></div>
+            <span class="acc-row-label">User Reports</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-row">
+            <div class="acc-row-icon"><img src="design-system/UI Icons/Icon Protection.svg"></div>
+            <span class="acc-row-label">Privacy Policy</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-row">
+            <div class="acc-row-icon"><img src="design-system/UI Icons/Icon Recipe.svg"></div>
+            <span class="acc-row-label">Terms & Conditions</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-row">
+            <div class="acc-row-icon"><img src="design-system/UI Icons/Icon Info.svg"></div>
+            <span class="acc-row-label">FAQ</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-row">
+            <div class="acc-row-icon"><img src="design-system/UI Icons/Icon Trash.svg"></div>
+            <span class="acc-row-label">Delete Account</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+        </div>
+
+        <button class="acc-signout">
+          <img src="design-system/UI Icons/Icon Open.svg">
+          Sign Out
+        </button>
+        <div class="acc-version">Droplet v1.0.0</div>
+      </div>
+
+      <!-- ══════════════════════════════════════════ -->
+      <!-- C: Card + Inset card — toggles bez ikon,   -->
+      <!--    linki w inset card (ov30) z ikonami     -->
+      <!-- ══════════════════════════════════════════ -->
+      <div class="acc-var" id="acc-var-c">
+        <div class="acc-section-label">Preferences</div>
+        <div class="acc-card">
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Direct Messages</span>
+              <span class="acc-toggle-row-desc">Receive messages from other users. You can always block individual users.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Private Entry</span>
+              <span class="acc-toggle-row-desc">Join shows without being announced. Other viewers won't see you entered.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Activity Status</span>
+              <span class="acc-toggle-row-desc">Share your activity with friends. Shows when you're online or watching.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="acc-toggle-row">
+            <div class="acc-toggle-row-info">
+              <span class="acc-toggle-row-label">Auction Haptic Feedback</span>
+              <span class="acc-toggle-row-desc">Vibration when auction starts in a show. Helps you react faster to new bids.</span>
+            </div>
+            <button class="acc-switch on" onclick="this.classList.toggle('on')"></button>
+          </div>
+        </div>
+
+        <!-- List 2: inset card (ov30 bg) with icons -->
+        <div class="acc-section-label">Support</div>
+        <div class="acc-card-inset">
+          <div class="acc-inset-row">
+            <img class="acc-inset-icon" src="design-system/UI Icons/Icon Message.svg">
+            <span class="acc-inset-label">Contact Us</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-inset-row">
+            <img class="acc-inset-icon" src="design-system/UI Icons/Icon Report.svg">
+            <span class="acc-inset-label">User Reports</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-inset-row">
+            <img class="acc-inset-icon" src="design-system/UI Icons/Icon Protection.svg">
+            <span class="acc-inset-label">Privacy Policy</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-inset-row">
+            <img class="acc-inset-icon" src="design-system/UI Icons/Icon Recipe.svg">
+            <span class="acc-inset-label">Terms & Conditions</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-inset-row">
+            <img class="acc-inset-icon" src="design-system/UI Icons/Icon Info.svg">
+            <span class="acc-inset-label">FAQ</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+          <div class="acc-inset-row">
+            <img class="acc-inset-icon" src="design-system/UI Icons/Icon Trash.svg">
+            <span class="acc-inset-label">Delete Account</span>
+            <img class="acc-row-chevron" src="design-system/UI Icons/Icon Right Chevron.svg">
+          </div>
+        </div>
+
+        <button class="acc-signout">
+          <img src="design-system/UI Icons/Icon Open.svg">
+          Sign Out
+        </button>
+        <div class="acc-version">Droplet v1.0.0</div>
+      </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════ -->
+    <!-- TAB: Payments and shipping (placeholder) -->
+    <!-- ═══════════════════════════════════ -->
+    <div class="acc-tab" id="acc-tab-payments">
+      <div class="placeholder-screen" style="height:500px">
+        <img src="design-system/UI Icons/Icon Wallet.svg" style="width:48px;height:48px;opacity:0.2">
+        <span style="font-size:16px;font-weight:500;color:var(--bw40)">Payments and shipping</span>
+        <span style="font-size:13px;font-weight:400;color:var(--bw40)">Coming soon</span>
+      </div>
+    </div>
+
+  </div><!-- /screen-scroll -->
+</div>
+
+<div class="screen" id="screen-ui-explore">
+  <!-- App Top -->
+  <div style="position:sticky;top:0;z-index:100;background:var(--ov40)">
+    <div style="height:54px;padding:14px 28px 0;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:16px;font-weight:600;color:#000;letter-spacing:-0.3px">9:41</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px">
+      <button onclick="showScreen('screen-sell')" style="width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer">
+        <img src="design-system/UI Icons/Icon Left Chevron.svg" width="18" height="18">
+      </button>
+      <!-- B10: 16px SemiBold 600 -->
+      <span style="font-size:12px;font-weight:600;color:var(--bl10);cursor:pointer">Manage</span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div style="flex:1;overflow-y:auto;padding:0 16px 130px;scrollbar-width:none">
+
+    <!-- Title: H15 — 23px SemiBold -0.5px -->
+    <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;margin-top:4px">Finances</div>
+
+    <!-- Tabs: Payments / Transactions — B20: 12px SemiBold -->
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <div style="height:36px;padding:0 16px;border-radius:296px;background:var(--ov15);display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--bw20)">Payments</div>
+      <div style="height:36px;padding:0 16px;border-radius:296px;background:var(--wh10);display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive)">Transactions</div>
+    </div>
+
+    <!-- Section: Payments — H15 -->
+    <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;margin-top:20px">Payments</div>
+
+    <!-- Balance: H10 — 32px Bold -->
+    <div style="margin-top:8px">
+      <!-- F80: 11px Medium — label -->
+      <div style="font-size:11px;font-weight:500;color:var(--bw40)">Total Balance</div>
+      <div style="font-size:32px;font-weight:700;color:var(--bw10);letter-spacing:-0.5px;margin-top:2px">$1,302.00</div>
+
+      <!-- Stacked bar -->
+      <div style="display:flex;height:8px;border-radius:4px;overflow:hidden;margin-top:12px;gap:2px">
+        <div style="flex:72.2;background:var(--gr10);border-radius:4px"></div>
+        <div style="flex:23;background:var(--yl10);border-radius:4px"></div>
+        <div style="flex:4.8;background:var(--rd10);border-radius:4px"></div>
+      </div>
+
+      <!-- Legend: F70 — 12px Regular -->
+      <div style="display:flex;justify-content:space-between;margin-top:10px">
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:50%;background:var(--gr10)"></div><span style="font-size:12px;font-weight:400;color:var(--bw30)">Available $940</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:50%;background:var(--yl10)"></div><span style="font-size:12px;font-weight:400;color:var(--bw30)">Pending $300</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:50%;background:var(--rd10)"></div><span style="font-size:12px;font-weight:400;color:var(--bw30)">Refunded</span></div>
+      </div>
+    </div>
+
+    <!-- Metric cards -->
+    <div style="display:flex;gap:10px;margin-top:20px">
+      <div style="flex:1;background:var(--wh10);border-radius:16px;padding:14px;box-shadow:var(--shadow-interactive)">
+        <div style="width:32px;height:32px;border-radius:10px;background:#E8F8EC;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+          <img src="design-system/UI Icons/Icon Download.svg" width="16" height="16">
+        </div>
+        <!-- F80: 11px Medium -->
+        <div style="font-size:11px;font-weight:500;color:var(--bw40)">Withdraw</div>
+        <!-- H40: 16px Bold -->
+        <div style="font-size:16px;font-weight:700;color:var(--bw10);margin-top:2px">$940.00</div>
+      </div>
+      <div style="flex:1;background:var(--wh10);border-radius:16px;padding:14px;box-shadow:var(--shadow-interactive)">
+        <div style="width:32px;height:32px;border-radius:10px;background:#FFF8E0;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+          <img src="design-system/UI Icons/Icon Clock.svg" width="16" height="16">
+        </div>
+        <div style="font-size:11px;font-weight:500;color:var(--bw40)">Pending</div>
+        <div style="font-size:16px;font-weight:700;color:var(--bw10);margin-top:2px">$300.00</div>
+      </div>
+    </div>
+
+    <!-- Early payout banner -->
+    <div style="display:flex;align-items:center;background:var(--wh10);border-radius:14px;padding:14px;margin-top:10px;box-shadow:var(--shadow-interactive);gap:12px">
+      <div style="width:36px;height:36px;border-radius:10px;background:var(--rd20);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <img src="design-system/UI Icons/Icon Flash.svg" width="18" height="18">
+      </div>
+      <div style="flex:1">
+        <!-- F22: 14px SemiBold -->
+        <div style="font-size:14px;font-weight:600;color:var(--bw10)">Early Payout</div>
+        <!-- F70: 12px Regular -->
+        <div style="font-size:12px;font-weight:400;color:var(--bw40)">Access your money early</div>
+      </div>
+      <img src="design-system/UI Icons/Icon Right Chevron.svg" width="16" height="16" style="opacity:0.4">
+    </div>
+
+    <!-- History: H15 — 23px SemiBold -0.5px -->
+    <div style="font-size:23px;font-weight:600;color:var(--bw10);margin-top:24px;margin-bottom:12px;letter-spacing:-0.5px">History</div>
+
+    <!-- Clean rows in card (variant C style) -->
+    <div style="background:var(--wh10);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-interactive)">
+      <!-- Row 1 -->
+      <div style="display:flex;align-items:center;padding:12px 14px;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#00C7BE;flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <!-- F22: 14px SemiBold -->
+          <div style="font-size:14px;font-weight:600;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Blue Airmax 95 unisex</div>
+          <!-- F70: 12px Regular -->
+          <div style="font-size:12px;font-weight:400;color:var(--bw40)">Label Created · <span style="color:var(--bl10)">CatchyDeals</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <!-- F22: 14px SemiBold -->
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$102.34</div>
+          <!-- F90: 11px Regular -->
+          <div style="font-size:11px;font-weight:400;color:var(--bw40)">2/7/26</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--ov30);margin:0 14px"></div>
+      <!-- Row 2 -->
+      <div style="display:flex;align-items:center;padding:12px 14px;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--gr10);flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">#45 Used Stuff on the screen</div>
+          <div style="font-size:12px;font-weight:400;color:var(--bw40)">Completed · <span style="color:var(--bl10)">IllusionClothing</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$2.00</div>
+          <div style="font-size:11px;font-weight:400;color:var(--bw40)">2/7/26</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--ov30);margin:0 14px"></div>
+      <!-- Row 3 -->
+      <div style="display:flex;align-items:center;padding:12px 14px;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--gr10);flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Airmax Classic 95 white blue red</div>
+          <div style="font-size:12px;font-weight:400;color:var(--bw40)">Completed · <span style="color:var(--bl10)">JsrCoins</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$30.00</div>
+          <div style="font-size:11px;font-weight:400;color:var(--bw40)">2/7/26</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--ov30);margin:0 14px"></div>
+      <!-- Row 4 -->
+      <div style="display:flex;align-items:center;padding:12px 14px;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--rd10);flex-shrink:0"></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">#923 Item On Screen Sale</div>
+          <div style="font-size:12px;font-weight:400;color:var(--bw40)">Refunded · <span style="color:var(--bl10)">FoodBargrains</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$30.00</div>
+          <div style="font-size:11px;font-weight:400;color:var(--bw40)">2/7/26</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom CTA -->
+  <div style="position:absolute;bottom:0;left:0;right:0;padding:0 16px 34px;z-index:50;background:linear-gradient(to bottom,rgba(242,240,236,0) 0%,var(--ov40) 40%)">
+    <button style="width:100%;height:52px;border-radius:70px;background:var(--rd10);border:none;font-family:inherit;font-size:16px;font-weight:600;color:var(--wh10);box-shadow:var(--shadow-interactive);cursor:pointer">Withdraw $304.20</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN: Reports List (Account → User Reports)            -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="screen" id="screen-reports-list">
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#000"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#000"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#000"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#000"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#000"/><path d="M3.5 7.5C5 6 6.5 5.2 8 5.2s3 .8 4.5 2.3M1 4.5C3.5 2 5.8 1 8 1s4.5 1 7 3.5" stroke="#000" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg width="27" height="12" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="2.5" fill="none" stroke="#000" stroke-opacity=".35"/><rect x="2" y="2" width="19" height="8" rx="1.5" fill="#000"/><path d="M25 4.5v3a1.5 1.5 0 000-3z" fill="#000" fill-opacity=".4"/></svg>
+    </div>
+  </div>
+
+  <!-- App Top — Back -->
+  <div style="position:absolute;top:0;left:0;right:0;z-index:40">
+    <div style="height:54px"></div>
+    <div style="display:flex;align-items:center;padding:0 16px;height:50px">
+      <button onclick="showScreen('screen-account')" style="width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9L11 14" stroke="#222A35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="screen-scroll">
+    <div style="height:109px"></div>
+    <!-- Big Title H15 -->
+    <div style="padding:10px 16px 0">
+      <h2 style="font-size:23px;font-weight:600;color:#000;letter-spacing:-0.5px;line-height:30px;margin:0">User reports</h2>
+    </div>
+
+    <!-- Filter pills -->
+    <div style="display:flex;gap:8px;padding:16px 16px 8px">
+      <button class="rpt-pill active" data-rpt-filter="all" onclick="filterReports('all')">All <span class="rpt-pill-count">3</span></button>
+      <button class="rpt-pill" data-rpt-filter="submitted" onclick="filterReports('submitted')">Submitted <span class="rpt-pill-count">2</span></button>
+      <button class="rpt-pill" data-rpt-filter="closed" onclick="filterReports('closed')">Closed <span class="rpt-pill-count">1</span></button>
+    </div>
+
+    <!-- Report cards -->
+    <div style="display:flex;flex-direction:column;gap:16px;padding:8px 16px 120px" id="reports-container">
+
+      <!-- Report 1: Reported Item — Submitted -->
+      <div class="rpt-card" data-rpt-status="submitted" onclick="showScreen('screen-report-item-detail')">
+        <div class="rpt-card-inner">
+          <div class="rpt-card-content">
+            <div class="rpt-card-header">
+              <span class="rpt-card-type">Reported Item</span>
+              <span class="rpt-badge rpt-badge-submitted">Submitted</span>
+            </div>
+            <div class="rpt-card-body">
+              <div class="rpt-card-thumb" style="background-image:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=96&h=96&fit=crop');background-size:cover;background-position:center"></div>
+              <div class="rpt-card-meta">
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Description:</span> <span class="rpt-meta-value">This item is a fake, and contac...</span></div>
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Owner of item:</span> <span class="rpt-meta-value">CatchyDeals</span></div>
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Reported:</span> <span class="rpt-meta-value">04 Jan 2026</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="rpt-card-chevron">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4L12 9L7 14" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report 2: Reported User — Submitted -->
+      <div class="rpt-card" data-rpt-status="submitted" onclick="showScreen('screen-report-user-detail')">
+        <div class="rpt-card-inner">
+          <div class="rpt-card-content">
+            <div class="rpt-card-header">
+              <span class="rpt-card-type">Reported User</span>
+              <span class="rpt-badge rpt-badge-submitted">Submitted</span>
+            </div>
+            <div class="rpt-card-body">
+              <div class="rpt-card-avatar" style="background:var(--yl10);display:flex;align-items:center;justify-content:center">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M9.22 2C9.86 2 10.19 2.16 10.52 2.49L11.02 3C11.33 3.31 11.49 3.39 11.98 3.39H13.66C15.03 3.39 15.76 4.08 15.76 5.39V11.74C15.77 13.05 15.04 13.75 13.67 13.75C13.65 13.75 10.21 14 8 14C5.79 14 2.36 13.75 2.32 13.75C.95 13.75 .22 13.05 .22 11.74V5.39C.22 4.08 .94 3.39 2.31 3.39H3.97C4.46 3.39 4.63 3.31 4.93 3L5.43 2.49C5.76 2.16 6.09 2 6.73 2H9.22ZM8 4.64C5.73 4.64 4.04 6.33 4.04 8.4C4.04 10.47 5.73 12.16 8 12.16C10.07 12.16 11.56 10.47 11.56 8.4C11.56 6.33 9.87 4.64 8 4.64ZM8 6.04C9.1 6.04 10.16 7.1 10.16 8.4C10.16 9.7 9.1 10.76 8 10.76C6.5 10.76 5.44 9.7 5.44 8.4C5.44 7.1 6.5 6.04 8 6.04Z" fill="#222A35"/></svg>
+              </div>
+              <div class="rpt-card-meta">
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Description:</span> <span class="rpt-meta-value">User offends me</span></div>
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Reported User:</span> <span class="rpt-meta-value">@CatchyDeals</span></div>
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Reported:</span> <span class="rpt-meta-value">04 Jan 2026</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="rpt-card-chevron">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4L12 9L7 14" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report 3: Reported Item — Closed -->
+      <div class="rpt-card" data-rpt-status="closed" onclick="showScreen('screen-report-item-detail')">
+        <div class="rpt-card-inner">
+          <div class="rpt-card-content">
+            <div class="rpt-card-header">
+              <span class="rpt-card-type">Reported Item</span>
+              <span class="rpt-badge rpt-badge-closed">Closed</span>
+            </div>
+            <div class="rpt-card-body">
+              <div class="rpt-card-thumb" style="background-image:url('https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=96&h=96&fit=crop');background-size:cover;background-position:center"></div>
+              <div class="rpt-card-meta">
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Description:</span> <span class="rpt-meta-value">This item is a fake, and contac...</span></div>
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Owner of item:</span> <span class="rpt-meta-value">CatchyDeals</span></div>
+                <div class="rpt-card-meta-line"><span class="rpt-meta-label">Reported:</span> <span class="rpt-meta-value">24 Dec 2025</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="rpt-card-chevron">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4L12 9L7 14" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN: Report Item Detail                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="screen" id="screen-report-item-detail">
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#000"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#000"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#000"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#000"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#000"/><path d="M3.5 7.5C5 6 6.5 5.2 8 5.2s3 .8 4.5 2.3M1 4.5C3.5 2 5.8 1 8 1s4.5 1 7 3.5" stroke="#000" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg width="27" height="12" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="2.5" fill="none" stroke="#000" stroke-opacity=".35"/><rect x="2" y="2" width="19" height="8" rx="1.5" fill="#000"/><path d="M25 4.5v3a1.5 1.5 0 000-3z" fill="#000" fill-opacity=".4"/></svg>
+    </div>
+  </div>
+
+  <div style="position:absolute;top:0;left:0;right:0;z-index:40">
+    <div style="height:54px"></div>
+    <div style="display:flex;align-items:center;padding:0 16px;height:50px">
+      <button onclick="showScreen('screen-reports-list')" style="width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9L11 14" stroke="#222A35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="screen-scroll">
+    <div style="height:109px"></div>
+    <div style="padding:10px 16px 0">
+      <h2 style="font-size:23px;font-weight:600;color:#000;letter-spacing:-0.5px;line-height:30px;margin:0">Reported Item</h2>
+    </div>
+    <div style="padding:8px 16px 0">
+      <span class="rpt-badge rpt-badge-submitted">Submitted</span>
+    </div>
+
+    <!-- Owner info -->
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 16px 0">
+      <div style="width:48px;height:48px;border-radius:7px;background-image:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=96&h=96&fit=crop');background-size:cover;background-position:center;flex-shrink:0"></div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:12px;font-weight:500;color:var(--bw40);line-height:15px"><span>Owner of item:</span> <span style="color:var(--bw20)">CatchyDeals</span></div>
+        <div style="font-size:12px;font-weight:500;color:var(--bw40);line-height:15px"><span>Reported:</span> <span style="color:var(--bw20)">04 Jan 2026</span></div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div style="padding:16px 16px 120px">
+      <p style="font-size:12px;font-weight:500;color:var(--bw40);line-height:18px;margin:0"><span>Description:</span> <span style="color:var(--bw20)">This product appears to be misleading and does not match its description. The photos suggest a high-quality item, but the actual product looks different and poorly made. It may also be a counterfeit version of a branded item. Additionally, the listing lacks clear information about materials and origin. I believe this could mislead buyers and should be reviewed.</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN: Report User Detail                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="screen" id="screen-report-user-detail">
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#000"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#000"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#000"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#000"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#000"/><path d="M3.5 7.5C5 6 6.5 5.2 8 5.2s3 .8 4.5 2.3M1 4.5C3.5 2 5.8 1 8 1s4.5 1 7 3.5" stroke="#000" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg width="27" height="12" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="2.5" fill="none" stroke="#000" stroke-opacity=".35"/><rect x="2" y="2" width="19" height="8" rx="1.5" fill="#000"/><path d="M25 4.5v3a1.5 1.5 0 000-3z" fill="#000" fill-opacity=".4"/></svg>
+    </div>
+  </div>
+
+  <div style="position:absolute;top:0;left:0;right:0;z-index:40">
+    <div style="height:54px"></div>
+    <div style="display:flex;align-items:center;padding:0 16px;height:50px">
+      <button onclick="showScreen('screen-reports-list')" style="width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9L11 14" stroke="#222A35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="screen-scroll">
+    <div style="height:109px"></div>
+    <div style="padding:10px 16px 0">
+      <h2 style="font-size:23px;font-weight:600;color:#000;letter-spacing:-0.5px;line-height:30px;margin:0">Reported User</h2>
+    </div>
+    <div style="padding:8px 16px 0">
+      <span class="rpt-badge rpt-badge-submitted">Submitted</span>
+    </div>
+
+    <!-- User info -->
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 16px 0">
+      <div style="width:48px;height:48px;border-radius:50%;background:var(--yl10);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M9.22 2C9.86 2 10.19 2.16 10.52 2.49L11.02 3C11.33 3.31 11.49 3.39 11.98 3.39H13.66C15.03 3.39 15.76 4.08 15.76 5.39V11.74C15.77 13.05 15.04 13.75 13.67 13.75C13.65 13.75 10.21 14 8 14C5.79 14 2.36 13.75 2.32 13.75C.95 13.75 .22 13.05 .22 11.74V5.39C.22 4.08 .94 3.39 2.31 3.39H3.97C4.46 3.39 4.63 3.31 4.93 3L5.43 2.49C5.76 2.16 6.09 2 6.73 2H9.22ZM8 4.64C5.73 4.64 4.04 6.33 4.04 8.4C4.04 10.47 5.73 12.16 8 12.16C10.07 12.16 11.56 10.47 11.56 8.4C11.56 6.33 9.87 4.64 8 4.64ZM8 6.04C9.1 6.04 10.16 7.1 10.16 8.4C10.16 9.7 9.1 10.76 8 10.76C6.5 10.76 5.44 9.7 5.44 8.4C5.44 7.1 6.5 6.04 8 6.04Z" fill="#222A35"/></svg>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:12px;font-weight:500;color:var(--bw40);line-height:15px"><span>Reported User:</span> <span style="color:var(--bw20)">@CatchyDeals</span></div>
+        <div style="font-size:12px;font-weight:500;color:var(--bw40);line-height:15px"><span>Reported:</span> <span style="color:var(--bw20)">04 Jan 2026</span></div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div style="padding:16px 16px 120px">
+      <p style="font-size:12px;font-weight:500;color:var(--bw40);line-height:18px;margin:0"><span>Description:</span> <span style="color:var(--bw20)">This user appears to be engaging in suspicious and potentially fraudulent behavior. They are sending repeated unsolicited messages and promoting products that seem misleading. Some of their listings look inconsistent with the descriptions and may not be genuine. This behavior could be harmful to other users on the platform. I believe this account should be reviewed.</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN: Edit Profile — UI Explore Variants (A / B / C)  -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="screen" id="screen-edit-profile">
+  <!-- Status bar -->
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
+      <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
+    </div>
+  </div>
+
+  <!-- App Top — Back + Title + Save -->
+  <div style="position:sticky;top:0;z-index:40;background:rgba(242,240,236,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">
+    <div style="height:54px"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px">
+      <button onclick="showScreen('screen-account')" style="width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer">
+        <!-- Icon Left Chevron 18px -->
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3.5 8C3.5 7.73881 3.60554 7.51632 3.79744 7.32285L10.9552 0.270859C11.1183 0.0967352 11.339 0 11.5885 0C12.1066 0 12.5 0.396614 12.5 0.909311C12.5 1.16082 12.3945 1.39299 12.2313 1.55744L5.69723 8L12.2313 14.4329C12.3945 14.607 12.5 14.8295 12.5 15.081C12.5 15.6034 12.1066 16 11.5885 16C11.339 16 11.1183 15.9033 10.9552 15.7291L3.79744 8.67715C3.60554 8.48368 3.5 8.25151 3.5 8Z" fill="#222A35"/></svg>
+      </button>
+      <span style="font-size:16px;font-weight:700;color:var(--bw10)">Edit Profile</span>
+      <span style="font-size:16px;font-weight:600;color:var(--bl10);cursor:pointer;padding:12px 0">Save</span>
+    </div>
+  </div>
+
+  <!-- Scrollable content -->
+  <div class="screen-scroll" style="padding-top:0">
+
+    <!-- Variant switcher -->
+    <div style="display:flex;gap:6px;padding:8px 16px 4px">
+      <button class="acc-var-btn active" onclick="switchEditVar('a')">A</button>
+      <button class="acc-var-btn" onclick="switchEditVar('b')">B</button>
+      <button class="acc-var-btn" onclick="switchEditVar('c')">C</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- A: Hero Banner + Card Form                         -->
+    <!-- Cover photo hero z avatar overlay, formularz w card -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="ep-var active" id="ep-var-a">
+
+      <!-- Cover photo banner — rounded 20px card style (Account character) -->
+      <div style="position:relative;height:170px;background:linear-gradient(160deg,#2A2F35 0%,#101828 100%);margin:8px 16px 0;border-radius:20px;overflow:visible">
+        <!-- Camera button — centered on cover -->
+        <!-- NaviButton 42px style: white bg, shadow, rounded pill -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:20px">
+          <div style="width:42px;height:42px;border-radius:296px;background:rgba(255,255,255,0.2);border:1.5px solid rgba(255,255,255,0.35);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)">
+            <!-- Icon Camera 18px — white fill for dark bg -->
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M9.21973 2C9.85965 2 10.1896 2.16031 10.5195 2.49023L11.0195 3C11.3295 3.31 11.4905 3.38965 11.9805 3.38965H13.6602C15.0299 3.3897 15.7596 4.07993 15.7598 5.38965H15.7695C15.7695 5.38965 16.0098 7.17016 16.0098 8.41016C16.0097 9.65018 15.7695 11.7402 15.7695 11.7402C15.7694 13.0501 15.0398 13.75 13.6699 13.75C13.6511 13.7514 10.2139 14 8 14C5.79217 14 2.35789 13.7527 2.32031 13.75C0.950394 13.75 0.219814 13.0501 0.219727 11.7402C0.219727 11.7402 0 9.7898 0 8.5498C2.31209e-05 7.3098 0.219727 5.38965 0.219727 5.38965C0.219855 4.08001 0.939972 3.38979 2.30957 3.38965H3.96973C4.45964 3.38965 4.62978 3.30987 4.92969 3L5.42969 2.49023C5.75969 2.16023 6.09047 2 6.73047 2H9.21973ZM7.7998 4.63965C5.73007 4.63978 4.0403 6.32971 4.04004 8.39941C4.04004 10.4693 5.72991 12.16 7.7998 12.1602C9.8698 12.1602 11.5596 10.4694 11.5596 8.39941C11.5593 6.32963 9.86965 4.63965 7.7998 4.63965ZM7.7998 6.04004C9.09965 6.04004 10.1599 7.09963 10.1602 8.39941C10.1602 9.69941 9.0998 10.7598 7.7998 10.7598C6.49991 10.7596 5.44043 9.69934 5.44043 8.39941C5.44069 7.09971 6.50007 6.04017 7.7998 6.04004Z" fill="white"/></svg>
+          </div>
+        </div>
+
+        <!-- Avatar — 72px, overlapping bottom-left of cover -->
+        <!-- User Avatar 72px (Default variant — yl10 bg with camera placeholder) -->
+        <div style="position:absolute;bottom:-30px;left:16px;z-index:2">
+          <div style="width:72px;height:72px;border-radius:50%;background:var(--yl10);border:4px solid var(--ov40);display:flex;align-items:center;justify-content:center;position:relative">
+            <!-- Icon Camera 20px — avatar placeholder icon -->
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M9.21973 2C9.85965 2 10.1896 2.16031 10.5195 2.49023L11.0195 3C11.3295 3.31 11.4905 3.38965 11.9805 3.38965H13.6602C15.0299 3.3897 15.7596 4.07993 15.7598 5.38965H15.7695C15.7695 5.38965 16.0098 7.17016 16.0098 8.41016C16.0097 9.65018 15.7695 11.7402 15.7695 11.7402C15.7694 13.0501 15.0398 13.75 13.6699 13.75C13.6511 13.7514 10.2139 14 8 14C5.79217 14 2.35789 13.7527 2.32031 13.75C0.950394 13.75 0.219814 13.0501 0.219727 11.7402C0.219727 11.7402 0 9.7898 0 8.5498C2.31209e-05 7.3098 0.219727 5.38965 0.219727 5.38965C0.219855 4.08001 0.939972 3.38979 2.30957 3.38965H3.96973C4.45964 3.38965 4.62978 3.30987 4.92969 3L5.42969 2.49023C5.75969 2.16023 6.09047 2 6.73047 2H9.21973ZM7.7998 4.63965C5.73007 4.63978 4.0403 6.32971 4.04004 8.39941C4.04004 10.4693 5.72991 12.16 7.7998 12.1602C9.8698 12.1602 11.5596 10.4694 11.5596 8.39941C11.5593 6.32963 9.86965 4.63965 7.7998 4.63965ZM7.7998 6.04004C9.09965 6.04004 10.1599 7.09963 10.1602 8.39941C10.1602 9.69941 9.0998 10.7598 7.7998 10.7598C6.49991 10.7596 5.44043 9.69934 5.44043 8.39941C5.44069 7.09971 6.50007 6.04017 7.7998 6.04004Z" fill="#222A35"/></svg>
+            <!-- Camera badge — bottom-right corner -->
+            <div style="position:absolute;bottom:-2px;right:-2px;width:26px;height:26px;border-radius:50%;background:var(--bw20);border:2.5px solid var(--ov40);display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M9.21973 2C9.85965 2 10.1896 2.16031 10.5195 2.49023L11.0195 3C11.3295 3.31 11.4905 3.38965 11.9805 3.38965H13.6602C15.0299 3.3897 15.7596 4.07993 15.7598 5.38965H15.7695C15.7695 5.38965 16.0098 7.17016 16.0098 8.41016C16.0097 9.65018 15.7695 11.7402 15.7695 11.7402C15.7694 13.0501 15.0398 13.75 13.6699 13.75C13.6511 13.7514 10.2139 14 8 14C5.79217 14 2.35789 13.7527 2.32031 13.75C0.950394 13.75 0.219814 13.0501 0.219727 11.7402C0.219727 11.7402 0 9.7898 0 8.5498C2.31209e-05 7.3098 0.219727 5.38965 0.219727 5.38965C0.219855 4.08001 0.939972 3.38979 2.30957 3.38965H3.96973C4.45964 3.38965 4.62978 3.30987 4.92969 3L5.42969 2.49023C5.75969 2.16023 6.09047 2 6.73047 2H9.21973ZM7.7998 4.63965C5.73007 4.63978 4.0403 6.32971 4.04004 8.39941C4.04004 10.4693 5.72991 12.16 7.7998 12.1602C9.8698 12.1602 11.5596 10.4694 11.5596 8.39941C11.5593 6.32963 9.86965 4.63965 7.7998 4.63965ZM7.7998 6.04004C9.09965 6.04004 10.1599 7.09963 10.1602 8.39941C10.1602 9.69941 9.0998 10.7598 7.7998 10.7598C6.49991 10.7596 5.44043 9.69934 5.44043 8.39941C5.44069 7.09971 6.50007 6.04017 7.7998 6.04004Z" fill="white"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spacer for avatar overlap -->
+      <div style="height:42px"></div>
+
+      <!-- Section header — H15: 23px SemiBold 600 -0.5px, bw10 -->
+      <div style="padding:12px 16px 12px;font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">Personal Details</div>
+
+      <!-- Form inputs — individual Form Input components -->
+      <!-- Spec: bg white, border 1px ov20 #E9E6DD, rounded 26px, h 60px -->
+      <!-- Filled: F20 13px Regular bw40 (label) + F10 16px Medium bw10 (value) -->
+      <div style="display:flex;flex-direction:column;gap:12px;padding:0 16px">
+
+        <!-- Name* — Filled state -->
+        <div style="height:60px;background:var(--wh10);border:1px solid var(--ov20);border-radius:26px;padding:10px 16px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+          <!-- F20: 13px Regular 400 bw40 -->
+          <div style="font-size:13px;font-weight:400;color:var(--bw40)">Name<span style="color:var(--rd10)">*</span></div>
+          <!-- F10: 16px Medium 500 bw10 -->
+          <div style="font-size:16px;font-weight:500;color:var(--bw10)">Marcin Galecki</div>
+        </div>
+
+        <!-- Username(9/30)* — Filled state -->
+        <div style="height:60px;background:var(--wh10);border:1px solid var(--ov20);border-radius:26px;padding:10px 16px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+          <!-- F20: 13px Regular 400 bw40 -->
+          <div style="font-size:13px;font-weight:400;color:var(--bw40)">Username(9/30)<span style="color:var(--rd10)">*</span></div>
+          <!-- F10: 16px Medium 500 bw10 -->
+          <div style="font-size:16px;font-weight:500;color:var(--bw10)">martinaux</div>
+        </div>
+
+        <!-- Bio(0/750) — Default/empty state (placeholder) -->
+        <div style="min-height:120px;background:var(--wh10);border:1px solid var(--ov20);border-radius:26px;padding:16px;display:flex;flex-direction:column">
+          <!-- F11: 16px Regular 400 bw40 tracking -0.5px -->
+          <div style="font-size:16px;font-weight:400;color:var(--bw40);letter-spacing:-0.5px">Bio(0/750)</div>
+        </div>
+
+      </div>
+
+      <div style="height:130px"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- B: Profile Card + Form Card                        -->
+    <!-- Brak bannera, avatar w karcie, formularz osobno    -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="ep-var" id="ep-var-b">
+
+      <!-- Profile Photo card -->
+      <div class="acc-section-label">Profile Photo</div>
+      <div style="margin:0 16px;border-radius:20px;background:var(--gw30);box-shadow:var(--shadow-interactive);padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="position:relative">
+          <div style="width:80px;height:80px;border-radius:50%;background:var(--yl10);display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" viewBox="0 0 16 16" fill="none"><path d="M9.22 2C9.86 2 10.19 2.16 10.52 2.49L11.02 3C11.33 3.31 11.49 3.39 11.98 3.39H13.66C15.03 3.39 15.76 4.08 15.76 5.39V11.74C15.77 13.05 15.04 13.75 13.67 13.75C13.65 13.75 10.21 14 8 14C5.79 14 2.36 13.75 2.32 13.75C.95 13.75 .22 13.05 .22 11.74V5.39C.22 4.08 .94 3.39 2.31 3.39H3.97C4.46 3.39 4.63 3.31 4.93 3L5.43 2.49C5.76 2.16 6.09 2 6.73 2H9.22ZM8 4.64C5.73 4.64 4.04 6.33 4.04 8.4C4.04 10.47 5.73 12.16 8 12.16C10.07 12.16 11.56 10.47 11.56 8.4C11.56 6.33 9.87 4.64 8 4.64ZM8 6.04C9.1 6.04 10.16 7.1 10.16 8.4C10.16 9.7 9.1 10.76 8 10.76C6.5 10.76 5.44 9.7 5.44 8.4C5.44 7.1 6.5 6.04 8 6.04Z" fill="#222A35"/></svg>
+          </div>
+          <!-- Camera badge -->
+          <div style="position:absolute;bottom:0;right:0;width:28px;height:28px;border-radius:50%;background:var(--bw20);border:2.5px solid var(--gw30);display:flex;align-items:center;justify-content:center;cursor:pointer">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M9.22 2C9.86 2 10.19 2.16 10.52 2.49L11.02 3C11.33 3.31 11.49 3.39 11.98 3.39H13.66C15.03 3.39 15.76 4.08 15.76 5.39V11.74C15.77 13.05 15.04 13.75 13.67 13.75C13.65 13.75 10.21 14 8 14C5.79 14 2.36 13.75 2.32 13.75C.95 13.75 .22 13.05 .22 11.74V5.39C.22 4.08 .94 3.39 2.31 3.39H3.97C4.46 3.39 4.63 3.31 4.93 3L5.43 2.49C5.76 2.16 6.09 2 6.73 2H9.22ZM8 4.64C5.73 4.64 4.04 6.33 4.04 8.4C4.04 10.47 5.73 12.16 8 12.16C10.07 12.16 11.56 10.47 11.56 8.4C11.56 6.33 9.87 4.64 8 4.64ZM8 6.04C9.1 6.04 10.16 7.1 10.16 8.4C10.16 9.7 9.1 10.76 8 10.76C6.5 10.76 5.44 9.7 5.44 8.4C5.44 7.1 6.5 6.04 8 6.04Z" fill="white"/></svg>
+          </div>
+        </div>
+        <span style="font-size:13px;font-weight:500;color:var(--bl10);cursor:pointer">Change Profile Photo</span>
+      </div>
+
+      <!-- Personal Details -->
+      <div class="acc-section-label">Personal Details</div>
+      <div class="acc-card">
+        <!-- Name row -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;position:relative;cursor:pointer">
+          <span style="font-size:14px;font-weight:500;color:var(--bw40)">Name<span style="color:var(--rd10)">*</span></span>
+          <span style="font-size:14px;font-weight:500;color:var(--bw10)">Marcin Galecki</span>
+        </div>
+        <div style="height:1px;background:var(--ov20);margin:0 16px"></div>
+        <!-- Username row -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer">
+          <span style="font-size:14px;font-weight:500;color:var(--bw40)">Username<span style="color:var(--rd10)">*</span></span>
+          <div style="display:flex;align-items:center;gap:4px">
+            <span style="font-size:14px;font-weight:500;color:var(--bw10)">martinaux</span>
+            <span style="font-size:11px;font-weight:400;color:var(--bw40)">9/30</span>
+          </div>
+        </div>
+        <div style="height:1px;background:var(--ov20);margin:0 16px"></div>
+        <!-- Bio row -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer">
+          <span style="font-size:14px;font-weight:500;color:var(--bw40)">Bio</span>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:14px;font-weight:400;color:var(--gw10)">Add a bio...</span>
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M6.75 3.75L12.75 9L6.75 14.25" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cover Photo -->
+      <div class="acc-section-label">Cover Photo</div>
+      <div class="acc-card">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer">
+          <div style="width:56px;height:40px;border-radius:10px;background:linear-gradient(135deg,#2A2F35,#101828);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.7 0C15.21 0 16.01.81 16.01 2.31V10.22C15.58 9.73 15.06 9.32 14.45 9.07V2.47C14.45 1.87 14.15 1.57 13.58 1.57H2.43C1.86 1.57 1.56 1.87 1.56 2.47V11.34L3.27 9.8C3.55 9.55 3.8 9.43 4.12 9.43C4.44 9.43 4.75 9.55 5.03 9.81L6.27 10.93L9.29 8.21C9.61 7.93 9.94 7.81 10.3 7.81C10.66 7.81 11.02 7.94 11.31 8.21L11.98 8.84C10.1 9.24 8.68 10.88 8.68 12.85C8.68 14.12 9.28 15.25 10.2 16H2.3C.81 16 0 15.2 0 13.7V2.31C0 .81.81 0 2.3 0H13.7ZM4.9 3.05C5.79 3.05 6.53 3.77 6.53 4.68C6.53 5.59 5.8 6.33 4.9 6.33C4 6.33 3.27 5.59 3.27 4.68C3.27 3.79 4.01 3.05 4.9 3.05Z" fill="rgba(255,255,255,0.7)"/></svg>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:500;color:var(--bw20)">Cover Photo</div>
+            <div style="font-size:11px;font-weight:400;color:var(--bw40)">Tap to change</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M6.75 3.75L12.75 9L6.75 14.25" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <div style="height:120px"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- C: Settings Rows                                   -->
+    <!-- Avatar centrowany, wszystko w jednej karcie rows   -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="ep-var" id="ep-var-c">
+
+      <!-- Centered avatar -->
+      <div style="display:flex;flex-direction:column;align-items:center;padding:20px 0 12px;gap:10px">
+        <div style="position:relative">
+          <div style="width:88px;height:88px;border-radius:50%;background:var(--yl10);display:flex;align-items:center;justify-content:center">
+            <svg width="28" height="28" viewBox="0 0 16 16" fill="none"><path d="M9.22 2C9.86 2 10.19 2.16 10.52 2.49L11.02 3C11.33 3.31 11.49 3.39 11.98 3.39H13.66C15.03 3.39 15.76 4.08 15.76 5.39V11.74C15.77 13.05 15.04 13.75 13.67 13.75C13.65 13.75 10.21 14 8 14C5.79 14 2.36 13.75 2.32 13.75C.95 13.75 .22 13.05 .22 11.74V5.39C.22 4.08 .94 3.39 2.31 3.39H3.97C4.46 3.39 4.63 3.31 4.93 3L5.43 2.49C5.76 2.16 6.09 2 6.73 2H9.22ZM8 4.64C5.73 4.64 4.04 6.33 4.04 8.4C4.04 10.47 5.73 12.16 8 12.16C10.07 12.16 11.56 10.47 11.56 8.4C11.56 6.33 9.87 4.64 8 4.64ZM8 6.04C9.1 6.04 10.16 7.1 10.16 8.4C10.16 9.7 9.1 10.76 8 10.76C6.5 10.76 5.44 9.7 5.44 8.4C5.44 7.1 6.5 6.04 8 6.04Z" fill="#222A35"/></svg>
+          </div>
+          <!-- Camera badge -->
+          <div style="position:absolute;bottom:2px;right:2px;width:30px;height:30px;border-radius:50%;background:var(--wh10);border:2.5px solid var(--ov40);box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;cursor:pointer">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M9.22 2C9.86 2 10.19 2.16 10.52 2.49L11.02 3C11.33 3.31 11.49 3.39 11.98 3.39H13.66C15.03 3.39 15.76 4.08 15.76 5.39V11.74C15.77 13.05 15.04 13.75 13.67 13.75C13.65 13.75 10.21 14 8 14C5.79 14 2.36 13.75 2.32 13.75C.95 13.75 .22 13.05 .22 11.74V5.39C.22 4.08 .94 3.39 2.31 3.39H3.97C4.46 3.39 4.63 3.31 4.93 3L5.43 2.49C5.76 2.16 6.09 2 6.73 2H9.22ZM8 4.64C5.73 4.64 4.04 6.33 4.04 8.4C4.04 10.47 5.73 12.16 8 12.16C10.07 12.16 11.56 10.47 11.56 8.4C11.56 6.33 9.87 4.64 8 4.64ZM8 6.04C9.1 6.04 10.16 7.1 10.16 8.4C10.16 9.7 9.1 10.76 8 10.76C6.5 10.76 5.44 9.7 5.44 8.4C5.44 7.1 6.5 6.04 8 6.04Z" fill="#222A35"/></svg>
+          </div>
+        </div>
+        <span style="font-size:13px;font-weight:500;color:var(--bl10);cursor:pointer">Change Photo</span>
+      </div>
+
+      <!-- All fields as settings rows in one card -->
+      <div class="acc-card" style="margin-top:4px">
+        <!-- Cover Photo row -->
+        <div class="acc-row" style="height:56px">
+          <div class="acc-row-icon" style="background:linear-gradient(135deg,#2A2F35,#101828)">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.7 0C15.21 0 16.01.81 16.01 2.31V10.22C15.58 9.73 15.06 9.32 14.45 9.07V2.47C14.45 1.87 14.15 1.57 13.58 1.57H2.43C1.86 1.57 1.56 1.87 1.56 2.47V11.34L3.27 9.8C3.55 9.55 3.8 9.43 4.12 9.43C4.44 9.43 4.75 9.55 5.03 9.81L6.27 10.93L9.29 8.21C9.61 7.93 9.94 7.81 10.3 7.81C10.66 7.81 11.02 7.94 11.31 8.21L11.98 8.84C10.1 9.24 8.68 10.88 8.68 12.85C8.68 14.12 9.28 15.25 10.2 16H2.3C.81 16 0 15.2 0 13.7V2.31C0 .81.81 0 2.3 0H13.7ZM4.9 3.05C5.79 3.05 6.53 3.77 6.53 4.68C6.53 5.59 5.8 6.33 4.9 6.33C4 6.33 3.27 5.59 3.27 4.68C3.27 3.79 4.01 3.05 4.9 3.05Z" fill="rgba(255,255,255,0.7)"/></svg>
+          </div>
+          <span class="acc-row-label">Cover Photo</span>
+          <span style="font-size:12px;font-weight:500;color:var(--bl10);margin-right:4px">Change</span>
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M6.75 3.75L12.75 9L6.75 14.25" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <!-- Name row -->
+        <div class="acc-row" style="height:56px">
+          <div class="acc-row-icon">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23C10.05 2.2 9.6 2.25 9.28 2.4C7.72 3.12 4.48 6.71 3.4 8.42C2.42 9.95 2.06 13.04 2.74 13.55C3.39 14.04 6.77 13.74 8.15 12.63C9.74 11.35 13.08 7.66 13.54 6.06C14.04 4.35 11.49 2.4 10.28 2.23ZM12.29 5.79C12.16 6.08 11.8 6.58 11.34 7.18C10.86 6.68 9.83 5.98 9.5 5.69C9.36 5.57 8.61 6.34 8.75 6.46L10.6 8.1C9.43 9.51 7.99 11.09 7.28 11.71C6.43 12.45 3.86 12.55 3.73 12.45V12.43H3.71C3.47 12.21 3.76 10.3 4.51 9.21C5.43 7.87 8.26 4.74 9.42 3.84C10.36 3.12 11.2 4.07 11.52 4.31C11.98 4.65 12.53 5.33 12.29 5.79Z" fill="#222A35" opacity="0.6"/></svg>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:11px;font-weight:400;color:var(--bw40)">Name</div>
+            <div style="font-size:14px;font-weight:500;color:var(--bw10)">Marcin Galecki</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M6.75 3.75L12.75 9L6.75 14.25" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <!-- Username row -->
+        <div class="acc-row" style="height:56px">
+          <div class="acc-row-icon">
+            <svg width="14" height="14" viewBox="0 0 18 18" fill="none"><path d="M9 1C4.58 1 1 4.58 1 9s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 3a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm0 11.5c-2.03 0-3.83-.98-4.96-2.49C5.57 11.68 7.78 11 9 11s3.43.68 4.96 2.01A6.47 6.47 0 019 15.5z" fill="#222A35" opacity="0.6"/></svg>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:11px;font-weight:400;color:var(--bw40)">Username</div>
+            <div style="font-size:14px;font-weight:500;color:var(--bw10)">martinaux</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M6.75 3.75L12.75 9L6.75 14.25" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <!-- Bio row -->
+        <div class="acc-row" style="height:56px">
+          <div class="acc-row-icon">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#222A35" stroke-opacity="0.6" stroke-width="1.3" fill="none"/><line x1="4.5" y1="5" x2="11.5" y2="5" stroke="#222A35" stroke-opacity="0.6" stroke-width="1.3" stroke-linecap="round"/><line x1="4.5" y1="8" x2="9.5" y2="8" stroke="#222A35" stroke-opacity="0.6" stroke-width="1.3" stroke-linecap="round"/><line x1="4.5" y1="11" x2="7.5" y2="11" stroke="#222A35" stroke-opacity="0.6" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:11px;font-weight:400;color:var(--bw40)">Bio</div>
+            <div style="font-size:14px;font-weight:400;color:var(--gw10)">Add a bio...</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M6.75 3.75L12.75 9L6.75 14.25" stroke="#7B8494" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <div style="height:120px"></div>
+    </div>
+
+  </div><!-- /screen-scroll -->
+</div>
+
+<!-- ── Tab Bar ── -->
+<div class="tabbar">
+  <div class="tabbar-pill">
+    <a class="tab-item" href="index.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Start.svg" alt="Start"></div>
+      <span class="tab-label">Start</span>
+    </a>
+    <a class="tab-item" href="browse.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Browse.svg" alt="Browse"></div>
+      <span class="tab-label">Browse</span>
+    </a>
+    <a class="tab-item" href="sell.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Sell.svg" alt="Sell"></div>
+      <span class="tab-label">Sell</span>
+    </a>
+    <a class="tab-item" href="activity.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Message.svg" alt="Activity"></div>
+      <span class="tab-label">Activity</span>
+    </a>
+    <a class="tab-item active" href="account.html">
+      <div class="tab-icon"><img src="design-system/UI Icons/Icon Account.svg" alt="Account"></div>
+      <span class="tab-label">Account</span>
+    </a>
+  </div>
+</div>
+
+</div><!-- .phone -->
+
+<script>
+const screens = document.querySelectorAll('.screen');
+function showScreen(screenId) {
+  const screen = document.getElementById(screenId);
+  if (!screen) return;
+  screens.forEach(s => s.classList.remove('active'));
+  screen.classList.add('active');
+}
+
+function switchAccTab(tab) {
+  document.querySelectorAll('.acc-pill').forEach(b => b.classList.remove('active'));
+  document.querySelector('.acc-pill[data-acc-tab="'+tab+'"]').classList.add('active');
+  document.querySelectorAll('.acc-tab').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById('acc-tab-' + tab);
+  if (target) target.classList.add('active');
+}
+
+function filterReports(filter) {
+  document.querySelectorAll('.rpt-pill').forEach(b => b.classList.remove('active'));
+  document.querySelector('.rpt-pill[data-rpt-filter="'+filter+'"]').classList.add('active');
+  document.querySelectorAll('.rpt-card').forEach(card => {
+    if (filter === 'all') { card.style.display = ''; return; }
+    card.style.display = card.dataset.rptStatus === filter ? '' : 'none';
+  });
+}
+
+function switchAccVar(v) {
+  document.querySelectorAll('.acc-var-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.acc-var-btn[onclick*="\''+v+'\'"]').classList.add('active');
+  document.querySelectorAll('.acc-var').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById('acc-var-' + v);
+  if (target) target.classList.add('active');
+}
+
+function switchEditVar(v) {
+  const screen = document.getElementById('screen-edit-profile');
+  screen.querySelectorAll('.acc-var-btn').forEach(b => b.classList.remove('active'));
+  screen.querySelector('.acc-var-btn[onclick*="\''+v+'\'"]').classList.add('active');
+  screen.querySelectorAll('.ep-var').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById('ep-var-' + v);
+  if (target) target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
