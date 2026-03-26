@@ -590,6 +590,44 @@ Przekreslona stara cena (przed rabatem).
 
 ---
 
+## Logo (node 146:653)
+
+Ikona logo Droplet — litera "d".
+
+**Rozmiar:** `193 x 162px`
+**Tlo:** rd10 `#FF4252`
+
+| Wariant | Kolor ikony | Opis |
+|---------|-------------|------|
+| Full Color | `#FFFFFF` (bialy) | Glowna wersja — biala litera "d" na czerwonym tle |
+| Black Warm 01 | bw10 `#101828` | Ciemna litera "d" na czerwonym tle |
+
+---
+
+## Logotyp (node 2827:25033)
+
+Tekstowy logotyp "droplet" — pelna nazwa marki.
+
+**Rozmiar:** `192 x 40px`
+**Uzycie:** Splash screen, naglowki marketingowe
+
+---
+
+## Category Photo Icons (node 443:3286)
+
+Fotograficzne ikony subkategorii `40x40px` — alternatywa dla Category Pastel Icons. Uzywane w widokach z foto-stylem kategorii.
+
+**Rozmiar:** `40 x 40px`
+**Typ:** Rastrowe zdjecia (wyciete obiekty na przezroczystym tle)
+**Lokalizacja:** Poza sekcja Components (osobna ramka na stronie Components)
+
+**Dostepne ikony (68):**
+For You, Beauty, Fashion, Handmade, Home, Collectibles, Electronics, Kids, Food, Outdoor Sports, Outdoor Sports 2, Mystery, Boutique, Baazar, Second Hand, Outlet, Sneakers, Bags, Lingerie & Socks, Jewelry, Watches, Accessories, Makeup Skin Care, Perfumes, Skincare, Hair & Nails, Beauty Tools & Devices, Handmade Jewelry, Crotchet & Textiles, Ceramics & Clay Art, Decorations, Candle & Aromas, Natural Products, Home Decor, Towels Blankets & Bedding, Small Appliances, Kitchenware, Antiques & Vintage Home, Furniture & Lightning, Household & Chemistry, Coins, Trading Cards, Figures & Statues, Vintage Collectibles, Model Cars & Toys, Art & Posters, Tools & Hardware, Car Accessories, Consoles & Games, Outlet Electronics, Electronics & Gadgets, Clothes for Kids, Toys & Vehicles, Handmade for Kids, Books & Learning, Honey & Jams, Herbal Products, Cheese & Local product, Natural Beauty & Wellness, Fishing Gear, Camping & Outdoor, Sportswear & Accessories, Mystery Boxes, Tech & Gadgets, Return Auctions, Surprise Fashion, Sport Cards, Icon68
+
+**Roznica vs Category Pastel Icons:** Pastel = ilustracje rysunkowe (uzycie w Category Button). Photo = wyciete zdjecia produktow (uzycie w listach/gridach).
+
+---
+
 ## Company Logo (node 2830:27865)
 
 Loga firm do przyciskow logowania / platnosci.

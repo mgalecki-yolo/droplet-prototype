@@ -24,155 +24,130 @@
 <div class="screen active" id="screen-sell">
 <div class="screen-scroll" style="padding-top:54px">
 
-  <!-- Variant Toggle (debug — hidden, A is final) -->
-  <div class="shv-toggle" style="display:none">
-    <button class="shv-toggle-btn active" data-variant="a">A — Figma</button>
-    <button class="shv-toggle-btn" data-variant="b">B — Action</button>
-    <button class="shv-toggle-btn" data-variant="c">C — Data</button>
-  </div>
 
   <!-- State Toggle: Zero State / With Data -->
-  <div class="sh-state-toggle">
-    <button class="sh-state-btn active" onclick="switchHubState('zero')">Zero State</button>
-    <button class="sh-state-btn" onclick="switchHubState('data')">With Data</button>
-  </div>
 
   <!-- ═══════════════════════════════════ -->
   <!-- ZERO STATE — Fresh seller account  -->
   <!-- ═══════════════════════════════════ -->
-  <div class="shv-variant active" id="shv-zero">
+  <div id="shv-main">
 
-    <!-- Header: Seller Hub + glass navi button -->
+    <!-- Header: Seller Hub + Settings glass navi button -->
     <div style="padding:32px 16px 8px">
       <div class="shv-app-top" style="padding:0">
         <h1 style="font-size:32px;font-weight:700;color:#000;line-height:21px">Seller Hub</h1>
         <button class="shv-navi-btn" onclick="window.location.href='account.html'">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="2.5" cy="8" r="1.5" fill="#364153"/><circle cx="8" cy="8" r="1.5" fill="#364153"/><circle cx="13.5" cy="8" r="1.5" fill="#364153"/></svg>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M8.16298 18C7.46685 18 6.92818 17.577 6.77901 16.9217L6.43923 15.4535L6.21547 15.3705L4.93923 16.1585C4.3674 16.5152 3.68785 16.4323 3.19889 15.9429L2.03867 14.7816C1.54144 14.2922 1.46685 13.612 1.8232 13.0396L2.61878 11.7705L2.53591 11.5631L1.07735 11.223C0.422652 11.0654 0 10.518 0 9.83779V8.20369C0 7.5235 0.414365 6.98433 1.07735 6.81843L2.51934 6.47005L2.6105 6.25438L1.81492 4.98525C1.45856 4.4129 1.53315 3.73272 2.03039 3.23502L3.19061 2.07373C3.67127 1.59263 4.35083 1.50138 4.93094 1.85806L6.20718 2.63779L6.43923 2.54654L6.77901 1.07834C6.92818 0.423041 7.46685 0 8.16298 0H9.83702C10.5249 0 11.0635 0.423041 11.221 1.07834L11.5608 2.54654L11.7928 2.63779L13.0691 1.85806C13.6409 1.50138 14.3204 1.59263 14.8011 2.07373L15.9613 3.23502C16.4669 3.73272 16.5331 4.4129 16.1768 4.98525L15.3895 6.25438L15.4724 6.47005L16.9227 6.81843C17.5773 6.98433 18 7.5235 18 8.20369V9.83779C18 10.518 17.5691 11.0654 16.9227 11.223L15.4558 11.5631L15.3812 11.7705L16.1685 13.0396C16.5249 13.612 16.4503 14.2922 15.953 14.7816L14.7928 15.9429C14.3122 16.4323 13.6326 16.5152 13.0525 16.1585L11.7762 15.3705L11.5608 15.4535L11.221 16.9217C11.0635 17.577 10.5249 18 9.83702 18H8.16298ZM8.36188 16.4986H9.63812C9.77901 16.4986 9.8453 16.4406 9.86188 16.3078L10.3591 14.2673C10.9061 14.1429 11.3785 13.9355 11.7845 13.6783L13.5746 14.7816C13.674 14.8479 13.7818 14.8479 13.8812 14.7401L14.7597 13.8525C14.8508 13.7696 14.8508 13.67 14.7845 13.5622L13.6906 11.7705C13.9144 11.3806 14.1381 10.8829 14.2624 10.3604L16.3094 9.87097C16.4337 9.84608 16.5 9.77972 16.5 9.63871V8.39447C16.5 8.24516 16.442 8.1871 16.3094 8.15392L14.2707 7.67281C14.1464 7.11705 13.8978 6.60276 13.6989 6.24608L14.7928 4.46267C14.8674 4.34654 14.8674 4.247 14.768 4.15576L13.8812 3.28479C13.7818 3.18525 13.6989 3.17696 13.5746 3.24332L11.7928 4.32995C11.3867 4.0977 10.8978 3.87373 10.3591 3.74931L9.86188 1.69217C9.8453 1.55945 9.77901 1.50138 9.63812 1.50138H8.36188C8.22099 1.50138 8.1547 1.56774 8.12983 1.69217L7.64088 3.73272C7.11878 3.86544 6.57182 4.0977 6.19889 4.32166L4.41713 3.23502C4.29282 3.16866 4.20994 3.18525 4.10221 3.2765L3.22376 4.14747C3.12431 4.247 3.12431 4.34654 3.19889 4.46267L4.29282 6.24608C4.09392 6.60276 3.85359 7.11705 3.72928 7.67281L1.68232 8.15392C1.55801 8.1871 1.5 8.24516 1.5 8.39447V9.63871C1.5 9.77972 1.55801 9.84608 1.68232 9.87097L3.72928 10.3604C3.85359 10.8829 4.07735 11.3806 4.30939 11.7705L3.20718 13.5622C3.1326 13.67 3.14088 13.7696 3.23204 13.8608L4.1105 14.7401C4.20994 14.8479 4.31768 14.8479 4.41713 14.7816L6.20718 13.6783C6.61326 13.9355 7.1105 14.1429 7.64088 14.2673L8.12983 16.3078C8.1547 16.4323 8.22099 16.4986 8.36188 16.4986ZM9 12.1438C7.25967 12.1438 5.85083 10.7419 5.85083 9C5.85083 7.25806 7.25967 5.85622 9 5.85622C10.732 5.85622 12.1409 7.25806 12.1409 9C12.1409 10.7419 10.732 12.1438 9 12.1438ZM9 10.7171C9.94475 10.7171 10.7155 9.95392 10.7155 9C10.7155 8.04608 9.94475 7.27465 9 7.27465C8.04696 7.27465 7.27624 8.04608 7.27624 9C7.27624 9.95392 8.04696 10.7171 9 10.7171Z" fill="#222A35"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Profile row: placeholder avatar + greeting + stats -->
-    <div class="sh-profile" style="margin-bottom:4px">
-      <div class="sh-avatar sh-avatar-placeholder">
-        <span>M</span>
+    <!-- Profile row: avatar photo + greeting + stats pill -->
+    <div style="display:flex;align-items:center;gap:12px;padding:0 16px;margin-bottom:16px">
+      <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;box-shadow:var(--shadow-interactive)">
+        <img src="design-system/images/avatars/luxeboutique.jpg" alt="Avatar" style="width:100%;height:100%;object-fit:cover">
       </div>
       <div style="flex:1;display:flex;flex-direction:column;gap:2px">
         <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Hi, Marcin</div>
-        <div style="font-size:13px;font-weight:400;color:var(--ov10)">CatchyDeals</div>
+        <div style="font-size:13px;font-weight:400;color:#000">CatchyDeals</div>
       </div>
-      <div class="sh-stats-a">
-        <div class="sh-stat-badge">
-          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M4.77,7.99c.99,0,1.81-.85,1.81-1.93s-.83-1.88-1.81-1.88-1.81.84-1.81,1.89.82,1.92,1.81,1.92Z" fill="#353b42"/><path d="M10.68,7.88c1.14,0,2.08-.98,2.08-2.21s-.95-2.16-2.08-2.16-2.08.97-2.08,2.17.94,2.21,2.08,2.21Z" fill="#353b42"/><path d="M6.92,9.31c-.55-.33-1.28-.58-2.16-.58-2.25,0-3.77,1.61-3.77,2.91,0,.54.26.86,1,.86h3.74c-.56-.77-.03-2.26,1.18-3.19Z" fill="#353b42"/><path d="M10.68,8.74c-2.64,0-4.33,1.74-4.33,3,0,.48.3.76,1.18.76h6.28c.89,0,1.18-.28,1.18-.76,0-1.26-1.68-3-4.32-3Z" fill="#353b42"/></svg>
-          <span class="sh-stat-badge-val">0</span>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--ov15);border-radius:20px;padding:8px 12px;flex-shrink:0">
+        <div style="display:flex;align-items:center;gap:3px">
+          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M4.77,7.99c.99,0,1.81-.85,1.81-1.93s-.83-1.88-1.81-1.88-1.81.84-1.81,1.89.82,1.92,1.81,1.92Z" fill="var(--bw30)"/><path d="M10.68,7.88c1.14,0,2.08-.98,2.08-2.21s-.95-2.16-2.08-2.16-2.08.97-2.08,2.17.94,2.21,2.08,2.21Z" fill="var(--bw30)"/><path d="M6.92,9.31c-.55-.33-1.28-.58-2.16-.58-2.25,0-3.77,1.61-3.77,2.91,0,.54.26.86,1,.86h3.74c-.56-.77-.03-2.26,1.18-3.19Z" fill="var(--bw30)"/><path d="M10.68,8.74c-2.64,0-4.33,1.74-4.33,3,0,.48.3.76,1.18.76h6.28c.89,0,1.18-.28,1.18-.76,0-1.26-1.68-3-4.32-3Z" fill="var(--bw30)"/></svg>
+          <span style="font-size:12px;font-weight:600;color:var(--bw30)">39</span>
         </div>
-        <div class="sh-stat-badge">
-          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M15.71,6.1c-.11-.33-.52-1.11-1.82-1.11h-3.26l-1-3.09c-.38-1.21-1.18-1.39-1.63-1.39s-1.25.18-1.63,1.39l-1,3.1h-3.27c-1.29,0-1.7.77-1.82,1.11-.11.34-.26,1.23.81,2l2.66,1.9-1.05,3.1c-.29.86-.12,1.61.48,2.07.29.22,1.07.65,2.16-.15l2.64-1.94,2.64,1.95c.48.34.9.46,1.24.46.41,0,.72-.17.91-.32.6-.46.78-1.22.49-2.07l-1.05-3.1,2.66-1.9c1.08-.77.93-1.65.81-2Z" fill="#364153"/></svg>
-          <span class="sh-stat-badge-val">New</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Welcome prompt -->
-    <div style="padding:4px 16px 20px">
-      <div style="font-size:13px;font-weight:400;color:var(--ov10);line-height:18px">Start by adding products and scheduling your first live show.</div>
-    </div>
-
-    <!-- 2×2 tiles — zero state (matching Figma layout) -->
-    <div class="sh-tiles-zero">
-      <!-- Products — primary, white bg, red CTA -->
-      <div class="sh-ztile sh-ztile-primary" data-action="manage-products">
-        <div class="sh-ztile-header">
-          <span class="sh-ztile-label">Products</span>
-          <svg class="sh-ztile-chevron" width="10" height="16" viewBox="3.5 0 9 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-        </div>
-        <div class="sh-ztile-body">
-          <div class="sh-ztile-value">0</div>
-          <div class="sh-ztile-sub">No products yet</div>
-        </div>
-        <button class="sh-ztile-cta sh-ztile-cta-red" data-action="add-product">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23c-.23-.03-.68.02-1 .17-1.56.72-4.8 4.31-5.88 6.02-.98 1.53-1.34 4.62-.66 5.13.65.49 4.03.19 5.41-.92 1.59-1.28 4.93-4.97 5.39-6.57.5-1.71-2.05-3.66-3.26-3.83zM12.29 5.79c-.13.29-.49.79-.95 1.39-.48-.5-1.51-1.2-1.84-1.49-.14-.12-.89.66-.75.77l1.85 1.64c-1.17 1.41-2.61 2.99-3.32 3.61-.85.74-3.42.84-3.55.74v-.02h-.02c-.24-.22.05-2.13.8-3.22.92-1.34 3.75-4.47 4.91-5.37.94-.72 1.78.23 2.1.47.46.34 1.01 1.02.77 1.48z" fill="white"/></svg>
-          Add Product
-        </button>
-      </div>
-
-      <!-- Shows — primary, white bg, red CTA -->
-      <div class="sh-ztile sh-ztile-primary" data-action="manage-shows">
-        <div class="sh-ztile-header">
-          <span class="sh-ztile-label">Shows</span>
-          <svg class="sh-ztile-chevron" width="10" height="16" viewBox="3.5 0 9 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-        </div>
-        <div class="sh-ztile-body">
-          <div class="sh-ztile-value">0</div>
-          <div class="sh-ztile-sub">No shows yet</div>
-        </div>
-        <button class="sh-ztile-cta sh-ztile-cta-red" data-action="schedule-show">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23c-.23-.03-.68.02-1 .17-1.56.72-4.8 4.31-5.88 6.02-.98 1.53-1.34 4.62-.66 5.13.65.49 4.03.19 5.41-.92 1.59-1.28 4.93-4.97 5.39-6.57.5-1.71-2.05-3.66-3.26-3.83zM12.29 5.79c-.13.29-.49.79-.95 1.39-.48-.5-1.51-1.2-1.84-1.49-.14-.12-.89.66-.75.77l1.85 1.64c-1.17 1.41-2.61 2.99-3.32 3.61-.85.74-3.42.84-3.55.74v-.02h-.02c-.24-.22.05-2.13.8-3.22.92-1.34 3.75-4.47 4.91-5.37.94-.72 1.78.23 2.1.47.46.34 1.01 1.02.77 1.48z" fill="white"/></svg>
-          Schedule Show
-        </button>
-      </div>
-
-      <!-- Orders — secondary, muted bg, no CTA -->
-      <div class="sh-ztile sh-ztile-secondary">
-        <div class="sh-ztile-header">
-          <span class="sh-ztile-label">Orders</span>
-          <svg class="sh-ztile-chevron" width="10" height="16" viewBox="3.5 0 9 16" fill="none" opacity="0.3"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-        </div>
-        <div class="sh-ztile-body">
-          <div class="sh-ztile-value sh-ztile-value-muted">0</div>
-          <div class="sh-ztile-sub">Orders will appear here after your first sale</div>
-        </div>
-      </div>
-
-      <!-- Finances — secondary, muted bg -->
-      <div class="sh-ztile sh-ztile-secondary" onclick="document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-finances').classList.add('active');document.querySelector('.tabbar').style.display='none'">
-        <div class="sh-ztile-header">
-          <span class="sh-ztile-label">Finances</span>
-          <svg class="sh-ztile-chevron" width="10" height="16" viewBox="3.5 0 9 16" fill="none" opacity="0.3"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-        </div>
-        <div class="sh-ztile-body">
-          <div class="sh-ztile-value sh-ztile-value-muted">$0</div>
-          <div class="sh-ztile-sub">Start selling to earn</div>
+        <div style="display:flex;align-items:center;gap:3px">
+          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M15.71,6.1c-.11-.33-.52-1.11-1.82-1.11h-3.26l-1-3.09c-.38-1.21-1.18-1.39-1.63-1.39s-1.25.18-1.63,1.39l-1,3.1h-3.27c-1.29,0-1.7.77-1.82,1.11-.11.34-.26,1.23.81,2l2.66,1.9-1.05,3.1c-.29.86-.12,1.61.48,2.07.29.22,1.07.65,2.16-.15l2.64-1.94,2.64,1.95c.48.34.9.46,1.24.46.41,0,.72-.17.91-.32.6-.46.78-1.22.49-2.07l-1.05-3.1,2.66-1.9c1.08-.77.93-1.65.81-2Z" fill="var(--bw30)"/></svg>
+          <span style="font-size:12px;font-weight:600;color:var(--bw30)">4.9</span>
         </div>
       </div>
     </div>
 
-    <!-- Quick Actions — onboarding-focused -->
-    <div style="padding:28px 16px 12px">
-      <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Get Started</div>
+    <!-- Show preview card — per Figma 5722:115064 -->
+    <div style="margin:0 16px 16px;background:var(--gw30);border-radius:20px;box-shadow:var(--shadow-interactive);padding:16px;display:flex;flex-direction:column;gap:16px">
+      <!-- Content row: thumbnail + right section -->
+      <div style="display:flex;gap:10px;height:82px">
+        <!-- Show thumbnail 48×82 -->
+        <div style="width:48px;height:82px;border-radius:3px;overflow:hidden;flex-shrink:0;box-shadow:var(--shadow-show)">
+          <img src="design-system/images/shows/show1.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <!-- Right section — vertically: top info, spacer, bottom buttons -->
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-left:12px">
+          <!-- Top: countdown + alert -->
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:12px;font-weight:400;color:var(--bw20)">Show starts in:</span>
+              <span style="font-size:12px;font-weight:700;color:var(--bw20)">Today in 00:59:49</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M1 11.87c0-.76.71-1.41 1.36-2.04.51-.49.63-1.48.72-2.46.09-2.71.89-4.52 2.77-5.2.27-.94 1.08-1.67 2.15-1.67s1.88.72 2.15 1.67c1.88.68 2.68 2.49 2.77 5.2.09.98.22 1.97.72 2.46.66.63 1.36 1.28 1.36 2.04 0 .6-.45 1.01-1.21 1.01h-2.97c-.07 1.37-1.19 2.62-2.83 2.62s-2.76-1.25-2.83-2.62h-2.97c-.74 0-1.21-.41-1.21-1.01zm1.72-.3h10.54v-.09c-.18-.21-.58-.59-.95-.99-.49-.57-.73-1.59-.8-2.95-.08-2.91-.98-3.87-2.14-4.19-.18-.04-.28-.13-.3-.32-.03-.73-.44-1.22-1.08-1.22s-1.04.49-1.08 1.22c-.01.19-.12.28-.29.32-1.17.31-2.06 1.28-2.15 4.19-.07 1.36-.3 2.38-.8 2.95-.35.41-.77.79-.96.99v.09zm3.82 1.31c.06.89.65 1.47 1.46 1.47s1.41-.58 1.46-1.47h-2.93z" fill="#222A35"/></svg>
+              <span style="font-size:12px;font-weight:600;color:var(--bw30)">34</span>
+            </div>
+          </div>
+          <!-- Bottom: 3 icon buttons + Products pill -->
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;gap:8px">
+              <button style="width:36px;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.2829 2.23048C10.0529 2.20048 9.60288 2.25048 9.28288 2.40048C7.72288 3.12048 4.48288 6.71048 3.40288 8.42048C2.42288 9.95048 2.06288 13.0405 2.74288 13.5505C3.39288 14.0405 6.77288 13.7405 8.15288 12.6305C9.74288 11.3505 13.0829 7.66048 13.5429 6.06048C14.0429 4.35048 11.4929 2.40048 10.2829 2.23048ZM12.2929 5.79048C12.1629 6.08048 11.8029 6.58048 11.3429 7.18048C10.8629 6.68048 9.83288 5.98048 9.50288 5.69048C9.36288 5.57048 8.61288 6.34048 8.75288 6.46048L10.6029 8.10048C9.43288 9.51048 7.99288 11.0905 7.28288 11.7105C6.43288 12.4505 3.86288 12.5505 3.73288 12.4505V12.4305H3.71288C3.47288 12.2105 3.76288 10.3005 4.51288 9.21048C5.43288 7.87048 8.26288 4.74048 9.42288 3.84048C10.3629 3.12048 11.2029 4.07048 11.5229 4.31048C11.9829 4.65048 12.5329 5.33048 12.2929 5.79048Z" fill="#222A35"/></svg>
+              </button>
+              <button style="width:36px;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M9.98,13.25h0s-.11-.09-.11-.09c-.12-.08-.25-.12-.4-.12-.2,0-.38.07-.52.21h0c-.14.15-.21.32-.21.53s.07.37.21.51c.14.14.32.22.53.22.2,0,.37-.08.51-.22h0c.14-.14.22-.31.22-.51s-.07-.38-.22-.52Z" fill="#364153"/><path d="M6.94,3.39c-.11.11-.17.26-.17.42v3.86h-2.86c-.16,0-.3.06-.42.17-.11.11-.17.26-.17.42s.06.31.17.43c.11.11.26.17.42.17h3.45c.16,0,.3-.06.42-.17.12-.11.18-.26.18-.42V3.8c0-.16-.06-.31-.18-.42-.11-.11-.26-.17-.42-.17-.16,0-.31.06-.42.17Z" fill="#364153"/><path d="M12.71,10.46c-.2,0-.38.07-.52.22h0c-.14.15-.21.32-.21.52,0,.2.07.37.21.52h0c.14.14.32.21.52.21.2,0,.37-.07.51-.21.14-.14.22-.32.22-.52,0-.2-.07-.37-.22-.52-.14-.14-.31-.22-.51-.22Z" fill="#364153"/><path d="M11.82,12.27c-.14-.14-.31-.22-.51-.22-.2,0-.38.07-.52.22h0c-.14.15-.21.32-.21.52s.07.37.21.51c.14.14.32.22.52.22.2,0,.37-.08.51-.22h0c.14-.14.22-.31.22-.51s-.07-.38-.22-.52Z" fill="#364153"/><path d="M15.5,7.08c0-.14-.05-.27-.16-.36h0c-.11-.09-.27-.13-.44-.13h-.82c-.09-.43-.22-.85-.39-1.26-.35-.83-.85-1.56-1.48-2.19h0c-.55-.55-1.18-1-1.88-1.34l-.31-.14c-.83-.35-1.71-.53-2.66-.53-.95,0-1.83.18-2.67.53-.83.35-1.56.85-2.19,1.48-.63.63-1.12,1.36-1.47,2.19-.35.83-.53,1.72-.53,2.67s.18,1.83.53,2.66c.35.83.84,1.56,1.47,2.19h0c.63.63,1.36,1.12,2.19,1.47h0c.83.36,1.72.54,2.67.54.19,0,.35-.07.48-.2.13-.13.2-.3.21-.49,0-.19-.07-.36-.21-.49-.13-.13-.3-.21-.48-.21-.76,0-1.47-.14-2.13-.42-.58-.25-1.1-.58-1.55-1l-.19-.18c-.5-.5-.89-1.08-1.17-1.75-.28-.66-.42-1.37-.42-2.12s.14-1.46.42-2.12h0c.28-.67.67-1.25,1.17-1.75.5-.5,1.08-.9,1.75-1.18.66-.28,1.37-.42,2.13-.42s1.46.14,2.12.42c.58.25,1.1.58,1.55,1l.19.18c.5.5.9,1.08,1.18,1.74h0c.1.23.18.47.25.72h-.78c-.17,0-.33.04-.44.13-.11.09-.16.21-.16.36h0c0,.14.06.28.15.41h0s1.48,2.11,1.48,2.11h0c.12.17.28.28.48.29h0c.2,0,.36-.11.48-.29h0s1.48-2.1,1.48-2.1h0c.1-.14.16-.27.16-.42h0Z" fill="#364153"/></svg>
+              </button>
+              <button style="width:36px;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14.5722 2.15183C13.2422 0.837169 7.60845 0.935211 5.52656 1.08005C1.61116 1.35412 0.866012 2.07607 0.59505 4.9906C0.418925 6.87346 0.184091 10.735 3.03371 11.4525C4.00917 11.6976 6.09332 11.8758 8.24069 11.8692C8.12327 12.2725 8.01941 12.7449 7.81393 13.5025C7.66038 14.0707 8.13005 15.1268 8.94519 14.9842C10.2029 14.7659 12.9622 12.8028 14.5677 10.7105C15.708 9.22647 15.9044 3.46871 14.5677 2.14737L14.5722 2.15183ZM13.7119 9.41365C13.1451 10.6681 10.2436 13.4512 9.42389 13.4512C9.04229 13.4512 9.92517 11.0915 10.1916 10.5233C10.1916 10.5233 10.0358 10.5322 9.90936 10.5389C8.43036 10.6124 3.43338 10.6503 2.56856 9.83701C1.62019 8.94349 1.58632 3.823 2.67017 2.98519C3.27757 2.51726 4.79044 2.47047 5.68913 2.41476C7.25168 2.31895 12.4903 2.19862 13.4183 3.07209C14.3667 3.96338 14.2222 8.29062 13.7141 9.41365H13.7119Z" fill="#364153"/></svg>
+              </button>
+            </div>
+            <div style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:70px;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);white-space:nowrap"><span style="margin-right:4px">Products</span><span style="color:var(--bw40)">92</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Go Live CTA -->
+      <button data-action="go-live" style="width:100%;height:36px;border-radius:70px;border:none;background:var(--rd10);color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:var(--shadow-interactive)">Go Live - Start Show!</button>
     </div>
 
-    <div class="shv-qa-list">
-      <button class="shv-qa-list-item" data-action="add-product">
-        <div class="shv-qa-list-icon shv-qa-icon-blue">
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><g clip-path="url(#clip_plus_z)"><path d="M9 0.95c.52 0 .95.43.95.95v6.1h6.15c.52 0 .95.43.95.95s-.43.95-.95.95H9.95v6.15c0 .52-.43.95-.95.95s-.95-.43-.95-.95V9.95H1.9c-.52 0-.95-.43-.95-.95s.43-.95.95-.95h6.15V1.9c0-.52.43-.95.95-.95z" fill="#0091FF"/></g><defs><clipPath id="clip_plus_z"><rect width="16" height="16" fill="white" transform="translate(1 1)"/></clipPath></defs></svg>
+    <!-- 2×2 metric tiles -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 16px;margin-bottom:16px">
+      <!-- Orders 7d -->
+      <div data-action="manage-orders" style="height:112px;border-radius:20px;background:var(--wh10);box-shadow:var(--shadow-interactive);padding:16px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:12px;font-weight:600;color:var(--bw40)">Orders 7d</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.73881 12.3945 7.51632 12.2026 7.32285L5.04478 0.270859C4.88166 0.0967352 4.66098 0 4.41151 0C3.89339 0 3.5 0.396614 3.5 0.909311C3.5 1.16082 3.60554 1.39299 3.76866 1.55744L10.3028 8L3.76866 14.4329C3.60554 14.607 3.5 14.8295 3.5 15.081C3.5 15.6034 3.89339 16 4.41151 16C4.66098 16 4.88166 15.9033 5.04478 15.7291L12.2026 8.67715C12.3945 8.48368 12.5 8.25151 12.5 8Z" fill="#222A35"/></svg>
         </div>
-        <div class="shv-qa-list-text">
-          <div class="shv-qa-list-label">Add Product</div>
-          <div class="shv-qa-list-desc">Add your first item to the catalog</div>
+        <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:30px">24</div>
+      </div>
+      <!-- Revenue 7d -->
+      <div data-action="check-finances" style="height:112px;border-radius:20px;background:var(--wh10);box-shadow:var(--shadow-interactive);padding:16px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:12px;font-weight:600;color:var(--bw40)">Revenue 7d</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.73881 12.3945 7.51632 12.2026 7.32285L5.04478 0.270859C4.88166 0.0967352 4.66098 0 4.41151 0C3.89339 0 3.5 0.396614 3.5 0.909311C3.5 1.16082 3.60554 1.39299 3.76866 1.55744L10.3028 8L3.76866 14.4329C3.60554 14.607 3.5 14.8295 3.5 15.081C3.5 15.6034 3.89339 16 4.41151 16C4.66098 16 4.88166 15.9033 5.04478 15.7291L12.2026 8.67715C12.3945 8.48368 12.5 8.25151 12.5 8Z" fill="#222A35"/></svg>
         </div>
-        <svg class="shv-qa-list-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-      </button>
-      <button class="shv-qa-list-item" data-action="schedule-show">
-        <div class="shv-qa-list-icon shv-qa-icon-red">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#clip_play_z)"><path d="M5.02 3.4c.24 0 .49.06.73.18l5.97 3.05c1.13.58 1.13 2.17 0 2.75l-5.97 3.03c-.24.12-.49.18-.73.18-.83 0-1.58-.65-1.58-1.55V4.96c0-.9.75-1.56 1.58-1.56m-.01-1.4C3.35 2 2 3.32 2 4.96v6.09c0 1.63 1.35 2.96 3.02 2.96.48 0 .96-.12 1.39-.34l5.97-3.03C13.38 10.13 14 9.12 14 8.02s-.62-2.11-1.62-2.62L6.42 2.34C5.99 2.11 5.5 2 5.02 2z" fill="#FF4252"/></g><defs><clipPath id="clip_play_z"><rect width="12" height="12" fill="white" transform="translate(2 2)"/></clipPath></defs></svg>
+        <div>
+          <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:30px">$1002</div>
+          <div><span style="font-size:13px;font-weight:700;color:var(--bw10)">$300</span> <span style="font-size:11px;font-weight:400;color:var(--ov10)">Available</span></div>
         </div>
-        <div class="shv-qa-list-text">
-          <div class="shv-qa-list-label">Schedule Show</div>
-          <div class="shv-qa-list-desc">Plan your first live session</div>
+      </div>
+      <!-- Products -->
+      <div data-action="manage-products" style="height:112px;border-radius:20px;background:var(--wh10);box-shadow:var(--shadow-interactive);padding:16px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:12px;font-weight:600;color:var(--bw40)">Products</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.73881 12.3945 7.51632 12.2026 7.32285L5.04478 0.270859C4.88166 0.0967352 4.66098 0 4.41151 0C3.89339 0 3.5 0.396614 3.5 0.909311C3.5 1.16082 3.60554 1.39299 3.76866 1.55744L10.3028 8L3.76866 14.4329C3.60554 14.607 3.5 14.8295 3.5 15.081C3.5 15.6034 3.89339 16 4.41151 16C4.66098 16 4.88166 15.9033 5.04478 15.7291L12.2026 8.67715C12.3945 8.48368 12.5 8.25151 12.5 8Z" fill="#222A35"/></svg>
         </div>
-        <svg class="shv-qa-list-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-      </button>
-      <button class="shv-qa-list-item" data-action="share-shop">
-        <div class="shv-qa-list-icon shv-qa-icon-green">
-          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M9 11.95c-.48 0-.88-.41-.88-.89V4.34l.09-1.47-.52.65-1.37 1.49c-.15.18-.39.27-.61.27-.44 0-.79-.32-.79-.78 0-.24.1-.41.25-.58L8.34.8c.22-.23.43-.3.66-.3s.45.08.67.3l3.16 3.11c.16.17.26.34.26.58 0 .46-.37.78-.8.78-.22 0-.44-.1-.6-.27l-1.37-1.49-.52-.64.09 1.47v6.71c0 .48-.4.89-.89.89z" fill="#34C759"/><path d="M17.18 8.63c-.44 0-.81.36-.82.81-.04 1.87-.22 3.59-.48 4.38-.59 1.81-2.9 1.85-4.55 1.97-1.77.13-7.75.2-8.79-1.23-.5-.69-.79-2.82-.84-5.11-.01-.45-.37-.82-.82-.82h-.07c-.45 0-.82.38-.82.84.04 3.04.58 6.51 3.03 7.35 2.64.91 12.1 1.25 13.81-1.21.69-1 1.09-3.49 1.16-6.13.01-.47-.36-.86-.82-.86z" fill="#34C759"/></svg>
+        <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:30px">6</div>
+      </div>
+      <!-- Show -->
+      <div data-action="manage-shows" style="height:112px;border-radius:20px;background:var(--wh10);box-shadow:var(--shadow-interactive);padding:16px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:12px;font-weight:600;color:var(--bw40)">Show</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.73881 12.3945 7.51632 12.2026 7.32285L5.04478 0.270859C4.88166 0.0967352 4.66098 0 4.41151 0C3.89339 0 3.5 0.396614 3.5 0.909311C3.5 1.16082 3.60554 1.39299 3.76866 1.55744L10.3028 8L3.76866 14.4329C3.60554 14.607 3.5 14.8295 3.5 15.081C3.5 15.6034 3.89339 16 4.41151 16C4.66098 16 4.88166 15.9033 5.04478 15.7291L12.2026 8.67715C12.3945 8.48368 12.5 8.25151 12.5 8Z" fill="#222A35"/></svg>
         </div>
-        <div class="shv-qa-list-text">
-          <div class="shv-qa-list-label">Share Shop</div>
-          <div class="shv-qa-list-desc">Send your shop link to social media</div>
-        </div>
-        <svg class="shv-qa-list-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-      </button>
+        <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:30px">1 <span style="font-size:13px;font-weight:400;color:var(--ov10)">Repeated</span></div>
+      </div>
+    </div>
+
+    <!-- 2 CTA buttons side by side -->
+    <div style="display:flex;gap:12px;padding:0 16px">
+      <button data-action="add-product" style="flex:1;height:36px;border-radius:70px;border:none;background:var(--rd10);color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:var(--shadow-interactive)">Add Product</button>
+      <button data-action="schedule-show" style="flex:1;height:36px;border-radius:70px;border:none;background:var(--rd10);color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:var(--shadow-interactive)">Schedule Show</button>
     </div>
 
     <div style="height:120px"></div>
@@ -181,376 +156,14 @@
   <!-- ═══════════════════════════════ -->
   <!-- VARIANT A — Figma 1:1 (5548:65390) -->
   <!-- ═══════════════════════════════ -->
-  <div class="shv-variant" id="shv-a">
-
-    <!-- Header: Seller Hub + glass navi button -->
-    <div style="padding:32px 16px 8px">
-      <div class="shv-app-top" style="padding:0">
-        <h1 style="font-size:32px;font-weight:700;color:#000;line-height:21px">Seller Hub</h1>
-        <button class="shv-navi-btn" onclick="window.location.href='account.html'">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="2.5" cy="8" r="1.5" fill="#364153"/><circle cx="8" cy="8" r="1.5" fill="#364153"/><circle cx="13.5" cy="8" r="1.5" fill="#364153"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Profile row: avatar + greeting + unified stats badge -->
-    <div class="shf-profile-row">
-      <div class="shf-profile-left">
-        <div class="sh-avatar">
-          <img src="design-system/images/avatars/LuxeBotique.png" alt="">
-        </div>
-        <div class="shf-profile-info">
-          <div class="shf-profile-name">Hi, Marcin</div>
-          <div class="shf-profile-shop">CatchyDeals</div>
-        </div>
-      </div>
-      <div class="shf-stats-wrap">
-        <div class="shf-stat">
-          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M4.77,7.99c.99,0,1.81-.85,1.81-1.93s-.83-1.88-1.81-1.88-1.81.84-1.81,1.89.82,1.92,1.81,1.92Z" fill="#353b42"/><path d="M10.68,7.88c1.14,0,2.08-.98,2.08-2.21s-.95-2.16-2.08-2.16-2.08.97-2.08,2.17.94,2.21,2.08,2.21Z" fill="#353b42"/><path d="M6.92,9.31c-.55-.33-1.28-.58-2.16-.58-2.25,0-3.77,1.61-3.77,2.91,0,.54.26.86,1,.86h3.74c-.56-.77-.03-2.26,1.18-3.19Z" fill="#353b42"/><path d="M10.68,8.74c-2.64,0-4.33,1.74-4.33,3,0,.48.3.76,1.18.76h6.28c.89,0,1.18-.28,1.18-.76,0-1.26-1.68-3-4.32-3Z" fill="#353b42"/></svg>
-          <span>39</span>
-        </div>
-        <div class="shf-stat">
-          <svg width="12" height="12" viewBox="0 0 16 16"><path d="M15.71,6.1c-.11-.33-.52-1.11-1.82-1.11h-3.26l-1-3.09c-.38-1.21-1.18-1.39-1.63-1.39s-1.25.18-1.63,1.39l-1,3.1h-3.27c-1.29,0-1.7.77-1.82,1.11-.11.34-.26,1.23.81,2l2.66,1.9-1.05,3.1c-.29.86-.12,1.61.48,2.07.29.22,1.07.65,2.16-.15l2.64-1.94,2.64,1.95c.48.34.9.46,1.24.46.41,0,.72-.17.91-.32.6-.46.78-1.22.49-2.07l-1.05-3.1,2.66-1.9c1.08-.77.93-1.65.81-2Z" fill="#364153"/></svg>
-          <span>4.9</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Date filter pills -->
-    <div style="padding:0 16px;margin-bottom:16px">
-      <div class="sh-filter-row" style="padding:0;margin-bottom:0">
-        <button class="sh-filter-pill" data-period="today">Today</button>
-        <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
-        <button class="sh-filter-pill active" data-period="week">Last Week</button>
-        <button class="sh-filter-pill" data-period="month">Last Month</button>
-      </div>
-    </div>
-
-    <!-- 2×2 tiles with CTA buttons (Figma layout) -->
-    <div class="shf-tiles">
-      <!-- Products — white, red CTA -->
-      <div class="shf-tile shf-tile-white" data-action="manage-products">
-        <div class="shf-tile-top">
-          <span class="shf-tile-label">Products</span>
-          <svg class="shf-tile-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-        </div>
-        <div class="shf-tile-body">
-          <div class="shf-tile-value-row">
-            <span class="shf-tile-value">6</span>
-            <span class="shf-tile-change down">-2%</span>
-          </div>
-          <div class="shf-tile-sub">3 drafts</div>
-        </div>
-        <button class="shf-tile-cta shf-cta-red" data-action="add-product">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23c-.23-.03-.68.02-1 .17-1.56.72-4.8 4.31-5.88 6.02-.98 1.53-1.34 4.62-.66 5.13.65.49 4.03.19 5.41-.92 1.59-1.28 4.93-4.97 5.39-6.57.5-1.71-2.05-3.66-3.26-3.83zM12.29 5.79c-.13.29-.49.79-.95 1.39-.48-.5-1.51-1.2-1.84-1.49-.14-.12-.89.66-.75.77l1.85 1.64c-1.17 1.41-2.61 2.99-3.32 3.61-.85.74-3.42.84-3.55.74v-.02h-.02c-.24-.22.05-2.13.8-3.22.92-1.34 3.75-4.47 4.91-5.37.94-.72 1.78.23 2.1.47.46.34 1.01 1.02.77 1.48z" fill="#fff"/></svg>
-          Add Product
-        </button>
-      </div>
-
-      <!-- Shows — white, red CTA -->
-      <div class="shf-tile shf-tile-white" data-action="manage-shows">
-        <div class="shf-tile-top">
-          <span class="shf-tile-label">Shows</span>
-          <svg class="shf-tile-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-        </div>
-        <div class="shf-tile-body">
-          <div class="shf-tile-value-row">
-            <span class="shf-tile-value">3</span>
-            <span class="shf-tile-change up">+50%</span>
-          </div>
-          <div class="shf-tile-sub">2 upcoming</div>
-        </div>
-        <button class="shf-tile-cta shf-cta-red" data-action="schedule-show">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10.28 2.23c-.23-.03-.68.02-1 .17-1.56.72-4.8 4.31-5.88 6.02-.98 1.53-1.34 4.62-.66 5.13.65.49 4.03.19 5.41-.92 1.59-1.28 4.93-4.97 5.39-6.57.5-1.71-2.05-3.66-3.26-3.83zM12.29 5.79c-.13.29-.49.79-.95 1.39-.48-.5-1.51-1.2-1.84-1.49-.14-.12-.89.66-.75.77l1.85 1.64c-1.17 1.41-2.61 2.99-3.32 3.61-.85.74-3.42.84-3.55.74v-.02h-.02c-.24-.22.05-2.13.8-3.22.92-1.34 3.75-4.47 4.91-5.37.94-.72 1.78.23 2.1.47.46.34 1.01 1.02.77 1.48z" fill="#fff"/></svg>
-          Schedule Show
-        </button>
-      </div>
-
-      <!-- Orders — gray bg, white CTA -->
-      <div class="shf-tile shf-tile-gray" data-action="manage-orders">
-        <div class="shf-tile-top">
-          <span class="shf-tile-label">Orders</span>
-          <svg class="shf-tile-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-        </div>
-        <div class="shf-tile-body">
-          <div class="shf-tile-value-row">
-            <span class="shf-tile-value">24</span>
-            <span class="shf-tile-change up">+12%</span>
-          </div>
-          <div class="shf-tile-sub"><strong>5</strong> as Buy Me<br><strong>19</strong> as Auction</div>
-        </div>
-        <button class="shf-tile-cta shf-cta-white" data-action="manage-orders">Manage Orders</button>
-      </div>
-
-      <!-- Finances — gray bg, white CTA -->
-      <div class="shf-tile shf-tile-gray" onclick="document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-finances').classList.add('active');document.querySelector('.tabbar').style.display='none'">
-        <div class="shf-tile-top">
-          <span class="shf-tile-label">Finances</span>
-          <svg class="shf-tile-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12.5 8C12.5 7.74 12.39 7.52 12.2 7.32L5.04 0.27C4.88 0.1 4.66 0 4.41 0C3.89 0 3.5 0.4 3.5 0.91C3.5 1.16 3.61 1.39 3.77 1.56L10.3 8L3.77 14.43C3.61 14.61 3.5 14.83 3.5 15.08C3.5 15.6 3.89 16 4.41 16C4.66 16 4.88 15.9 5.04 15.73L12.2 8.68C12.39 8.48 12.5 8.25 12.5 8Z" fill="#222A35"/></svg>
-        </div>
-        <div class="shf-tile-body">
-          <div class="shf-tile-value-row">
-            <span class="shf-tile-value">$1312</span>
-            <span class="shf-tile-change down">-28%</span>
-          </div>
-          <div class="shf-tile-sub"><strong>$1002</strong> to Payout</div>
-        </div>
-        <button class="shf-tile-cta shf-cta-white" onclick="event.stopPropagation();document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-finances').classList.add('active');document.querySelector('.tabbar').style.display='none'">Check Finances</button>
-      </div>
-    </div>
-
-    <div style="height:120px"></div>
-  </div>
 
   <!-- ═══════════════════════════════ -->
   <!-- VARIANT B — Compact & Action   -->
   <!-- ═══════════════════════════════ -->
-  <div class="shv-variant" id="shv-b">
-
-    <!-- Header: avatar + greeting + settings -->
-    <div style="padding:32px 0 16px">
-      <div class="shv-header-b">
-        <div class="sh-avatar">
-          <img src="design-system/images/avatars/LuxeBotique.png" alt="">
-        </div>
-        <div class="shv-header-b-info">
-          <div class="shv-header-b-greeting">Hi, Tom &amp; Anna!</div>
-          <div class="shv-header-b-shop">LuxeBoutique</div>
-        </div>
-        <button class="shv-navi-btn">
-          <img src="design-system/UI Icons/Icon Account.svg" alt="">
-        </button>
-      </div>
-    </div>
-
-    <!-- Upcoming Show Banner — dark -->
-    <div class="shv-banner-dark" id="shv-banner-b">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-        <div class="shv-banner-dot"></div>
-        <div class="shv-banner-title">Summer Fashion Drop</div>
-      </div>
-      <div class="shv-banner-time">Starts in 45 min — get ready!</div>
-      <div class="shv-banner-actions">
-        <button class="shv-banner-btn secondary" data-action="schedule-show">Edit</button>
-        <button class="shv-banner-btn primary" data-action="go-live">Go Live</button>
-      </div>
-    </div>
-
-    <!-- Quick actions — 3 tiles with icons -->
-    <div class="shv-quick-tiles">
-      <button class="shv-quick-tile" data-action="add-product">
-        <div class="shv-quick-tile-icon"><img src="design-system/UI Icons/Icon Plus.svg" alt=""></div>
-        <div class="shv-quick-tile-label">Add Product</div>
-      </button>
-      <button class="shv-quick-tile" data-action="schedule-show">
-        <div class="shv-quick-tile-icon"><img src="design-system/UI Icons/Icon Play.svg" alt=""></div>
-        <div class="shv-quick-tile-label">Schedule Show</div>
-      </button>
-      <button class="shv-quick-tile" onclick="window.location.href='account.html'">
-        <div class="shv-quick-tile-icon"><img src="design-system/UI Icons/Icon Account.svg" alt=""></div>
-        <div class="shv-quick-tile-label">Settings</div>
-      </button>
-    </div>
-
-    <!-- Performance + time pills -->
-    <div class="shv-perf-inline">
-      <div class="shv-perf-inline-header">
-        <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Performance</div>
-      </div>
-      <div style="display:flex;gap:8px;overflow-x:auto">
-        <button class="sh-filter-pill active" data-period="today">Today</button>
-        <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
-        <button class="sh-filter-pill" data-period="week">Last Week</button>
-        <button class="sh-filter-pill" data-period="month">Last Month</button>
-      </div>
-    </div>
-
-    <!-- Orders full-width tile (no chart) -->
-    <div class="shv-orders-wide" data-action="manage-orders" style="margin-bottom:13px">
-      <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-          <span class="sh-tile-c-label">Orders</span>
-          <span class="sh-tile-change up">+40%</span>
-        </div>
-        <div style="display:flex;align-items:baseline;gap:6px">
-          <span class="sh-tile-c-value">7</span>
-          <span class="sh-tile-c-sub">2 to ship</span>
-        </div>
-      </div>
-      <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
-    </div>
-
-    <!-- 2×2 grid: Products, Shows, Payout, Income -->
-    <div class="sh-tiles">
-      <div class="sh-tile sh-tile-c" data-action="manage-products">
-        <div class="sh-tile-c-top"><div class="sh-tile-c-label">Products</div></div>
-        <div>
-          <div class="sh-tile-c-value-row">
-            <div class="sh-tile-c-value">24</div>
-            <div class="sh-tile-change up">+12%</div>
-          </div>
-          <div class="sh-tile-c-sub">3 drafts</div>
-        </div>
-        <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
-      </div>
-      <div class="sh-tile sh-tile-c" data-action="manage-shows">
-        <div class="sh-tile-c-top"><div class="sh-tile-c-label">Shows</div><div class="sh-tile-change up">+50%</div></div>
-        <div>
-          <div class="sh-tile-c-value">3</div>
-          <div class="sh-tile-c-sub">2 upcoming</div>
-        </div>
-        <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
-      </div>
-      <div class="sh-tile sh-tile-c" data-action="payout">
-        <div class="sh-tile-c-top"><div class="sh-tile-c-label">Payout</div><div class="sh-tile-change down">−8%</div></div>
-        <div>
-          <div class="sh-tile-c-value">$640</div>
-          <div class="sh-tile-c-sub">Available to withdraw</div>
-        </div>
-        <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
-      </div>
-      <div class="sh-tile sh-tile-c" data-action="manage-orders">
-        <div class="sh-tile-c-top"><div class="sh-tile-c-label">Income</div><div class="sh-tile-change down">−38%</div></div>
-        <div>
-          <div class="sh-tile-c-value">$1240</div>
-          <div class="sh-tile-c-sub">Finances</div>
-        </div>
-        <img class="sh-tile-c-chevron" src="design-system/UI Icons/Icon Right Chevron.svg" alt="">
-      </div>
-    </div>
-
-    <div style="height:120px"></div>
-  </div>
 
   <!-- ═══════════════════════════════ -->
   <!-- VARIANT C — Data-rich sections  -->
   <!-- ═══════════════════════════════ -->
-  <div class="shv-variant" id="shv-c">
-
-    <!-- App Top: Seller Hub + more button -->
-    <div style="padding:32px 16px 12px">
-      <div class="shv-app-top" style="padding:0">
-        <h1 style="font-size:32px;font-weight:700;color:#000">Seller Hub</h1>
-        <button class="shv-navi-btn">
-          <img src="design-system/UI Icons/Icon more.svg" alt="">
-        </button>
-      </div>
-    </div>
-
-    <!-- Profile card -->
-    <div class="shv-profile-card" onclick="window.location.href='seller-profile.html'">
-      <div class="sh-avatar">
-        <img src="design-system/images/avatars/LuxeBotique.png" alt="">
-      </div>
-      <div style="flex:1">
-        <div style="font-size:16px;font-weight:700;color:var(--bw10)">LuxeBoutique</div>
-        <div class="shv-profile-card-link">View Profile</div>
-      </div>
-      <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
-    </div>
-
-    <!-- Upcoming Show Banner — inline -->
-    <div class="shv-banner-inline" id="shv-banner-c">
-      <img class="shv-banner-inline-icon" src="design-system/UI Icons/Icon Alert.svg" alt="">
-      <div class="shv-banner-inline-text"><strong>Summer Fashion Drop</strong> starts in 45 min</div>
-      <button class="shv-banner-btn primary" data-action="go-live">Go Live</button>
-    </div>
-
-    <!-- Quick Actions heading + 2×2 grid -->
-    <div style="padding:0 16px 10px">
-      <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Quick Actions</div>
-    </div>
-    <div class="shv-quick-grid">
-      <button class="shv-quick-grid-item" data-action="add-product">
-        <img src="design-system/UI Icons/Icon Plus.svg" alt="">
-        <span>Add Product</span>
-      </button>
-      <button class="shv-quick-grid-item" data-action="schedule-show">
-        <img src="design-system/UI Icons/Icon Play.svg" alt="">
-        <span>Schedule Show</span>
-      </button>
-      <button class="shv-quick-grid-item" onclick="window.location.href='activity.html'">
-        <img src="design-system/UI Icons/Icon Orders.svg" alt="">
-        <span>My Orders</span>
-      </button>
-      <button class="shv-quick-grid-item" onclick="window.location.href='account.html'">
-        <img src="design-system/UI Icons/Icon Account.svg" alt="">
-        <span>Settings</span>
-      </button>
-    </div>
-
-    <!-- Performance heading + time pills -->
-    <div style="padding:8px 16px 12px">
-      <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Performance</div>
-    </div>
-    <div class="sh-filter-row">
-      <button class="sh-filter-pill active" data-period="today">Today</button>
-      <button class="sh-filter-pill" data-period="yesterday">Yesterday</button>
-      <button class="sh-filter-pill" data-period="week">Last Week</button>
-      <button class="sh-filter-pill" data-period="month">Last Month</button>
-    </div>
-
-    <!-- 5 metric tiles — full-width list -->
-    <div class="shv-metric-list">
-      <div class="shv-metric-item" data-action="manage-orders">
-        <div class="shv-metric-left">
-          <div class="sh-tile-c-label">Orders</div>
-          <div style="display:flex;align-items:baseline;gap:6px">
-            <span class="sh-tile-c-value">7</span>
-            <span class="sh-tile-change up">+40%</span>
-          </div>
-          <div class="sh-tile-c-sub">2 to ship</div>
-        </div>
-        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
-      </div>
-      <div class="shv-metric-item" data-action="manage-products">
-        <div class="shv-metric-left">
-          <div class="sh-tile-c-label">Products</div>
-          <div style="display:flex;align-items:baseline;gap:6px">
-            <span class="sh-tile-c-value">24</span>
-            <span class="sh-tile-change up">+12%</span>
-          </div>
-          <div class="sh-tile-c-sub">3 drafts</div>
-        </div>
-        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
-      </div>
-      <div class="shv-metric-item" data-action="manage-shows">
-        <div class="shv-metric-left">
-          <div class="sh-tile-c-label">Shows</div>
-          <div style="display:flex;align-items:baseline;gap:6px">
-            <span class="sh-tile-c-value">3</span>
-            <span class="sh-tile-change up">+50%</span>
-          </div>
-          <div class="sh-tile-c-sub">2 upcoming</div>
-        </div>
-        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
-      </div>
-      <div class="shv-metric-item" data-action="payout">
-        <div class="shv-metric-left">
-          <div class="sh-tile-c-label">Payout</div>
-          <div style="display:flex;align-items:baseline;gap:6px">
-            <span class="sh-tile-c-value">$640</span>
-            <span class="sh-tile-change down">−8%</span>
-          </div>
-          <div class="sh-tile-c-sub">Available to withdraw</div>
-        </div>
-        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
-      </div>
-      <div class="shv-metric-item" data-action="manage-orders">
-        <div class="shv-metric-left">
-          <div class="sh-tile-c-label">Income</div>
-          <div style="display:flex;align-items:baseline;gap:6px">
-            <span class="sh-tile-c-value">$1240</span>
-            <span class="sh-tile-change down">−38%</span>
-          </div>
-          <div class="sh-tile-c-sub">Finances</div>
-        </div>
-        <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" style="width:16px;height:16px;opacity:0.3">
-      </div>
-    </div>
-
-    <div style="height:120px"></div>
-  </div>
 
 </div>
 </div>
@@ -1084,11 +697,6 @@
     </div>
     <div class="ord-title">Orders</div>
     <!-- Variant toggle -->
-    <div class="ord-variant-toggle" id="ord-variant-toggle">
-      <button class="ord-variant-btn active" data-variant="a">A — Cards</button>
-      <button class="ord-variant-btn" data-variant="b">B — Compact</button>
-      <button class="ord-variant-btn" data-variant="c">C — Grouped</button>
-    </div>
     <div class="ord-filters" id="ord-filters">
       <button class="ord-filter-pill active" data-status="all">All <span class="ord-filter-count">21</span></button>
       <button class="ord-filter-pill" data-status="new">New <span class="ord-filter-count">10</span></button>
@@ -1102,8 +710,6 @@
 
   <!-- Temp: explore link -->
   <div style="padding:8px 16px 0">
-    <button onclick="showScreen('screen-track-explore');document.querySelector('.tabbar').style.display='none'" style="width:100%;height:40px;border-radius:12px;background:var(--bl10);border:none;font-size:12px;font-weight:600;color:white;cursor:pointer;font-family:inherit">🔍 Explore: Tracking Card (A/B/C)</button>
-    <button onclick="showScreen('screen-success-explore');document.querySelector('.tabbar').style.display='none'" style="width:100%;height:40px;border-radius:12px;background:var(--gr10);border:none;font-size:12px;font-weight:600;color:white;cursor:pointer;font-family:inherit;margin-top:6px">🔍 Explore: Ship Success — Apple HIG (A/B/C)</button>
   </div>
 
   <div class="screen-scroll" id="ord-scroll" style="padding-top:0">
@@ -1179,214 +785,8 @@
     </div>
 
     <!-- ═══ VARIANT B: Compact rows ═══ -->
-    <div class="ord-variant" id="ord-var-b">
-      <div class="ord-list-b" id="ord-list-b">
-        <div class="ord-row-b" data-order-status="new" onclick="openOrderDetails('8323234')">
-          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
-          <div class="ord-row-b-body">
-            <div class="ord-row-b-top">
-              <span class="ord-row-b-id">#8323234</span>
-              <span class="ord-badge new">New</span>
-            </div>
-            <div class="ord-row-b-sub">Nike Air Max 90 — Blue · kelx188</div>
-          </div>
-          <div class="ord-row-b-right">
-            <span class="ord-row-b-price">$102.34</span>
-            <span class="ord-row-b-date">Mar 14</span>
-          </div>
-          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
-        </div>
-        <div class="ord-row-b" data-order-status="new" onclick="openOrderDetails('8323234')">
-          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 3.png" alt=""></div>
-          <div class="ord-row-b-body">
-            <div class="ord-row-b-top">
-              <span class="ord-row-b-id">#8323236</span>
-              <span class="ord-badge new">New</span>
-            </div>
-            <div class="ord-row-b-sub">Handmade Bracelet Set · fashionista99</div>
-          </div>
-          <div class="ord-row-b-right">
-            <span class="ord-row-b-price">$34.50</span>
-            <span class="ord-row-b-date">Mar 14</span>
-          </div>
-          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
-        </div>
-        <div class="ord-row-b" data-order-status="shipped" onclick="openOrderDetails('8323233')">
-          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 5.png" alt=""></div>
-          <div class="ord-row-b-body">
-            <div class="ord-row-b-top">
-              <span class="ord-row-b-id">#8323233</span>
-              <span class="ord-badge shipped">Shipped</span>
-            </div>
-            <div class="ord-row-b-sub">Vintage Denim Jacket · kelx188</div>
-          </div>
-          <div class="ord-row-b-right">
-            <span class="ord-row-b-price">$102.34</span>
-            <span class="ord-row-b-date">Mar 12</span>
-          </div>
-          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
-        </div>
-        <div class="ord-row-b" data-order-status="delivered" onclick="openOrderDetails('8323232')">
-          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 10.png" alt=""></div>
-          <div class="ord-row-b-body">
-            <div class="ord-row-b-top">
-              <span class="ord-row-b-id">#8323232</span>
-              <span class="ord-badge delivered">Delivered</span>
-            </div>
-            <div class="ord-row-b-sub">Handmade Earrings Set · Trisha_BirmUK</div>
-          </div>
-          <div class="ord-row-b-right">
-            <span class="ord-row-b-price">$20.30</span>
-            <span class="ord-row-b-date">Mar 8</span>
-          </div>
-          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
-        </div>
-        <div class="ord-row-b" data-order-status="delivered" onclick="openOrderDetails('8323232')">
-          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 12.png" alt=""></div>
-          <div class="ord-row-b-body">
-            <div class="ord-row-b-top">
-              <span class="ord-row-b-id">#8323230</span>
-              <span class="ord-badge delivered">Delivered</span>
-            </div>
-            <div class="ord-row-b-sub">Ceramic Vase Set · home_lover42</div>
-          </div>
-          <div class="ord-row-b-right">
-            <span class="ord-row-b-price">$45.00</span>
-            <span class="ord-row-b-date">Mar 6</span>
-          </div>
-          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
-        </div>
-        <div class="ord-row-b" data-order-status="cancelled" onclick="openOrderDetails('8323231')">
-          <div class="ord-row-b-img"><img src="design-system/images/Product Photos/image 15.png" alt=""></div>
-          <div class="ord-row-b-body">
-            <div class="ord-row-b-top">
-              <span class="ord-row-b-id">#8323231</span>
-              <span class="ord-badge cancelled">Cancelled</span>
-            </div>
-            <div class="ord-row-b-sub">Retro Sneakers Collection · user034123</div>
-          </div>
-          <div class="ord-row-b-right">
-            <span class="ord-row-b-price">$100.00</span>
-            <span class="ord-row-b-date">Mar 5</span>
-          </div>
-          <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-row-b-chevron">
-        </div>
-      </div>
-    </div>
 
     <!-- ═══ VARIANT C: Grouped by status ═══ -->
-    <div class="ord-variant" id="ord-var-c">
-      <div class="ord-list-c">
-        <!-- New -->
-        <div class="ord-group-c">
-          <div class="ord-group-c-header">
-            <span class="ord-badge new" style="font-size:11px">New</span>
-            <span class="ord-group-c-count">10 orders</span>
-          </div>
-          <div class="ord-group-c-items">
-            <div class="ord-cell-c" onclick="openOrderDetails('8323234')">
-              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
-              <div class="ord-cell-c-body">
-                <div class="ord-cell-c-name">Nike Air Max 90 — Blue</div>
-                <div class="ord-cell-c-meta">#8323234 · Mar 14</div>
-              </div>
-              <div class="ord-cell-c-right">
-                <span class="ord-cell-c-price">$102.34</span>
-                <span class="ord-cell-c-buyer">kelx188</span>
-              </div>
-              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
-            </div>
-            <div class="ord-cell-c" onclick="openOrderDetails('8323234')">
-              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 3.png" alt=""></div>
-              <div class="ord-cell-c-body">
-                <div class="ord-cell-c-name">Handmade Bracelet Set</div>
-                <div class="ord-cell-c-meta">#8323236 · Mar 14</div>
-              </div>
-              <div class="ord-cell-c-right">
-                <span class="ord-cell-c-price">$34.50</span>
-                <span class="ord-cell-c-buyer">fashionista99</span>
-              </div>
-              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
-            </div>
-          </div>
-        </div>
-        <!-- Shipped -->
-        <div class="ord-group-c">
-          <div class="ord-group-c-header">
-            <span class="ord-badge shipped" style="font-size:11px">Shipped</span>
-            <span class="ord-group-c-count">1 order</span>
-          </div>
-          <div class="ord-group-c-items">
-            <div class="ord-cell-c" onclick="openOrderDetails('8323233')">
-              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 5.png" alt=""></div>
-              <div class="ord-cell-c-body">
-                <div class="ord-cell-c-name">Vintage Denim Jacket</div>
-                <div class="ord-cell-c-meta">#8323233 · Mar 12</div>
-              </div>
-              <div class="ord-cell-c-right">
-                <span class="ord-cell-c-price">$102.34</span>
-                <span class="ord-cell-c-buyer">kelx188</span>
-              </div>
-              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
-            </div>
-          </div>
-        </div>
-        <!-- Delivered -->
-        <div class="ord-group-c">
-          <div class="ord-group-c-header">
-            <span class="ord-badge delivered" style="font-size:11px">Delivered</span>
-            <span class="ord-group-c-count">2 orders</span>
-          </div>
-          <div class="ord-group-c-items">
-            <div class="ord-cell-c" onclick="openOrderDetails('8323232')">
-              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 10.png" alt=""></div>
-              <div class="ord-cell-c-body">
-                <div class="ord-cell-c-name">Handmade Earrings Set</div>
-                <div class="ord-cell-c-meta">#8323232 · Mar 8</div>
-              </div>
-              <div class="ord-cell-c-right">
-                <span class="ord-cell-c-price">$20.30</span>
-                <span class="ord-cell-c-buyer">Trisha_BirmUK</span>
-              </div>
-              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
-            </div>
-            <div class="ord-cell-c" onclick="openOrderDetails('8323232')">
-              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 12.png" alt=""></div>
-              <div class="ord-cell-c-body">
-                <div class="ord-cell-c-name">Ceramic Vase Set</div>
-                <div class="ord-cell-c-meta">#8323230 · Mar 6</div>
-              </div>
-              <div class="ord-cell-c-right">
-                <span class="ord-cell-c-price">$45.00</span>
-                <span class="ord-cell-c-buyer">home_lover42</span>
-              </div>
-              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
-            </div>
-          </div>
-        </div>
-        <!-- Cancelled -->
-        <div class="ord-group-c">
-          <div class="ord-group-c-header">
-            <span class="ord-badge cancelled" style="font-size:11px">Cancelled</span>
-            <span class="ord-group-c-count">4 orders</span>
-          </div>
-          <div class="ord-group-c-items">
-            <div class="ord-cell-c" onclick="openOrderDetails('8323231')">
-              <div class="ord-cell-c-img"><img src="design-system/images/Product Photos/image 15.png" alt=""></div>
-              <div class="ord-cell-c-body">
-                <div class="ord-cell-c-name">Retro Sneakers Collection</div>
-                <div class="ord-cell-c-meta">#8323231 · Mar 5</div>
-              </div>
-              <div class="ord-cell-c-right">
-                <span class="ord-cell-c-price">$100.00</span>
-                <span class="ord-cell-c-buyer">user034123</span>
-              </div>
-              <img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="ord-cell-c-chevron">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
 
@@ -1403,17 +803,7 @@
       <div class="od-toolbar-spacer"></div>
     </div>
 
-    <!-- Link to tracking explore -->
-    <div style="padding:0 16px 8px;text-align:center">
-      <button onclick="closeOrderDetails();showScreen('screen-track-explore');document.querySelector('.tabbar').style.display='none'" style="background:none;border:none;font-size:12px;font-weight:600;color:var(--bl10);cursor:pointer;font-family:inherit">View Tracking Card Variants →</button>
-    </div>
 
-    <!-- Variant toggle -->
-    <div class="od-var-toggle" id="od-var-toggle">
-      <button class="od-var-btn active" data-var="a">A — Action</button>
-      <button class="od-var-btn" data-var="b">B — Linear</button>
-      <button class="od-var-btn" data-var="c">C — Tabs</button>
-    </div>
 
     <!-- ═══ VARIANT A: Action-first — status + next step na górze, CTA wyeksponowany ═══ -->
     <div class="od-body od-var active" id="od-var-a">
@@ -1483,197 +873,8 @@
     </div>
 
     <!-- ═══ VARIANT B: Linear scroll (Tilt-style) — all sections flat ═══ -->
-    <div class="od-body od-var" id="od-var-b">
-      <!-- Date + status -->
-      <div class="od-meta-row">
-        <span class="od-meta-label">Date</span>
-        <span class="od-meta-value">Mar 14, 2026</span>
-      </div>
-      <div class="od-status-row"><span class="ord-badge new">New</span></div>
-      <div class="od-next-step">Next: Generate shipping label & ship this order</div>
-
-      <div class="od-separator"></div>
-
-      <!-- Shipping Label -->
-      <div class="od-b-section">
-        <div class="od-b-section-title">Shipping Label</div>
-        <div class="od-b-card">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-            <img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="width:18px;height:18px">
-            <span style="font-size:14px;font-weight:500;color:var(--bw10)">Inpost</span>
-            <span style="margin-left:auto;font-size:13px;font-weight:600;color:var(--bw30)">$5.99</span>
-          </div>
-          <div style="font-size:12px;font-weight:400;color:var(--bw40);margin-bottom:10px">Domestic</div>
-          <div style="font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:6px">PARCEL SIZE</div>
-          <div style="display:flex;gap:8px;margin-bottom:12px">
-            <button class="od-size-pill active" data-size="S">S</button>
-            <button class="od-size-pill" data-size="M">M</button>
-            <button class="od-size-pill" data-size="L">L</button>
-          </div>
-          <button class="od-cta-btn">Generate Shipping Label</button>
-        </div>
-      </div>
-
-      <div class="od-separator"></div>
-
-      <!-- Details -->
-      <div class="od-b-section">
-        <div class="od-b-section-title">Details</div>
-        <div class="od-b-item">
-          <div class="od-b-item-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:14px;font-weight:600;color:var(--bw30)">Nike Air Max 90 — Blue</div>
-            <div style="font-size:12px;font-weight:400;color:var(--bw40)">SKU: 9967194240 · #004</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-size:14px;font-weight:600;color:var(--bw10)">$70.00</div>
-            <div style="font-size:12px;font-weight:400;color:var(--bw40)">Qty: 1</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Payment -->
-      <div class="od-b-card">
-        <div class="od-b-row"><span class="od-b-row-label">Subtotal</span><span class="od-b-row-value">$70.00</span></div>
-        <div class="od-b-row"><span class="od-b-row-label">Shipping</span><span class="od-b-row-value">$5.99</span></div>
-        <div class="od-b-row"><span class="od-b-row-label">Payment Processing Fee</span><span class="od-b-row-value">−$1.80</span></div>
-        <div class="od-b-row"><span class="od-b-row-label">Droplet Fee</span><span class="od-b-row-value">$0.00</span></div>
-        <div class="od-separator"></div>
-        <div class="od-b-row"><span class="od-b-row-label" style="font-weight:600;color:var(--bw10)">Total</span><span class="od-b-row-value" style="font-weight:700;color:var(--bw10)">$74.19</span></div>
-        <div class="od-b-row highlight"><span class="od-b-row-label" style="font-weight:600;color:var(--gr10)">Your payout</span><span class="od-b-row-value">$68.20</span></div>
-      </div>
-
-      <div class="od-separator"></div>
-
-      <!-- Video Receipt -->
-      <div class="od-b-section">
-        <div style="display:flex;align-items:center;gap:6px">
-          <div class="od-b-section-title" style="margin-bottom:0">Video Receipt</div>
-          <img src="design-system/UI Icons/Icon Info.svg" alt="" style="width:14px;height:14px;opacity:0.35">
-        </div>
-        <button class="od-cta-btn secondary" style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px">
-          <img src="design-system/UI Icons/Icon Play.svg" alt="" style="width:16px;height:16px;opacity:0.5"> View Video Receipt
-        </button>
-      </div>
-
-      <div class="od-separator"></div>
-
-      <!-- Order Note -->
-      <div class="od-b-section">
-        <div class="od-b-section-title">Order Note</div>
-        <div class="od-note-card">
-          <img src="design-system/UI Icons/Icon Quote.svg" alt="" class="od-note-icon" style="opacity:0.4">
-          <div class="od-note-text">first auction win!</div>
-        </div>
-      </div>
-
-      <div class="od-separator"></div>
-
-      <!-- Customer Info -->
-      <div class="od-b-section">
-        <div class="od-b-section-title">Customer Info</div>
-        <div style="font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:4px">Shipping Address</div>
-        <div class="od-address-block">Kevin Lawson<br>InPost Locker ID: WAW188M<br>Wał Miedzeszyński, Warszawa, 03-994, Poland<br>kelx188@gmail.com<br>+48555123456</div>
-        <div style="font-size:12px;font-weight:600;color:var(--bw40);margin-top:12px;margin-bottom:4px">Buyer</div>
-        <div class="od-buyer-row">
-          <div class="od-buyer-avatar"><span>K</span></div>
-          <div class="od-buyer-name">kelx188</div>
-          <button class="od-msg-btn">Message</button>
-        </div>
-      </div>
-
-      <div class="od-separator"></div>
-      <div class="od-b-section">
-        <div class="od-b-section-title">Need help?</div>
-        <div class="od-link-row"><span class="od-link-label">Make Refund</span><img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="od-link-chevron"></div>
-      </div>
-    </div>
 
     <!-- ═══ VARIANT C: Tabbed — Order / Shipping / Buyer ═══ -->
-    <div class="od-body od-var" id="od-var-c">
-      <!-- Status bar -->
-      <div style="display:flex;align-items:center;gap:10px">
-        <span class="ord-badge new">New</span>
-        <span style="font-size:13px;font-weight:400;color:var(--bw40)">Mar 14, 2026</span>
-        <span style="font-size:12px;font-weight:500;color:var(--bw30);margin-left:auto">Ship this order</span>
-      </div>
-
-      <!-- Tabs -->
-      <div class="od-c-tabs" id="od-c-tabs">
-        <button class="od-c-tab active" data-panel="order">Order</button>
-        <button class="od-c-tab" data-panel="shipping">Shipping</button>
-        <button class="od-c-tab" data-panel="buyer">Buyer</button>
-      </div>
-
-      <!-- Panel: Order -->
-      <div class="od-c-panel active" id="od-c-order">
-        <!-- Summary cards -->
-        <div class="od-c-info-grid">
-          <div class="od-c-info-cell"><div class="od-c-info-label">Total</div><div class="od-c-info-value">$74.19</div></div>
-          <div class="od-c-info-cell"><div class="od-c-info-label">You earn</div><div class="od-c-info-value green">$68.20</div></div>
-        </div>
-
-        <!-- Product -->
-        <div class="od-a-hero">
-          <div class="od-a-hero-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
-          <div class="od-a-hero-body">
-            <div class="od-a-hero-name">Nike Air Max 90 — Blue</div>
-            <div class="od-a-hero-meta">SKU: 9967194240 · #004 · Qty: 1</div>
-            <div class="od-a-hero-price">$70.00</div>
-          </div>
-        </div>
-
-        <!-- Breakdown -->
-        <div class="od-b-card">
-          <div class="od-b-row"><span class="od-b-row-label">Subtotal</span><span class="od-b-row-value">$70.00</span></div>
-          <div class="od-b-row"><span class="od-b-row-label">Shipping</span><span class="od-b-row-value">$5.99</span></div>
-          <div class="od-b-row"><span class="od-b-row-label">Processing Fee</span><span class="od-b-row-value">−$1.80</span></div>
-          <div class="od-b-row"><span class="od-b-row-label">Droplet Fee</span><span class="od-b-row-value">$0.00</span></div>
-        </div>
-
-        <!-- Video + Note -->
-        <button class="od-cta-btn secondary" style="display:flex;align-items:center;justify-content:center;gap:8px">
-          <img src="design-system/UI Icons/Icon Play.svg" alt="" style="width:16px;height:16px;opacity:0.5"> Video Receipt
-        </button>
-        <div class="od-note-card">
-          <img src="design-system/UI Icons/Icon Quote.svg" alt="" class="od-note-icon" style="opacity:0.4">
-          <div class="od-note-text">first auction win!</div>
-        </div>
-      </div>
-
-      <!-- Panel: Shipping -->
-      <div class="od-c-panel" id="od-c-shipping">
-        <div class="od-a-action-card">
-          <div class="od-a-action-title">Inpost — Domestic</div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-            <img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="width:18px;height:18px">
-            <span style="font-size:14px;font-weight:500;color:var(--bw10)">$5.99</span>
-          </div>
-          <div style="font-size:12px;font-weight:600;color:var(--bw40);margin-bottom:6px">PARCEL SIZE</div>
-          <div style="display:flex;gap:8px;margin-bottom:14px">
-            <button class="od-size-pill active" data-size="S">S</button>
-            <button class="od-size-pill" data-size="M">M</button>
-            <button class="od-size-pill" data-size="L">L</button>
-          </div>
-          <button class="od-cta-btn">Generate Shipping Label</button>
-        </div>
-      </div>
-
-      <!-- Panel: Buyer -->
-      <div class="od-c-panel" id="od-c-buyer">
-        <div class="od-a-action-card">
-          <div class="od-buyer-row" style="padding:0;margin-bottom:8px">
-            <div class="od-buyer-avatar"><span>K</span></div>
-            <div class="od-buyer-name">kelx188</div>
-            <button class="od-msg-btn">Message</button>
-          </div>
-          <div class="od-separator"></div>
-          <div style="font-size:12px;font-weight:600;color:var(--bw40);margin:8px 0 4px">Shipping Address</div>
-          <div class="od-address-block" style="font-size:12px">Kevin Lawson<br>InPost Locker ID: WAW188M<br>Wał Miedzeszyński, Warszawa, 03-994<br>kelx188@gmail.com · +48555123456</div>
-        </div>
-        <div class="od-link-row"><span class="od-link-label">Make Refund</span><img src="design-system/UI Icons/Icon Right Chevron.svg" alt="" class="od-link-chevron"></div>
-      </div>
-    </div>
 
   </div>
 </div>
@@ -1683,105 +884,117 @@
 <!-- ════════════════════════════════════ -->
 
 <div class="screen" id="screen-seller-shows">
-  <!-- App Top -->
+  <!-- App Top — per Figma 5560:74922 -->
   <div style="position:sticky;top:0;z-index:100;background:var(--ov40)">
     <div style="height:54px;padding:14px 28px 0;display:flex;align-items:center;justify-content:space-between">
       <span style="font-size:16px;font-weight:600;color:#000;letter-spacing:-0.3px">9:41</span>
       <div style="display:flex;align-items:center;gap:6px">
-        <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
-        <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
+        <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#000"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#000"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#000"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#000"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" fill="#000"/><path d="M3.5 7.5C5 6 6.5 5.2 8 5.2s3 .8 4.5 2.3M1 4.5C3.5 2 5.8 1 8 1s4.5 1 7 3.5" stroke="#000" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg width="27" height="12" viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="2.5" fill="none" stroke="#000" stroke-opacity=".35"/><rect x="2" y="2" width="19" height="8" rx="1.5" fill="#000"/><path d="M25 4.5v3a1.5 1.5 0 000-3z" fill="#000" fill-opacity=".4"/></svg>
       </div>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px">
       <button id="shs-back-btn" style="width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer">
-        <img src="design-system/UI Icons/Icon Left Chevron.svg" width="18" height="18">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3.5 8C3.5 7.74 3.61 7.52 3.8 7.32L10.96 0.27C11.12 0.1 11.34 0 11.59 0C12.11 0 12.5 0.4 12.5 0.91C12.5 1.16 12.39 1.39 12.23 1.56L5.7 8L12.23 14.43C12.39 14.61 12.5 14.83 12.5 15.08C12.5 15.6 12.11 16 11.59 16C11.34 16 11.12 15.9 10.96 15.73L3.8 8.68C3.61 8.48 3.5 8.25 3.5 8Z" fill="#222A35"/></svg>
       </button>
-      <button id="shs-manage-btn" style="background:none;border:none;font-size:12px;font-weight:600;color:var(--bl10);font-family:inherit;cursor:pointer">Manage</button>
+      <div id="shs-manage-btn" style="height:42px;padding:0 16px;border-radius:296px;background:var(--wh10);display:flex;align-items:center;font-size:16px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive);cursor:pointer">Manage</div>
     </div>
   </div>
 
-  <!-- Title + counter + variant toggle -->
+  <!-- Title -->
   <div style="padding:4px 16px 8px">
-    <div style="font-size:23px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px;line-height:30px">Shows</div>
-    <div id="shs-counter" class="shs-counter" style="padding:8px 0 0;display:none"></div>
+    <div style="font-size:23px;font-weight:600;color:#000;letter-spacing:-0.5px;line-height:30px">Shows</div>
   </div>
 
-  <!-- Grid -->
-  <div class="shs-grid" id="shs-grid" style="padding-bottom:130px">
-    <!-- Tile 1 — Live Now -->
-    <div class="shs-tile" data-shs-id="1" style="background-image:url('design-system/images/shows/show1.jpg')">
-      <div class="shs-tile-overlay"></div>
-      <div class="shs-radio"><span class="shs-radio-num"></span></div>
-      <div class="shs-tile-content">
-        <div class="shs-alert-badge">
-          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
-          <span>344</span>
+  <!-- Show preview cards list -->
+  <div class="screen-scroll" id="shs-scroll" style="padding-top:0;padding-bottom:130px">
+    <div style="display:flex;flex-direction:column;gap:12px;padding:0 16px">
+
+      <!-- Card 1 — Upcoming show (Go Live) -->
+      <div style="background:var(--gw30);border-radius:20px;box-shadow:var(--shadow-interactive);padding:16px;display:flex;gap:10px">
+        <div style="width:48px;height:82px;border-radius:3px;overflow:hidden;flex-shrink:0;box-shadow:var(--shadow-show)">
+          <img src="design-system/images/shows/show1.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
         </div>
-        <div class="shs-tile-bottom">
-          <div class="shs-tile-badge live">Live Now</div>
-          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
-        </div>
-      </div>
-    </div>
-    <!-- Tile 2 -->
-    <div class="shs-tile" data-shs-id="2" style="background-image:url('design-system/images/shows/show2.jpg')">
-      <div class="shs-tile-overlay"></div>
-      <div class="shs-radio"><span class="shs-radio-num"></span></div>
-      <div class="shs-tile-content">
-        <div class="shs-alert-badge">
-          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
-          <span>344</span>
-        </div>
-        <div class="shs-tile-bottom">
-          <div class="shs-tile-badge date">23 Dec, 11:29</div>
-          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
-        </div>
-      </div>
-    </div>
-    <!-- Tile 3 -->
-    <div class="shs-tile" data-shs-id="3" style="background-image:url('design-system/images/shows/show2.jpg')">
-      <div class="shs-tile-overlay"></div>
-      <div class="shs-radio"><span class="shs-radio-num"></span></div>
-      <div class="shs-tile-content">
-        <div class="shs-alert-badge">
-          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
-          <span>344</span>
-        </div>
-        <div class="shs-tile-bottom">
-          <div class="shs-tile-badge date">23 Dec, 11:29</div>
-          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-left:2px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:12px;font-weight:400;color:var(--bw20)">Show starts in:</span>
+              <span style="font-size:12px;font-weight:700;color:var(--bw20)">Today in 00:59:49</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M1 11.8717C1 11.1131 1.70722 10.4618 2.3567 9.83206C2.86907 9.33826 2.98454 8.35067 3.07835 7.37023C3.17217 4.65792 3.96598 2.84733 5.84948 2.16746C6.12371 1.22281 6.92474 0.5 8 0.5C9.07526 0.5 9.87629 1.22281 10.1505 2.16746C12.034 2.84733 12.8278 4.65792 12.9216 7.37023C13.0155 8.35067 13.1381 9.33826 13.6433 9.83206C14.3 10.4618 15 11.1131 15 11.8717C15 12.4728 14.5454 12.8807 13.7948 12.8807H10.8289C10.7639 14.2548 9.63814 15.5 8 15.5C6.36186 15.5 5.23608 14.2476 5.17113 12.8807H2.20515C1.46186 12.8807 1 12.4728 1 11.8717ZM6.53505 12.8807C6.59278 13.7753 7.18454 14.355 8 14.355C8.82268 14.355 9.41443 13.7753 9.46495 12.8807H6.53505Z" fill="#222A35"/></svg>
+              <span style="font-size:12px;font-weight:600;color:var(--bw30)">34</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;gap:8px;align-items:center">
+              <button style="width:36px;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;cursor:pointer">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="2.5" cy="8" r="1.5" fill="#222A35"/><circle cx="8" cy="8" r="1.5" fill="#222A35"/><circle cx="13.5" cy="8" r="1.5" fill="#222A35"/></svg>
+              </button>
+              <div style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:70px;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);white-space:nowrap;gap:4px">
+                <span>Products</span><span style="color:var(--bw40)">0</span>
+              </div>
+            </div>
+            <button style="height:36px;padding:0 12px;border-radius:70px;border:none;background:var(--rd10);color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:var(--shadow-interactive)">Go Live</button>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Tile 4 -->
-    <div class="shs-tile" data-shs-id="4" style="background-image:url('design-system/images/shows/show2.jpg')">
-      <div class="shs-tile-overlay"></div>
-      <div class="shs-radio"><span class="shs-radio-num"></span></div>
-      <div class="shs-tile-content">
-        <div class="shs-alert-badge">
-          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
-          <span>344</span>
+
+      <!-- Card 2 — Scheduled tomorrow -->
+      <div style="background:var(--gw30);border-radius:20px;box-shadow:var(--shadow-interactive);padding:16px;display:flex;gap:10px">
+        <div style="width:48px;height:82px;border-radius:3px;overflow:hidden;flex-shrink:0;box-shadow:var(--shadow-show)">
+          <img src="design-system/images/shows/show2.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
         </div>
-        <div class="shs-tile-bottom">
-          <div class="shs-tile-badge date">23 Dec, 11:29</div>
-          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
-        </div>
-      </div>
-    </div>
-    <!-- Tile 5 -->
-    <div class="shs-tile" data-shs-id="5" style="background-image:url('design-system/images/shows/show1.jpg')">
-      <div class="shs-tile-overlay"></div>
-      <div class="shs-radio"><span class="shs-radio-num"></span></div>
-      <div class="shs-tile-content">
-        <div class="shs-alert-badge">
-          <img src="design-system/UI Icons/Icon Alert.svg" alt="">
-          <span>344</span>
-        </div>
-        <div class="shs-tile-bottom">
-          <div class="shs-tile-badge date">23 Dec, 11:29</div>
-          <div class="shs-tile-title">Daily from $1, Clothes, Home st...</div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-left:2px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:12px;font-weight:400;color:var(--bw20)">Scheduled</span>
+              <span style="font-size:12px;font-weight:700;color:var(--bw20)">Tomorrow 20:00</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M1 11.8717C1 11.1131 1.70722 10.4618 2.3567 9.83206C2.86907 9.33826 2.98454 8.35067 3.07835 7.37023C3.17217 4.65792 3.96598 2.84733 5.84948 2.16746C6.12371 1.22281 6.92474 0.5 8 0.5C9.07526 0.5 9.87629 1.22281 10.1505 2.16746C12.034 2.84733 12.8278 4.65792 12.9216 7.37023C13.0155 8.35067 13.1381 9.33826 13.6433 9.83206C14.3 10.4618 15 11.1131 15 11.8717C15 12.4728 14.5454 12.8807 13.7948 12.8807H10.8289C10.7639 14.2548 9.63814 15.5 8 15.5C6.36186 15.5 5.23608 14.2476 5.17113 12.8807H2.20515C1.46186 12.8807 1 12.4728 1 11.8717ZM6.53505 12.8807C6.59278 13.7753 7.18454 14.355 8 14.355C8.82268 14.355 9.41443 13.7753 9.46495 12.8807H6.53505Z" fill="#222A35"/></svg>
+              <span style="font-size:12px;font-weight:600;color:var(--bw30)">34</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button style="width:36px;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="2.5" cy="8" r="1.5" fill="#222A35"/><circle cx="8" cy="8" r="1.5" fill="#222A35"/><circle cx="13.5" cy="8" r="1.5" fill="#222A35"/></svg>
+            </button>
+            <div style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:70px;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);white-space:nowrap;gap:4px">
+              <span>Products</span><span style="color:var(--bw40)">23</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Card 3 — Scheduled future -->
+      <div style="background:var(--gw30);border-radius:20px;box-shadow:var(--shadow-interactive);padding:16px;display:flex;gap:10px">
+        <div style="width:48px;height:82px;border-radius:3px;overflow:hidden;flex-shrink:0;box-shadow:var(--shadow-show)">
+          <img src="design-system/images/shows/show2.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-left:2px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:12px;font-weight:400;color:var(--bw20)">Scheduled</span>
+              <span style="font-size:12px;font-weight:700;color:var(--bw20)">3 Jul 2026 20:00</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M1 11.8717C1 11.1131 1.70722 10.4618 2.3567 9.83206C2.86907 9.33826 2.98454 8.35067 3.07835 7.37023C3.17217 4.65792 3.96598 2.84733 5.84948 2.16746C6.12371 1.22281 6.92474 0.5 8 0.5C9.07526 0.5 9.87629 1.22281 10.1505 2.16746C12.034 2.84733 12.8278 4.65792 12.9216 7.37023C13.0155 8.35067 13.1381 9.33826 13.6433 9.83206C14.3 10.4618 15 11.1131 15 11.8717C15 12.4728 14.5454 12.8807 13.7948 12.8807H10.8289C10.7639 14.2548 9.63814 15.5 8 15.5C6.36186 15.5 5.23608 14.2476 5.17113 12.8807H2.20515C1.46186 12.8807 1 12.4728 1 11.8717ZM6.53505 12.8807C6.59278 13.7753 7.18454 14.355 8 14.355C8.82268 14.355 9.41443 13.7753 9.46495 12.8807H6.53505Z" fill="#222A35"/></svg>
+              <span style="font-size:12px;font-weight:600;color:var(--bw30)">34</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button style="width:36px;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="2.5" cy="8" r="1.5" fill="#222A35"/><circle cx="8" cy="8" r="1.5" fill="#222A35"/><circle cx="13.5" cy="8" r="1.5" fill="#222A35"/></svg>
+            </button>
+            <div style="display:flex;align-items:center;height:36px;padding:0 12px;border-radius:70px;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);white-space:nowrap;gap:4px">
+              <span>Products</span><span style="color:var(--bw40)">10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -1789,405 +1002,20 @@
   <div class="shs-bottom" id="shs-bottom-cta">
     <button class="shs-schedule-btn" data-action="schedule-show">Schedule Show</button>
   </div>
-
-  <!-- Action Bar (bulk mode) -->
-  <div class="shs-action-bar" id="shs-action-bar">
-    <button class="shs-btn-delete" id="shs-btn-delete">Delete</button>
-    <button class="shs-btn-share" id="shs-btn-share">Share</button>
-  </div>
 </div>
 
 <!-- ════════════════════════════════════ -->
 <!-- UI EXPLORE: FINANCES (3 warianty)   -->
 <!-- ════════════════════════════════════ -->
 
-<div class="screen" id="screen-success-explore">
-  <!-- Variant toggle — floats over content -->
-  <div class="suc-var-toggle">
-    <button class="suc-var-btn active" data-suc="a">A — Apple Pay</button>
-    <button class="suc-var-btn" data-suc="b">B — Summary</button>
-    <button class="suc-var-btn" data-suc="c">C — Morph</button>
-  </div>
-
-  <!-- ═══ VARIANT A: Pure checkmark — Apple Pay style, auto-dismiss ═══ -->
-  <!-- Flow: user tapped "Mark as Shipped" on OD → this appears immediately -->
-  <div class="suc-var active" id="suc-var-a">
-    <!-- Dimmed/scaled OD sheet showing filled state before tap -->
-    <div class="suc-od-bg">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
-        <div style="width:36px;height:36px;border-radius:296px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0px 2px 8px rgba(0,0,0,0.06)"><img src="design-system/UI Icons/Icon Close.svg" width="14" height="14"></div>
-        <span style="flex:1;text-align:center;font-size:17px;font-weight:600;color:var(--bw30);letter-spacing:-0.4px">Order #8323234</span>
-        <div style="width:36px"></div>
-      </div>
-      <div style="font-size:11px;font-weight:500;color:var(--bw40);text-align:center;margin-bottom:10px">Generate a shipping label and send the package</div>
-      <!-- Shipping section -->
-      <div style="font-size:15px;font-weight:600;color:var(--bw10);margin:6px 0 8px">Shipping</div>
-      <div style="background:white;border-radius:14px;overflow:hidden">
-        <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
-          <div style="font-size:10px;color:var(--bw40)">Shipping Address</div>
-          <div style="font-size:12px;font-weight:500;color:var(--bw20)">POB04M · ul. Fabryczna 2B</div>
-        </div>
-        <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
-          <div style="font-size:10px;color:var(--bw40)">Shipping Size</div>
-          <div style="font-size:12px;font-weight:500;color:var(--bw20)">Large</div>
-        </div>
-        <div style="padding:10px 14px">
-          <div style="font-size:10px;color:var(--bw40)">Tracking Number</div>
-          <div style="font-size:12px;font-weight:500;color:var(--bw20);font-variant-numeric:tabular-nums">645100000000000000000</div>
-        </div>
-      </div>
-      <!-- The CTA that was just tapped -->
-      <div style="height:40px;border-radius:70px;background:var(--rd10);margin-top:12px;display:flex;align-items:center;justify-content:center">
-        <span style="font-size:13px;font-weight:600;color:white">Mark as Shipped</span>
-      </div>
-    </div>
-    <!-- Dark overlay -->
-    <div class="suc-overlay"></div>
-    <!-- Action Sheet — immediate SUCCESS (no extra confirm) -->
-    <div class="suc-as" id="suc-a-sheet">
-      <div class="suc-as-card" style="text-align:center;padding:32px 16px 24px">
-        <div class="suc-check"><img src="design-system/UI Icons/Icon Check.svg" alt=""></div>
-        <div class="suc-done-title">Shipped!</div>
-        <div class="suc-done-sub">Order marked as shipped</div>
-        <div class="suc-auto-hint">Dismissing automatically…</div>
-      </div>
-    </div>
-    <!-- Replay button -->
-    <button class="suc-replay" onclick="replaySuccessA()">↻ Replay</button>
-  </div>
-
-  <!-- ═══ VARIANT B: Checkmark + shipping summary + Done ═══ -->
-  <div class="suc-var" id="suc-var-b">
-    <div class="suc-od-bg">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
-        <div style="width:36px;height:36px;border-radius:296px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0px 2px 8px rgba(0,0,0,0.06)"><img src="design-system/UI Icons/Icon Close.svg" width="14" height="14"></div>
-        <span style="flex:1;text-align:center;font-size:17px;font-weight:600;color:var(--bw30);letter-spacing:-0.4px">Order #8323234</span>
-        <div style="width:36px"></div>
-      </div>
-      <div style="font-size:11px;font-weight:500;color:var(--bw40);text-align:center;margin-bottom:10px">Generate a shipping label and send the package</div>
-      <div style="font-size:15px;font-weight:600;color:var(--bw10);margin:6px 0 8px">Shipping</div>
-      <div style="background:white;border-radius:14px;overflow:hidden">
-        <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
-          <div style="font-size:10px;color:var(--bw40)">Shipping Address</div>
-          <div style="font-size:12px;font-weight:500;color:var(--bw20)">POB04M · ul. Fabryczna 2B</div>
-        </div>
-        <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
-          <div style="font-size:10px;color:var(--bw40)">Shipping Size</div>
-          <div style="font-size:12px;font-weight:500;color:var(--bw20)">Large</div>
-        </div>
-        <div style="padding:10px 14px">
-          <div style="font-size:10px;color:var(--bw40)">Tracking Number</div>
-          <div style="font-size:12px;font-weight:500;color:var(--bw20);font-variant-numeric:tabular-nums">645100000000000000000</div>
-        </div>
-      </div>
-      <div style="height:40px;border-radius:70px;background:var(--rd10);margin-top:12px;display:flex;align-items:center;justify-content:center">
-        <span style="font-size:13px;font-weight:600;color:white">Mark as Shipped</span>
-      </div>
-    </div>
-    <div class="suc-overlay"></div>
-    <!-- Action Sheet — SUCCESS + summary info -->
-    <div class="suc-as" id="suc-b-sheet">
-      <div class="suc-as-card" style="text-align:center;padding:28px 16px 16px">
-        <div class="suc-check"><img src="design-system/UI Icons/Icon Check.svg" alt=""></div>
-        <div class="suc-done-title">Shipped!</div>
-        <div class="suc-done-sub">Order marked as shipped</div>
-        <div class="suc-b-info">
-          <div class="suc-b-cell">
-            <div class="suc-b-cell-label">Carrier</div>
-            <div class="suc-b-cell-value">Inpost</div>
-          </div>
-          <div class="suc-b-cell">
-            <div class="suc-b-cell-label">Size</div>
-            <div class="suc-b-cell-value">Large</div>
-          </div>
-          <div class="suc-b-cell">
-            <div class="suc-b-cell-label">Tracking</div>
-            <div class="suc-b-cell-value" style="font-size:10px;font-variant-numeric:tabular-nums">6451000000…</div>
-          </div>
-        </div>
-        <button class="suc-as-btn done" style="margin-top:16px">Done</button>
-      </div>
-    </div>
-    <button class="suc-replay" onclick="replaySuccessB()">↻ Replay</button>
-  </div>
-
-  <!-- ═══ VARIANT C: In-place morph — no overlay, CTA morphs on the OD sheet itself ═══ -->
-  <div class="suc-var" id="suc-var-c">
-    <!-- Full OD sheet (not dimmed) — the morph happens IN the sheet -->
-    <div id="suc-c-od" style="flex:1;display:flex;flex-direction:column;background:var(--gw30);border-radius:20px;overflow:hidden">
-      <div style="padding:50px 16px 0 16px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
-          <div style="width:36px;height:36px;border-radius:296px;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0px 2px 8px rgba(0,0,0,0.06)"><img src="design-system/UI Icons/Icon Close.svg" width="14" height="14"></div>
-          <span style="flex:1;text-align:center;font-size:17px;font-weight:600;color:var(--bw30);letter-spacing:-0.4px">Order #8323234</span>
-          <div style="width:36px"></div>
-        </div>
-        <div style="font-size:11px;font-weight:500;color:var(--bw40);text-align:center;margin-bottom:10px">Generate a shipping label and send the package</div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="ord-badge new" id="suc-c-badge">New</span><span style="font-size:13px;color:var(--bw40)">Mar 14</span></div>
-      </div>
-      <div style="flex:1;overflow-y:auto;padding:0 16px 120px">
-        <div style="font-size:15px;font-weight:600;color:var(--bw10);margin:0 0 8px">Shipping</div>
-        <div style="background:white;border-radius:14px;overflow:hidden">
-          <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
-            <div style="font-size:10px;color:var(--bw40)">Shipping Address</div>
-            <div style="font-size:12px;font-weight:500;color:var(--bw20)">POB04M · ul. Fabryczna 2B · Pobiedziska 62-010</div>
-          </div>
-          <div style="padding:10px 14px;border-bottom:1px solid var(--ov15)">
-            <div style="font-size:10px;color:var(--bw40)">Shipping Size</div>
-            <div style="font-size:12px;font-weight:500;color:var(--bw20)">Large</div>
-          </div>
-          <div style="padding:10px 14px">
-            <div style="font-size:10px;color:var(--bw40)">Tracking Number</div>
-            <div style="font-size:12px;font-weight:500;color:var(--bw20);font-variant-numeric:tabular-nums">645100000000000000000</div>
-          </div>
-        </div>
-        <!-- CTA that morphs -->
-        <button id="suc-c-cta" class="suc-as-btn cta" style="margin-top:14px" onclick="morphShipC()">Mark as Shipped</button>
-        <!-- Product card below -->
-        <div style="font-size:15px;font-weight:600;color:var(--bw10);margin:20px 0 8px">Details</div>
-        <div style="display:flex;gap:12px;align-items:center;background:white;border-radius:14px;padding:10px 12px">
-          <div style="width:44px;height:44px;border-radius:10px;overflow:hidden;flex-shrink:0;background:var(--gw20)"><img src="design-system/images/Product Photos/image 1.png" style="width:100%;height:100%;object-fit:cover"></div>
-          <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;color:var(--bw30)">#34 Product on Screen</div><div style="font-size:11px;color:var(--bw40)">Price $70.00</div></div>
-        </div>
-      </div>
-    </div>
-    <button class="suc-replay" onclick="replaySuccessC()">↻ Replay</button>
-  </div>
-</div>
 
 <!-- ════════════════════════════════════ -->
 <!-- UI EXPLORE: Tracking Card variants  -->
 <!-- ════════════════════════════════════ -->
 
-<div class="screen" id="screen-track-explore">
-  <!-- Simplified OD context header -->
-  <div style="position:sticky;top:0;z-index:100;background:var(--ov40)">
-    <div style="height:54px;padding:14px 28px 0;display:flex;align-items:center;justify-content:space-between">
-      <span style="font-size:16px;font-weight:600;color:#000;letter-spacing:-0.3px">9:41</span>
-      <div style="display:flex;align-items:center;gap:6px">
-        <svg width="18" height="12" viewBox="0 0 18 12"><path d="M1 4.2C3 1.5 6.3 0 9 0s6 1.5 8 4.2" stroke="#000" stroke-width="1.5" fill="none"/><path d="M4 7.3C5.3 5.7 7 5 9 5s3.7.7 5 2.3" stroke="#000" stroke-width="1.5" fill="none"/><circle cx="9" cy="10.5" r="1.5" fill="#000"/></svg>
-        <svg width="16" height="12" viewBox="0 0 25 12"><rect x="0" y="0.5" width="22" height="11" rx="3.5" stroke="#000" stroke-opacity=".35"/><rect x="1.5" y="2" width="19" height="8" rx="2" fill="#000"/><path d="M23 4v4a2.5 2.5 0 000-4z" fill="#000" fill-opacity=".4"/></svg>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;padding:0 16px;height:50px">
-      <button id="trk-back-btn" style="width:42px;height:42px;border-radius:296px;background:white;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0px 2px 8px rgba(0,0,0,0.06);cursor:pointer">
-        <img src="design-system/UI Icons/Icon Close.svg" width="18" height="18">
-      </button>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:20px;font-weight:600;color:var(--bw30);letter-spacing:-0.5px">Order #8323234</span>
-      <div style="width:42px"></div>
-    </div>
-  </div>
-
-  <!-- Scrollable explore area -->
-  <div class="screen-scroll" style="padding:0 0 130px;background:var(--gw30)">
-
-    <!-- Context: show which part we're exploring -->
-    <div style="padding:12px 16px 0">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-        <span class="ord-badge shipped" style="font-size:10px">Shipped</span>
-        <span style="font-size:13px;font-weight:400;color:var(--bw40)">Mar 14, 2026</span>
-      </div>
-      <div style="font-size:12px;font-weight:500;color:var(--bw30)">Shipped — waiting for delivery</div>
-    </div>
-
-    <!-- Variant toggle -->
-    <div class="trk-var-toggle" style="padding:12px 16px">
-      <button class="trk-var-btn active" data-trk="a">A — Stepper</button>
-      <button class="trk-var-btn" data-trk="b">B — Compact</button>
-      <button class="trk-var-btn" data-trk="c">C — Timeline</button>
-    </div>
-
-    <!-- ═══ VARIANT A: Horizontal Stepper ═══ -->
-    <div class="trk-var active" id="trk-var-a">
-      <div class="trk-explore">
-        <div class="trk-a-card">
-          <div class="trk-a-title">Delivery Date Pending</div>
-          <div class="trk-a-sub">1 item</div>
-          <div class="trk-a-msg">Your estimated delivery date will be provided as soon as it's available from the carrier.</div>
-
-          <!-- Stepper -->
-          <div class="trk-a-stepper">
-            <div class="trk-a-line"><div class="trk-a-line-fill" style="width:37%"></div></div>
-            <div class="trk-a-step">
-              <div class="trk-a-dot done"><img src="design-system/UI Icons/Icon Check.svg" alt=""></div>
-              <span class="trk-a-label done">Placed</span>
-            </div>
-            <div class="trk-a-step">
-              <div class="trk-a-dot current"><img src="design-system/UI Icons/Icon Shipping.svg" alt=""></div>
-              <span class="trk-a-label current">Shipped</span>
-            </div>
-            <div class="trk-a-step">
-              <div class="trk-a-dot"></div>
-              <span class="trk-a-label">On Its Way</span>
-            </div>
-            <div class="trk-a-step">
-              <div class="trk-a-dot"></div>
-              <span class="trk-a-label">Delivered</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CTA -->
-        <button class="trk-a-cta">
-          <img src="design-system/UI Icons/Icon Shipping.svg" alt="" style="width:18px;height:18px;filter:brightness(0) invert(1)">
-          Track Shipment
-        </button>
-
-        <!-- Footer -->
-        <div class="trk-a-footer">Shipped with Inpost · Tracking # 624018726354981726</div>
-
-        <!-- Product context (mini) -->
-        <div style="display:flex;gap:12px;align-items:center;background:white;border-radius:16px;padding:12px;border:1px solid var(--ov20)">
-          <div style="width:48px;height:48px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0px 2px 8px rgba(0,0,0,0.25)"><img src="design-system/images/Product Photos/image 1.png" style="width:100%;height:100%;object-fit:cover"></div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:13px;font-weight:600;color:var(--bw30);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nike Air Max 90 — Blue</div>
-            <div style="font-size:11px;font-weight:400;color:var(--bw40)">SKU: 9967194240 · #004</div>
-          </div>
-          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$70.00</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ VARIANT B: Compact Row ═══ -->
-    <div class="trk-var" id="trk-var-b">
-      <div class="trk-explore">
-        <div class="trk-b-card">
-          <!-- Header row -->
-          <div class="trk-b-header">
-            <div class="trk-b-icon shipped">
-              <img src="design-system/UI Icons/Icon Shipping.svg" alt="">
-            </div>
-            <div class="trk-b-info">
-              <div class="trk-b-status">Shipped — In Transit</div>
-              <div class="trk-b-date">Shipped Mar 14, 2026 · 1 item</div>
-            </div>
-            <span class="trk-b-badge shipped">Shipped</span>
-          </div>
-
-          <!-- Tracking number row -->
-          <div class="trk-b-tracking">
-            <span class="trk-b-tracking-label">Tracking</span>
-            <span class="trk-b-tracking-num">624018726354981726</span>
-            <button class="trk-b-copy"><img src="design-system/UI Icons/Icon Clip.svg" alt="Copy"></button>
-          </div>
-
-          <!-- Action buttons -->
-          <div class="trk-b-actions">
-            <button class="trk-b-btn secondary">
-              <img src="design-system/UI Icons/Icon Paczkomat.svg" alt="" style="opacity:0.6"> Check on Inpost
-            </button>
-            <button class="trk-b-btn primary">
-              <img src="design-system/UI Icons/Icon Shipping.svg" alt="" style="filter:brightness(0) invert(1)"> Track
-            </button>
-          </div>
-        </div>
-
-        <!-- Delivery estimate -->
-        <div style="display:flex;align-items:center;gap:10px;background:white;border-radius:16px;padding:12px 14px;border:1px solid var(--ov20)">
-          <img src="design-system/UI Icons/Icon Info.svg" alt="" style="width:16px;height:16px;opacity:0.4;flex-shrink:0">
-          <span style="font-size:12px;font-weight:400;color:var(--bw40);line-height:1.4">Delivery date pending — estimate will appear once the carrier scans the package.</span>
-        </div>
-
-        <!-- Product context (mini) -->
-        <div style="display:flex;gap:12px;align-items:center;background:white;border-radius:16px;padding:12px;border:1px solid var(--ov20)">
-          <div style="width:48px;height:48px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0px 2px 8px rgba(0,0,0,0.25)"><img src="design-system/images/Product Photos/image 1.png" style="width:100%;height:100%;object-fit:cover"></div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:13px;font-weight:600;color:var(--bw30);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nike Air Max 90 — Blue</div>
-            <div style="font-size:11px;font-weight:400;color:var(--bw40)">SKU: 9967194240 · #004</div>
-          </div>
-          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$70.00</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ VARIANT C: Vertical Timeline ═══ -->
-    <div class="trk-var" id="trk-var-c">
-      <div class="trk-explore">
-        <div class="trk-c-card">
-          <div class="trk-c-header">
-            <div class="trk-c-title">Shipment Tracking</div>
-            <span class="trk-c-badge trk-b-badge shipped">In Transit</span>
-          </div>
-
-          <!-- Timeline -->
-          <div class="trk-c-timeline">
-            <!-- Step 1: Placed — done -->
-            <div class="trk-c-step">
-              <div class="trk-c-dot-col">
-                <div class="trk-c-dot done"></div>
-                <div class="trk-c-line done"></div>
-              </div>
-              <div class="trk-c-step-body">
-                <div class="trk-c-step-label">Order Placed</div>
-                <div class="trk-c-step-date">Mar 14, 2026 · 10:23 AM</div>
-              </div>
-            </div>
-
-            <!-- Step 2: Shipped — current -->
-            <div class="trk-c-step">
-              <div class="trk-c-dot-col">
-                <div class="trk-c-dot current"></div>
-                <div class="trk-c-line"></div>
-              </div>
-              <div class="trk-c-step-body">
-                <div class="trk-c-step-label">Shipped</div>
-                <div class="trk-c-step-date">Mar 14, 2026 · 2:15 PM</div>
-                <div class="trk-c-step-msg">Package picked up by Inpost. Label generated, awaiting first scan.</div>
-              </div>
-            </div>
-
-            <!-- Step 3: On Its Way — future -->
-            <div class="trk-c-step">
-              <div class="trk-c-dot-col">
-                <div class="trk-c-dot"></div>
-                <div class="trk-c-line"></div>
-              </div>
-              <div class="trk-c-step-body">
-                <div class="trk-c-step-label future">On Its Way</div>
-                <div class="trk-c-step-date">Pending</div>
-              </div>
-            </div>
-
-            <!-- Step 4: Delivered — future -->
-            <div class="trk-c-step">
-              <div class="trk-c-dot-col">
-                <div class="trk-c-dot"></div>
-              </div>
-              <div class="trk-c-step-body">
-                <div class="trk-c-step-label future">Delivered</div>
-                <div class="trk-c-step-date">Estimated: pending</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Carrier footer -->
-          <div class="trk-c-footer">
-            <div class="trk-c-carrier-icon"><img src="design-system/UI Icons/Icon Paczkomat.svg" alt=""></div>
-            <div class="trk-c-carrier">
-              <div class="trk-c-carrier-name">Inpost · Domestic</div>
-              <div class="trk-c-carrier-num">624018726354981726</div>
-            </div>
-            <button class="trk-c-track-btn">Track</button>
-          </div>
-        </div>
-
-        <!-- Product context (mini) -->
-        <div style="display:flex;gap:12px;align-items:center;background:white;border-radius:16px;padding:12px;border:1px solid var(--ov20)">
-          <div style="width:48px;height:48px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0px 2px 8px rgba(0,0,0,0.25)"><img src="design-system/images/Product Photos/image 1.png" style="width:100%;height:100%;object-fit:cover"></div>
-          <div style="flex:1;min-width:0">
-            <div style="font-size:13px;font-weight:600;color:var(--bw30);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nike Air Max 90 — Blue</div>
-            <div style="font-size:11px;font-weight:400;color:var(--bw40)">SKU: 9967194240 · #004</div>
-          </div>
-          <div style="font-size:14px;font-weight:600;color:var(--bw10)">$70.00</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 
 <!-- ═══════════════════════════════════════ -->
-<!-- FINANCES — Chart variants comparison  -->
 <!-- ═══════════════════════════════════════ -->
 <div class="screen" id="screen-finances">
 <div class="screen-scroll" style="padding-top:54px;padding-bottom:130px">
@@ -2248,117 +1076,8 @@
     <div class="fin-tooltip-text" id="fin-tooltip-text"></div>
   </div>
 
-  <!-- ═══ Chart Variant Toggle ═══ -->
-  <div style="display:flex;gap:6px;padding:0 16px;margin-top:24px">
-    <button class="fin-chart-btn active" onclick="switchFinChart('bars')">A — Stacked Bars</button>
-    <button class="fin-chart-btn" onclick="switchFinChart('donut')">B — Donut</button>
-  </div>
 
-  <!-- ═══ CHART A: Stacked Bar Chart (March — weekly) ═══ -->
-  <div class="fin-chart-variant active" id="fin-chart-bars">
-    <div style="padding:16px 16px 0">
-      <div class="fin-chart-card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
-          <div style="font-size:12px;font-weight:600;color:var(--bw40)">Saldo na koniec tygodnia</div>
-          <div style="font-size:11px;font-weight:500;color:var(--ov10)">Marzec</div>
-        </div>
-        <!-- Y-axis labels + Bars -->
-        <div style="display:flex;gap:8px">
-          <!-- Y axis -->
-          <div style="display:flex;flex-direction:column;justify-content:space-between;height:120px;padding-bottom:20px">
-            <span style="font-size:9px;font-weight:500;color:var(--bw40)">$400</span>
-            <span style="font-size:9px;font-weight:500;color:var(--bw40)">$200</span>
-            <span style="font-size:9px;font-weight:500;color:var(--bw40)">$0</span>
-          </div>
-          <!-- Bars -->
-          <div class="fin-bars" style="flex:1">
-            <!-- Tydz 1: saldo $120 = $100 avail + $20 pending (30% of max 400) -->
-            <div class="fin-bar-col">
-              <div class="fin-bar" style="height:36px"><div class="fin-bar-pending" style="height:6px"></div><div class="fin-bar-avail" style="height:30px"></div></div>
-              <span class="fin-bar-label">Tydz 1</span>
-            </div>
-            <!-- Tydz 2: saldo $280 = $240 avail + $40 pending (70%) -->
-            <div class="fin-bar-col">
-              <div class="fin-bar" style="height:70px"><div class="fin-bar-pending" style="height:10px"></div><div class="fin-bar-avail" style="height:60px"></div></div>
-              <span class="fin-bar-label">Tydz 2</span>
-            </div>
-            <!-- Tydz 3: saldo $390 = $360 avail + $30 pending (97.5%) -->
-            <div class="fin-bar-col">
-              <div class="fin-bar" style="height:97px"><div class="fin-bar-pending" style="height:8px"></div><div class="fin-bar-avail" style="height:89px"></div></div>
-              <span class="fin-bar-label">Tydz 3</span>
-            </div>
-            <!-- Tydz 4 (teraz): saldo $350 = $300 avail + $50 pending (87.5%) — current -->
-            <div class="fin-bar-col">
-              <div class="fin-bar fin-bar-current" style="height:87px"><div class="fin-bar-pending" style="height:12px"></div><div class="fin-bar-avail" style="height:75px"></div></div>
-              <span class="fin-bar-label" style="font-weight:600;color:var(--bw20)">Teraz</span>
-            </div>
-          </div>
-        </div>
-        <!-- Current value callout -->
-        <div style="display:flex;align-items:center;gap:8px;margin-top:12px;padding:8px 12px;background:var(--gw30);border-radius:12px">
-          <div style="font-size:20px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">$350</div>
-          <div style="font-size:11px;font-weight:400;color:var(--ov10);line-height:14px">bieżące saldo<br>= <strong style="color:var(--gr10)">$300</strong> do wypłaty + <strong style="color:var(--or10)">$50</strong> w przetwarzaniu</div>
-        </div>
-        <!-- Legend -->
-        <div class="fin-legend" style="margin-top:10px">
-          <div class="fin-legend-item"><div class="fin-legend-dot" style="background:var(--gr10)"></div><span>Do wypłaty</span></div>
-          <div class="fin-legend-item"><div class="fin-legend-dot" style="background:var(--or10)"></div><span>W przetwarzaniu</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ═══ CHART B: Donut Chart ═══ -->
-  <div class="fin-chart-variant" id="fin-chart-donut">
-    <div style="padding:16px 16px 0">
-      <div class="fin-chart-card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <div style="font-size:12px;font-weight:600;color:var(--bw40)">Struktura bieżącego salda</div>
-          <div style="font-size:11px;font-weight:500;color:var(--ov10)">Marzec</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:24px">
-          <!-- Donut SVG -->
-          <div style="position:relative;width:120px;height:120px;flex-shrink:0">
-            <svg viewBox="0 0 120 120" width="120" height="120">
-              <circle cx="60" cy="60" r="48" fill="none" stroke="var(--ov30)" stroke-width="18"/>
-              <!-- Do wypłaty: 300/350 = 85.7% → 0.857 × 301.6 = 258.5 -->
-              <circle cx="60" cy="60" r="48" fill="none" stroke="var(--gr10)" stroke-width="18" stroke-dasharray="258.5 301.6" stroke-dashoffset="75.4" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-              <!-- W przetwarzaniu: 50/350 = 14.3% → 0.143 × 301.6 = 43.1 -->
-              <circle cx="60" cy="60" r="48" fill="none" stroke="var(--or10)" stroke-width="18" stroke-dasharray="43.1 301.6" stroke-dashoffset="-183.1" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-            </svg>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
-              <div style="font-size:20px;font-weight:700;color:var(--bw10);letter-spacing:-0.5px">$350</div>
-              <div style="font-size:10px;font-weight:500;color:var(--bw40)">saldo</div>
-            </div>
-          </div>
-          <!-- Breakdown -->
-          <div style="display:flex;flex-direction:column;gap:12px;flex:1">
-            <div>
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
-                <div style="width:8px;height:8px;border-radius:50%;background:var(--gr10)"></div>
-                <span style="font-size:11px;font-weight:500;color:var(--bw40)">Do wypłaty</span>
-              </div>
-              <div style="font-size:20px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">$300</div>
-              <div style="font-size:11px;font-weight:400;color:var(--ov10)">85.7% — gotowe do wypłaty</div>
-            </div>
-            <div style="height:1px;background:var(--ov20)"></div>
-            <div>
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
-                <div style="width:8px;height:8px;border-radius:50%;background:var(--or10)"></div>
-                <span style="font-size:11px;font-weight:500;color:var(--bw40)">W przetwarzaniu</span>
-              </div>
-              <div style="font-size:20px;font-weight:600;color:var(--bw10);letter-spacing:-0.5px">$50</div>
-              <div style="font-size:11px;font-weight:400;color:var(--ov10)">14.3% — oczekuje na zaksięgowanie</div>
-            </div>
-          </div>
-        </div>
-        <!-- Relationship callout -->
-        <div style="margin-top:14px;padding:10px 12px;background:var(--gw30);border-radius:12px;font-size:11px;font-weight:400;color:var(--ov10);line-height:16px">
-          Bieżące saldo <strong style="color:var(--bw10)">$350</strong> = Do wypłaty <strong style="color:var(--gr10)">$300</strong> + W przetwarzaniu <strong style="color:var(--or10)">$50</strong>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Transaction History -->
   <div style="padding:24px 16px 0">
@@ -2474,7 +1193,6 @@ function saveShow(show) {
   localStorage.setItem('droplet_shows', JSON.stringify(shows));
 }
 
-// ── Seller Hub — Proposal Toggle (A/B/C) ──
 function switchProposal(variant) {
   document.querySelectorAll('.sh-proposal-btn').forEach(b => b.classList.remove('active'));
   const btn = document.querySelector(`.sh-proposal-btn[onclick="switchProposal('${variant}')"]`);
@@ -2485,33 +1203,6 @@ function switchProposal(variant) {
   });
 }
 
-// ── Seller Hub — State Toggle (Zero / Data) ──
-function switchHubState(state) {
-  document.querySelectorAll('.sh-state-btn').forEach(b => b.classList.remove('active'));
-  const btn = document.querySelector(`.sh-state-btn[onclick="switchHubState('${state}')"]`);
-  if (btn) btn.classList.add('active');
-  const zero = document.getElementById('shv-zero');
-  const data = document.getElementById('shv-a');
-  if (state === 'zero') {
-    if (zero) { zero.classList.add('active'); zero.style.display = ''; }
-    if (data) { data.classList.remove('active'); data.style.display = 'none'; }
-  } else {
-    if (zero) { zero.classList.remove('active'); zero.style.display = 'none'; }
-    if (data) { data.classList.add('active'); data.style.display = ''; }
-  }
-}
-
-// ── Seller Hub — Variant Toggle ──
-document.querySelectorAll('.shv-toggle-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.shv-toggle-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const v = btn.dataset.variant;
-    document.querySelectorAll('.shv-variant').forEach(el => el.classList.remove('active'));
-    const target = document.getElementById('shv-' + v);
-    if (target) target.classList.add('active');
-  });
-});
 
 // ── Quick Actions — tap feedback ──
 document.querySelectorAll('[data-action="promote-show"],[data-action="share-shop"],[data-action="manage-shipping"],[data-action="create-giveaway"]').forEach(el => {
@@ -2534,13 +1225,13 @@ document.querySelectorAll('[data-action="go-live"]').forEach(btn => {
 
 // ── Metric tile navigation ──
 document.querySelectorAll('[data-action="manage-products"]').forEach(el => {
-  el.addEventListener('click', () => { mainTabbar.style.display = 'none'; showScreen('screen-products-list'); });
+  el.addEventListener('click', () => { window.location.href = 'products.html'; });
 });
 document.querySelectorAll('[data-action="manage-shows"]').forEach(el => {
   el.addEventListener('click', () => { mainTabbar.style.display = 'none'; showScreen('screen-seller-shows'); });
 });
 document.querySelectorAll('[data-action="manage-orders"]').forEach(el => {
-  el.addEventListener('click', () => { mainTabbar.style.display = 'none'; showScreen('screen-orders'); });
+  el.addEventListener('click', () => { window.location.href = 'orders.html'; });
 });
 
 // ── Finances ──
@@ -2550,15 +1241,6 @@ document.querySelectorAll('[data-action="check-finances"]').forEach(el => {
 const finBackBtn = document.getElementById('fin-back-btn');
 if (finBackBtn) finBackBtn.addEventListener('click', () => { mainTabbar.style.display = ''; showScreen('screen-sell'); });
 
-// Chart variant toggle
-function switchFinChart(variant) {
-  document.querySelectorAll('.fin-chart-btn').forEach(b => b.classList.remove('active'));
-  const btn = document.querySelector(`.fin-chart-btn[onclick="switchFinChart('${variant}')"]`);
-  if (btn) btn.classList.add('active');
-  document.querySelectorAll('.fin-chart-variant').forEach(el => el.classList.remove('active'));
-  const target = document.getElementById('fin-chart-' + variant);
-  if (target) target.classList.add('active');
-}
 
 // Info tooltips
 const tooltipTexts = {
@@ -2586,6 +1268,7 @@ document.addEventListener('click', () => {
 
 // ── Schedule Show ──
 let ssFormFilled = false;
+let ssReturnScreen = 'screen-sell';
 function ssNavigateToSchedule() {
   mainTabbar.style.display = 'none';
   ssFormFilled = false;
@@ -2638,7 +1321,11 @@ const ssCatInput = document.getElementById('ss-cat-input');
 if (ssCatInput) ssCatInput.addEventListener('click', ssFillForm);
 
 const ssBack = document.getElementById('ss-back-btn');
-if (ssBack) ssBack.addEventListener('click', () => { mainTabbar.style.display = ''; showScreen('screen-sell'); });
+if (ssBack) ssBack.addEventListener('click', () => {
+  if (ssReturnScreen === 'screen-sell') mainTabbar.style.display = '';
+  showScreen(ssReturnScreen);
+  ssReturnScreen = 'screen-sell';
+});
 
 const ssScheduleBtn = document.getElementById('ss-schedule-btn');
 if (ssScheduleBtn) ssScheduleBtn.addEventListener('click', () => showScreen('screen-show-scheduled'));
@@ -2891,45 +1578,15 @@ function renderSellShows() {
 // SELLER SHOWS — bulk selection
 // ════════════════════════════════════
 (function() {
-  const grid = document.getElementById('shs-grid');
-  const manageBtn = document.getElementById('shs-manage-btn');
   const backBtn = document.getElementById('shs-back-btn');
-  const actionBar = document.getElementById('shs-action-bar');
   const bottomCta = document.getElementById('shs-bottom-cta');
-  const counter = document.getElementById('shs-counter');
-  const deleteBtn = document.getElementById('shs-btn-delete');
-  const shareBtn = document.getElementById('shs-btn-share');
-  if (!grid || !manageBtn) return;
-  let bulkMode = false, selected = [];
 
-  function enterBulkMode() { bulkMode = true; selected = []; grid.classList.add('bulk-mode','shs-variant-b'); manageBtn.textContent = 'Cancel'; manageBtn.style.color = 'var(--rd10)'; bottomCta.style.display = 'none'; updateUI(); }
-  function exitBulkMode() { bulkMode = false; selected = []; grid.classList.remove('bulk-mode','shs-variant-b'); manageBtn.textContent = 'Manage'; manageBtn.style.color = 'var(--bl10)'; actionBar.classList.remove('visible'); bottomCta.style.display = ''; counter.style.display = 'none'; grid.querySelectorAll('.shs-tile').forEach(t => { t.classList.remove('selected'); const r = t.querySelector('.shs-radio'); if (r) r.classList.remove('selected'); }); }
-  function updateUI() {
-    grid.querySelectorAll('.shs-tile').forEach(tile => {
-      const id = tile.dataset.shsId; const idx = selected.indexOf(id); const radio = tile.querySelector('.shs-radio'); const num = tile.querySelector('.shs-radio-num');
-      if (idx >= 0) { tile.classList.add('selected'); radio.classList.add('selected'); num.textContent = idx + 1; }
-      else { tile.classList.remove('selected'); radio.classList.remove('selected'); num.textContent = ''; }
-    });
-    if (selected.length > 0) { counter.style.display = 'block'; counter.textContent = selected.length + ' selected'; actionBar.classList.add('visible'); }
-    else { counter.style.display = 'none'; actionBar.classList.remove('visible'); }
-  }
+  // Back button — always works
+  if (backBtn) backBtn.addEventListener('click', () => { mainTabbar.style.display = ''; showScreen('screen-sell'); });
 
-  manageBtn.addEventListener('click', () => { if (bulkMode) exitBulkMode(); else enterBulkMode(); });
-  grid.addEventListener('click', e => {
-    const tile = e.target.closest('.shs-tile'); if (!tile) return;
-    if (!bulkMode) { tile.style.opacity = '0.7'; setTimeout(() => tile.style.opacity = '', 150); return; }
-    const id = tile.dataset.shsId; const idx = selected.indexOf(id);
-    if (idx >= 0) selected.splice(idx, 1); else selected.push(id); updateUI();
-  });
-  backBtn.addEventListener('click', () => { if (bulkMode) { exitBulkMode(); return; } mainTabbar.style.display = ''; showScreen('screen-sell'); });
-  deleteBtn.addEventListener('click', () => {
-    if (!selected.length) return;
-    selected.forEach(id => { const tile = grid.querySelector(`.shs-tile[data-shs-id="${id}"]`); if (tile) { tile.style.transition = 'opacity .2s, transform .2s'; tile.style.opacity = '0'; tile.style.transform = 'scale(0.9)'; setTimeout(() => tile.remove(), 200); } });
-    setTimeout(() => exitBulkMode(), 250);
-  });
-  shareBtn.addEventListener('click', () => { if (!selected.length) return; shareBtn.textContent = 'Shared ' + selected.length + '!'; setTimeout(() => { shareBtn.textContent = 'Share'; exitBulkMode(); }, 800); });
+  // Schedule Show CTA — back should return to Shows, not Seller Hub
   const scheduleBtn = document.querySelector('#screen-seller-shows .shs-schedule-btn');
-  if (scheduleBtn) scheduleBtn.addEventListener('click', ssNavigateToSchedule);
+  if (scheduleBtn) scheduleBtn.addEventListener('click', () => { ssReturnScreen = 'screen-seller-shows'; ssNavigateToSchedule(); });
 })();
 
 // ════════════════════════════════════
@@ -2943,25 +1600,6 @@ function renderSellShows() {
 
   if (ordBackBtn) ordBackBtn.addEventListener('click', () => { showScreen('screen-sell'); mainTabbar.style.display = ''; });
 
-  const varToggle = document.getElementById('ord-variant-toggle');
-  if (varToggle) varToggle.addEventListener('click', e => {
-    const btn = e.target.closest('.ord-variant-btn'); if (!btn) return;
-    varToggle.querySelectorAll('.ord-variant-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('#screen-orders .ord-variant').forEach(v => v.classList.remove('active'));
-    const target = document.getElementById('ord-var-' + btn.dataset.variant); if (target) target.classList.add('active');
-  });
-
-  if (ordFilters) ordFilters.addEventListener('click', e => {
-    const pill = e.target.closest('.ord-filter-pill'); if (!pill) return;
-    ordFilters.querySelectorAll('.ord-filter-pill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    const status = pill.dataset.status;
-    document.querySelectorAll('#ord-list-a .ord-card-a').forEach(card => { card.style.display = (status === 'all' || card.dataset.orderStatus === status) ? '' : 'none'; });
-    document.querySelectorAll('#ord-list-b .ord-row-b').forEach(row => { row.style.display = (status === 'all' || row.dataset.orderStatus === status) ? '' : 'none'; });
-    document.querySelectorAll('#ord-var-c .ord-group-c').forEach(group => { const badge = group.querySelector('.ord-badge'); if (!badge) return; const gs = badge.classList[1]; group.style.display = (status === 'all' || gs === status) ? '' : 'none'; });
-  });
-
   window.openOrderDetails = function(orderId) {
     const titleEl = document.getElementById('od-title'); if (titleEl) titleEl.textContent = '#' + orderId;
     if (odOverlay) odOverlay.classList.add('active'); if (odSheet) odSheet.classList.add('active');
@@ -2969,13 +1607,6 @@ function renderSellShows() {
   };
   window.closeOrderDetails = function() { if (odOverlay) odOverlay.classList.remove('active'); if (odSheet) odSheet.classList.remove('active'); };
 
-  const odVarToggle = document.getElementById('od-var-toggle');
-  if (odVarToggle) odVarToggle.addEventListener('click', e => {
-    const btn = e.target.closest('.od-var-btn'); if (!btn) return;
-    odVarToggle.querySelectorAll('.od-var-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
-    document.querySelectorAll('#od-sheet .od-var').forEach(v => v.classList.remove('active'));
-    const target = document.getElementById('od-var-' + btn.dataset.var); if (target) target.classList.add('active');
-  });
 
   const odCTabs = document.getElementById('od-c-tabs');
   if (odCTabs) odCTabs.addEventListener('click', e => {
@@ -2997,14 +1628,6 @@ function renderSellShows() {
 // SUCCESS EXPLORE
 // ════════════════════════════════════
 (function() {
-  const sucToggle = document.querySelector('.suc-var-toggle');
-  if (sucToggle) sucToggle.addEventListener('click', e => {
-    const btn = e.target.closest('.suc-var-btn'); if (!btn) return;
-    sucToggle.querySelectorAll('.suc-var-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
-    document.querySelectorAll('#screen-success-explore .suc-var').forEach(v => v.classList.remove('active'));
-    const target = document.getElementById('suc-var-' + btn.dataset.suc); if (target) target.classList.add('active');
-  });
-
   window.replaySuccessA = function() {
     var sheet = document.getElementById('suc-a-sheet'); var overlay = sheet.previousElementSibling; if (!sheet) return;
     sheet.style.transition = 'opacity 0.2s, transform 0.2s'; sheet.style.opacity = '0'; sheet.style.transform = 'translateY(30px)';
@@ -3032,22 +1655,8 @@ function renderSellShows() {
 })();
 
 // ════════════════════════════════════
-// TRACKING EXPLORE
+// TRACKING EXPLORE (removed — HTML cleared)
 // ════════════════════════════════════
-(function() {
-  const trkToggle = document.querySelector('.trk-var-toggle');
-  if (trkToggle) trkToggle.addEventListener('click', e => {
-    const btn = e.target.closest('.trk-var-btn'); if (!btn) return;
-    trkToggle.querySelectorAll('.trk-var-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
-    document.querySelectorAll('#screen-track-explore .trk-var').forEach(v => v.classList.remove('active'));
-    const target = document.getElementById('trk-var-' + btn.dataset.trk); if (target) target.classList.add('active');
-  });
-  const trkBack = document.getElementById('trk-back-btn');
-  if (trkBack) trkBack.addEventListener('click', () => showScreen('screen-orders'));
-  document.querySelectorAll('.trk-b-copy').forEach(btn => {
-    btn.addEventListener('click', () => { btn.innerHTML = '<span style="font-size:10px;font-weight:600;color:var(--gr10)">✓</span>'; setTimeout(() => { btn.innerHTML = '<img src="design-system/UI Icons/Icon Clip.svg" alt="Copy" style="width:14px;height:14px;opacity:0.5">'; }, 1500); });
-  });
-})();
 
 // ── On page load ──
 renderSellProducts();

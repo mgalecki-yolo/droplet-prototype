@@ -136,3 +136,5 @@ Kazda ikona dostepna w: `18px` / `16px` / `12px` (niektore tez `8px` lub `24px`)
 | Icon Slow Motion | 1432:16877 |
 | Icon Skull | 1210:168916 |
 | Icon Skull Full | 1190:167637 |
+| Icon Target | 5940:86765 |
+| Icon Location | 5906:85054 |

@@ -11,7 +11,7 @@
 
 <div class="phone">
 
-<!-- ── Status Bar ── -->
+<!-- Status Bar -->
 <div class="status-bar">
   <span class="status-time">9:41</span>
   <div class="status-icons">
@@ -22,15 +22,321 @@
 </div>
 
 <div class="screen active" id="screen-activity">
-  <div class="placeholder-screen">
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="8" width="36" height="32" rx="4"/><path d="M6 16h36M16 8v8M32 8v8M14 24h6M14 32h10M28 24h6"/></svg>
-    <span>Activity</span>
-    <span style="font-size:13px;font-weight:400">Coming soon</span>
+  <div class="screen-scroll" style="padding-top:54px" id="act-scroll">
+
+    <!-- Big Title — H10 32px Bold (same spacing as Seller Hub) -->
+    <div style="padding:32px 16px 8px">
+      <h1 style="font-size:32px;font-weight:700;color:#000;line-height:21px">Activity</h1>
+    </div>
+
+    <!-- Main Tab Pills -->
+    <div class="act-tabs" id="act-tabs">
+      <button class="act-tab active" data-tab="messages">Messages <span class="act-tab-count">5</span></button>
+      <button class="act-tab" data-tab="notifications">Notifications <span class="act-tab-count">3</span></button>
+      <button class="act-tab" data-tab="purchases">Purchases <span class="act-tab-count">5</span></button>
+      <button class="act-tab" data-tab="saved">Saved <span class="act-tab-count">2</span></button>
+    </div>
+
+    <!-- ═══════════════════════════ -->
+    <!-- TAB: Messages              -->
+    <!-- ═══════════════════════════ -->
+    <div class="act-content active" id="act-messages">
+      <div class="act-msg-list">
+
+        <div class="act-msg-row">
+          <div class="act-msg-avatar"><img src="design-system/images/avatars/TaskerBullion.png" alt=""></div>
+          <div class="act-msg-body">
+            <div class="act-msg-top">
+              <span class="act-msg-name">JsrCoins</span>
+              <span class="act-msg-date">04 Jan 2026</span>
+            </div>
+            <div class="act-msg-preview-row"><p class="act-msg-preview">Please confirm delivery date</p><div class="act-msg-thumb"><img src="design-system/images/Product Photos/image 5.png" alt=""></div></div>
+          </div>
+        </div>
+
+        <div class="act-msg-row">
+          <div class="act-msg-avatar"><img src="design-system/images/avatars/TCGPokerealm.png" alt=""></div>
+          <div class="act-msg-body">
+            <div class="act-msg-top">
+              <span class="act-msg-name">TCGPokerealm</span>
+              <span class="act-msg-date">Yesterday</span>
+            </div>
+            <p class="act-msg-preview">Have you any info about note? I Wand...</p>
+          </div>
+        </div>
+
+        <div class="act-msg-row">
+          <div class="act-msg-avatar"><img src="design-system/images/avatars/IllusionClothing.png" alt=""></div>
+          <div class="act-msg-body">
+            <div class="act-msg-top">
+              <span class="act-msg-name">IllusionClothing</span>
+              <span class="act-msg-date">04 Jan 2026</span>
+            </div>
+            <p class="act-msg-preview">Question about product</p>
+          </div>
+        </div>
+
+        <div class="act-msg-row">
+          <div class="act-msg-avatar"><img src="design-system/images/avatars/VamosClearance.png" alt=""></div>
+          <div class="act-msg-body">
+            <div class="act-msg-top">
+              <span class="act-msg-name">CatchyDeals <span class="act-msg-unread">4</span></span>
+              <span class="act-msg-date">04 Jan 2026</span>
+            </div>
+            <div class="act-msg-preview-row"><p class="act-msg-preview">Still I don't have tracking id. Please pro...</p><div class="act-msg-thumb"><img src="design-system/images/Product Photos/image 1.png" alt=""></div></div>
+          </div>
+        </div>
+
+        <div class="act-msg-row">
+          <div class="act-msg-avatar act-msg-avatar-brand">
+            <svg width="20" height="20" viewBox="0 0 36 38" fill="none"><path d="M18.28 0C28.06 0 35.99 7.93 35.99 17.72c0 6.77-3.8 12.65-9.39 15.63l-3.03-5.24a11.22 11.22 0 005.16-9.47c0-5.77-4.33-10.46-9.66-10.46-2.14 0-4.12.73-5.73 1.97l-3.04-5.25A17.42 17.42 0 0118.28 0z" fill="#FF4252"/><path d="M15.28 37.72c-4.65-.73-8.7-3.2-11.54-6.64l5.01-3.37a11.18 11.18 0 007.24 3.52l-.71 6.49z" fill="#FF4252" opacity=".6"/><path d="M0 18.56c.15-4.8 2-9.14 5.03-12.47l4.5 4.16A11.2 11.2 0 006.5 18.22L0 18.56z" fill="#FF4252" opacity=".3"/></svg>
+          </div>
+          <div class="act-msg-body">
+            <div class="act-msg-top">
+              <span class="act-msg-name">Droplet.live <span class="act-msg-unread">71</span></span>
+              <span class="act-msg-date">04 Jan 2026</span>
+            </div>
+            <p class="act-msg-preview">New features during show!</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════ -->
+    <!-- TAB: Notifications         -->
+    <!-- ═══════════════════════════ -->
+    <div class="act-content" id="act-notifications">
+      <div class="act-notif-list">
+
+        <div class="act-notif-row">
+          <div class="act-notif-thumb"><img src="design-system/images/Product Photos/image 5.png" alt=""></div>
+          <div class="act-notif-body">
+            <div class="act-notif-date">04 Jan 2026</div>
+            <p class="act-notif-text">On of your item has been added to the Upcoming Show by <strong>@CatchyDeals</strong></p>
+          </div>
+        </div>
+
+        <div class="act-notif-row">
+          <div class="act-notif-avatar" style="background:var(--bl10)"><span>A</span></div>
+          <div class="act-notif-body">
+            <div class="act-notif-date">04 Jan 2026</div>
+            <p class="act-notif-text"><strong>@amari98231</strong> tagged you in <strong>@TCGPokerleam</strong> show and said "Mate check stuff here <strong>@martinaux</strong>"</p>
+          </div>
+        </div>
+
+        <div class="act-notif-row">
+          <div class="act-msg-avatar"><img src="design-system/images/avatars/TaskerBullion.png" alt=""></div>
+          <div class="act-notif-body-simple">
+            <div class="act-msg-top">
+              <span class="act-msg-name">@JsrCoins</span>
+              <span class="act-msg-date">04 Jan 2026</span>
+            </div>
+            <p class="act-msg-preview">Started following you</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════ -->
+    <!-- TAB: Purchases             -->
+    <!-- ═══════════════════════════ -->
+    <div class="act-content" id="act-purchases">
+
+      <!-- Sub-filter pills -->
+      <div class="act-purchase-filters" id="act-purchase-filters">
+        <button class="act-pf active" data-status="all">All</button>
+        <button class="act-pf" data-status="new">New <span class="act-pf-count">3</span></button>
+        <button class="act-pf" data-status="shipped">Shipped <span class="act-pf-count">1</span></button>
+        <button class="act-pf" data-status="in-delivery">In Delivery <span class="act-pf-count">1</span></button>
+        <button class="act-pf" data-status="delivered">Delivered <span class="act-pf-count">3</span></button>
+        <button class="act-pf" data-status="refunded">Refunded</button>
+        <button class="act-pf" data-status="cancelled">Cancelled</button>
+      </div>
+
+      <!-- Purchase items list -->
+      <div class="act-purchase-list" id="act-purchase-list">
+
+        <div class="act-purchase-item" data-purchase-status="new">
+          <div class="act-purchase-img"><img src="design-system/images/Product Photos/image 5.png" alt=""></div>
+          <div class="act-purchase-body">
+            <div class="act-purchase-status-row">
+              <span class="act-purchase-badge new">New</span>
+              <span class="act-purchase-date">12 Mar</span>
+            </div>
+            <div class="act-purchase-name">Blue Airmax 95 unisex</div>
+            <div class="act-purchase-attrs">
+              <span class="act-purchase-attr">EU 46</span>
+              <span class="act-purchase-attr">Blue</span>
+            </div>
+            <div class="act-purchase-price-row">
+              <span class="act-purchase-price">$180</span>
+              <span class="act-purchase-seller">from <a>kelx188</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-purchase-item" data-purchase-status="new">
+          <div class="act-purchase-img act-purchase-img-placeholder">
+            <svg width="48" height="48" viewBox="0 0 36 38" fill="none" opacity="0.15"><path d="M18.28 0C28.06 0 35.99 7.93 35.99 17.72c0 6.77-3.8 12.65-9.39 15.63l-3.03-5.24a11.22 11.22 0 005.16-9.47c0-5.77-4.33-10.46-9.66-10.46-2.14 0-4.12.73-5.73 1.97l-3.04-5.25A17.42 17.42 0 0118.28 0z" fill="#222A35"/><path d="M15.28 37.72c-4.65-.73-8.7-3.2-11.54-6.64l5.01-3.37a11.18 11.18 0 007.24 3.52l-.71 6.49z" fill="#222A35"/><path d="M0 18.56c.15-4.8 2-9.14 5.03-12.47l4.5 4.16A11.2 11.2 0 006.5 18.22L0 18.56z" fill="#222A35"/></svg>
+          </div>
+          <div class="act-purchase-body">
+            <div class="act-purchase-status-row">
+              <span class="act-purchase-badge new">New</span>
+              <span class="act-purchase-date">14 Mar</span>
+            </div>
+            <div class="act-purchase-name">#34 Product on Screen</div>
+            <div class="act-purchase-price-row">
+              <span class="act-purchase-price">$60</span>
+              <span class="act-purchase-seller">from <a>CatchyDeals</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-purchase-item" data-purchase-status="shipped">
+          <div class="act-purchase-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
+          <div class="act-purchase-body">
+            <div class="act-purchase-status-row">
+              <span class="act-purchase-badge shipped">Shipped</span>
+              <span class="act-purchase-date">18 Mar</span>
+            </div>
+            <div class="act-purchase-name">Airmax Classic 95 white blue red</div>
+            <div class="act-purchase-attrs">
+              <span class="act-purchase-attr">UK 12.5</span>
+            </div>
+            <div class="act-purchase-price-row">
+              <span class="act-purchase-price">$180</span>
+              <span class="act-purchase-seller">from <a>kelx188</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-purchase-item" data-purchase-status="delivered">
+          <div class="act-purchase-img"><img src="design-system/images/Product Photos/image 1.png" alt=""></div>
+          <div class="act-purchase-body">
+            <div class="act-purchase-status-row">
+              <span class="act-purchase-badge delivered">Delivered</span>
+              <span class="act-purchase-date">4 Feb</span>
+            </div>
+            <div class="act-purchase-name">Airmax Classic 95 white blue red</div>
+            <div class="act-purchase-attrs">
+              <span class="act-purchase-attr">Blue</span>
+            </div>
+            <div class="act-purchase-price-row">
+              <span class="act-purchase-price">$180</span>
+              <span class="act-purchase-seller">from <a>kelx188</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="act-purchase-item" data-purchase-status="in-delivery">
+          <div class="act-purchase-img"><img src="design-system/images/Product Photos/image 10.png" alt=""></div>
+          <div class="act-purchase-body">
+            <div class="act-purchase-status-row">
+              <span class="act-purchase-badge in-delivery">In Delivery</span>
+              <span class="act-purchase-date">20 Mar</span>
+            </div>
+            <div class="act-purchase-name">Vintage Denim Jacket oversized</div>
+            <div class="act-purchase-attrs">
+              <span class="act-purchase-attr">Size L</span>
+            </div>
+            <div class="act-purchase-price-row">
+              <span class="act-purchase-price">$95</span>
+              <span class="act-purchase-seller">from <a>IllusionClothing</a></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════ -->
+    <!-- TAB: Saved (placeholder)   -->
+    <!-- ═══════════════════════════ -->
+    <div class="act-content" id="act-saved">
+      <div class="act-empty">
+        <svg width="48" height="48" viewBox="0 0 18 18" fill="none"><path d="M3.75 2.25h10.5a.75.75 0 01.75.75v12.19a.75.75 0 01-1.14.64L9 13.01l-4.86 2.82A.75.75 0 013 15.19V3a.75.75 0 01.75-.75z" stroke="#7B8494" stroke-width="1.2"/></svg>
+        <span style="font-size:14px;font-weight:600;color:var(--bw20)">No saved items yet</span>
+        <span style="font-size:13px;font-weight:400;color:var(--bw40)">Bookmark products and shows to see them here</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- ── Tab Bar ── -->
-<div class="tabbar">
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PURCHASE DETAIL SCREEN — per Figma 5705:22005     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="screen" id="screen-purchase-detail">
+  <!-- App Top — fixed header with scroll title -->
+  <div id="pd-header" style="position:absolute;top:0;left:0;right:0;z-index:40;background:var(--ov40)">
+    <div style="height:54px"></div>
+    <div style="display:flex;align-items:center;padding:0 16px;height:50px">
+      <button onclick="showScreen('screen-activity')" style="width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer;flex-shrink:0">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3.5 8C3.5 7.74 3.61 7.52 3.8 7.32L10.96 0.27C11.12 0.1 11.34 0 11.59 0C12.11 0 12.5 0.4 12.5 0.91C12.5 1.16 12.39 1.39 12.23 1.56L5.7 8L12.23 14.43C12.39 14.61 12.5 14.83 12.5 15.08C12.5 15.6 12.11 16 11.59 16C11.34 16 11.12 15.9 10.96 15.73L3.8 8.68C3.61 8.48 3.5 8.25 3.5 8Z" fill="#222A35"/></svg>
+      </button>
+      <span id="pd-scroll-title" style="flex:1;text-align:center;font-size:16px;font-weight:700;color:var(--bw10);opacity:0;transition:opacity 0.2s;pointer-events:none"></span>
+      <div style="width:42px;flex-shrink:0"></div>
+    </div>
+  </div>
+
+  <div class="screen-scroll" id="pd-scroll">
+    <div style="height:109px"></div>
+
+    <!-- Dynamic content filled by JS -->
+    <div id="pd-content" style="padding:0 16px 40px"></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- CONVERSATION SCREEN (based on Figma Make) -->
+<!-- ═══════════════════════════════════════ -->
+<div class="screen" id="screen-conversation">
+
+  <!-- Nav overlay with gradient fog -->
+  <div class="conv-nav">
+    <div class="conv-nav-bar">
+      <div class="conv-nav-left">
+        <button class="conv-back-btn" id="conv-back-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11.25 3.75L5.25 9l6 5.25" stroke="#222A35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span class="conv-nav-title" id="conv-nav-title"></span>
+      </div>
+      <button class="conv-more-btn">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><circle cx="2.5" cy="8" r="1.5" fill="#222A35"/><circle cx="8" cy="8" r="1.5" fill="#222A35"/><circle cx="13.5" cy="8" r="1.5" fill="#222A35"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scrollable content -->
+  <div class="conv-scroll" id="conv-scroll">
+    <div style="padding-top:100px">
+      <!-- Large title (scrolls away) -->
+      <div class="conv-large-title">
+        <div class="conv-large-name" id="conv-large-name"></div>
+        <div class="conv-large-status" id="conv-large-status">Online</div>
+      </div>
+      <!-- Messages -->
+      <div id="conv-messages" style="padding-bottom:100px"></div>
+    </div>
+  </div>
+
+  <!-- Input bar -->
+  <div class="conv-input-bar">
+    <button class="conv-input-icon">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M14.25 9a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" stroke="#7B8494" stroke-width="1.2"/><path d="M9 6v6M6 9h6" stroke="#7B8494" stroke-width="1.2" stroke-linecap="round"/></svg>
+    </button>
+    <input class="conv-input-field" type="text" placeholder="Message..." id="conv-input">
+    <button class="conv-send-btn" id="conv-send-btn">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M15.75 2.25L8.25 9.75M15.75 2.25l-4.5 13.5-3-6-6-3 13.5-4.5z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Tab Bar -->
+<div class="tabbar" id="main-tabbar">
   <div class="tabbar-pill">
     <a class="tab-item" href="index.html">
       <div class="tab-icon"><img src="design-system/UI Icons/Icon Start.svg" alt="Start"></div>
@@ -56,8 +362,476 @@
 </div>
 
 </div><!-- .phone -->
+
 <script>
-// No specific JS for activity screen
+/* ── Tab switching ── */
+document.querySelectorAll(".act-tab").forEach(function(tab) {
+  tab.addEventListener("click", function() {
+    document.querySelectorAll(".act-tab").forEach(function(t) { t.classList.remove("active"); });
+    document.querySelectorAll(".act-content").forEach(function(c) { c.classList.remove("active"); });
+    tab.classList.add("active");
+    var target = tab.getAttribute("data-tab");
+    document.getElementById("act-" + target).classList.add("active");
+  });
+});
+
+/* ── Purchase sub-filter switching ── */
+document.querySelectorAll(".act-pf").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll(".act-pf").forEach(function(b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    var status = btn.getAttribute("data-status");
+    document.querySelectorAll(".act-purchase-item").forEach(function(item) {
+      if (status === "all") {
+        item.style.display = "flex";
+      } else {
+        item.style.display = item.getAttribute("data-purchase-status") === status ? "flex" : "none";
+      }
+    });
+  });
+});
+
+/* ══════════════════════════════════════════ */
+/* Screen navigation                          */
+/* ══════════════════════════════════════════ */
+var allScreens = document.querySelectorAll('.screen');
+var mainTabbar = document.getElementById('main-tabbar');
+function showScreen(screenId) {
+  var target = document.getElementById(screenId);
+  if (!target) return;
+  allScreens.forEach(function(s) { s.classList.remove('active'); });
+  target.classList.add('active');
+  // Hide tabbar on pushed screens
+  var hideTabbar = ['screen-conversation', 'screen-purchase-detail'];
+  if (mainTabbar) mainTabbar.style.display = hideTabbar.indexOf(screenId) >= 0 ? 'none' : '';
+}
+
+/* ══════════════════════════════════════════ */
+/* Conversation data & logic (from Figma Make)*/
+/* ══════════════════════════════════════════ */
+
+var CONVERSATIONS = {
+  jsrcoins: {
+    name: "JsrCoins", avatar: "design-system/images/avatars/TaskerBullion.png",
+    messages: [
+      {sender:"me",text:"Hey! I\u2019m interested in Airmax Classic 95. Is it authentic?",time:"10:12",date:"Feb 7, 2026",product:{img:"design-system/images/Product Photos/image 5.png",name:"Airmax Classic 95 white blue red",price:"$30.00"}},
+      {sender:"them",text:"Hi! Yes, 100%. I have a certificate of authenticity.",time:"10:15",date:"Feb 7, 2026"},
+      {sender:"me",text:"Great, I\u2019ll take it!",time:"10:20",date:"Feb 7, 2026"},
+      {sender:"system",time:"10:22",date:"Feb 7, 2026",notification:{type:"purchase",title:"Purchase successful",body:"JsrCoins must ship the order by Feb 14.\nWe\u2019ll keep you updated on progress.",productImg:"design-system/images/Product Photos/image 5.png",productName:"Airmax Classic 95 white blue red",productPrice:"$30.00"}},
+      {sender:"system",time:"09:00",date:"Feb 9, 2026",notification:{type:"shipped",title:"Order shipped",body:"Your order has been successfully shipped."}},
+      {sender:"me",text:"Thanks! Got the invoice.",time:"09:50",date:"Feb 9, 2026"},
+      {sender:"system",time:"14:00",date:"Feb 12, 2026",notification:{type:"delivered",title:"Delivered",body:"Your order has been delivered."}},
+      {sender:"them",text:"Please confirm delivery date",time:"14:22",date:"Feb 12, 2026"}
+    ]
+  },
+  tcgpokerealm: {
+    name: "TCGPokerealm", avatar: "design-system/images/avatars/TCGPokerealm.png",
+    messages: [
+      {sender:"them",text:"Hey! I saw your listing for the Pikachu VMAX card. Is it still available?",time:"14:30",date:"Jan 28, 2026"},
+      {sender:"me",text:"Hi! Yes, it\u2019s still available. Mint condition, PSA 9.",time:"14:35",date:"Jan 28, 2026"},
+      {sender:"them",text:"Nice! Can you do $45 shipped?",time:"14:37",date:"Jan 28, 2026"},
+      {sender:"me",text:"That works for me! It comes with a protective case.",time:"14:40",date:"Jan 28, 2026"},
+      {sender:"them",text:"Sorry for the late reply. I\u2019ve been comparing prices.",time:"11:00",date:"Feb 1, 2026"},
+      {sender:"me",text:"No worries! Still interested?",time:"11:15",date:"Feb 1, 2026"},
+      {sender:"me",text:"Sure, here it is:",time:"11:25",date:"Feb 1, 2026",attachment:{name:"PSA_Certificate_9.pdf",size:"1.2 MB",type:"PDF"}},
+      {sender:"them",text:"Have you any info about note? I Wand...",time:"09:12",date:"Feb 11, 2026"}
+    ]
+  },
+  illusionclothing: {
+    name: "IllusionClothing", avatar: "design-system/images/avatars/IllusionClothing.png",
+    messages: [
+      {sender:"me",text:"Hi! I saw the listing for #45 Used Stuff on the screen. Is it still available?",time:"14:00",date:"Mar 25, 2026",product:{img:"design-system/images/Product Photos/image 1.png",name:"#45 Used Stuff on the screen",price:"$2.00"}},
+      {sender:"them",text:"Hey! Yes, it\u2019s available. Barely used, perfect condition.",time:"14:05",date:"Mar 25, 2026"},
+      {sender:"me",text:"Looks good! I\u2019ll buy it now.",time:"14:15",date:"Mar 25, 2026"},
+      {sender:"system",time:"14:16",date:"Mar 25, 2026",notification:{type:"purchase",title:"Purchase successful",body:"IllusionClothing must ship the order by Apr 1.\nWe\u2019ll keep you updated on progress.",productImg:"design-system/images/Product Photos/image 1.png",productName:"#45 Used Stuff on the screen",productPrice:"$2.00"}},
+      {sender:"me",text:"Just bought it! When can you ship?",time:"14:18",date:"Mar 25, 2026"},
+      {sender:"them",text:"I\u2019ll pack it tonight and ship tomorrow morning \ud83d\udce6",time:"14:20",date:"Mar 25, 2026"},
+      {sender:"system",time:"10:30",date:"Mar 26, 2026",notification:{type:"shipped",title:"Order shipped",body:"Your order has been shipped.\nTracking number: DPL-44821-EU"}},
+      {sender:"them",text:"Shipped! Here\u2019s the receipt:",time:"10:35",date:"Mar 26, 2026",attachment:{name:"Shipping_Receipt.pdf",size:"245 KB",type:"PDF"}},
+      {sender:"me",text:"Got the tracking, thanks! \ud83d\ude4f",time:"11:00",date:"Mar 26, 2026"},
+      {sender:"system",time:"09:00",date:"Mar 29, 2026",notification:{type:"pickup",title:"Ready for pickup",body:"The package is waiting at the pickup point.\nLocation: InPost KRK-112B, 8 Market Square"}},
+      {sender:"me",text:"Picked it up, checking now...",time:"15:30",date:"Mar 29, 2026"},
+      {sender:"system",time:"15:35",date:"Mar 29, 2026",notification:{type:"delivered",title:"Delivered",body:"The order has been delivered successfully."}},
+      {sender:"system",time:"15:40",date:"Mar 29, 2026",notification:{type:"review",title:"Review added!",body:"Thank you! Your review has been posted."}},
+      {sender:"system",time:"15:41",date:"Mar 29, 2026",notification:{type:"success",title:"All done!",body:"Thank you for shopping on Droplet!"}},
+      {sender:"me",text:"Everything looks great, exactly as described! \u2b50\ufe0f",time:"15:45",date:"Mar 29, 2026"},
+      {sender:"them",text:"Glad you like it! Enjoy \ud83d\ude0a",time:"15:50",date:"Mar 29, 2026"}
+    ]
+  },
+  catchydeals: {
+    name: "CatchyDeals", avatar: "design-system/images/avatars/VamosClearance.png",
+    messages: [
+      {sender:"them",text:"Hey, I\u2019d like to buy Blue Airmax 95. Are they still available?",time:"11:00",date:"Mar 28, 2026"},
+      {sender:"me",text:"Yes, I have one pair left in size 42. Interested?",time:"11:05",date:"Mar 28, 2026"},
+      {sender:"them",text:"Yes! I\u2019ll take them.",time:"11:08",date:"Mar 28, 2026"},
+      {sender:"system",time:"11:10",date:"Mar 28, 2026",notification:{type:"purchase",title:"Purchase successful",body:"CatchyDeals must ship the order by Apr 5.\nWe\u2019ll keep you updated on progress.",productImg:"design-system/images/Product Photos/image 5.png",productName:"Blue Airmax 95 unisex",productPrice:"$102.34"}},
+      {sender:"system",time:"09:00",date:"Mar 30, 2026",notification:{type:"shipped",title:"Order shipped",body:"The order has been successfully shipped.\nTracking number: DPL-29481-EU"}},
+      {sender:"system",time:"14:00",date:"Apr 2, 2026",notification:{type:"pickup",title:"Ready for pickup",body:"The package is waiting at the pickup point.\nLocation: InPost WAW-231A, 12 Main St"}},
+      {sender:"system",time:"16:30",date:"Apr 2, 2026",notification:{type:"delivered",title:"Delivered",body:"The order has been delivered successfully."}},
+      {sender:"system",time:"16:35",date:"Apr 2, 2026",notification:{type:"review",title:"Review added!",body:"Thank you! Your review has been posted."}},
+      {sender:"system",time:"16:36",date:"Apr 2, 2026",notification:{type:"success",title:"All done!",body:"Thank you for shopping on Droplet!"}},
+      {sender:"them",text:"Love the shoes! \ud83d\udd25 Do you also have the red ones?",time:"17:00",date:"Apr 2, 2026"},
+      {sender:"me",text:"Yes! Red Airmax 95 Premium, size 42. Just restocked.",time:"17:05",date:"Apr 2, 2026"},
+      {sender:"them",text:"Always! I try to ship within 24h. Enjoy! \ud83d\udc5f",time:"10:25",date:"Apr 4, 2026"}
+    ]
+  },
+  droplet: {
+    name: "Droplet.live", avatar: null, isDroplet: true,
+    messages: [
+      {sender:"them",text:"Welcome to Droplet! Your seller account has been verified and is now active.",time:"08:00",date:"Jan 15, 2026"},
+      {sender:"me",text:"Thanks! Excited to start selling.",time:"08:05",date:"Jan 15, 2026"},
+      {sender:"them",text:"Tip: Complete your store profile to increase visibility. Sellers with full profiles get 40% more views!",time:"10:00",date:"Jan 20, 2026"},
+      {sender:"them",text:"Your first sale! Congratulations on selling Vintage Watch Set. Check your earnings dashboard.",time:"14:22",date:"Feb 1, 2026"},
+      {sender:"me",text:"How long until the payout?",time:"14:30",date:"Feb 1, 2026"},
+      {sender:"them",text:"Payouts are processed within 3 business days after delivery confirmation.",time:"14:32",date:"Feb 1, 2026"},
+      {sender:"them",text:"New features during show! Updated analytics, better listing tools, and faster checkout.",time:"11:00",date:"Feb 12, 2026"}
+    ]
+  }
+};
+
+var CONTACT_MAP = {
+  "JsrCoins": "jsrcoins",
+  "TCGPokerealm": "tcgpokerealm",
+  "IllusionClothing": "illusionclothing",
+  "CatchyDeals": "catchydeals",
+  "Droplet.live": "droplet"
+};
+
+var SYSTEM_ICONS = {
+  purchase: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="5" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M6 5V3.5A3 3 0 0112 3.5V5" stroke="currentColor" stroke-width="1.3"/></svg>',
+  shipped: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M1.5 3h9v8.25h-9zM10.5 6.75H14l2.25 3v2.25h-5.75z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="5.25" cy="13.5" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="13.5" cy="13.5" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg>',
+  pickup: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5c3.3 0 6 2.46 6 5.5 0 4.5-6 9.5-6 9.5S3 11.5 3 7c0-3.04 2.7-5.5 6-5.5z" stroke="currentColor" stroke-width="1.3"/><circle cx="9" cy="7" r="2" stroke="currentColor" stroke-width="1.3"/></svg>',
+  delivered: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.5 8.25A7.5 7.5 0 111.5 9a7.5 7.5 0 0115 0z" stroke="currentColor" stroke-width="1.3"/><path d="M6.75 8.25L9 10.5l5.25-5.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  review: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5l2.47 5 5.53.8-4 3.9.94 5.5L9 14.15 4.06 16.7 5 11.2 1 7.3l5.53-.8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>',
+  success: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.5 8.25A7.5 7.5 0 111.5 9a7.5 7.5 0 0115 0z" stroke="currentColor" stroke-width="1.3"/><path d="M6.75 8.25L9 10.5l5.25-5.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
+
+function openConversation(contactKey) {
+  var conv = CONVERSATIONS[contactKey];
+  if (!conv) return;
+
+  document.getElementById("conv-large-name").textContent = conv.name;
+  document.getElementById("conv-nav-title").textContent = conv.name;
+  document.getElementById("conv-large-status").textContent = conv.isDroplet ? "Official" : "Online";
+
+  var container = document.getElementById("conv-messages");
+  container.innerHTML = "";
+
+  var lastDate = "";
+  var prevWasSystem = false;
+
+  for (var i = 0; i < conv.messages.length; i++) {
+    var msg = conv.messages[i];
+
+    if (msg.date !== lastDate) {
+      lastDate = msg.date;
+      var sep = document.createElement("div");
+      sep.className = "conv-date-sep";
+      sep.style.padding = "16px 16px";
+      sep.innerHTML = "<span>" + msg.date + "</span>";
+      container.appendChild(sep);
+      prevWasSystem = false;
+    }
+
+    if (msg.sender === "system" && msg.notification) {
+      var n = msg.notification;
+      var card = document.createElement("div");
+      card.className = "conv-system-card conv-system-" + n.type;
+
+      var iconColor = "var(--bw20)";
+      if (n.type === "delivered" || n.type === "review") iconColor = "var(--gr10)";
+      if (n.type === "success") iconColor = "var(--bl10)";
+
+      var productHtml = "";
+      if (n.productImg) {
+        productHtml = '<div class="conv-system-product"><img src="' + n.productImg + '" alt=""><div class="conv-system-product-info"><span class="conv-system-product-name">' + (n.productName || "") + '</span><span class="conv-system-product-price">' + (n.productPrice || "") + "</span></div></div>";
+      }
+
+      card.innerHTML =
+        (prevWasSystem ? "" : '<div class="conv-system-border"></div>') +
+        '<div class="conv-system-inner">' +
+          '<div class="conv-system-header"><span class="conv-system-icon" style="color:' + iconColor + '">' + (SYSTEM_ICONS[n.type] || "") + '</span><span class="conv-system-title">' + n.title + "</span></div>" +
+          '<div class="conv-system-body">' + n.body + "</div>" +
+          productHtml +
+          '<span class="conv-system-time">' + msg.time + "</span>" +
+        "</div>" +
+        '<div class="conv-system-border"></div>';
+      container.appendChild(card);
+      prevWasSystem = true;
+    } else {
+      if (prevWasSystem) {
+        var spacer = document.createElement("div");
+        spacer.style.height = "16px";
+        container.appendChild(spacer);
+      }
+
+      var wrapper = document.createElement("div");
+      wrapper.style.padding = "0 16px";
+      var bubble = document.createElement("div");
+      bubble.className = "conv-bubble conv-bubble-" + msg.sender;
+
+      var html = "";
+
+      if (msg.image) {
+        html += '<img class="conv-bubble-img" src="' + msg.image + '" alt="">';
+      }
+
+      if (msg.product) {
+        html += '<div class="conv-bubble-product"><img src="' + msg.product.img + '" alt=""><div class="conv-bubble-product-info"><span class="conv-bubble-product-name">' + msg.product.name + '</span><span class="conv-bubble-product-price">' + msg.product.price + "</span></div></div>";
+      }
+
+      if (msg.text) {
+        html += "<p>" + msg.text + "</p>";
+      }
+
+      if (msg.attachment) {
+        var a = msg.attachment;
+        var iconCol = msg.sender === "me" ? "white" : "white";
+        html += '<div class="conv-bubble-attachment"><div class="conv-bubble-att-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M9.33 1.33H4a1.33 1.33 0 00-1.33 1.34v10.66A1.33 1.33 0 004 14.67h8a1.33 1.33 0 001.33-1.34V5.33L9.33 1.33z" stroke="' + iconCol + '" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="conv-bubble-att-name">' + a.name + '</div><div class="conv-bubble-att-meta">' + a.type + " \u00b7 " + a.size + "</div></div></div>";
+      }
+
+      html += '<span class="conv-bubble-time">' + msg.time + "</span>";
+      bubble.innerHTML = html;
+      wrapper.appendChild(bubble);
+      container.appendChild(wrapper);
+      prevWasSystem = false;
+    }
+  }
+
+  showScreen('screen-conversation');
+
+  var scrollEl = document.getElementById("conv-scroll");
+  setTimeout(function() { scrollEl.scrollTop = scrollEl.scrollHeight; }, 50);
+
+  scrollEl.onscroll = function() {
+    var t = document.getElementById("conv-nav-title");
+    t.classList.toggle("visible", scrollEl.scrollTop > 52);
+  };
+}
+
+/* Back */
+document.getElementById("conv-back-btn").addEventListener("click", function() {
+  showScreen('screen-activity');
+});
+
+/* Send message */
+function sendMessage() {
+  var input = document.getElementById("conv-input");
+  var text = input.value.trim();
+  if (!text) return;
+  var container = document.getElementById("conv-messages");
+  var wrapper = document.createElement("div");
+  wrapper.style.padding = "0 16px";
+  var bubble = document.createElement("div");
+  bubble.className = "conv-bubble conv-bubble-me";
+  var now = new Date();
+  var h = now.getHours().toString().padStart(2, "0");
+  var m = now.getMinutes().toString().padStart(2, "0");
+  bubble.innerHTML = "<p>" + text + '</p><span class="conv-bubble-time">' + h + ":" + m + "</span>";
+  wrapper.appendChild(bubble);
+  container.appendChild(wrapper);
+  input.value = "";
+  var scrollEl = document.getElementById("conv-scroll");
+  setTimeout(function() { scrollEl.scrollTop = scrollEl.scrollHeight; }, 50);
+}
+document.getElementById("conv-send-btn").addEventListener("click", sendMessage);
+document.getElementById("conv-input").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") { e.preventDefault(); sendMessage(); }
+});
+
+/* Make message rows clickable */
+document.querySelectorAll(".act-msg-row").forEach(function(row) {
+  row.style.cursor = "pointer";
+  row.addEventListener("click", function() {
+    var nameEl = row.querySelector(".act-msg-name");
+    var name = nameEl.childNodes[0].textContent.trim();
+    var key = CONTACT_MAP[name];
+    if (key) openConversation(key);
+  });
+});
+
+// ════════════════════════════════════
+// PURCHASE DETAIL — per Figma 5705:22005
+// ════════════════════════════════════
+
+var PURCHASE_DATA = [
+  { id: '8323234', status: 'new', product: 'Blue Airmax 95 unisex', price: 180, shipping: 5, tax: 5, method: 'InPost M', paidBy: 'Apple Pay', txId: '9342341', seller: 'kelx188', rating: '4.2', followers: '1.2k', address: 'POB04M\nul. Fabryczna 2B\nPobiedziska 62-010', date: '12 Mar 2026', desc: 'Your order is paid and awaiting for shipping.', orderDate: '10 Mar 2026' },
+  { id: '8323235', status: 'new', product: '#34 Product on Screen', price: 60, shipping: 5, tax: 5, method: 'InPost M', paidBy: 'Apple Pay', txId: '9342342', seller: 'CatchyDeals', rating: '4.8', followers: '5k', address: 'POB04M\nul. Fabryczna 2B\nPobiedziska 62-010', date: '14 Mar 2026', desc: 'Your order is paid and awaiting for shipping.', orderDate: '14 Mar 2026' },
+  { id: '8323236', status: 'shipped', product: 'Airmax Classic 95 white blue red', price: 180, shipping: 5, tax: 5, method: 'InPost M', paidBy: 'Apple Pay', txId: '9342343', seller: 'kelx188', rating: '4.2', followers: '1.2k', address: 'POB04M\nul. Fabryczna 2B\nPobiedziska 62-010', date: '18 Mar 2026', desc: 'Estimated delivery: 22 Mar 2026', orderDate: '15 Mar 2026' },
+  { id: '8323237', status: 'delivered', product: 'Airmax Classic 95 white blue red', price: 180, shipping: 5, tax: 5, method: 'Courier DPD', paidBy: 'Blik', txId: '9342344', seller: 'kelx188', rating: '4.2', followers: '1.2k', address: 'POB04M\nul. Fabryczna 2B\nPobiedziska 62-010', date: '4 Feb 2026', desc: 'Your item was delivered on 4 Feb 2026', orderDate: '28 Jan 2026' },
+  { id: '8323238', status: 'in-delivery', product: 'Vintage Denim Jacket oversized', price: 95, shipping: 5, tax: 5, method: 'InPost L', paidBy: 'Apple Pay', txId: '9342345', seller: 'IllusionClothing', rating: '4.9', followers: '12k', address: 'POB04M\nul. Fabryczna 2B\nPobiedziska 62-010', date: '20 Mar 2026', desc: 'Your package is on its way.', orderDate: '17 Mar 2026' }
+];
+
+function getStatusBadge(status) {
+  var map = {
+    'new': { label: 'New', bg: 'var(--bl10)', color: '#fff' },
+    'shipped': { label: 'Shipped', bg: 'var(--gr10)', color: '#fff' },
+    'in-delivery': { label: 'In Delivery', bg: 'var(--gr10)', color: '#fff' },
+    'delivered': { label: 'Delivered', bg: 'var(--gr10)', color: '#fff' },
+    'pending-review': { label: 'Pending Review', bg: '#FF9500', color: '#fff' }
+  };
+  var s = map[status] || map['new'];
+  return '<span style="display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:37px;background:' + s.bg + ';color:' + s.color + ';font-size:12px;font-weight:600">' + s.label + '</span>';
+}
+
+function getStepperHTML(status) {
+  var steps = ['Placed', 'Shipped', 'In Delivery', 'Delivered'];
+  var doneIdx = { 'new': 0, 'shipped': 1, 'in-delivery': 2, 'delivered': 3, 'pending-review': 3 };
+  var done = doneIdx[status] || 0;
+  var fillPct = Math.round((done / 3) * 100);
+  // Green for all statuses except 'new' (which uses dark)
+  var useGreen = status !== 'new';
+  var doneColor = useGreen ? 'var(--gr10)' : 'var(--bw20)';
+  var doneLabel = useGreen ? '#1a8a3c' : 'var(--bw20)';
+  var checkSvg = '<svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M6.4413 14.5C5.97166 14.5 5.62348 14.3369 5.30769 13.9719L1.35628 9.34349C1.09717 9.05615 1 8.79988 1 8.51255C1 7.86022 1.50202 7.3865 2.19838 7.3865C2.61134 7.3865 2.90283 7.52628 3.17004 7.84468L6.40891 11.7276L12.7571 2.09797C13.0486 1.66308 13.3401 1.5 13.8097 1.5C14.5061 1.5 15 1.96595 15 2.61051C15 2.85125 14.919 3.11529 14.7328 3.39486L7.583 13.9331C7.31579 14.3136 6.93522 14.5 6.4413 14.5Z" fill="#fff"/></svg>';
+  var html = '<div style="position:relative;width:327px;height:38px;margin:0 auto">';
+  html += '<div style="position:absolute;top:9px;left:0;right:0;height:2px;background:var(--ov20)"><div style="height:2px;background:' + doneColor + ';width:' + fillPct + '%"></div></div>';
+  for (var i = 0; i < 4; i++) {
+    var isDone = i <= done;
+    var left = (i / 3) * 100;
+    var dotBg = isDone ? doneColor : 'var(--ov20)';
+    var labelColor = isDone ? doneLabel : 'var(--bw40)';
+    html += '<div style="position:absolute;left:' + left + '%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px">';
+    html += '<div style="width:18px;height:18px;border-radius:50%;background:' + dotBg + ';display:flex;align-items:center;justify-content:center">' + (isDone ? checkSvg : '') + '</div>';
+    html += '<span style="font-size:10px;font-weight:600;color:' + labelColor + ';white-space:nowrap">' + steps[i] + '</span>';
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function openPurchaseDetail(index) {
+  var d = PURCHASE_DATA[index];
+  if (!d) return;
+  var subtotal = d.price - d.shipping - d.tax;
+  var total = d.price;
+
+  var html = '';
+  // Header: badge + order # + description
+  html += '<div style="text-align:center;padding-bottom:16px">';
+  html += getStatusBadge(d.status);
+  html += '<div style="font-size:20px;font-weight:600;color:var(--bw30);letter-spacing:-0.43px;margin-top:4px">Order #' + d.id + '</div>';
+  html += '<div style="font-size:11px;font-weight:400;color:var(--bw30);margin-top:4px">' + d.desc + '</div>';
+  html += '<div style="font-size:11px;font-weight:400;color:var(--bw40);margin-top:2px">Ordered: ' + d.orderDate + '</div>';
+  html += '</div>';
+
+  // Stepper
+  html += getStepperHTML(d.status);
+
+  // Delivery Address
+  html += '<div style="margin-top:20px;border-radius:26px;overflow:hidden;border:1px solid var(--ov20);box-shadow:var(--shadow-interactive)"><div style="padding:10px 16px;background:#FAFAF8">';
+  html += '<div style="font-size:13px;font-weight:400;color:var(--bw40)">Delivery Address</div>';
+  html += '<div style="font-size:16px;font-weight:500;color:var(--bw10);margin-top:4px;white-space:pre-line;line-height:1.4">' + d.address + '</div>';
+  html += '</div></div>';
+
+  // CTA: Rate Purchase (only for pending-review)
+  if (d.status === 'pending-review') {
+    html += '<div style="margin-top:16px"><button style="width:100%;height:36px;border-radius:70px;border:none;background:var(--rd10);color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:var(--shadow-interactive)">Rate Purchase</button></div>';
+  }
+
+  // Action buttons
+  html += '<div style="margin-top:16px"><button style="width:100%;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;cursor:pointer">Track Your Purchase</button></div>';
+  html += '<div style="display:flex;gap:8px;margin-top:8px">';
+  html += '<button style="flex:1;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;cursor:pointer">Contact Support</button>';
+  html += '<button style="flex:1;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;cursor:pointer">Message the Seller</button>';
+  html += '</div>';
+
+  // Return/Refund link (UX addition — for delivered/pending-review)
+  if (d.status === 'delivered' || d.status === 'pending-review') {
+    html += '<div style="text-align:center;margin-top:12px"><a style="font-size:12px;font-weight:600;color:var(--bl10);cursor:pointer">Request Return or Refund</a></div>';
+  }
+
+  // Details section
+  html += '<div style="padding-top:24px"><div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px;padding-bottom:12px">Details</div>';
+  // Product row
+  currentPurchaseIdx = index;
+  html += '<div style="display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--ov30)">';
+  html += '<div data-cycle-status style="width:44px;height:44px;border-radius:10px;background:var(--ov15);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer"><svg width="24" height="24" viewBox="0 0 36 38" fill="none" opacity="0.3"><path d="M18.28 0C28.06 0 35.99 7.93 35.99 17.72c0 6.77-3.8 12.65-9.39 15.63l-3.03-5.24a11.22 11.22 0 005.16-9.47c0-5.77-4.33-10.46-9.66-10.46-2.14 0-4.12.73-5.73 1.97l-3.04-5.25A17.42 17.42 0 0118.28 0z" fill="#222A35"/><path d="M15.28 37.72c-4.65-.73-8.7-3.2-11.54-6.64l5.01-3.37a11.18 11.18 0 007.24 3.52l-.71 6.49z" fill="#222A35"/><path d="M0 18.56c.15-4.8 2-9.14 5.03-12.47l4.5 4.16A11.2 11.2 0 006.5 18.22L0 18.56z" fill="#222A35"/></svg></div>';
+  html += '<div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;color:var(--bw30);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + d.product + '</div>';
+  html += '<div style="font-size:11px;font-weight:400;color:var(--bw40);margin-top:2px">$' + d.price.toFixed(2) + ' · ' + d.method + '</div>';
+  html += '</div>';
+  html += '<button style="height:36px;padding:0 12px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:4px;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M5.01612 3.40105C5.2597 3.40105 5.51045 3.45709 5.75403 3.58319L11.7218 6.63748C12.8537 7.21891 12.8537 8.80911 11.7218 9.38354L5.75403 12.4168C5.51761 12.5359 5.26687 12.5919 5.02328 12.5919C4.19224 12.5919 3.44 11.9405 3.44 11.0368V4.95622C3.44 4.05254 4.19224 3.40105 5.02328 3.40105Z" fill="#364153"/></svg>Video</button>';
+  html += '</div>';
+
+  // Payment info
+  html += '<div style="border-bottom:1px solid var(--ov30);padding:12px 0;display:flex;flex-direction:column;gap:8px">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--bw40)"><span>Paid by</span><span style="font-size:13px">' + d.paidBy + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--bw40)"><span>Transaction ID</span><span style="font-size:13px">' + d.txId + '</span></div>';
+  html += '</div>';
+
+  // Cost breakdown
+  html += '<div style="padding:12px 0;display:flex;flex-direction:column;gap:8px">';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--bw40)"><span>Subtotal</span><span style="font-size:13px">$' + subtotal.toFixed(2) + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--bw40)"><span>Shipping</span><span style="font-size:13px">$' + d.shipping.toFixed(2) + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--bw40)"><span>Est Tax</span><span style="font-size:13px">$' + d.tax.toFixed(2) + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--bw30)"><span>Total</span><span style="font-size:13px;font-weight:700">$' + total.toFixed(2) + '</span></div>';
+  html += '</div></div>';
+
+  // Receipt button
+  html += '<button style="width:100%;height:36px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;cursor:pointer;margin-top:4px">Receipt & Shipping Details</button>';
+
+  // About Seller
+  html += '<div style="padding-top:24px"><div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px;padding-bottom:12px">About Seller</div>';
+  html += '<div style="background:var(--ov15);border-radius:20px;padding:16px;display:flex;align-items:center;justify-content:space-between">';
+  html += '<div style="display:flex;align-items:center;gap:8px"><div style="width:32px;height:32px;border-radius:50%;background:var(--gw20);overflow:hidden;flex-shrink:0"><img src="design-system/images/avatars/luxeboutique.jpg" style="width:100%;height:100%;object-fit:cover" alt=""></div>';
+  html += '<div><div style="font-size:14px;font-weight:700;color:var(--bw30)">' + d.seller + '</div>';
+  html += '<div style="display:flex;gap:8px;align-items:center;margin-top:2px"><span style="font-size:12px;font-weight:600;color:var(--bw30)"><svg width="12" height="12" viewBox="0 0 16 16" style="vertical-align:-1px" fill="none"><path d="M15.71,6.1c-.11-.33-.52-1.11-1.82-1.11h-3.26l-1-3.09c-.38-1.21-1.18-1.39-1.63-1.39s-1.25.18-1.63,1.39l-1,3.1h-3.27c-1.29,0-1.7.77-1.82,1.11-.11.34-.26,1.23.81,2l2.66,1.9-1.05,3.1c-.29.86-.12,1.61.48,2.07.29.22,1.07.65,2.16-.15l2.64-1.94,2.64,1.95c.48.34.9.46,1.24.46.41,0,.72-.17.91-.32.6-.46.78-1.22.49-2.07l-1.05-3.1,2.66-1.9c1.08-.77.93-1.65.81-2Z" fill="#222A35"/></svg> ' + d.rating + '</span>';
+  html += '<span style="font-size:12px;font-weight:600;color:var(--bw30)"><svg width="12" height="12" viewBox="0 0 16 16" style="vertical-align:-1px" fill="none"><path d="M4.77,7.99c.99,0,1.81-.85,1.81-1.93s-.83-1.88-1.81-1.88-1.81.84-1.81,1.89.82,1.92,1.81,1.92Z" fill="#222A35"/><path d="M10.68,7.88c1.14,0,2.08-.98,2.08-2.21s-.95-2.16-2.08-2.16-2.08.97-2.08,2.17.94,2.21,2.08,2.21Z" fill="#222A35"/><path d="M6.92,9.31c-.55-.33-1.28-.58-2.16-.58-2.25,0-3.77,1.61-3.77,2.91,0,.54.26.86,1,.86h3.74c-.56-.77-.03-2.26,1.18-3.19Z" fill="#222A35"/><path d="M10.68,8.74c-2.64,0-4.33,1.74-4.33,3,0,.48.3.76,1.18.76h6.28c.89,0,1.18-.28,1.18-.76,0-1.26-1.68-3-4.32-3Z" fill="#222A35"/></svg> ' + d.followers + '</span></div></div></div>';
+  html += '<button style="height:36px;padding:0 12px;border-radius:70px;border:none;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);font-family:inherit;cursor:pointer;flex-shrink:0">Seller Profile</button>';
+  html += '</div></div>';
+
+  // Buyer Guarantee + Quick Shipping
+  html += '<div style="padding:12px"><div style="display:flex;align-items:flex-start;gap:8px;padding-bottom:4px"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M8.00411 16C7.87255 16 7.67521 15.9582 7.46964 15.8413C3.03763 13.3264 1.5 12.2486 1.5 9.36606V3.34204C1.5 2.47311 1.8618 2.18068 2.5525 1.88825C3.44877 1.51227 6.40892 0.384334 7.29696 0.133681C7.51898 0.0668407 7.76565 0 8.00411 0C8.23435 0 8.48102 0.0584856 8.70304 0.133681C9.5993 0.44282 12.5512 1.50392 13.4475 1.88825C14.1464 2.18903 14.5 2.47311 14.5 3.34204V9.36606C14.5 12.2486 12.9706 13.3431 8.53036 15.8413C8.33302 15.9582 8.12745 16 8.00411 16Z" fill="#364153"/></svg>';
+  html += '<div><div style="font-size:12px;font-weight:700;color:var(--bw30)">Droplet Buyer Guarantee</div><div style="font-size:12px;font-weight:400;color:var(--bw30);margin-top:4px">This clip is saved to your profile as a private and only you can see it or download</div></div></div>';
+  html += '<div style="display:flex;align-items:flex-start;gap:8px;padding-top:8px"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M14.9517 13.1703C16.3248 11.1884 16.3739 6.12769 14.9517 4.2041C14.3414 3.37478 12.5727 2.93495 10.9074 2.71239C10.7316 2.31495 10.5325 1.96256 10.3411 1.68171C9.05598 -0.236585 6.88388 -0.093508 4.85917 0.118458C1.05541 0.515894 0.333957 1.56777 0.0676156 5.82299C0.0184847 6.61256 -0.0358178 8.73752 0.0314139 9.41316C0.0495147 10.6346 0.258967 11.6944 0.812336 12.537C0.693388 12.8338 0.626156 13.157 0.626156 13.4962C0.626156 14.8766 1.72255 16 3.06977 16C3.98516 16 4.78418 15.4807 5.20309 14.715C6.76493 14.8739 8.68104 14.9137 10.4187 14.7521C10.8428 15.4966 11.6289 16 12.5288 16C13.876 16 14.9724 14.8766 14.9724 13.4962C14.9724 13.3849 14.962 13.2762 14.9491 13.1703H14.9517Z" fill="#364153"/></svg>';
+  html += '<div><div style="font-size:12px;font-weight:700;color:var(--bw30)">Quick Shipping</div><div style="font-size:12px;font-weight:400;color:var(--bw30);margin-top:4px">We guarantee fast and reliable shipping on every order. Your package will be dispatched as quickly as possible so it reaches you without delay.</div></div></div>';
+  html += '</div>';
+
+  document.getElementById('pd-content').innerHTML = html;
+  document.getElementById('pd-scroll').scrollTop = 0;
+  document.getElementById('pd-scroll-title').textContent = 'Order #' + d.id;
+  document.getElementById('pd-scroll-title').style.opacity = '0';
+  showScreen('screen-purchase-detail');
+}
+
+// Scroll header — show title when scrolled past the order header
+var pdScroll = document.getElementById('pd-scroll');
+if (pdScroll) {
+  pdScroll.addEventListener('scroll', function() {
+    var title = document.getElementById('pd-scroll-title');
+    if (title) title.style.opacity = pdScroll.scrollTop > 60 ? '1' : '0';
+  });
+}
+
+// Cycle purchase status on product thumbnail tap (demo)
+var PURCHASE_STATES = ['new', 'shipped', 'in-delivery', 'delivered', 'pending-review'];
+var currentPurchaseIdx = 0;
+document.addEventListener('click', function(e) {
+  var thumb = e.target.closest('#pd-content [data-cycle-status]');
+  if (!thumb) return;
+  var nextState = PURCHASE_STATES[(PURCHASE_STATES.indexOf(PURCHASE_DATA[currentPurchaseIdx].status) + 1) % PURCHASE_STATES.length];
+  PURCHASE_DATA[currentPurchaseIdx].status = nextState;
+  openPurchaseDetail(currentPurchaseIdx);
+});
+
+// Wire up purchase items
+document.querySelectorAll('.act-purchase-item').forEach(function(item, idx) {
+  item.style.cursor = 'pointer';
+  item.addEventListener('click', function() { openPurchaseDetail(idx); });
+});
+
+// Purchase filter pills
+document.querySelectorAll('.act-pf').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.act-pf').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var status = btn.dataset.status;
+    document.querySelectorAll('.act-purchase-item').forEach(function(item) {
+      if (status === 'all') { item.style.display = ''; return; }
+      item.style.display = item.dataset.purchaseStatus === status ? '' : 'none';
+    });
+  });
+});
 </script>
 
 </body>

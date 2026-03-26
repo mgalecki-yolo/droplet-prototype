@@ -85,7 +85,7 @@ Szczegoly design systemu sa w osobnych plikach:
 
 - [x] Faza 1 — Design Tokens (kolory, typografia)
 - [x] Faza 2 — Biblioteka ikon
-- [x] Faza 2b — Komponenty UI (46/46)
+- [x] Faza 2b — Komponenty UI (49/49)
 - [ ] Faza 3 — Przeplywy (czesciowo)
 - [ ] Faza 4 — Zasady implementacji
 
@@ -104,6 +104,7 @@ Szczegoly design systemu sa w osobnych plikach:
 - Nowe ekrany dodawaj do odpowiedniego pliku HTML wg taba (np. Account → `account.html`, Sell flow → `sell.html`)
 - Nowe style CSS dodawaj do `styles.css`
 - **Ikony SVG zawsze inline** — w HTML uzywaj `<svg>...</svg>` (wklejony kod SVG), NIE `<img src="...svg">`. Figma HTML-to-Design capture rasteryzuje `<img>` do PNG, inline SVG zachowuje wektory
+- **Ikony TYLKO z plikow projektu** — JEDYNE zrodlo ikon to pliki `design-system/UI Icons/*.svg`. Czytaj plik przez Read tool i wklejaj inline. NIGDY nie twórz wlasnych SVG, nie upraszczaj/modyfikuj path, nie kopiuj SVG z Figma design context ani z pamieci. Jesli ikona nie renderuje sie dobrze — zglos problem, nie wymyslaj zamiennika.
 
 ### Zasada weryfikacji komponentow i ikon (KRYTYCZNE)
 
@@ -115,10 +116,10 @@ Przed uzyciem KAZDEGO komponentu lub ikony w kodzie:
 5. Jesli potrzebny element nie istnieje — poinformuj uzytkownika i zaproponuj dostepna alternatywe
 
 **Dostepne komponenty (pelna lista z components.md):**
-App Top, Top Element, Navi Button 42px, Button (warianty: Category, Sub Category, User, 36px, 1CTA, 2CTA, 1CTA Disable, Link), Checkbox, Radio Button, Switch, Form Input, Search Input, User Avatar, App Tabbar, Prod Tile Vertical, Prod Tile Horizontal, Show Tile, Live Badge, Product Badge, Price Badge, Internal Message, Product Page Details Element, Category Button, Main Category Icons, Separator, Context Menu, Popup Component, Review Tile, Category Pastel Icons, Sheet / Bottom Sheet, Action Sheet, Action Bar, Show Chat Element, Discount, Company Logo, Category, Scroll Edge Effect Soft, Show Button, Show Shop Button, Main Category Pastel Icons, Show Chat, Show Right Section Icons, Show Tool, Show Seller Button, Show Giveaway Modal, Show Notes, Wide Sheet, Toast / Snackbar, Image Library Tile
+App Top, Top Element, Navi Button 42px, Button (warianty: Category, Sub Category, User, 36px, 1CTA, 2CTA, 1CTA Disable, Link), Checkbox, Radio Button, Switch, Form Input, Search Input, User Avatar, App Tabbar, Prod Tile Vertical, Prod Tile Horizontal, Show Tile, Live Badge, Product Badge, Price Badge, Internal Message, Product Page Details Element, Category Button, Main Category Icons, Separator, Context Menu, Popup Component, Review Tile, Category Pastel Icons, Sheet / Bottom Sheet, Action Sheet, Action Bar, Show Chat Element, Discount, Logo, Logotyp, Category Photo Icons, Company Logo, Category, Scroll Edge Effect Soft, Show Button, Show Shop Button, Main Category Pastel Icons, Show Chat, Show Right Section Icons, Show Tool, Show Seller Button, Show Giveaway Modal, Show Notes, Wide Sheet, Toast / Snackbar, Image Library Tile
 
 **Dostepne ikony (pelna lista z folderu):**
-Account, Account Full, Add Photo, Add Video, Alert, Alert Full, Alert Off, Alert Off Full, Block, Bookmark, Bookmark Full, Browse, Browse Full, Camera, Camera Switch, Card, Check, Chevron Mini, Clip, Clock, Close, Close Round, Collapse, Corners, Datepicker, Delivery, Double Chevron, Down Chevron, Download, Edit, Eye, Eye Close, Filter, Flash, Flash Sale, Follow User, Follower, Followers, Gallery Photo, Gallery Photo Full, Gallery Video, Gallery Video Full, Giveaway, Hammer 2, Info, Left Chevron, Locker, Locker Full, Message, Minus, more, Open, Orders, Orders Full, Package, Paczkomat, Photo, Pin, Play, Play full, Plus, Plus Circle, Promote, Protection, Quote, Recipe, Report, Right Chevron, Scan, Search, Sell, Send Chat, Settings, Share, Shipping, Shop, Shop Full, Shortcut, Skull, Skull Full, Slow Motion, Small Bookmark, Sorting, Sound Off, Sound On, Star, Star Full, Start, Start Full, Trash, Unfollow User, Up Chevron, Upload, Video, Wallet, Warning
+Account, Account Full, Add Photo, Add Video, Alert, Alert Full, Alert Off, Alert Off Full, Block, Bookmark, Bookmark Full, Browse, Browse Full, Camera, Camera Switch, Card, Check, Chevron Mini, Clip, Clock, Close, Close Round, Collapse, Corners, Datepicker, Delivery, Double Chevron, Down Chevron, Download, Edit, Eye, Eye Close, Filter, Flash, Flash Sale, Follow User, Follower, Followers, Gallery Photo, Gallery Photo Full, Gallery Video, Gallery Video Full, Giveaway, Hammer 2, Info, Left Chevron, Location, Locker, Locker Full, Message, Minus, more, Open, Orders, Orders Full, Package, Paczkomat, Photo, Pin, Play, Play full, Plus, Plus Circle, Promote, Protection, Quote, Recipe, Report, Right Chevron, Scan, Search, Sell, Send Chat, Settings, Share, Shipping, Shop, Shop Full, Shortcut, Skull, Skull Full, Slow Motion, Small Bookmark, Sorting, Sound Off, Sound On, Star, Star Full, Start, Start Full, Target, Trash, Unfollow User, Up Chevron, Upload, Video, Wallet, Warning
 
 ## Zasady budowy ekranow
 
