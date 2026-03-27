@@ -48,6 +48,23 @@ body{
 }
 .screen-scroll::-webkit-scrollbar{display:none}
 
+/* Main tab scroll header */
+.main-scroll-top{
+  position:absolute;top:0;left:0;right:0;z-index:20;
+  height:109px;display:flex;flex-direction:column;
+  opacity:0;transition:opacity 0.15s;pointer-events:none;
+}
+.main-scroll-top.visible{
+  opacity:1;
+  background:linear-gradient(to bottom,var(--ov40) 50%,rgba(242,240,236,0.85) 66%,rgba(242,240,236,0.55) 85%,rgba(242,240,236,0) 100%);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.main-scroll-top-spacer{height:59px;flex-shrink:0}
+.main-scroll-top-title{
+  height:50px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;color:var(--bw10);
+}
+
 /* ── Tab Bar ── */
 .tabbar{
   position:absolute;bottom:0;left:0;right:0;
@@ -465,10 +482,10 @@ body{
 
 /* ── App Top for Sell Screen ── */
 .shv-app-top{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 16px;margin-bottom:4px;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  padding:0;margin-bottom:4px;
 }
-.shv-app-top h1{font-size:32px;font-weight:700;color:#000;line-height:1.1}
+.shv-app-top h1{font-size:32px;font-weight:700;color:#000;line-height:21px;margin:0}
 .shv-navi-btn{
   width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;
   backdrop-filter:blur(20px);background:rgba(255,255,255,0.65);
@@ -2730,13 +2747,14 @@ body{
 }
 .conv-nav-bar{
   pointer-events:auto;display:flex;align-items:center;justify-content:space-between;
-  padding:54px 16px 0;
+  padding:59px 16px 0;
 }
 .conv-nav-left{display:flex;align-items:center;gap:8px}
 .conv-back-btn,.conv-more-btn{
-  width:44px;height:44px;border-radius:296px;background:white;
-  box-shadow:var(--shadow-navi);border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:42px;height:42px;border-radius:50%;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.65);box-shadow:var(--shadow-interactive);
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .conv-nav-title{
   font-size:16px;font-weight:700;color:var(--bw10);opacity:0;
@@ -2758,9 +2776,9 @@ body{
 .conv-scroll::-webkit-scrollbar{display:none}
 
 /* Large title area (scrolls away) */
-.conv-large-title{padding:0 16px 4px}
-.conv-large-name{font-size:22px;font-weight:600;color:var(--bw20);line-height:1.2}
-.conv-large-status{font-size:13px;font-weight:400;color:var(--bw40);margin-top:2px}
+.conv-large-title{padding:0 16px 15px}
+.conv-large-name{font-size:23px;font-weight:600;color:#000;line-height:30px;letter-spacing:-0.5px}
+.conv-large-status{font-size:16px;font-weight:500;color:#000;margin-top:0}
 
 /* Date separator — pill style */
 .conv-date-sep{

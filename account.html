@@ -22,24 +22,30 @@
 </div>
 
 <div class="screen active" id="screen-account">
-  <div class="screen-scroll" id="acc-scroll">
-    <div style="height:54px"></div>
+
+<!-- Scroll header -->
+<div class="main-scroll-top" id="acc-scroll-top">
+  <div class="main-scroll-top-spacer"></div>
+  <div class="main-scroll-top-title">Account</div>
+</div>
+
+  <div class="screen-scroll" id="acc-scroll" style="padding-top:54px">
 
     <!-- Big Title — H10 32px Bold -->
-    <div style="padding:10px 16px 0">
-      <h1 style="font-size:32px;font-weight:700;color:#000;line-height:21px">Account</h1>
+    <div style="padding:65px 16px 9px">
+      <h1 style="font-size:32px;font-weight:700;color:#000;line-height:21px;margin:0">Account</h1>
     </div>
 
     <!-- Profile card — gw30, rounded 20px, shadow -->
     <div style="padding:16px 16px 0">
       <div style="display:flex;align-items:center;justify-content:space-between;background:var(--gw30);border-radius:20px;padding:16px;box-shadow:var(--shadow-interactive)">
         <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0">
-            <img src="design-system/images/avatars/luxeboutique.jpg" style="width:100%;height:100%;object-fit:cover" alt="">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--bw20);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="font-size:16px;font-weight:700;color:var(--wh10)">J</span>
           </div>
           <div>
             <div style="font-size:23px;font-weight:600;color:var(--bw20);letter-spacing:-0.5px;line-height:30px">Marcin</div>
-            <div style="font-size:13px;font-weight:400;color:#000">CatchyDeals</div>
+            <div style="font-size:13px;font-weight:400;color:#000">@JsrClothes</div>
           </div>
         </div>
         <button onclick="showScreen('screen-edit-profile')" style="height:36px;padding:0 16px;border-radius:70px;background:var(--wh10);border:none;box-shadow:var(--shadow-interactive);font-family:inherit;font-size:12px;font-weight:600;color:var(--bw20);cursor:pointer;flex-shrink:0">Edit Profile</button>
@@ -47,7 +53,7 @@
     </div>
 
     <!-- Section: Privacy -->
-    <div style="padding:24px 16px 12px;font-size:13px;font-weight:500;color:var(--bw20)">Privacy</div>
+    <div style="padding:16px 16px 16px;font-size:13px;font-weight:500;color:var(--bw20)">Privacy</div>
 
     <!-- Toggle cards — each in separate card per Figma -->
     <div style="display:flex;flex-direction:column;gap:16px;padding:0 16px">
@@ -99,10 +105,10 @@
     </div>
 
     <!-- Section: Account -->
-    <div style="padding:24px 16px 12px;font-size:13px;font-weight:500;color:var(--bw20)">Account</div>
+    <div style="padding:32px 16px 16px;font-size:13px;font-weight:500;color:var(--bw20)">Account</div>
 
     <!-- Settings List — Account -->
-    <div style="margin:0 16px;border-radius:20px;background:var(--gw30);box-shadow:var(--shadow-interactive);overflow:hidden">
+    <div style="margin:0 16px">
       <a class="acc-sl-row" onclick="showScreen('screen-notifications')" style="cursor:pointer">
         <div class="acc-sl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 11.8717C1 11.1131 1.70722 10.4618 2.3567 9.83206C2.86907 9.33826 2.98454 8.35067 3.07835 7.37023C3.17217 4.65792 3.96598 2.84733 5.84948 2.16746C6.12371 1.22281 6.92474 0.5 8 0.5C9.07526 0.5 9.87629 1.22281 10.1505 2.16746C12.034 2.84733 12.8278 4.65792 12.9216 7.37023C13.0155 8.35067 13.1381 9.33826 13.6433 9.83206C14.3 10.4618 15 11.1131 15 11.8717C15 12.4728 14.5454 12.8807 13.7948 12.8807H10.8289C10.7639 14.2548 9.63814 15.5 8 15.5C6.36186 15.5 5.23608 14.2476 5.17113 12.8807H2.20515C1.46186 12.8807 1 12.4728 1 11.8717ZM6.53505 12.8807C6.59278 13.7753 7.18454 14.355 8 14.355C8.82268 14.355 9.41443 13.7753 9.46495 12.8807H6.53505Z" fill="#364153"/></svg></div>
         <span class="acc-sl-label">Notifications</span>
@@ -116,10 +122,10 @@
     </div>
 
     <!-- Section: Help & Legal -->
-    <div style="padding:24px 16px 12px;font-size:13px;font-weight:500;color:var(--bw20)">Help &amp; Legal</div>
+    <div style="padding:32px 16px 16px;font-size:13px;font-weight:500;color:var(--bw20)">Help &amp; Legal</div>
 
     <!-- Settings List — Help & Legal -->
-    <div style="margin:0 16px;border-radius:20px;background:var(--gw30);box-shadow:var(--shadow-interactive);overflow:hidden">
+    <div style="margin:0 16px">
       <a class="acc-sl-row">
         <div class="acc-sl-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14.5722 2.15183C13.2422 0.837169 7.60845 0.935211 5.52656 1.08005C1.61116 1.35412 0.866012 2.07607 0.59505 4.9906C0.418925 6.87346 0.184091 10.735 3.03371 11.4525C4.00917 11.6976 6.09332 11.8758 8.24069 11.8692C8.12327 12.2725 8.01941 12.7449 7.81393 13.5025C7.66038 14.0707 8.13005 15.1268 8.94519 14.9842C10.2029 14.7659 12.9622 12.8028 14.5677 10.7105C15.708 9.22647 15.9044 3.46871 14.5677 2.14737L14.5722 2.15183ZM13.7119 9.41365C13.1451 10.6681 10.2436 13.4512 9.42389 13.4512C9.04229 13.4512 9.92517 11.0915 10.1916 10.5233C10.1916 10.5233 10.0358 10.5322 9.90936 10.5389C8.43036 10.6124 3.43338 10.6503 2.56856 9.83701C1.62019 8.94349 1.58632 3.823 2.67017 2.98519C3.27757 2.51726 4.79044 2.47047 5.68913 2.41476C7.25168 2.31895 12.4903 2.19862 13.4183 3.07209C14.3667 3.96338 14.2222 8.29062 13.7141 9.41365H13.7119Z" fill="#364153"/></svg></div>
         <span class="acc-sl-label">Contact Us</span>
@@ -148,11 +154,11 @@
     </div>
 
     <!-- Sign Out — 2CTA button style -->
-    <div style="padding:24px 16px 8px">
+    <div style="padding:16px 16px 8px">
       <button style="width:100%;height:52px;border-radius:70px;background:var(--wh10);border:none;box-shadow:var(--shadow-interactive);font-family:inherit;font-size:16px;font-weight:600;color:var(--bw20);cursor:pointer">Sign Out</button>
     </div>
 
-    <div style="text-align:center;font-size:11px;font-weight:400;color:var(--bw40);padding-bottom:130px">Droplet v1.0.0</div>
+    <div style="height:130px"></div>
 
   </div>
 </div>
@@ -668,6 +674,15 @@ function epCycleCover() {
     cover.style.backgroundPosition = 'center';
   }
   if (border) border.style.display = 'none'; // hide dashed border when cover photo is set
+}
+
+// ── Scroll header ──
+var accScroll = document.getElementById('acc-scroll');
+var accScrollTop = document.getElementById('acc-scroll-top');
+if (accScroll && accScrollTop) {
+  accScroll.addEventListener('scroll', function() {
+    accScrollTop.classList.toggle('visible', this.scrollTop > 20);
+  });
 }
 
 </script>

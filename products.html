@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="styles.css">
 <style>
 /* ── Products-specific styles ── */
-.prod-header{position:sticky;top:0;z-index:100;background:var(--ov40)}
+.prod-header{position:absolute;top:54px;left:0;right:0;z-index:90;background:linear-gradient(to bottom, rgb(242,240,236) 0%, rgb(242,240,236) 40%, rgba(242,240,236,0.8) 70%, rgba(242,240,236,0) 100%);padding-bottom:16px}
 .prod-nav{display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px}
 .prod-back{width:42px;height:42px;border-radius:296px;background:var(--wh10);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-interactive);cursor:pointer}
 .prod-back:active{opacity:0.7;transform:scale(0.94)}
 .prod-manage{height:42px;padding:0 16px;border-radius:296px;background:var(--wh10);display:flex;align-items:center;font-size:16px;font-weight:600;color:var(--bw20);box-shadow:var(--shadow-interactive);cursor:pointer}
-.prod-title{padding:4px 16px 8px;font-size:23px;font-weight:600;color:#000;letter-spacing:-0.5px;line-height:30px}
+.prod-title{padding:15px 16px 8px;font-size:23px;font-weight:600;color:#000;letter-spacing:-0.5px;line-height:30px}
 .prod-filters{display:flex;gap:8px;padding:8px 16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .prod-filters::-webkit-scrollbar{display:none}
 .prod-filter{display:inline-flex;align-items:center;gap:4px;height:36px;padding:0 12px;border-radius:70px;background:var(--wh10);box-shadow:var(--shadow-interactive);font-size:12px;font-weight:600;color:var(--bw20);white-space:nowrap;border:none;cursor:pointer;flex-shrink:0;font-family:inherit}
@@ -55,8 +55,8 @@
 <body>
 <div class="phone">
 
-<!-- Status Bar -->
-<div class="status-bar">
+<!-- Status Bar — solid bg, always on top -->
+<div class="status-bar" style="background:var(--ov40);z-index:200">
   <span class="status-time">9:41</span>
   <div class="status-icons">
     <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="7" width="3" height="5" rx=".5" fill="#000"/><rect x="5" y="4" width="3" height="8" rx=".5" fill="#000"/><rect x="10" y="1" width="3" height="11" rx=".5" fill="#000"/><rect x="15" y="0" width="3" height="12" rx=".5" fill="#000"/></svg>
@@ -67,16 +67,16 @@
 
 <div class="screen active" id="screen-products">
 <div class="prod-header">
-  <div style="height:54px"></div>
   <div class="prod-nav">
     <button class="prod-back" onclick="window.location.href='sell.html'">
       <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3.5 8C3.5 7.74 3.61 7.52 3.8 7.32L10.96 0.27C11.12 0.1 11.34 0 11.59 0C12.11 0 12.5 0.4 12.5 0.91C12.5 1.16 12.39 1.39 12.23 1.56L5.7 8L12.23 14.43C12.39 14.61 12.5 14.83 12.5 15.08C12.5 15.6 12.11 16 11.59 16C11.34 16 11.12 15.9 10.96 15.73L3.8 8.68C3.61 8.48 3.5 8.25 3.5 8Z" fill="#222A35"/></svg>
     </button>
+    <span id="prod-scroll-title" style="flex:1;text-align:center;font-size:16px;font-weight:700;color:var(--bw10);opacity:0;transition:opacity 0.2s;pointer-events:none">Products</span>
     <div class="prod-manage">Manage</div>
   </div>
 </div>
 
-<div class="screen-scroll" style="padding-top:0;padding-bottom:130px">
+<div class="screen-scroll" style="padding-top:104px;padding-bottom:130px">
   <div class="prod-title">Products</div>
 
   <!-- Category filters -->
@@ -243,6 +243,15 @@ document.querySelectorAll('.prod-subfilt').forEach(btn => {
     btn.classList.add('active');
   });
 });
+
+// Scroll header — show centered title when big title scrolls out of view
+var prodScroll = document.querySelector('.screen-scroll');
+var prodScrollTitle = document.getElementById('prod-scroll-title');
+if (prodScroll && prodScrollTitle) {
+  prodScroll.addEventListener('scroll', function() {
+    prodScrollTitle.style.opacity = prodScroll.scrollTop > 40 ? '1' : '0';
+  });
+}
 </script>
 </body>
 </html>
